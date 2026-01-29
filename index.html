@@ -2,607 +2,519 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b0b12" />
-
-  <title>Área de Lucha — Técnica + Data + Calle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Área de Lucha — técnica · data · calle</title>
   <meta name="description" content="El hub de combate que mezcla técnica, data y calle. Videos, reels y streams en un solo lugar." />
 
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Área de Lucha" />
-  <meta property="og:description" content="Técnica + Data + Calle. Videos, reels y streams en un solo lugar." />
-  <meta property="og:image" content="assets/img/og.webp" />
+  <!-- Open Graph (preview al compartir) -->
+  <meta property="og:title" content="Área de Lucha — técnica · data · calle" />
+  <meta property="og:description" content="Videos, reels y streams en un solo lugar." />
+  <meta property="og:image" content="/assets/img/og-1200x630.webp" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.areadelucha.com/" />
 
   <!-- Favicons -->
-  <link rel="icon" href="assets/favicon.ico" />
-  <link rel="apple-touch-icon" href="assets/favicon-512.png" />
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/favicon-512.png" />
 
-  <!-- Font (opcional, si no carga igual se ve bien) -->
+  <!-- Fonts (tech pero legible) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#07080e;
+      --bg: #070812;
       --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.08);
-      --stroke: rgba(255,255,255,.14);
+      --panel2: rgba(255,255,255,.09);
+      --stroke: rgba(255,255,255,.12);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --muted2: rgba(255,255,255,.52);
+      --muted: rgba(255,255,255,.70);
 
-      --c1:#43D9FF;   /* cian */
-      --c2:#FF3DCE;   /* magenta */
-      --c3:#7C5CFF;   /* violeta */
-
-      --r: 18px;
-      --shadow: 0 22px 70px rgba(0,0,0,.55);
-      --shadow2: 0 14px 40px rgba(0,0,0,.45);
-
+      /* acentos “neón” (sin pasarse) */
+      --a1: #57D2FF;   /* cyan */
+      --a2: #FF5BC8;   /* pink */
+      --a3: #9B7CFF;   /* violeta */
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --r: 22px;
       --max: 1120px;
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(900px 420px at 18% 0%, rgba(124,92,255,.20), transparent 60%),
-        radial-gradient(700px 380px at 82% 6%, rgba(255,61,206,.16), transparent 55%),
-        radial-gradient(800px 420px at 40% 110%, rgba(67,217,255,.12), transparent 55%),
-        linear-gradient(180deg, #060611, #07080e 55%, #060611);
       color:var(--text);
-      overflow-x:hidden;
+      background:
+        radial-gradient(1200px 700px at 10% 10%, rgba(87,210,255,.14), transparent 55%),
+        radial-gradient(1000px 650px at 90% 15%, rgba(255,91,200,.12), transparent 55%),
+        radial-gradient(900px 600px at 50% 85%, rgba(155,124,255,.10), transparent 60%),
+        var(--bg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.5;
     }
 
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding: 18px 18px 46px}
-    .row{display:flex; gap:14px; align-items:center}
-    .space{justify-content:space-between}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 0 18px;}
     .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px; border-radius:999px;
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border-radius:999px;
       background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.10);
       backdrop-filter: blur(10px);
     }
     .dot{
-      width:8px; height:8px; border-radius:99px;
-      background: linear-gradient(90deg, var(--c1), var(--c2));
-      box-shadow: 0 0 18px rgba(255,61,206,.55);
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--a1), var(--a2));
+      box-shadow: 0 0 20px rgba(255,91,200,.35);
     }
 
     /* Header */
     header{
-      position:sticky; top:0; z-index:30;
-      background: rgba(7,8,14,.55);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      position: sticky; top:0; z-index:30;
       backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(7,8,18,.82), rgba(7,8,18,.45));
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    header .wrap{padding: 12px 18px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
     .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 220px;
+      display:flex; align-items:center; gap: 12px;
+      min-width: 240px;
     }
     .brand img{
-      width:42px; height:42px; object-fit:contain;
-      filter: drop-shadow(0 12px 18px rgba(0,0,0,.35));
+      height: 46px; width:auto; display:block;   /* <- logo más grande */
+      filter: drop-shadow(0 10px 25px rgba(0,0,0,.55));
     }
-    .brand b{font-size:15px; letter-spacing:.2px}
-    .brand small{display:block; color:var(--muted2); font-size:12px; margin-top:1px}
+    .brand b{
+      font-family: "Space Grotesk", Inter, system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .brand small{display:block; color:var(--muted); margin-top: -2px; font-size: 12.5px;}
 
-    nav{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-    .navlink{
-      padding:10px 12px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      font-size: 13px;
-      color: var(--muted);
+    .menu{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      justify-content:flex-end;
     }
-    .navlink:hover{
+    .link{
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      font-weight: 600;
+      color: rgba(255,255,255,.85);
+    }
+    .link:hover{
       transform: translateY(-1px);
-      background: rgba(255,255,255,.07);
+      background: rgba(255,255,255,.08);
       border-color: rgba(255,255,255,.16);
-      color: var(--text);
     }
-    .cta{
-      border:1px solid rgba(255,255,255,.14);
-      background:
-        linear-gradient(90deg, rgba(67,217,255,.18), rgba(255,61,206,.16));
-      color: var(--text);
-      position:relative;
-    }
-    .cta:before{
-      content:"";
-      position:absolute; inset:-1px;
-      border-radius:999px;
-      background: linear-gradient(90deg, rgba(67,217,255,.55), rgba(255,61,206,.55));
-      opacity:.22;
-      filter: blur(12px);
-      z-index:-1;
+    .link.primary{
+      border-color: rgba(87,210,255,.35);
+      background: linear-gradient(135deg, rgba(87,210,255,.20), rgba(255,91,200,.16));
     }
 
     /* Hero */
     .hero{
-      margin-top: 18px;
-      border-radius: calc(var(--r) + 10px);
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
       position:relative;
-      background:#0b0b12;
+      margin: 18px 0 0;
+      border-radius: var(--r);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
     }
-    .hero .bg{
+    .hero-media{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .hero::after{
+      content:"";
       position:absolute; inset:0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.55)),
-        url("assets/img/banner.webp");
-      background-size:cover;
-      background-position:center;
-      transform: scale(1.03);
-      filter: saturate(1.05) contrast(1.02);
+        linear-gradient(90deg, rgba(7,8,18,.92) 0%, rgba(7,8,18,.65) 45%, rgba(7,8,18,.20) 100%),
+        radial-gradient(900px 500px at 20% 30%, rgba(87,210,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 65% 40%, rgba(255,91,200,.16), transparent 60%);
     }
-    .hero .glow{
-      position:absolute; inset:-80px -60px;
-      background:
-        radial-gradient(520px 240px at 18% 18%, rgba(67,217,255,.25), transparent 60%),
-        radial-gradient(520px 240px at 84% 22%, rgba(255,61,206,.22), transparent 62%),
-        radial-gradient(520px 240px at 50% 120%, rgba(124,92,255,.18), transparent 55%);
-      pointer-events:none;
-    }
-    .hero .content{
+    .hero-inner{
       position:relative;
-      padding: 32px 24px;
-      min-height: 380px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      gap: 14px;
-    }
-    .kicker{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-      color: var(--muted);
-      font-size: 13px;
+      padding: 34px 22px;
+      min-height: 360px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:end;
     }
     h1{
-      margin:0;
-      font-size: clamp(34px, 4.2vw, 54px);
-      letter-spacing: -0.8px;
-      line-height: 1.02;
-      text-shadow: 0 18px 40px rgba(0,0,0,.55);
+      margin: 10px 0 10px;
+      font-family: "Space Grotesk", Inter, system-ui, sans-serif;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.02;
+      letter-spacing: .2px;
     }
-    .subtitle{
-      margin:0;
-      max-width: 70ch;
+    .sub{
+      margin: 0 0 18px;
       color: rgba(255,255,255,.78);
-      font-size: clamp(15px, 1.3vw, 18px);
-      line-height: 1.4;
+      font-size: 17px;
+      max-width: 52ch;
     }
-
-    .quick{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 8px;
+    .cta{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 10px;
     }
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
       padding: 12px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight: 600;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      font-weight: 800;
+      letter-spacing: .2px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.09);
-      border-color: rgba(255,255,255,.18);
-    }
-    .btn.primary{
-      background: linear-gradient(90deg, rgba(67,217,255,.18), rgba(255,61,206,.16));
-      border-color: rgba(255,255,255,.16);
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18);}
+    .btn.neon{
+      border-color: rgba(87,210,255,.35);
+      background: linear-gradient(135deg, rgba(87,210,255,.22), rgba(255,91,200,.18));
     }
 
-    /* Sections layout */
+    .hero-side{
+      display:grid; gap: 12px;
+      align-content:end;
+    }
+    .stat{
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+    }
+    .stat b{display:block; font-size: 14px; color: rgba(255,255,255,.9);}
+    .stat span{display:block; font-size: 12.5px; color: rgba(255,255,255,.70); margin-top:4px;}
+
+    /* Sections / Cards */
+    section{padding: 26px 0;}
     .grid{
-      margin-top: 18px;
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: repeat(12, 1fr);
       gap: 14px;
-      align-items: stretch;
     }
     .card{
       border-radius: var(--r);
+      border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow2);
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
       overflow:hidden;
     }
-    .card .in{padding: 18px}
-    .title{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      margin-bottom: 10px;
+    .card .pad{padding: 18px;}
+    .card h2{
+      margin: 0 0 10px;
+      font-family: "Space Grotesk", Inter, system-ui, sans-serif;
+      font-size: 22px;
+      letter-spacing: .2px;
     }
-    .title h2{
-      margin:0; font-size: 18px; letter-spacing:-.2px;
-    }
-    .title span{
-      font-size: 12px; color: var(--muted2);
+    .muted{color: var(--muted)}
+    .k{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
       border: 1px solid rgba(255,255,255,.12);
-      padding: 6px 10px; border-radius: 999px;
-      background: rgba(0,0,0,.12);
-    }
-    .muted{color: var(--muted); line-height:1.45; margin:0}
-
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px}
-    .chip{
-      padding:8px 10px; border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.14);
-      color: rgba(255,255,255,.74);
-      font-size: 12px;
-    }
-
-    .list{
-      margin: 12px 0 0;
-      padding:0;
-      list-style:none;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-    .item{
-      display:flex; gap:12px; align-items:flex-start;
-      padding: 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.16);
-    }
-    .badge{
-      width:10px; height:10px; border-radius: 99px;
-      margin-top: 6px;
-      background: linear-gradient(90deg, var(--c1), var(--c2));
-      box-shadow: 0 0 18px rgba(67,217,255,.25);
-      flex: 0 0 auto;
-    }
-    .item b{display:block}
-    .item p{margin:2px 0 0; color: var(--muted2); font-size: 13px; line-height:1.35}
-
-    /* Embed */
-    .embed{
-      border-radius: 16px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      aspect-ratio: 16/9;
-    }
-    .embed iframe{width:100%; height:100%; border:0}
-
-    /* Link-in-bio */
-    .bio{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 10px;
-    }
-    .bigbtn{
-      padding: 14px 14px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      font-weight: 700;
-      text-align:center;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-    }
-    .bigbtn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.09);
-      border-color: rgba(255,255,255,.18);
-    }
-    .bigbtn.primary{
-      background: linear-gradient(90deg, rgba(67,217,255,.18), rgba(255,61,206,.16));
-      border-color: rgba(255,255,255,.16);
-    }
-
-    /* Contact */
-    .contact{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .field{
-      display:flex; flex-direction:column; gap:6px;
-      font-size: 12px; color: var(--muted);
-    }
-    input, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.18);
-      color: var(--text);
-      outline:none;
+      font-weight: 700;
+      font-size: 13px;
+      color: rgba(255,255,255,.85);
+      margin-right: 8px;
+      margin-top: 10px;
     }
-    textarea{min-height: 120px; resize: vertical}
-    .send{
-      display:inline-flex; justify-content:center; align-items:center;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.16);
-      background: linear-gradient(90deg, rgba(67,217,255,.18), rgba(255,61,206,.16));
-      font-weight: 800;
-      cursor:pointer;
-    }
+    .k i{width:9px; height:9px; border-radius:999px; display:inline-block; background: linear-gradient(135deg, var(--a1), var(--a2));}
 
-    footer{
-      margin-top: 20px;
-      padding: 18px 0 0;
-      color: var(--muted2);
-      font-size: 12px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      flex-wrap:wrap;
+    /* Gallery scroll */
+    .rail{
+      display:flex; gap: 12px;
+      overflow:auto;
+      padding: 12px;
+      scroll-snap-type: x mandatory;
     }
-    footer .mini{display:flex; align-items:center; gap:10px}
-    footer img{width:24px; height:24px; object-fit:contain; opacity:.92}
+    .rail::-webkit-scrollbar{height: 10px}
+    .rail::-webkit-scrollbar-thumb{background: rgba(255,255,255,.10); border-radius: 999px}
+    .shot{
+      scroll-snap-align: start;
+      min-width: 260px;
+      max-width: 320px;
+      flex: 0 0 auto;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+    }
+    .shot img{width:100%; height:190px; object-fit:cover; display:block;}
+    .shot .cap{padding: 10px 12px; font-weight: 700; color: rgba(255,255,255,.82); font-size: 13px;}
+
+    /* Footer */
+    footer{
+      padding: 30px 0 50px;
+      color: rgba(255,255,255,.70);
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 24px;
+    }
 
     /* Responsive */
     @media (max-width: 920px){
-      .grid{grid-template-columns:1fr}
-      .hero .content{min-height: 360px}
+      .brand{min-width:unset}
+      .hero-inner{grid-template-columns: 1fr; min-height: 420px}
+      .hero-side{grid-template-columns: 1fr 1fr;}
     }
     @media (max-width: 560px){
-      nav{display:none}
-      .hero .content{padding: 22px 16px; min-height: 360px}
-      .bio{grid-template-columns:1fr}
-      .contact{grid-template-columns:1fr}
-      .brand{min-width:auto}
+      .brand img{height: 42px}
+      .hero-inner{padding: 26px 16px}
+      .hero-side{grid-template-columns: 1fr;}
+      .btn{width: 100%;}
+      .menu{justify-content:flex-start}
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Ir al inicio">
+          <img src="/assets/img/logo.png" alt="Logo Área de Lucha" />
+          <div>
+            <b>Área de Lucha</b>
+            <small>técnica · data · calle</small>
+          </div>
+        </a>
 
-<header>
-  <div class="wrap row space">
-    <a class="brand" href="#">
-      <!-- Logo recomendado: el minimal B/N para legibilidad -->
-      <img src="assets/img/logo.png" alt="Área de Lucha" />
-      <div>
-        <b>Área de Lucha</b>
-        <small>Técnica + Data + Calle</small>
-      </div>
-    </a>
-
-    <nav>
-      <a class="navlink" href="#ultimos">Últimos</a>
-      <a class="navlink" href="#series">Series</a>
-      <a class="navlink" href="#bio">Links</a>
-      <a class="navlink cta" href="#contacto">Contacto</a>
-    </nav>
-
-    <div class="pill" title="Estado">
-      <span class="dot"></span>
-      <span style="font-size:13px;color:var(--muted)">
-        Online • Técnica + Data + Calle
-      </span>
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <section class="hero" aria-label="Portada">
-    <div class="bg"></div>
-    <div class="glow"></div>
-
-    <div class="content">
-      <div class="kicker">
-        <span class="pill"><span class="dot"></span> BJJ • Judo • Striking • Análisis</span>
-        <span class="pill">Reels + Streams + Clips</span>
-      </div>
-
-      <h1>Área de Lucha</h1>
-      <p class="subtitle">
-        El hub de combate que mezcla técnica, data y calle. Videos, reels y streams en un solo lugar.
-      </p>
-
-      <div class="quick">
-        <!-- CAMBIÁ estos links por los tuyos -->
-        <a class="btn primary" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-        <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
-        <a class="btn" href="https://kick.com/" target="_blank" rel="noopener">Kick</a>
-        <a class="btn" href="#ultimos">Ver últimos</a>
-        <a class="btn" href="#contacto">Contacto</a>
+        <nav class="menu" aria-label="Secciones">
+          <a class="link" href="#episodios">Episodios</a>
+          <a class="link" href="#plataformas">Plataformas</a>
+          <a class="link" href="#sobre">Sobre</a>
+          <a class="link primary" href="#contacto">Contacto</a>
+        </nav>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section class="grid">
-    <article class="card" id="ultimos">
-      <div class="in">
-        <div class="title">
-          <h2>Últimos videos</h2>
-          <span>Actualizalo pegando IDs</span>
+  <main id="top" class="wrap">
+    <!-- HERO / BANNER -->
+    <section class="hero" aria-label="Banner principal">
+      <picture>
+        <source srcset="/assets/img/banner-2400x1200.webp" type="image/webp" media="(min-width: 1000px)">
+        <source srcset="/assets/img/banner-1920x960.webp" type="image/webp">
+        <img class="hero-media" src="/assets/img/6.jpeg" alt="Banner Área de Lucha" loading="eager" />
+      </picture>
+
+      <div class="hero-inner">
+        <div>
+          <div class="pill"><span class="dot"></span><span><b>Online</b> • Técnica + Data + Calle</span></div>
+          <h1>Área de Lucha</h1>
+          <p class="sub">
+            El hub de combate que mezcla técnica, data y calle.
+            Videos, reels y streams en un solo lugar.
+          </p>
+
+          <div class="cta">
+            <!-- EDITÁ estos links con los tuyos -->
+            <a class="btn neon" href="https://www.youtube.com/" target="_blank" rel="noopener">Ver canal (YouTube)</a>
+            <a class="btn" href="https://kick.com/" target="_blank" rel="noopener">En vivo (Kick)</a>
+            <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener">Clips (Instagram)</a>
+          </div>
+
+          <div style="margin-top:10px">
+            <span class="k"><i></i>BJJ</span>
+            <span class="k"><i></i>Judo</span>
+            <span class="k"><i></i>Striking</span>
+            <span class="k"><i></i>Mind Games</span>
+          </div>
         </div>
 
-        <p class="muted">
-          Meté acá tus últimos 1–3 videos (o un “Destacado de la semana”).
-          Abajo te dejé un embed listo.
-        </p>
-
-        <div style="height:12px"></div>
-
-        <!-- REEMPLAZÁ el ID por el tuyo: https://www.youtube.com/watch?v=ID -->
-        <div class="embed" aria-label="Video destacado">
-          <iframe
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="Video destacado"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+        <div class="hero-side">
+          <div class="stat">
+            <b>▶ Destacado</b>
+            <span>Entrá directo a la playlist/serie principal y mirá episodios completos.</span>
+          </div>
+          <div class="stat">
+            <b>⚡ Estilo</b>
+            <span>Respeto + humor + calle. Sin humo: técnica clara y data útil.</span>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="chips">
-          <span class="chip">Técnica</span>
-          <span class="chip">Data</span>
-          <span class="chip">Calle</span>
-          <span class="chip">Shorts / Reels</span>
-          <span class="chip">En vivo</span>
-        </div>
+    <!-- EPISODIOS -->
+    <section id="episodios">
+      <div class="grid">
+        <div class="card" style="grid-column: span 7;">
+          <div class="pad">
+            <h2>Últimos episodios</h2>
+            <p class="muted">Acá va tu playlist/serie principal. Lo más importante: que el usuario llegue a contenido real en 1 click.</p>
 
-        <ul class="list">
-          <li class="item">
-            <span class="badge"></span>
-            <div>
-              <b>Clips rápidos</b>
-              <p>Resumen de 30–60s con “lo clave” + cierre con llamada a acción.</p>
+            <!-- CAMBIÁ el link del embed por TU PLAYLIST -->
+            <div style="border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.22)">
+              <iframe
+                style="width:100%; aspect-ratio: 16/9; border:0;"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                src="https://www.youtube.com/embed/videoseries?list=PLXXXXXXXXXXXXXXX">
+              </iframe>
             </div>
-          </li>
-          <li class="item">
-            <span class="badge"></span>
-            <div>
-              <b>Series por disciplina</b>
-              <p>Separá por BJJ / Judo / Striking / MMA / Preparación física.</p>
-            </div>
-          </li>
-          <li class="item">
-            <span class="badge"></span>
-            <div>
-              <b>Invitados pro</b>
-              <p>Kinesio, doc, nutri, atleta: formato entrevista + data + calle.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </article>
 
-    <aside class="card" id="series">
-      <div class="in">
-        <div class="title">
-          <h2>Series / Playlists</h2>
-          <span>Ordena el caos</span>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn neon" href="https://www.youtube.com/" target="_blank" rel="noopener">Ver playlist completa</a>
+              <a class="btn" href="#contacto">Sponsors / Colabs</a>
+            </div>
+          </div>
         </div>
 
-        <p class="muted">
-          Esto te sube muchísimo el “pro feel”: la gente entra y entiende qué mirar primero.
-        </p>
+        <div class="card" style="grid-column: span 5;">
+          <div class="pad">
+            <h2>¿Qué vas a encontrar acá?</h2>
+            <p class="muted">
+              • Combate (BJJ / Judo / striking)<br>
+              • Análisis técnico y “mind games”<br>
+              • Clips cortos y highlights<br>
+              • Invitados: deportistas, kinesiólogos, docs, nutrición
+            </p>
 
-        <div style="height:12px"></div>
+            <div class="card" style="margin-top:14px; background:rgba(255,255,255,.05)">
+              <div class="pad">
+                <b style="display:block; margin-bottom:6px;">Tip de crecimiento (simple y efectivo)</b>
+                <span class="muted">Fijá un día/horario de stream y ponelo siempre en IG + descripción del canal. Consistencia mata algoritmo.</span>
+              </div>
+            </div>
 
-        <div class="bio" style="grid-template-columns:1fr">
-          <!-- CAMBIÁ links -->
-          <a class="bigbtn primary" href="#" target="_blank" rel="noopener">📌 Empiezo acá (Guía rápida)</a>
-          <a class="bigbtn" href="#" target="_blank" rel="noopener">🥋 BJJ: fundamentos</a>
-          <a class="bigbtn" href="#" target="_blank" rel="noopener">🟫 Judo: agarres y proyecciones</a>
-          <a class="bigbtn" href="#" target="_blank" rel="noopener">🥊 Striking: timing + setups</a>
-          <a class="bigbtn" href="#" target="_blank" rel="noopener">📊 Data: análisis y táctica</a>
+            <div class="card" style="margin-top:14px; background:rgba(255,255,255,.05)">
+              <div class="pad">
+                <b style="display:block; margin-bottom:6px;">Shorts / Reels</b>
+                <span class="muted">1 clip fuerte por día (15–35s) con título grande + subtítulos. CTA: “episodio completo en YouTube”.</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </aside>
-  </section>
+    </section>
 
-  <section class="card" id="bio" style="margin-top:14px">
-    <div class="in">
-      <div class="title">
-        <h2>Link-in-bio (modo mobile)</h2>
-        <span>Botones grandes</span>
+    <!-- PLATAFORMAS -->
+    <section id="plataformas">
+      <div class="card">
+        <div class="pad">
+          <h2>Plataformas</h2>
+          <p class="muted">Tres puertas claras. Un usuario nuevo entiende qué tocar.</p>
+
+          <div class="grid" style="margin-top:10px">
+            <div class="card" style="grid-column: span 4;">
+              <div class="pad">
+                <h3 style="margin:0 0 6px;">YouTube</h3>
+                <p class="muted">Episodios completos, análisis, series.</p>
+                <a class="btn neon" href="https://www.youtube.com/" target="_blank" rel="noopener">Ir al canal</a>
+              </div>
+            </div>
+            <div class="card" style="grid-column: span 4;">
+              <div class="pad">
+                <h3 style="margin:0 0 6px;">Kick</h3>
+                <p class="muted">Streams en vivo, reacción, debate y comunidad.</p>
+                <a class="btn neon" href="https://kick.com/" target="_blank" rel="noopener">Entrar a Kick</a>
+              </div>
+            </div>
+            <div class="card" style="grid-column: span 4;">
+              <div class="pad">
+                <h3 style="margin:0 0 6px;">Instagram</h3>
+                <p class="muted">Clips rápidos, reels, highlights y avisos.</p>
+                <a class="btn neon" href="https://www.instagram.com/" target="_blank" rel="noopener">Ir a Instagram</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <p class="muted">Para Instagram/Kick: pegás este link y listo. Ideal para celular.</p>
+    <!-- SOBRE / IDENTIDAD -->
+    <section id="sobre">
+      <div class="grid">
+        <div class="card" style="grid-column: span 6;">
+          <div class="pad">
+            <h2>Sobre ADL</h2>
+            <p class="muted">
+              ADL nace para hablar de deportes de combate con respeto, humor y calle, sin humo:
+              técnica clara, data útil y el “código” de la lucha.
+            </p>
+            <p class="muted">
+              Invitados: deportistas, profes, kinesiólogos, médicos, nutrición y gente real del palo.
+              Si querés participar, escribinos abajo.
+            </p>
+          </div>
+        </div>
 
-      <div class="bio">
-        <!-- CAMBIÁ links -->
-        <a class="bigbtn primary" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-        <a class="bigbtn" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
-        <a class="bigbtn" href="https://kick.com/" target="_blank" rel="noopener">Kick</a>
-        <a class="bigbtn" href="#contacto">Contacto</a>
+        <div class="card" style="grid-column: span 6;">
+          <div class="pad">
+            <h2>Identidad / Logos</h2>
+            <p class="muted">Carrousel rápido para mostrar estética. Usa tus archivos 1–6 y logo.</p>
+          </div>
+
+          <div class="rail" aria-label="Galería de imágenes">
+            <div class="shot"><img src="/assets/img/1.jpg" alt="Logo 1" loading="lazy"><div class="cap">Versión 1</div></div>
+            <div class="shot"><img src="/assets/img/2.jpeg" alt="Logo 2" loading="lazy"><div class="cap">Versión 2</div></div>
+            <div class="shot"><img src="/assets/img/3.jpeg" alt="Logo 3" loading="lazy"><div class="cap">Versión 3</div></div>
+            <div class="shot"><img src="/assets/img/4.jpeg" alt="Logo 4" loading="lazy"><div class="cap">Versión 4</div></div>
+            <div class="shot"><img src="/assets/img/5.jpeg" alt="Logo 5" loading="lazy"><div class="cap">Versión 5</div></div>
+            <div class="shot"><img src="/assets/img/6.jpeg" alt="Banner base" loading="lazy"><div class="cap">Banner base</div></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="card" id="contacto" style="margin-top:14px">
-    <div class="in">
-      <div class="title">
-        <h2>Contacto</h2>
-        <span>Simple y efectivo</span>
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="card">
+        <div class="pad">
+          <h2>Contacto</h2>
+          <p class="muted">Sponsors · invitados · colabs · prensa</p>
+
+          <div class="grid" style="margin-top:10px">
+            <div class="card" style="grid-column: span 7;">
+              <div class="pad">
+                <b style="display:block; margin-bottom:6px;">Email</b>
+                <p class="muted" style="margin-top:0">areadelucha@gmail.com</p>
+                <a class="btn neon" href="mailto:areadelucha@gmail.com?subject=Contacto%20ADL">Enviar mail</a>
+              </div>
+            </div>
+
+            <div class="card" style="grid-column: span 5;">
+              <div class="pad">
+                <b style="display:block; margin-bottom:6px;">Link rápido</b>
+                <p class="muted" style="margin-top:0">Si estás en mobile, esto funciona como mini “link-in-bio”.</p>
+                <div class="cta">
+                  <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+                  <a class="btn" href="https://kick.com/" target="_blank" rel="noopener">Kick</a>
+                  <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
+    </section>
 
-      <p class="muted">
-        Como esto es estático (GitHub Pages), el form manda por mail con <b>mailto</b>.
-        Si querés algo más pro, te lo dejo preparado abajo (Formspree).
-      </p>
-
-      <div class="contact">
-        <label class="field">
-          Tu nombre
-          <input id="c_name" type="text" placeholder="Ej: Piero" />
-        </label>
-        <label class="field">
-          Tu email
-          <input id="c_email" type="email" placeholder="Ej: tuemail@gmail.com" />
-        </label>
+    <footer>
+      <div class="wrap" style="padding:0">
+        © <span id="y"></span> www.areadelucha.com — técnica · data · calle
       </div>
+    </footer>
+  </main>
 
-      <div style="height:10px"></div>
-
-      <label class="field">
-        Mensaje
-        <textarea id="c_msg" placeholder="Contame qué querés armar / invitar / proponer..."></textarea>
-      </label>
-
-      <div style="height:12px"></div>
-
-      <!-- CAMBIÁ el mail -->
-      <button class="send" type="button" onclick="sendMail()">
-        Enviar mensaje
-      </button>
-
-      <div style="height:10px"></div>
-      <p class="muted" style="font-size:12px">
-        Pro tip: para un formulario real sin backend, usá Formspree (gratis). Cuando quieras lo conectamos en 2 minutos.
-      </p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="mini">
-      <img src="assets/img/logo.png" alt="ADL" />
-      <span>© <span id="y"></span> Área de Lucha — Técnica + Data + Calle</span>
-    </div>
-    <div>
-      <a class="navlink" href="#ultimos">Últimos</a>
-      <a class="navlink" href="#contacto">Contacto</a>
-    </div>
-  </footer>
-
-</main>
-
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-
-  function sendMail(){
-    const name = encodeURIComponent(document.getElementById("c_name").value || "");
-    const email = encodeURIComponent(document.getElementById("c_email").value || "");
-    const msg = encodeURIComponent(document.getElementById("c_msg").value || "");
-
-    const subject = encodeURIComponent("Contacto desde areadelucha.com");
-    const body =
-      "Nombre: " + name + "%0D%0A" +
-      "Email: " + email + "%0D%0A%0D%0A" +
-      "Mensaje:%0D%0A" + msg;
-
-    // CAMBIÁ ESTE MAIL:
-    const to = "tucorreo@gmail.com";
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-  }
-</script>
-
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
