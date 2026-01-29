@@ -2,602 +2,969 @@
 <html lang="es-AR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#070812" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Área de Lucha — stream de deportes de combate (BJJ/Judo) y deporte en general. Comunidad, análisis y buena charla." />
+  <meta name="theme-color" content="#0b0f1a" />
 
-  <title>Área de Lucha — técnica · data · análisis</title>
-  <meta name="description" content="Área de Lucha: deportes de combate con técnica, data y análisis. Episodios completos, streams y reels. Cero humo: contenido claro y útil." />
-  <link rel="canonical" href="https://www.areadelucha.com/" />
+  <title>Área de Lucha</title>
 
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Área de Lucha — técnica · data · análisis" />
-  <meta property="og:description" content="Deportes de combate con técnica y data. Cero humo: contenido claro y útil." />
+  <link rel="icon" type="image/png" href="assets/2.png" />
+
+  <meta property="og:title" content="Área de Lucha" />
+  <meta property="og:description" content="Stream de BJJ/Judo y deportes. Comunidad y combate." />
+  <meta property="og:image" content="assets/4.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.areadelucha.com/" />
-  <!-- Usamos el OG que ya tenés (1200x630). Si algún día querés, lo hacemos 100% logo-only. -->
-  <meta property="og:image" content="https://www.areadelucha.com/assets/img/og-1200x630.webp" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Área de Lucha — técnica · data · análisis" />
-  <meta name="twitter:description" content="Deportes de combate con técnica y data. Cero humo: contenido claro y útil." />
-  <meta name="twitter:image" content="https://www.areadelucha.com/assets/img/og-1200x630.webp" />
-
-  <!-- Favicons (tu estructura real: assets/img/) -->
-  <link rel="icon" href="./assets/img/favicon.ico" />
-  <link rel="apple-touch-icon" href="./assets/img/favicon-512.png" />
-
-  <!-- Fonts (tech y legibles) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Preload del “banner” (logo) -->
-  <link rel="preload" as="image" href="./assets/img/logo.png" />
 
   <style>
     :root{
-      --bg: #070812;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.09);
-      --stroke: rgba(255,255,255,.12);
+      --bg: #070a12;
+      --bg2:#0b0f1a;
+      --card: rgba(255,255,255,.06);
+      --line: rgba(255,255,255,.12);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.72);
-
-      /* acentos tipo neón (controlados) */
-      --a1: #57D2FF;   /* cyan */
-      --a2: #FF5BC8;   /* pink */
-      --a3: #9B7CFF;   /* violeta */
-      --shadow: 0 22px 70px rgba(0,0,0,.55);
-      --r: 22px;
-      --max: 1120px;
-
-      --focus: 0 0 0 3px rgba(87,210,255,.22);
+      --muted2: rgba(255,255,255,.58);
+      --shadow: 0 18px 70px rgba(0,0,0,.55);
+      --radius: 18px;
+      --max: 1100px;
+      --warn: rgba(255,200,80,.16);
+      --warn2: rgba(255,200,80,.30);
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
       margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       background:
-        radial-gradient(1200px 700px at 10% 10%, rgba(87,210,255,.14), transparent 55%),
-        radial-gradient(1000px 650px at 90% 15%, rgba(255,91,200,.12), transparent 55%),
-        radial-gradient(900px 600px at 50% 85%, rgba(155,124,255,.10), transparent 60%),
-        var(--bg);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.5;
+        radial-gradient(900px 450px at 20% 0%, rgba(70,120,255,.12), transparent 60%),
+        radial-gradient(900px 450px at 80% 10%, rgba(255,70,200,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
     }
 
     a{color:inherit; text-decoration:none}
-    a:focus-visible, button:focus-visible{outline:none; box-shadow: var(--focus); border-radius: 12px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
 
-    .wrap{max-width:var(--max); margin:0 auto; padding: 0 18px;}
-    .muted{color:var(--muted)}
+    /* ===== NAV ===== */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,10,18,.55);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:12px 0;
+    }
+    .brand{display:flex; align-items:center; gap:10px; min-width:220px;}
+    .brand img{
+      width:44px; height:44px; border-radius:12px;
+      object-fit:cover; box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.02);
+    }
+    .brand-title{display:flex; flex-direction:column; line-height:1.1;}
+    .brand-title strong{font-size:14px; letter-spacing:.2px}
+    .brand-title span{font-size:12px; color:var(--muted2)}
 
-    .pill{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px; border-radius:999px;
+    .nav-links{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;}
+    .nav-links a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:10px;
+      border:1px solid transparent;
+      transition: .18s ease;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+    }
+
+    /* ===== TOP NOTICE (OBRA) ===== */
+    .notice{
+      padding: 14px 0 0;
+    }
+    .notice-card{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--warn2);
+      background: var(--warn);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+    }
+    .notice-left{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+    .notice-left b{font-size:13px}
+    .notice-left span{font-size:12px; color:rgba(255,255,255,.85)}
+    .notice-right{
+      font-size:12px;
+      color:rgba(255,255,255,.9);
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.12);
+      white-space:nowrap;
+    }
+    .icon{
+      width:18px; height:18px; display:inline-block;
+      opacity:.92;
+    }
+
+    /* ===== HERO ===== */
+    .hero{position:relative; padding: 34px 0 28px; overflow:hidden;}
+    .hero-bg{
+      position:absolute; inset:-40px;
+      background:
+        radial-gradient(900px 520px at 25% 30%, rgba(80,140,255,.22), transparent 55%),
+        radial-gradient(900px 520px at 75% 20%, rgba(255,80,210,.22), transparent 55%);
+      filter: blur(2px);
+      pointer-events:none;
+    }
+    .hero-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-left{
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-left:before{
+      content:"";
+      position:absolute; inset:0;
+      background: url("assets/1.jpeg") center/cover no-repeat;
+      opacity:.18;
+      filter: contrast(1.1) saturate(1.1);
+      transform: scale(1.06);
+    }
+    .hero-left > *{position:relative}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
       background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      font-size:12px;
+      margin-bottom:12px;
     }
     .dot{
       width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--a1), var(--a2));
-      box-shadow: 0 0 18px rgba(255,91,200,.28);
+      background: rgba(255,255,255,.35);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.05);
     }
-
-    /* Header */
-    header{
-      position: sticky; top:0; z-index:30;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(7,8,18,.86), rgba(7,8,18,.45));
-      border-bottom: 1px solid rgba(255,255,255,.08);
+    .hero h1{margin:0; font-size: clamp(28px, 4vw, 44px); letter-spacing: .2px;}
+    .hero p{
+      margin:10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 58ch;
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-      gap: 14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap: 12px;
-      min-width: 260px;
-    }
-    .brand img{
-      height: 56px; width:auto; display:block;  /* logo más grande */
-      filter: drop-shadow(0 10px 25px rgba(0,0,0,.55));
-    }
-    .brand b{
-      font-family: "Space Grotesk", Inter, system-ui, sans-serif;
-      font-weight: 700;
-      letter-spacing: .2px;
-      font-size: 15.5px;
-    }
-    .brand small{display:block; color:var(--muted); margin-top: -2px; font-size: 12.5px;}
-
-    .menu{
-      display:flex; gap: 10px; flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-    .link{
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      font-weight: 700;
-      color: rgba(255,255,255,.86);
-      white-space: nowrap;
-    }
-    .link:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.16);
-    }
-    .link.primary{
-      border-color: rgba(87,210,255,.35);
-      background: linear-gradient(135deg, rgba(87,210,255,.20), rgba(255,91,200,.16));
-    }
-
-    /* Hero / Banner (logo como banner) */
-    .hero{
-      position:relative;
-      margin: 18px 0 0;
-      border-radius: var(--r);
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
-      background: rgba(0,0,0,.15);
-    }
-
-    /* Fondo: logo gigante, blur, para que quede “banner” */
-    .hero-bg{
-      position:absolute; inset:-20px;
-      width:110%; height:110%;
-      object-fit: cover;
-      filter: blur(14px) saturate(1.1) contrast(1.08);
-      opacity: .25;
-      transform: scale(1.06);
-    }
-
-    /* Logo principal en el hero */
-    .hero-logo{
-      width:min(520px, 92%);
-      height:auto;
-      display:block;
-      margin: 10px 0 6px;
-      filter: drop-shadow(0 22px 55px rgba(0,0,0,.65));
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(900px 500px at 20% 30%, rgba(87,210,255,.16), transparent 60%),
-        radial-gradient(900px 500px at 65% 40%, rgba(255,91,200,.14), transparent 60%),
-        linear-gradient(90deg, rgba(7,8,18,.92) 0%, rgba(7,8,18,.70) 55%, rgba(7,8,18,.52) 100%);
-    }
-
-    .hero-inner{
-      position:relative;
-      padding: 34px 22px;
-      min-height: 440px;
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 18px;
-      align-items:end;
-    }
-
-    h1{
-      margin: 10px 0 10px;
-      font-family: "Space Grotesk", Inter, system-ui, sans-serif;
-      font-size: clamp(30px, 3.7vw, 52px);
-      line-height:1.02;
-      letter-spacing: .2px;
-    }
-
-    .sub{
-      margin: 0 0 14px;
-      color: rgba(255,255,255,.80);
-      font-size: 17px;
-      max-width: 60ch;
-    }
-
-    .cta{
-      display:flex; gap: 10px; flex-wrap: wrap;
-      margin-top: 10px;
-    }
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding: 12px 14px;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.06);
-      font-weight: 900;
-      letter-spacing: .2px;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 13px;
+      transition:.18s ease;
+      user-select:none;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18);}
-    .btn.neon{
-      border-color: rgba(87,210,255,.35);
-      background: linear-gradient(135deg, rgba(87,210,255,.22), rgba(255,91,200,.18));
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn.primary{
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.22);
     }
 
-    .hero-side{
-      display:grid; gap: 12px;
-      align-content:end;
+    .hero-right{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
-    .stat{
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(10px);
-    }
-    .stat b{display:block; font-size: 14px; color: rgba(255,255,255,.92);}
-    .stat span{display:block; font-size: 12.5px; color: rgba(255,255,255,.72); margin-top:4px;}
-
-    .tags{margin-top:10px}
-    .k{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
+    .logo-block{
+      padding:14px;
+      border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.18);
-      font-weight: 800;
-      font-size: 13px;
-      color: rgba(255,255,255,.86);
-      margin-right: 8px;
-      margin-top: 10px;
-    }
-    .k i{width:9px; height:9px; border-radius:999px; display:inline-block; background: linear-gradient(135deg, var(--a1), var(--a2));}
-
-    /* Sections / Cards */
-    section{padding: 26px 0;}
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-    }
-    .card{
-      border-radius: var(--r);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      display:flex; align-items:center; justify-content:center;
+      min-height: 170px;
+      position:relative;
       overflow:hidden;
     }
-    .pad{padding: 18px;}
-    .card h2{
-      margin: 0 0 10px;
-      font-family: "Space Grotesk", Inter, system-ui, sans-serif;
-      font-size: 22px;
-      letter-spacing: .2px;
+    .logo-block:before{
+      content:"";
+      position:absolute; inset:-20px;
+      background: url("assets/4.png") center/contain no-repeat;
+      opacity:.08;
+      transform: scale(1.04);
     }
-    .card h3{margin:0 0 6px; font-family:"Space Grotesk", Inter, system-ui, sans-serif;}
+    .logo-block img{
+      position:relative;
+      width: min(100%, 360px);
+      height:auto;
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,.55));
+    }
 
-    .frame{
+    .live-card{
+      padding:14px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+    }
+    .live-top{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom:10px;
+    }
+    .live-top strong{font-size:14px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+    .pill.live{
+      background: rgba(255,60,120,.16);
+      border-color: rgba(255,60,120,.28);
+      color: rgba(255,210,230,.95);
+    }
+    .pill.live .dot{ background: rgba(255,60,120,.95); box-shadow:0 0 0 3px rgba(255,60,120,.14)}
+    .timer{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+    }
+    .tbox{
+      text-align:center;
+      padding:10px 8px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .tbox b{display:block; font-size:18px}
+    .tbox span{display:block; font-size:11px; color:var(--muted2); margin-top:2px}
+    .small{
+      margin-top:10px;
+      color: var(--muted2);
+      font-size:12px;
+      line-height:1.45;
+    }
+
+    /* ===== SECTIONS ===== */
+    section{padding: 26px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin-bottom: 14px;
+    }
+    .section-title h2{margin:0; font-size: 18px; letter-spacing:.2px;}
+    .section-title p{
+      margin:0;
+      color: var(--muted2);
+      font-size: 12px;
+      max-width: 60ch;
+      text-align:right;
+    }
+
+    .gallery{padding: 14px;}
+    .gallery-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .shot{
       border-radius: 16px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.22);
+      position:relative;
+      min-height: 180px;
+    }
+    .shot img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+      opacity:.95;
+    }
+    .shot .cap{
+      position:absolute; left:10px; bottom:10px;
+      font-size:12px;
+      color: rgba(255,255,255,.85);
+      background: rgba(0,0,0,.32);
+      border:1px solid rgba(255,255,255,.12);
+      padding:6px 10px;
+      border-radius:999px;
+      backdrop-filter: blur(10px);
     }
 
-    .copy-row{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-      padding: 12px 0 0;
+    .about{padding: 14px;}
+    .about-top{display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start;}
+    .about-text{
+      flex: 1 1 360px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
     }
-    .mini{
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
+    .about-text p{margin:0; color:var(--muted); line-height:1.6; font-size:14px}
+    .about-text p + p{margin-top:10px}
+    .about-art{
+      flex: 0 0 290px;
+      padding: 14px;
+      border-radius: 16px;
       background: rgba(0,0,0,.18);
-      font-weight: 800;
-      cursor: pointer;
-      color: rgba(255,255,255,.88);
+      border:1px solid rgba(255,255,255,.10);
+      display:flex; align-items:center; justify-content:center;
+      min-height: 220px;
+      position:relative;
+      overflow:hidden;
     }
-    .mini:hover{background: rgba(255,255,255,.07);}
+    .about-art img{
+      width: 100%;
+      max-width: 260px;
+      height:auto;
+      filter: drop-shadow(0 16px 26px rgba(0,0,0,.45));
+    }
+
+    .team{padding:14px;}
+    .team-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .member{
+      padding: 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      min-height: 150px;
+    }
+    .member h3{margin:0; font-size:14px}
+    .member .nick{color:var(--muted2); font-size:12px; margin-top:3px}
+    .member ul{margin:10px 0 0; padding-left:16px; color:var(--muted); font-size:13px; line-height:1.45}
+    .tag{
+      display:inline-flex;
+      margin-top:10px;
+      font-size:11px;
+      color: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    .contact{padding:14px;}
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:12px;
+    }
+    .contact-box{
+      padding: 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .contact-box h3{margin:0; font-size:14px}
+    .contact-box p{margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.5}
+
+    .socials{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
+    .icon-btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      transition:.18s ease;
+      font-weight:600;
+      font-size:13px;
+      color: var(--text);
+    }
+    .icon-btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .muted-note{margin-top:10px; color: var(--muted2); font-size:12px; line-height:1.45;}
+
+    /* ===== MERCH ===== */
+    .merch{padding:14px;}
+    .merch-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .mcard{
+      padding: 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      min-height: 150px;
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .mcard h3{margin:0; font-size:14px}
+    .mcard p{margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.5}
+    .mcard .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
+    .hint{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:11px; color:rgba(255,255,255,.82);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      border-radius:999px;
+      padding:6px 10px;
+    }
 
     footer{
-      padding: 30px 0 50px;
-      color: rgba(255,255,255,.70);
-      border-top: 1px solid rgba(255,255,255,.08);
-      margin-top: 24px;
+      padding: 24px 0 34px;
+      color: var(--muted2);
+      font-size:12px;
+      border-top:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.12);
     }
+    .foot{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;}
 
-    /* Responsive */
+    /* ===== Responsive ===== */
     @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr}
       .brand{min-width:unset}
-      .hero-inner{grid-template-columns: 1fr; min-height: 520px}
-      .hero-side{grid-template-columns: 1fr 1fr;}
-      .hero-logo{width:min(520px, 100%);}
+      .section-title{flex-direction:column; align-items:flex-start}
+      .section-title p{text-align:left}
+      .team-grid{grid-template-columns: repeat(2, 1fr)}
+      .contact-grid{grid-template-columns: 1fr}
+      .merch-grid{grid-template-columns: 1fr}
     }
-    @media (max-width: 560px){
-      .brand img{height: 48px}
-      .hero-inner{padding: 26px 16px}
-      .hero-side{grid-template-columns: 1fr;}
-      .btn{width: 100%;}
-      .menu{justify-content:flex-start}
+    @media (max-width: 520px){
+      .gallery-grid{grid-template-columns: 1fr}
+      .team-grid{grid-template-columns: 1fr}
+      .timer{grid-template-columns: repeat(2, 1fr)}
     }
   </style>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"Área de Lucha",
-    "url":"https://www.areadelucha.com/",
-    "description":"Deportes de combate con técnica, data y análisis. Cero humo: contenido claro y útil.",
-    "sameAs":[
-      "https://www.youtube.com/@areadelucha",
-      "https://kick.com/areadelucha",
-      "https://www.instagram.com/areadelucha/"
-    ]
-  }
-  </script>
 </head>
 
 <body>
-  <header>
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Ir al inicio">
-          <img src="./assets/img/logo.png" alt="Logo Área de Lucha" />
-          <div>
-            <b>Área de Lucha</b>
-            <small>técnica · data · análisis</small>
-          </div>
-        </a>
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Ir al inicio">
+        <img src="assets/2.png" alt="Logo Área de Lucha" />
+        <div class="brand-title">
+          <strong>Área de Lucha</strong>
+          <span>BJJ • Judo • combate • comunidad</span>
+        </div>
+      </a>
 
-        <nav class="menu" aria-label="Secciones">
-          <a class="link" href="#episodios">Episodios</a>
-          <a class="link" href="#plataformas">Plataformas</a>
-          <a class="link" href="#sobre">Sobre</a>
-          <a class="link primary" href="#contacto">Contacto</a>
-        </nav>
-      </div>
+      <nav class="nav-links" aria-label="Navegación">
+        <a href="#obra">En obra</a>
+        <a href="#vivo">Vivo</a>
+        <a href="#merch">Merch</a>
+        <a href="#galeria">Imágenes</a>
+        <a href="#quienes">Quiénes somos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
     </div>
   </header>
 
-  <main id="top" class="wrap">
-    <!-- HERO / BANNER (Logo como banner) -->
-    <section class="hero" aria-label="Banner principal">
-      <img class="hero-bg" src="./assets/img/logo.png" alt="" aria-hidden="true" />
+  <!-- ===== OBRA / UNDER CONSTRUCTION ===== -->
+  <div id="obra" class="notice">
+    <div class="wrap">
+      <div class="notice-card">
+        <div class="notice-left">
+          <span class="icon" aria-hidden="true">
+            <!-- Icono "hombres trabajando" estilo señal -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2 1.8 20.2c-.4.7.1 1.8 1 1.8h18.4c.9 0 1.4-1.1 1-1.8L12 2Z" stroke="currentColor" opacity=".95"/>
+              <path d="M10.2 10.5c.7-.4 1.8-.3 2.4.4l.8.9 1.8-.6.4 1.1-2.6 1-1.2-1.3-1 .6 1.2 1.7-.9 3.4h-1.3l.8-3-1.3-1.9c-.5-.8-.2-1.9.7-2.3Z" fill="currentColor" opacity=".92"/>
+              <path d="M13.9 9.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z" fill="currentColor"/>
+              <path d="M7.6 19.2h8.8" stroke="currentColor" opacity=".9"/>
+            </svg>
+          </span>
+          <b>Hombres trabajando</b>
+          <span>— la web está en construcción (vamos sumando secciones y mejoras).</span>
+        </div>
+        <div class="notice-right">Versión inicial</div>
+      </div>
+    </div>
+  </div>
 
-      <div class="hero-inner">
-        <div>
-          <div class="pill"><span class="dot"></span><span><b>Online</b> • Técnica + Data + Análisis</span></div>
+  <!-- ===== HERO ===== -->
+  <main id="top" class="hero">
+    <div class="hero-bg"></div>
+    <div class="wrap hero-grid">
 
-          <img class="hero-logo" src="./assets/img/logo.png" alt="Área de Lucha" />
-
-          <h1>Deportes de combate sin humo.</h1>
-          <p class="sub">
-            Episodios completos, streams y reels. Técnica clara, data útil y análisis real.
-          </p>
-
-          <div class="cta">
-            <a class="btn neon" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">YouTube</a>
-            <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Kick (en vivo)</a>
-            <a class="btn" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
-          </div>
-
-          <div class="tags" aria-label="Temas">
-            <span class="k"><i></i>BJJ</span>
-            <span class="k"><i></i>Judo</span>
-            <span class="k"><i></i>Striking</span>
-            <span class="k"><i></i>Análisis</span>
-          </div>
+      <div class="card hero-left">
+        <div class="badge">
+          <span class="dot"></span>
+          <span>Stream de deportes de combate (BJJ / Judo) + deporte en general</span>
         </div>
 
-        <div class="hero-side">
-          <div class="stat">
-            <b>▶ Playlist principal</b>
-            <span>Entrá directo a la serie y mirá episodios completos.</span>
-          </div>
-          <div class="stat">
-            <b>⚡ Criterio</b>
-            <span>Respeto + debate. Mucha técnica, mucha data, cero humo.</span>
-          </div>
+        <h1>Área de Lucha</h1>
+        <p>
+          Somos 4 estudiantes de BJJ (Escuela Lotus, sede a cargo de Leandro) y competidores.
+          Charlamos de combate, entrenamiento, técnica, cultura y todo lo que suma.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
+            <span class="icon" aria-hidden="true">
+              <!-- Kick -->
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h4v7l6-7h5l-7 8 7 8h-5l-6-7v7H6V4Z" fill="currentColor"/></svg>
+            </span>
+            Ver en Kick
+          </a>
+          <a class="btn" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
+            <span class="icon" aria-hidden="true">
+              <!-- YouTube -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.5 31.5 0 0 0 2 12a31.5 31.5 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 22 12a31.5 31.5 0 0 0-.4-4.8Z" stroke="currentColor" opacity=".9"/>
+                <path d="M10.2 9.4v5.2L15 12l-4.8-2.6Z" fill="currentColor"/>
+              </svg>
+            </span>
+            YouTube
+          </a>
+          <a class="btn" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
+            <span class="icon" aria-hidden="true">
+              <!-- Instagram -->
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7.5 2.8h9A4.7 4.7 0 0 1 21.2 7.5v9a4.7 4.7 0 0 1-4.7 4.7h-9A4.7 4.7 0 0 1 2.8 16.5v-9A4.7 4.7 0 0 1 7.5 2.8Z" stroke="currentColor" opacity=".9"/>
+                <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor"/>
+                <path d="M17.6 6.7h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            Instagram
+          </a>
+        </div>
+
+        <div class="small">
+          Contacto: <a href="mailto:areadelucha@gmail.com"><b>areadelucha@gmail.com</b></a>
+          • Próximos vivos: mirá el contador 👉
         </div>
       </div>
-    </section>
 
-    <!-- EPISODIOS -->
-    <section id="episodios">
-      <div class="grid">
-        <div class="card" style="grid-column: span 7;">
-          <div class="pad">
-            <h2>Episodios (playlist)</h2>
-            <p class="muted">
-              Acá está embebida la playlist oficial. Ideal para que el que entra por primera vez vea contenido real en 1 click.
-            </p>
-
-            <div class="frame" aria-label="Playlist de YouTube">
-              <iframe
-                style="width:100%; aspect-ratio: 16/9; border:0;"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-                src="https://www.youtube.com/embed/videoseries?list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz">
-              </iframe>
-            </div>
-
-            <div class="cta" style="margin-top:12px">
-              <a class="btn neon" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noopener">
-                Abrir playlist en YouTube
-              </a>
-              <a class="btn" href="#contacto">Sponsors / Colabs</a>
-            </div>
-          </div>
+      <aside class="card hero-right" id="vivo">
+        <div class="logo-block" aria-label="Logo">
+          <img src="assets/4.png" alt="Área de Lucha - banner" />
         </div>
 
-        <div class="card" style="grid-column: span 5;">
-          <div class="pad">
-            <h2>Qué vas a encontrar</h2>
-            <p class="muted">
-              • Técnica aplicada (BJJ / Judo / striking)<br>
-              • Análisis y toma de decisiones<br>
-              • Clips cortos (reels) con lo mejor de cada episodio<br>
-              • Invitados: deportistas y profesionales del palo
-            </p>
-
-            <div class="card" style="margin-top:14px; background:rgba(255,255,255,.05)">
-              <div class="pad">
-                <b style="display:block; margin-bottom:6px;">Guía simple (que rinde)</b>
-                <span class="muted">
-                  Siempre el mismo día/hora de publicación. El algoritmo no perdona, pero la consistencia sí.
-                </span>
-              </div>
-            </div>
-
-            <div class="card" style="margin-top:14px; background:rgba(255,255,255,.05)">
-              <div class="pad">
-                <b style="display:block; margin-bottom:6px;">Shorts/Reels</b>
-                <span class="muted">
-                  1 clip fuerte (15–35s) con título grande + subtítulos. CTA: “episodio completo en YouTube”.
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PLATAFORMAS -->
-    <section id="plataformas">
-      <div class="card">
-        <div class="pad">
-          <h2>Plataformas oficiales</h2>
-          <p class="muted">Tres puertas claras. El usuario nuevo entiende qué tocar.</p>
-
-          <div class="grid" style="margin-top:10px">
-            <div class="card" style="grid-column: span 4;">
-              <div class="pad">
-                <h3>YouTube</h3>
-                <p class="muted">Episodios completos, series y playlist.</p>
-                <a class="btn neon" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">Ir al canal</a>
-              </div>
-            </div>
-
-            <div class="card" style="grid-column: span 4;">
-              <div class="pad">
-                <h3>Kick</h3>
-                <p class="muted">Streams, reacción, debate y comunidad.</p>
-                <a class="btn neon" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Entrar a Kick</a>
-              </div>
-            </div>
-
-            <div class="card" style="grid-column: span 4;">
-              <div class="pad">
-                <h3>Instagram</h3>
-                <p class="muted">Reels, highlights y avisos.</p>
-                <a class="btn neon" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Ir a Instagram</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SOBRE -->
-    <section id="sobre">
-      <div class="grid">
-        <div class="card" style="grid-column: span 7;">
-          <div class="pad">
-            <h2>Sobre Área de Lucha</h2>
-            <p class="muted">
-              Área de Lucha nace para hablar de deportes de combate con seriedad y buena onda:
-              técnica clara, data útil y análisis real.
-            </p>
-            <p class="muted">
-              Invitados: deportistas y profesionales. Si querés participar, colaboraciones o prensa, escribinos.
-            </p>
-          </div>
-        </div>
-
-        <div class="card" style="grid-column: span 5;">
-          <div class="pad">
-            <h2>Identidad</h2>
-            <p class="muted">
-              Mantuvimos la web en “neón controlado” para que el logo destaque sin que quede cargado.
-              Tipografías: tech + legible.
-            </p>
-            <div class="stat" style="margin-top:12px">
-              <b>¿Colores de la web?</b>
-              <span>
-                Sí: conviene que la web se apoye en tonos oscuros + acentos del logo (cyan/pink/violeta),
-                así el logo “explota” y todo se ve pro.
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto">
-      <div class="card">
-        <div class="pad">
-          <h2>Contacto</h2>
-          <p class="muted">Sponsors · invitados · colabs · prensa</p>
-
-          <div class="grid" style="margin-top:10px">
-            <div class="card" style="grid-column: span 7;">
-              <div class="pad">
-                <b style="display:block; margin-bottom:6px;">Email</b>
-                <p class="muted" style="margin-top:0; font-weight:800">areadelucha@gmail.com</p>
-
-                <div class="copy-row">
-                  <a class="btn neon" href="mailto:areadelucha@gmail.com?subject=Contacto%20%C3%81rea%20de%20Lucha">Enviar mail</a>
-                  <button class="mini" id="copyEmail" type="button">Copiar email</button>
-                  <span class="muted" id="copyMsg" aria-live="polite"></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card" style="grid-column: span 5;">
-              <div class="pad">
-                <b style="display:block; margin-bottom:6px;">Links rápidos</b>
-                <p class="muted" style="margin-top:0">Ideal para mobile.</p>
-                <div class="cta">
-                  <a class="btn" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">YouTube</a>
-                  <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Kick</a>
-                  <a class="btn" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
-                </div>
-              </div>
-            </div>
+        <div class="live-card">
+          <div class="live-top">
+            <strong>Contador del próximo vivo</strong>
+            <span id="livePill" class="pill"><span class="dot"></span><span id="livePillText">Programación a confirmar</span></span>
           </div>
 
-        </div>
-      </div>
-    </section>
+          <div class="timer" aria-label="Cuenta regresiva">
+            <div class="tbox"><b id="d">—</b><span>Días</span></div>
+            <div class="tbox"><b id="h">—</b><span>Horas</span></div>
+            <div class="tbox"><b id="m">—</b><span>Min</span></div>
+            <div class="tbox"><b id="s">—</b><span>Seg</span></div>
+          </div>
 
-    <footer>
-      <div class="wrap" style="padding:0">
-        © <span id="y"></span> areadelucha.com — técnica · data · análisis
-      </div>
-    </footer>
+          <div class="small" id="nextInfo">
+            Tip: cuando tengas fecha, se actualiza solo. (Argentina -03:00)
+          </div>
+        </div>
+      </aside>
+
+    </div>
   </main>
 
-  <script>
-    // Año
-    document.getElementById('y').textContent = new Date().getFullYear();
+  <!-- ===== MERCH ===== -->
+  <section id="merch">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Merchandising</h2>
+        <p>Ropa, gorras, stickers y más. (próximamente)</p>
+      </div>
 
-    // Copiar email
-    const btn = document.getElementById('copyEmail');
-    const msg = document.getElementById('copyMsg');
-    btn?.addEventListener('click', async () => {
+      <div class="card merch">
+        <div class="merch-grid">
+          <div class="mcard">
+            <div>
+              <h3>Ropa</h3>
+              <p>Remeras, buzos y diseños edición Área de Lucha.</p>
+              <div class="hint">Próximamente</div>
+            </div>
+            <div class="row">
+              <a class="btn" href="#contacto">Pedilo por WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="mcard">
+            <div>
+              <h3>Gorras</h3>
+              <p>Gorras minimalistas con el logo y variantes.</p>
+              <div class="hint">Próximamente</div>
+            </div>
+            <div class="row">
+              <a class="btn" href="#contacto">Consultá stock</a>
+            </div>
+          </div>
+
+          <div class="mcard">
+            <div>
+              <h3>Stickers</h3>
+              <p>Pack de stickers para termo, notebook, casco, etc.</p>
+              <div class="hint">Próximamente</div>
+            </div>
+            <div class="row">
+              <a class="btn primary" id="storeBtn" href="#" aria-disabled="true">Entrar a la tienda</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="muted-note">
+          Cuando definan dónde vender (Tiendanube / MercadoShops / Shopify / etc.), me pasás el link y el botón “Entrar a la tienda” queda funcional.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section id="galeria">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Imágenes oficiales</h2>
+        <p>Estas 4 son las que usás en la web (hero, logo, variantes y estilo).</p>
+      </div>
+
+      <div class="card gallery">
+        <div class="gallery-grid">
+          <div class="shot">
+            <img src="assets/1.jpeg" alt="Imagen 1" />
+            <div class="cap">assets/1.jpeg</div>
+          </div>
+          <div class="shot">
+            <img src="assets/2.png" alt="Imagen 2" />
+            <div class="cap">assets/2.png</div>
+          </div>
+          <div class="shot">
+            <img src="assets/3.png" alt="Imagen 3" />
+            <div class="cap">assets/3.png</div>
+          </div>
+          <div class="shot">
+            <img src="assets/4.png" alt="Imagen 4" />
+            <div class="cap">assets/4.png</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="quienes">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Quiénes somos</h2>
+        <p>4 personas, una sola vibra: respeto, combate y comunidad.</p>
+      </div>
+
+      <div class="card about">
+        <div class="about-top">
+          <div class="about-text">
+            <p>
+              Somos <b>Diego (Cule)</b>, <b>Iván (El Colo)</b>, <b>Piero</b> y <b>Fer</b>.
+              Todos somos estudiantes de <b>Brazilian Jiu-Jitsu</b> en la <b>Escuela Lotus</b> (sede a cargo de Leandro).
+            </p>
+            <p>
+              Rangos BJJ: <b>Diego</b> e <b>Iván</b> son <b>faixa azul</b>, <b>Fer</b> es <b>faixa violeta</b>,
+              y <b>Piero</b> es <b>faixa blanca</b>.
+              En Judo: <b>Fer</b> y <b>Piero</b> son <b>2° Dan</b>.
+            </p>
+            <p>
+              El stream es descontracturado, pero con respeto. La idea es sumar invitados (kinesiólogos, médicos,
+              deportistas, nutricionistas, etc.) y armar comunidad.
+            </p>
+          </div>
+
+          <div class="about-art" aria-label="Variante monocroma">
+            <img src="assets/3.png" alt="Logo monocromo Área de Lucha" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card team" style="margin-top:14px;">
+        <div class="team-grid">
+          <div class="member">
+            <h3>Diego</h3>
+            <div class="nick">“Cule”</div>
+            <ul>
+              <li>BJJ: Faixa azul</li>
+              <li>Competidor / combate</li>
+            </ul>
+            <div class="tag">Lotus BJJ</div>
+          </div>
+
+          <div class="member">
+            <h3>Iván</h3>
+            <div class="nick">“El Colo”</div>
+            <ul>
+              <li>BJJ: Faixa azul</li>
+              <li>Competidor / análisis</li>
+            </ul>
+            <div class="tag">Lotus BJJ</div>
+          </div>
+
+          <div class="member">
+            <h3>Fer</h3>
+            <div class="nick">Faixa violeta</div>
+            <ul>
+              <li>BJJ: Faixa violeta</li>
+              <li>Judo: 2° Dan</li>
+            </ul>
+            <div class="tag">BJJ + Judo</div>
+          </div>
+
+          <div class="member">
+            <h3>Piero</h3>
+            <div class="nick">Faixa blanca</div>
+            <ul>
+              <li>BJJ: Faixa blanca</li>
+              <li>Judo: 2° Dan</li>
+            </ul>
+            <div class="tag">BJJ + Judo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Contacto y redes</h2>
+        <p>Links oficiales con iconos minimalistas. WhatsApp ya listo.</p>
+      </div>
+
+      <div class="card contact">
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h3>Contacto directo</h3>
+            <p>
+              Mail: <a href="mailto:areadelucha@gmail.com"><b>areadelucha@gmail.com</b></a><br/>
+              WhatsApp: <span id="waStatus"><b>habilitado</b></span>
+            </p>
+
+            <div class="socials" role="list">
+              <a class="icon-btn" role="listitem" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h4v7l6-7h5l-7 8 7 8h-5l-6-7v7H6V4Z" fill="currentColor"/></svg>
+                </span>
+                Kick
+              </a>
+
+              <a class="icon-btn" role="listitem" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.5 31.5 0 0 0 2 12a31.5 31.5 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 22 12a31.5 31.5 0 0 0-.4-4.8Z" stroke="currentColor" opacity=".9"/>
+                    <path d="M10.2 9.4v5.2L15 12l-4.8-2.6Z" fill="currentColor"/>
+                  </svg>
+                </span>
+                YouTube
+              </a>
+
+              <a class="icon-btn" role="listitem" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7.5 2.8h9A4.7 4.7 0 0 1 21.2 7.5v9a4.7 4.7 0 0 1-4.7 4.7h-9A4.7 4.7 0 0 1 2.8 16.5v-9A4.7 4.7 0 0 1 7.5 2.8Z" stroke="currentColor" opacity=".9"/>
+                    <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor"/>
+                    <path d="M17.6 6.7h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                Instagram
+              </a>
+
+              <a class="icon-btn" role="listitem" href="mailto:areadelucha@gmail.com">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4.5 6.5h15A2 2 0 0 1 21.5 8.5v7A2 2 0 0 1 19.5 17.5h-15A2 2 0 0 1 2.5 15.5v-7A2 2 0 0 1 4.5 6.5Z" stroke="currentColor" opacity=".9"/>
+                    <path d="M4.8 8l7.2 5 7.2-5" stroke="currentColor"/>
+                  </svg>
+                </span>
+                Email
+              </a>
+
+              <a id="waBtn" class="icon-btn" role="listitem" href="#" target="_blank" rel="noopener">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 21a9 9 0 1 0-7.8-4.5L3 21l4.7-1.1A9 9 0 0 0 12 21Z" stroke="currentColor" opacity=".9"/>
+                    <path d="M10.3 8.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.2.2 2 3.1 4.9 4.2 2.4 1 2.9.8 3.4.8.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.2.2-1.3 0-.2-.2-.3-.4-.4l-1.6-.8c-.2-.1-.4-.1-.6.2-.2.3-.7.8-.9 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.3-.4.1-.1.2-.2.3-.4.1-.2 0-.3 0-.4l-.7-1.6Z" fill="currentColor" opacity=".9"/>
+                  </svg>
+                </span>
+                WhatsApp
+              </a>
+            </div>
+
+            <div class="muted-note">
+              Si querés, después sumamos: calendario de vivos, sección de clips destacados y un bloque “Invitados”.
+            </div>
+          </div>
+
+          <div class="contact-box" style="background: rgba(0,0,0,.18);">
+            <h3>Links oficiales</h3>
+            <p>
+              Kick: <b>kick.com/areadelucha</b><br/>
+              Instagram: <b>@areadelucha</b><br/>
+              YouTube: <b>@areadelucha</b>
+            </p>
+            <p class="muted-note">
+              Dominio listo + GitHub Pages: con este index, en cuanto apunte el DNS al repo, ya se ve.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="year"></span> Área de Lucha</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="#top">Arriba</a>
+        <span style="opacity:.5;">•</span>
+        <a href="mailto:areadelucha@gmail.com">areadelucha@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==========================
+    // CONFIGURACIÓN
+    // ==========================
+
+    // Próximo stream (Argentina -03:00)
+    // Ejemplo: "2026-02-07T21:00:00-03:00"
+    let NEXT_STREAM_ISO = ""; // dejalo vacío si no hay fecha
+
+    const LIVE_DURATION_MINUTES = 180;
+
+    // WhatsApp (formato internacional sin + ni espacios)
+    // Tu número: +54 9 11 000000000  -> 54911 + 000000000
+    const WHATSAPP_NUMBER = "54911000000000";
+    const WHATSAPP_TEXT = "Hola! Vengo desde la web de Área de Lucha 👊🔥";
+
+    // Tienda (cuando tengas el link real, pegalo acá)
+    const STORE_URL = ""; // ej: "https://tutienda.com"
+
+    // ==========================
+    // LÓGICA
+    // ==========================
+    const $ = (id) => document.getElementById(id);
+    function pad(n){ return String(n).padStart(2, "0"); }
+
+    function setPill(state, text){
+      const pill = $("livePill");
+      $("livePillText").textContent = text;
+      pill.classList.toggle("live", state === "live");
+    }
+
+    function setTimerToBlank(){
+      $("d").textContent = "—";
+      $("h").textContent = "—";
+      $("m").textContent = "—";
+      $("s").textContent = "—";
+    }
+
+    function formatLocal(iso){
       try{
-        await navigator.clipboard.writeText('areadelucha@gmail.com');
-        msg.textContent = 'Copiado ✅';
-        setTimeout(()=> msg.textContent = '', 1600);
-      }catch(e){
-        msg.textContent = 'No pude copiar (tu navegador bloqueó).';
-        setTimeout(()=> msg.textContent = '', 2200);
+        const d = new Date(iso);
+        return d.toLocaleString("es-AR", {
+          weekday: "short", year:"numeric", month:"short", day:"2-digit",
+          hour:"2-digit", minute:"2-digit"
+        });
+      }catch(e){ return ""; }
+    }
+
+    function renderDiff(ms){
+      const totalSec = Math.max(0, Math.floor(ms / 1000));
+      const days = Math.floor(totalSec / 86400);
+      const hours = Math.floor((totalSec % 86400) / 3600);
+      const mins = Math.floor((totalSec % 3600) / 60);
+      const secs = totalSec % 60;
+
+      $("d").textContent = days;
+      $("h").textContent = pad(hours);
+      $("m").textContent = pad(mins);
+      $("s").textContent = pad(secs);
+    }
+
+    function updateCountdown(){
+      if(!NEXT_STREAM_ISO){
+        setPill("tbd", "Programación a confirmar");
+        $("nextInfo").textContent = "Cuando confirmes día/hora, editá NEXT_STREAM_ISO en el index y listo.";
+        setTimerToBlank();
+        return;
       }
-    });
+
+      const now = new Date();
+      const start = new Date(NEXT_STREAM_ISO);
+      const end = new Date(start.getTime() + LIVE_DURATION_MINUTES * 60 * 1000);
+
+      if(now >= start && now <= end){
+        setPill("live", "EN VIVO AHORA");
+        $("nextInfo").textContent = "Estamos en vivo. Caé a Kick o YouTube 👊";
+        renderDiff(end - now);
+        return;
+      }
+
+      if(now > end){
+        setPill("done", "Vivo finalizado");
+        $("nextInfo").textContent = "Este vivo ya pasó. Actualizá la próxima fecha cuando la tengan.";
+        setTimerToBlank();
+        return;
+      }
+
+      setPill("next", "Próximo vivo");
+      $("nextInfo").textContent = "Próximo: " + formatLocal(NEXT_STREAM_ISO) + " (hora Argentina)";
+      renderDiff(start - now);
+    }
+
+    function setupWhatsApp(){
+      const btn = $("waBtn");
+      const url = "https://wa.me/" + encodeURIComponent(WHATSAPP_NUMBER) +
+                  "?text=" + encodeURIComponent(WHATSAPP_TEXT);
+      btn.href = url;
+    }
+
+    function setupStore(){
+      const storeBtn = $("storeBtn");
+      if(!storeBtn) return;
+
+      if(!STORE_URL){
+        storeBtn.setAttribute("aria-disabled", "true");
+        storeBtn.href = "#";
+        storeBtn.style.opacity = ".6";
+        storeBtn.style.pointerEvents = "none";
+        storeBtn.textContent = "Tienda (próximamente)";
+      }else{
+        storeBtn.removeAttribute("aria-disabled");
+        storeBtn.href = STORE_URL;
+        storeBtn.target = "_blank";
+        storeBtn.rel = "noopener";
+        storeBtn.style.opacity = "1";
+        storeBtn.style.pointerEvents = "auto";
+        storeBtn.textContent = "Entrar a la tienda";
+      }
+    }
+
+    $("year").textContent = new Date().getFullYear();
+    setupWhatsApp();
+    setupStore();
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
