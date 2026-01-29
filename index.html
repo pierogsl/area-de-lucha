@@ -443,6 +443,86 @@
     .anchor{
       scroll-margin-top: 90px;
     }
+    /* FAB WhatsApp + Back to top */
+.fab-wa{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 120;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.08);
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+  backdrop-filter: blur(14px);
+  color: rgba(255,255,255,.92);
+  font-weight: 900;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease, opacity .12s ease;
+  user-select:none;
+}
+
+.fab-wa:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.20);
+}
+
+.fab-ico{
+  width: 20px;
+  height: 20px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.fab-ico svg{ width: 20px; height: 20px; display:block; }
+
+.fab-txt{
+  font-size: 14px;
+  letter-spacing:.2px;
+}
+
+.fab-top{
+  position: fixed;
+  right: 18px;
+  bottom: 70px; /* queda arriba del WhatsApp */
+  z-index: 120;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.08);
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+  backdrop-filter: blur(14px);
+  color: rgba(255,255,255,.92);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease, background .12s ease, border-color .12s ease;
+}
+
+.fab-top.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.fab-top:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.20);
+}
+
+/* En mobile, achico el texto del botón WA para que no tape */
+@media (max-width: 520px){
+  .fab-txt{ display:none; }
+  .fab-wa{ width: 50px; height: 50px; justify-content:center; padding: 0; border-radius: 16px; }
+}
   </style>
 </head>
 
@@ -909,7 +989,44 @@
   // Primer render + loop
   tick(targetDate);
   setInterval(() => tick(targetDate), 1000);
-</script>
+  // Botón volver arriba (aparece cuando scrolleás)
+const topBtn = document.getElementById("topBtn");
 
+function onScroll(){
+  if(window.scrollY > 380){
+    topBtn.classList.add("show");
+  } else {
+    topBtn.classList.remove("show");
+  }
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+topBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
+<!-- Botón flotante WhatsApp -->
+<a class="fab-wa" href="https://wa.me/5491100000000" target="_blank" rel="noopener" aria-label="WhatsApp Área de Lucha">
+  <span class="fab-ico" aria-hidden="true">
+    <!-- WhatsApp icon -->
+    <svg viewBox="0 0 32 32" fill="none">
+      <path fill="currentColor" d="M16 3C9.38 3 4 8.2 4 14.6c0 2.48.84 4.78 2.27 6.65L5 29l7.9-1.99a12.5 12.5 0 0 0 3.1.38c6.62 0 12-5.2 12-11.6S22.62 3 16 3Zm0 21.2c-1.02 0-2.03-.15-2.98-.44l-.62-.2-4.68 1.18 1.25-4.4-.41-.67A9.2 9.2 0 0 1 6.8 14.6C6.8 9.76 10.88 5.8 16 5.8s9.2 3.96 9.2 8.8-4.08 9.6-9.2 9.6Zm5.33-6.9c-.29-.14-1.7-.83-1.97-.93-.27-.1-.47-.14-.66.14-.2.29-.76.93-.93 1.12-.17.2-.34.22-.63.08-.29-.14-1.22-.44-2.32-1.4-.86-.74-1.44-1.66-1.6-1.95-.17-.29-.02-.44.13-.58.13-.13.29-.34.44-.5.15-.17.2-.29.29-.48.1-.2.05-.36-.02-.5-.07-.14-.66-1.57-.9-2.15-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.5.07-.76.36-.27.29-1.02 1-1.02 2.45 0 1.44 1.05 2.84 1.2 3.04.14.2 2.07 3.2 5.06 4.36.71.27 1.27.43 1.7.55.71.22 1.36.19 1.87.12.57-.09 1.7-.69 1.94-1.35.24-.66.24-1.23.17-1.35-.07-.12-.27-.2-.56-.34Z"/>
+    </svg>
+  </span>
+  <span class="fab-txt">WhatsApp</span>
+</a>
+
+<!-- Volver arriba -->
+<button class="fab-top" id="topBtn" type="button" aria-label="Volver arriba">
+  <span class="fab-ico" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M12 5l7 7-1.4 1.4L12 7.8 6.4 13.4 5 12l7-7Z" fill="currentColor"/>
+      <path d="M5 18h14v2H5v-2Z" fill="currentColor" opacity=".55"/>
+    </svg>
+  </span>
+</button>
+
+  
 </body>
 </html>
