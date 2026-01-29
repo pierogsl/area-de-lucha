@@ -1,970 +1,915 @@
 <!doctype html>
-<html lang="es-AR">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Área de Lucha — stream de deportes de combate (BJJ/Judo) y deporte en general. Comunidad, análisis y buena charla." />
-  <meta name="theme-color" content="#0b0f1a" />
+  <meta name="theme-color" content="#070A12" />
+  <title>Área de Lucha — técnica · data · análisis</title>
+  <meta name="description" content="Área de Lucha: técnica clara, data útil y análisis real. BJJ, Judo, striking y debate." />
 
-  <title>Área de Lucha</title>
-
-  <link rel="icon" type="image/png" href="assets/2.png" />
-
-  <meta property="og:title" content="Área de Lucha" />
-  <meta property="og:description" content="Stream de BJJ/Judo y deportes. Comunidad y combate." />
-  <meta property="og:image" content="assets/4.png" />
-  <meta property="og:type" content="website" />
+  <!-- Tipografía (sin dependencias raras) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #070a12;
-      --bg2:#0b0f1a;
-      --card: rgba(255,255,255,.06);
-      --line: rgba(255,255,255,.12);
+      --bg: #070A12;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.12);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --muted2: rgba(255,255,255,.58);
-      --shadow: 0 18px 70px rgba(0,0,0,.55);
-      --radius: 18px;
-      --max: 1100px;
-      --warn: rgba(255,200,80,.16);
-      --warn2: rgba(255,200,80,.30);
+      --muted: rgba(255,255,255,.66);
+      --muted2: rgba(255,255,255,.50);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --r: 22px;
+      --r2: 16px;
+      --max: 1160px;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(900px 450px at 20% 0%, rgba(70,120,255,.12), transparent 60%),
-        radial-gradient(900px 450px at 80% 10%, rgba(255,70,200,.12), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      overflow-x:hidden;
-    }
-
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-
-    /* ===== NAV ===== */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(7,10,18,.55);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:12px 0;
-    }
-    .brand{display:flex; align-items:center; gap:10px; min-width:220px;}
-    .brand img{
-      width:44px; height:44px; border-radius:12px;
-      object-fit:cover; box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.02);
-    }
-    .brand-title{display:flex; flex-direction:column; line-height:1.1;}
-    .brand-title strong{font-size:14px; letter-spacing:.2px}
-    .brand-title span{font-size:12px; color:var(--muted2)}
-
-    .nav-links{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;}
-    .nav-links a{
-      font-size:13px; color:var(--muted);
-      padding:8px 10px; border-radius:10px;
-      border:1px solid transparent;
-      transition: .18s ease;
-    }
-    .nav-links a:hover{
-      color:var(--text);
-      border-color: rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-    }
-
-    /* ===== TOP NOTICE (OBRA) ===== */
-    .notice{
-      padding: 14px 0 0;
-    }
-    .notice-card{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      border: 1px solid var(--warn2);
-      background: var(--warn);
-      box-shadow: 0 14px 40px rgba(0,0,0,.35);
-    }
-    .notice-left{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
-    .notice-left b{font-size:13px}
-    .notice-left span{font-size:12px; color:rgba(255,255,255,.85)}
-    .notice-right{
-      font-size:12px;
-      color:rgba(255,255,255,.9);
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.12);
-      white-space:nowrap;
-    }
-    .icon{
-      width:18px; height:18px; display:inline-block;
-      opacity:.92;
-    }
-
-    /* ===== HERO ===== */
-    .hero{position:relative; padding: 34px 0 28px; overflow:hidden;}
-    .hero-bg{
-      position:absolute; inset:-40px;
-      background:
-        radial-gradient(900px 520px at 25% 30%, rgba(80,140,255,.22), transparent 55%),
-        radial-gradient(900px 520px at 75% 20%, rgba(255,80,210,.22), transparent 55%);
-      filter: blur(2px);
-      pointer-events:none;
-    }
-    .hero-grid{
-      position:relative;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    .card{
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .hero-left{
-      padding:22px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-left:before{
-      content:"";
-      position:absolute; inset:0;
-      background: url("assets/1.jpeg") center/cover no-repeat;
-      opacity:.18;
-      filter: contrast(1.1) saturate(1.1);
-      transform: scale(1.06);
-    }
-    .hero-left > *{position:relative}
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      color: var(--muted);
-      font-size:12px;
-      margin-bottom:12px;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: rgba(255,255,255,.35);
-      box-shadow: 0 0 0 3px rgba(255,255,255,.05);
-    }
-    .hero h1{margin:0; font-size: clamp(28px, 4vw, 44px); letter-spacing: .2px;}
-    .hero p{
-      margin:10px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-      max-width: 58ch;
-    }
-    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px;}
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 15% 15%, rgba(0,145,255,.18), transparent 60%),
+                  radial-gradient(1200px 700px at 85% 20%, rgba(255,0,170,.18), transparent 60%),
+                  var(--bg);
       color: var(--text);
-      font-weight: 600;
-      font-size: 13px;
-      transition:.18s ease;
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(7,10,18,.86), rgba(7,10,18,.62));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 240px;
+    }
+
+    .brand img{
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      object-fit: cover;
+    }
+
+    .brand .t{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .brand .t strong{
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .brand .t span{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    nav{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.88);
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
       user-select:none;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
-    .btn.primary{
-      background: rgba(255,255,255,.12);
-      border-color: rgba(255,255,255,.22);
+    .pill:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.16);
     }
 
-    .hero-right{
-      padding:18px;
+    .pill.primary{
+      background: rgba(80,140,255,.18);
+      border-color: rgba(80,140,255,.30);
+    }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      padding: 26px 0 10px;
+    }
+
+    .heroCard{
+      position: relative;
+      border-radius: calc(var(--r) + 6px);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height: 420px;
+    }
+
+    /* Fondo con tu imagen 4 */
+    .heroCard::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 500px at 15% 30%, rgba(0,145,255,.22), transparent 60%),
+        radial-gradient(900px 500px at 85% 25%, rgba(255,0,170,.22), transparent 60%),
+        url("assets/4.png") center/cover no-repeat;
+      filter: saturate(1.08) contrast(1.08);
+      transform: scale(1.02);
+      /* CLAVE: esto evita que tape clicks */
+      pointer-events: none;
+    }
+
+    .heroCard::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(90deg, rgba(7,10,18,.82) 0%, rgba(7,10,18,.55) 45%, rgba(7,10,18,.70) 100%);
+      pointer-events: none; /* CLAVE */
+    }
+
+    .heroGrid{
+      position: relative;
+      z-index: 2;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      padding: 28px;
+    }
+
+    @media (max-width: 920px){
+      .heroGrid{ grid-template-columns: 1fr; padding: 20px; }
+      .brand{ min-width:auto; }
+      nav{ justify-content:flex-start; }
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.78);
+      font-weight: 700;
+      font-size: 13px;
+      width: fit-content;
+    }
+
+    .dot{
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: #3cff8a;
+      box-shadow: 0 0 0 6px rgba(60,255,138,.10);
+    }
+
+    h1{
+      margin: 12px 0 10px;
+      font-size: clamp(34px, 5vw, 56px);
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+    }
+
+    .sub{
+      color: rgba(255,255,255,.72);
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 60ch;
+      margin-bottom: 16px;
+    }
+
+    .chips{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .chip{
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      font-weight: 800;
+      color: rgba(255,255,255,.86);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      font-weight: 900;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn.primary{
+      background: rgba(80,140,255,.22);
+      border-color: rgba(80,140,255,.40);
+    }
+
+    .sideCard{
       display:flex;
       flex-direction:column;
       gap:12px;
     }
-    .logo-block{
-      padding:14px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      display:flex; align-items:center; justify-content:center;
-      min-height: 170px;
-      position:relative;
-      overflow:hidden;
-    }
-    .logo-block:before{
-      content:"";
-      position:absolute; inset:-20px;
-      background: url("assets/4.png") center/contain no-repeat;
-      opacity:.08;
-      transform: scale(1.04);
-    }
-    .logo-block img{
-      position:relative;
-      width: min(100%, 360px);
-      height:auto;
-      filter: drop-shadow(0 18px 40px rgba(0,0,0,.55));
+
+    .card{
+      border-radius: var(--r);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      padding: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
     }
 
-    .live-card{
-      padding:14px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
+    .card h3{
+      margin:0 0 6px;
+      font-size: 14px;
+      letter-spacing:.2px;
+      color: rgba(255,255,255,.90);
     }
-    .live-top{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      margin-bottom:10px;
-    }
-    .live-top strong{font-size:14px}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:12px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: var(--muted);
-      white-space:nowrap;
-    }
-    .pill.live{
-      background: rgba(255,60,120,.16);
-      border-color: rgba(255,60,120,.28);
-      color: rgba(255,210,230,.95);
-    }
-    .pill.live .dot{ background: rgba(255,60,120,.95); box-shadow:0 0 0 3px rgba(255,60,120,.14)}
-    .timer{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:10px;
-    }
-    .tbox{
-      text-align:center;
-      padding:10px 8px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-    .tbox b{display:block; font-size:18px}
-    .tbox span{display:block; font-size:11px; color:var(--muted2); margin-top:2px}
-    .small{
-      margin-top:10px;
-      color: var(--muted2);
-      font-size:12px;
-      line-height:1.45;
+    .card p{
+      margin:0;
+      color: rgba(255,255,255,.66);
+      line-height:1.5;
+      font-size: 14px;
     }
 
-    /* ===== SECTIONS ===== */
-    section{padding: 26px 0}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+    /* Secciones */
+    section{
+      padding: 26px 0;
+    }
+
+    .sectionTitle{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
       margin-bottom: 14px;
     }
-    .section-title h2{margin:0; font-size: 18px; letter-spacing:.2px;}
-    .section-title p{
+    .sectionTitle h2{
       margin:0;
+      font-size: 22px;
+      letter-spacing: -.01em;
+    }
+    .sectionTitle span{
       color: var(--muted2);
-      font-size: 12px;
-      max-width: 60ch;
-      text-align:right;
+      font-size: 13px;
     }
 
-    .gallery{padding: 14px;}
-    .gallery-grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-    .shot{
-      border-radius: 16px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.22);
-      position:relative;
-      min-height: 180px;
-    }
-    .shot img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-      transform: scale(1.02);
-      opacity:.95;
-    }
-    .shot .cap{
-      position:absolute; left:10px; bottom:10px;
-      font-size:12px;
-      color: rgba(255,255,255,.85);
-      background: rgba(0,0,0,.32);
-      border:1px solid rgba(255,255,255,.12);
-      padding:6px 10px;
-      border-radius:999px;
-      backdrop-filter: blur(10px);
-    }
-
-    .about{padding: 14px;}
-    .about-top{display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start;}
-    .about-text{
-      flex: 1 1 360px;
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-    }
-    .about-text p{margin:0; color:var(--muted); line-height:1.6; font-size:14px}
-    .about-text p + p{margin-top:10px}
-    .about-art{
-      flex: 0 0 290px;
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(0,0,0,.18);
-      border:1px solid rgba(255,255,255,.10);
-      display:flex; align-items:center; justify-content:center;
-      min-height: 220px;
-      position:relative;
-      overflow:hidden;
-    }
-    .about-art img{
-      width: 100%;
-      max-width: 260px;
-      height:auto;
-      filter: drop-shadow(0 16px 26px rgba(0,0,0,.45));
-    }
-
-    .team{padding:14px;}
-    .team-grid{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-    .member{
-      padding: 14px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      min-height: 150px;
-    }
-    .member h3{margin:0; font-size:14px}
-    .member .nick{color:var(--muted2); font-size:12px; margin-top:3px}
-    .member ul{margin:10px 0 0; padding-left:16px; color:var(--muted); font-size:13px; line-height:1.45}
-    .tag{
-      display:inline-flex;
-      margin-top:10px;
-      font-size:11px;
-      color: rgba(255,255,255,.82);
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      padding:6px 10px;
-      border-radius:999px;
-    }
-
-    .contact{padding:14px;}
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:12px;
-    }
-    .contact-box{
-      padding: 14px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    .contact-box h3{margin:0; font-size:14px}
-    .contact-box p{margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.5}
-
-    .socials{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
-    .icon-btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      transition:.18s ease;
-      font-weight:600;
-      font-size:13px;
-      color: var(--text);
-    }
-    .icon-btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
-    .muted-note{margin-top:10px; color: var(--muted2); font-size:12px; line-height:1.45;}
-
-    /* ===== MERCH ===== */
-    .merch{padding:14px;}
-    .merch-grid{
+    .grid3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 14px;
     }
-    .mcard{
-      padding: 14px;
+    @media (max-width: 900px){
+      .grid3{ grid-template-columns: 1fr; }
+    }
+
+    .miniRow{
+      display:flex;
+      gap:12px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+
+    /* Íconos */
+    .icon{
+      width: 18px;
+      height: 18px;
+      display:inline-block;
+      vertical-align: middle;
+    }
+    .icon svg{ width: 18px; height: 18px; display:block; }
+
+    /* En vivo */
+    .liveBox{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .liveBox{ grid-template-columns: 1fr; }
+    }
+
+    .countdown{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .timeBox{
+      min-width: 88px;
+      padding: 12px 12px;
       border-radius: 16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      min-height: 150px;
-      display:flex; flex-direction:column; justify-content:space-between;
-    }
-    .mcard h3{margin:0; font-size:14px}
-    .mcard p{margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.5}
-    .mcard .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
-    .hint{
-      display:inline-flex; align-items:center; gap:8px;
-      font-size:11px; color:rgba(255,255,255,.82);
-      border:1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.06);
-      border-radius:999px;
-      padding:6px 10px;
+      text-align:center;
+    }
+    .timeBox b{
+      display:block;
+      font-size: 22px;
+      letter-spacing: -.02em;
+    }
+    .timeBox span{
+      color: rgba(255,255,255,.62);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing:.06em;
+      text-transform: uppercase;
     }
 
+    .formRow{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    input[type="datetime-local"]{
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.25);
+      color: rgba(255,255,255,.88);
+      outline: none;
+      flex: 1;
+      min-width: 220px;
+    }
+    .smallNote{
+      margin-top: 10px;
+      color: rgba(255,255,255,.60);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    /* Merch / En construcción */
+    .construction{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .construction .big{
+      font-size: 22px;
+    }
+
+    /* Footer */
     footer{
-      padding: 24px 0 34px;
-      color: var(--muted2);
-      font-size:12px;
-      border-top:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.12);
+      padding: 24px 0 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 10px;
     }
-    .foot{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;}
+    .foot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .stamp{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: rgba(255,255,255,.70);
+      font-weight: 800;
+    }
+    .stamp img{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      object-fit: cover;
+    }
 
-    /* ===== Responsive ===== */
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns: 1fr}
-      .brand{min-width:unset}
-      .section-title{flex-direction:column; align-items:flex-start}
-      .section-title p{text-align:left}
-      .team-grid{grid-template-columns: repeat(2, 1fr)}
-      .contact-grid{grid-template-columns: 1fr}
-      .merch-grid{grid-template-columns: 1fr}
-    }
-    @media (max-width: 520px){
-      .gallery-grid{grid-template-columns: 1fr}
-      .team-grid{grid-template-columns: 1fr}
-      .timer{grid-template-columns: repeat(2, 1fr)}
+    /* Anclas con offset por header sticky */
+    .anchor{
+      scroll-margin-top: 90px;
     }
   </style>
 </head>
 
 <body>
-  <!-- ===== NAV ===== -->
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Ir al inicio">
-        <img src="assets/2.png" alt="Logo Área de Lucha" />
-        <div class="brand-title">
+
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <img src="assets/2.png" alt="Logo Área de Lucha (color)" />
+        <div class="t">
           <strong>Área de Lucha</strong>
-          <span>BJJ • Judo • combate • comunidad</span>
+          <span>técnica · data · análisis</span>
         </div>
       </a>
 
-      <nav class="nav-links" aria-label="Navegación">
-        <a href="#obra">En obra</a>
-        <a href="#vivo">Vivo</a>
-        <a href="#merch">Merch</a>
-        <a href="#galeria">Imágenes</a>
-        <a href="#quienes">Quiénes somos</a>
-        <a href="#contacto">Contacto</a>
+      <nav aria-label="Navegación principal">
+        <a class="pill" href="#episodios">Episodios</a>
+        <a class="pill" href="#plataformas">Plataformas</a>
+        <a class="pill" href="#envivo">En vivo</a>
+        <a class="pill" href="#merch">Merch</a>
+        <a class="pill" href="#sobre">Sobre</a>
+        <a class="pill primary" href="#contacto">Contacto</a>
       </nav>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- ===== OBRA / UNDER CONSTRUCTION ===== -->
-  <div id="obra" class="notice">
-    <div class="wrap">
-      <div class="notice-card">
-        <div class="notice-left">
-          <span class="icon" aria-hidden="true">
-            <!-- Icono "hombres trabajando" estilo señal -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 2 1.8 20.2c-.4.7.1 1.8 1 1.8h18.4c.9 0 1.4-1.1 1-1.8L12 2Z" stroke="currentColor" opacity=".95"/>
-              <path d="M10.2 10.5c.7-.4 1.8-.3 2.4.4l.8.9 1.8-.6.4 1.1-2.6 1-1.2-1.3-1 .6 1.2 1.7-.9 3.4h-1.3l.8-3-1.3-1.9c-.5-.8-.2-1.9.7-2.3Z" fill="currentColor" opacity=".92"/>
-              <path d="M13.9 9.2a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z" fill="currentColor"/>
-              <path d="M7.6 19.2h8.8" stroke="currentColor" opacity=".9"/>
-            </svg>
-          </span>
-          <b>Hombres trabajando</b>
-          <span>— la web está en construcción (vamos sumando secciones y mejoras).</span>
+<main class="wrap">
+
+  <!-- HERO -->
+  <div id="inicio" class="hero anchor">
+    <div class="heroCard">
+      <div class="heroGrid">
+        <div>
+          <div class="badge">
+            <span class="dot" aria-hidden="true"></span>
+            Online • Técnica + Data + Análisis
+          </div>
+
+          <h1>Deportes de combate<br/>sin humo.</h1>
+          <p class="sub">
+            Episodios completos, streams y reels. Técnica clara, data útil y análisis real.
+            BJJ, Judo, striking y debate — con respeto, pero sin caretas.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn primary" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
+              <span class="icon" aria-hidden="true">
+                <!-- YouTube -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M21 8.2c0-1.1-.9-2-2-2.2C17.2 5.7 14.8 5.5 12 5.5s-5.2.2-7 .5c-1.1.2-2 .9-2 2.2A55 55 0 0 0 3 12a55 55 0 0 0 .1 3.8c0 1.3.9 2 2 2.2 1.8.3 4.2.5 6.9.5s5.2-.2 7-.5c1.1-.2 2-.9 2-2.2.1-1.3.1-2.5.1-3.8s0-2.5-.1-3.8Z" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M10.2 9.6v4.8L15 12l-4.8-2.4Z" fill="currentColor"/>
+                </svg>
+              </span>
+              YouTube
+            </a>
+
+            <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
+              <span class="icon" aria-hidden="true">
+                <!-- Kick (icono simple K minimalista) -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M6 5h4v6l4-6h4l-5 7 5 7h-4l-4-6v6H6V5Z" fill="currentColor"/>
+                </svg>
+              </span>
+              Kick (en vivo)
+            </a>
+
+            <a class="btn" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
+              <span class="icon" aria-hidden="true">
+                <!-- Instagram -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M17.6 6.4h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </span>
+              Instagram
+            </a>
+          </div>
+
+          <div class="chips">
+            <span class="chip">• BJJ</span>
+            <span class="chip">• Judo</span>
+            <span class="chip">• Striking</span>
+            <span class="chip">• Análisis</span>
+          </div>
         </div>
-        <div class="notice-right">Versión inicial</div>
+
+        <div class="sideCard">
+          <div class="card">
+            <h3>▶ Playlist principal</h3>
+            <p>Entrá directo a la serie y mirá episodios completos.</p>
+            <div style="height:10px"></div>
+            <a class="btn" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noopener">
+              Ver playlist
+            </a>
+          </div>
+
+          <div class="card">
+            <h3>⚡ Criterio</h3>
+            <p>Respeto + debate. Mucha técnica, mucha data, cero humo.</p>
+          </div>
+
+          <div class="card">
+            <h3>Marca</h3>
+            <p>Kit visual con las 4 versiones del logo, para web y redes.</p>
+            <div style="height:12px"></div>
+            <div class="miniRow" aria-label="Logos">
+              <img src="assets/1.jpeg" alt="Logo 1" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+              <img src="assets/2.png" alt="Logo 2" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+              <img src="assets/3.png" alt="Logo 3" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+              <img src="assets/4.png" alt="Logo 4" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== HERO ===== -->
-  <main id="top" class="hero">
-    <div class="hero-bg"></div>
-    <div class="wrap hero-grid">
+  <!-- EPISODIOS -->
+  <section id="episodios" class="anchor">
+    <div class="sectionTitle">
+      <h2>Episodios</h2>
+      <span>Próximamente podés poner cards con episodios destacados</span>
+    </div>
 
-      <div class="card hero-left">
-        <div class="badge">
-          <span class="dot"></span>
-          <span>Stream de deportes de combate (BJJ / Judo) + deporte en general</span>
-        </div>
+    <div class="grid3">
+      <div class="card">
+        <h3>Destacado #1</h3>
+        <p>Link al episodio, miniatura, resumen cortito, invitados, etc.</p>
+      </div>
+      <div class="card">
+        <h3>Destacado #2</h3>
+        <p>Link al episodio, miniatura, resumen cortito, invitados, etc.</p>
+      </div>
+      <div class="card">
+        <h3>Destacado #3</h3>
+        <p>Link al episodio, miniatura, resumen cortito, invitados, etc.</p>
+      </div>
+    </div>
+  </section>
 
-        <h1>Área de Lucha</h1>
-        <p>
-          Somos 4 estudiantes de BJJ (Escuela Lotus, sede a cargo de Leandro) y competidores.
-          Charlamos de combate, entrenamiento, técnica, cultura y todo lo que suma.
+  <!-- PLATAFORMAS -->
+  <section id="plataformas" class="anchor">
+    <div class="sectionTitle">
+      <h2>Plataformas</h2>
+      <span>Entradas directas con íconos minimalistas</span>
+    </div>
+
+    <div class="grid3">
+      <a class="card" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
+        <h3>YouTube</h3>
+        <p>Episodios completos, playlists y shorts.</p>
+      </a>
+
+      <a class="card" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
+        <h3>Kick</h3>
+        <p>Streams en vivo (cuando estemos online).</p>
+      </a>
+
+      <a class="card" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
+        <h3>Instagram</h3>
+        <p>Reels, clips, backstage y anuncios.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- EN VIVO + CONTADOR -->
+  <section id="envivo" class="anchor">
+    <div class="sectionTitle">
+      <h2>En vivo</h2>
+      <span>Contador para el próximo stream</span>
+    </div>
+
+    <div class="card liveBox">
+      <div>
+        <h3 style="margin:0 0 6px;">Próximo live</h3>
+        <p id="liveStatus" style="margin:0;color:rgba(255,255,255,.70);line-height:1.5;">
+          Cargá fecha y hora del próximo stream y queda guardado en tu navegador.
         </p>
 
-        <div class="cta-row">
-          <a class="btn primary" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
-            <span class="icon" aria-hidden="true">
-              <!-- Kick -->
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h4v7l6-7h5l-7 8 7 8h-5l-6-7v7H6V4Z" fill="currentColor"/></svg>
-            </span>
-            Ver en Kick
-          </a>
-          <a class="btn" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
-            <span class="icon" aria-hidden="true">
-              <!-- YouTube -->
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.5 31.5 0 0 0 2 12a31.5 31.5 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 22 12a31.5 31.5 0 0 0-.4-4.8Z" stroke="currentColor" opacity=".9"/>
-                <path d="M10.2 9.4v5.2L15 12l-4.8-2.6Z" fill="currentColor"/>
-              </svg>
-            </span>
-            YouTube
-          </a>
-          <a class="btn" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-            <span class="icon" aria-hidden="true">
-              <!-- Instagram -->
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M7.5 2.8h9A4.7 4.7 0 0 1 21.2 7.5v9a4.7 4.7 0 0 1-4.7 4.7h-9A4.7 4.7 0 0 1 2.8 16.5v-9A4.7 4.7 0 0 1 7.5 2.8Z" stroke="currentColor" opacity=".9"/>
-                <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor"/>
-                <path d="M17.6 6.7h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            Instagram
-          </a>
+        <div class="countdown" aria-label="Cuenta regresiva">
+          <div class="timeBox"><b id="d">—</b><span>Días</span></div>
+          <div class="timeBox"><b id="h">—</b><span>Horas</span></div>
+          <div class="timeBox"><b id="m">—</b><span>Min</span></div>
+          <div class="timeBox"><b id="s">—</b><span>Seg</span></div>
         </div>
 
-        <div class="small">
-          Contacto: <a href="mailto:areadelucha@gmail.com"><b>areadelucha@gmail.com</b></a>
-          • Próximos vivos: mirá el contador 👉
-        </div>
+        <p class="smallNote">
+          Tip: si quieren, después lo conectamos a un calendario / API para que se actualice solo.
+        </p>
       </div>
 
-      <aside class="card hero-right" id="vivo">
-        <div class="logo-block" aria-label="Logo">
-          <img src="assets/4.png" alt="Área de Lucha - banner" />
+      <div>
+        <h3 style="margin:0 0 6px;">Configurar fecha/hora</h3>
+        <p style="margin:0;color:rgba(255,255,255,.66);line-height:1.5;">
+          Seleccioná el momento del próximo vivo (hora Argentina).
+        </p>
+
+        <div class="formRow">
+          <input id="dt" type="datetime-local" />
+          <button class="btn primary" id="saveBtn" type="button">Guardar</button>
+          <button class="btn" id="clearBtn" type="button">Borrar</button>
         </div>
 
-        <div class="live-card">
-          <div class="live-top">
-            <strong>Contador del próximo vivo</strong>
-            <span id="livePill" class="pill"><span class="dot"></span><span id="livePillText">Programación a confirmar</span></span>
-          </div>
+        <div style="height:12px"></div>
 
-          <div class="timer" aria-label="Cuenta regresiva">
-            <div class="tbox"><b id="d">—</b><span>Días</span></div>
-            <div class="tbox"><b id="h">—</b><span>Horas</span></div>
-            <div class="tbox"><b id="m">—</b><span>Min</span></div>
-            <div class="tbox"><b id="s">—</b><span>Seg</span></div>
-          </div>
-
-          <div class="small" id="nextInfo">
-            Tip: cuando tengas fecha, se actualiza solo. (Argentina -03:00)
-          </div>
-        </div>
-      </aside>
-
+        <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
+          Ir a Kick
+        </a>
+      </div>
     </div>
-  </main>
+  </section>
 
-  <!-- ===== MERCH ===== -->
-  <section id="merch">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Merchandising</h2>
-        <p>Ropa, gorras, stickers y más. (próximamente)</p>
+  <!-- MERCH -->
+  <section id="merch" class="anchor">
+    <div class="sectionTitle">
+      <h2>Merch</h2>
+      <span>Ropa · gorras · stickers · lo más barato posible</span>
+    </div>
+
+    <div class="grid3">
+      <div class="card">
+        <h3>Shop (próximamente)</h3>
+        <p>
+          Acá va el catálogo cuando definamos proveedor. Vamos a ir por la opción más barata
+          que mantenga buena calidad.
+        </p>
+        <div style="height:10px"></div>
+        <a class="btn" href="#contacto">Quiero merch</a>
       </div>
 
-      <div class="card merch">
-        <div class="merch-grid">
-          <div class="mcard">
-            <div>
-              <h3>Ropa</h3>
-              <p>Remeras, buzos y diseños edición Área de Lucha.</p>
-              <div class="hint">Próximamente</div>
-            </div>
-            <div class="row">
-              <a class="btn" href="#contacto">Pedilo por WhatsApp</a>
-            </div>
-          </div>
+      <div class="card">
+        <h3>Ideas rápidas</h3>
+        <p>Remeras, buzos, gorras, stickers y rashguards (BJJ).</p>
+      </div>
 
-          <div class="mcard">
-            <div>
-              <h3>Gorras</h3>
-              <p>Gorras minimalistas con el logo y variantes.</p>
-              <div class="hint">Próximamente</div>
-            </div>
-            <div class="row">
-              <a class="btn" href="#contacto">Consultá stock</a>
-            </div>
-          </div>
+      <div class="card">
+        <h3>Checkout</h3>
+        <p>Cuando esté listo, esto puede linkear a MercadoPago / TiendaNube / lo que convenga.</p>
+      </div>
+    </div>
+  </section>
 
-          <div class="mcard">
-            <div>
-              <h3>Stickers</h3>
-              <p>Pack de stickers para termo, notebook, casco, etc.</p>
-              <div class="hint">Próximamente</div>
-            </div>
-            <div class="row">
-              <a class="btn primary" id="storeBtn" href="#" aria-disabled="true">Entrar a la tienda</a>
-            </div>
-          </div>
-        </div>
+  <!-- HOMBRES TRABAJANDO -->
+  <section id="trabajando" class="anchor">
+    <div class="sectionTitle">
+      <h2>Hombres trabajando</h2>
+      <span>Para que se note que falta completar cosas</span>
+    </div>
 
-        <div class="muted-note">
-          Cuando definan dónde vender (Tiendanube / MercadoShops / Shopify / etc.), me pasás el link y el botón “Entrar a la tienda” queda funcional.
+    <div class="card">
+      <div class="construction">
+        <div class="big" aria-hidden="true">👷‍♂️</div>
+        <div>
+          <h3 style="margin:0 0 6px;">Estamos metiéndole</h3>
+          <p style="margin:0;color:rgba(255,255,255,.66);line-height:1.5;">
+            Esta web está en construcción: se vienen episodios, invitados, calendario y tienda.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== GALLERY ===== -->
-  <section id="galeria">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Imágenes oficiales</h2>
-        <p>Estas 4 son las que usás en la web (hero, logo, variantes y estilo).</p>
+  <!-- SOBRE -->
+  <section id="sobre" class="anchor">
+    <div class="sectionTitle">
+      <h2>Sobre</h2>
+      <span>Quiénes somos</span>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 10px;">Área de Lucha</h3>
+      <p style="margin:0;color:rgba(255,255,255,.72);line-height:1.6;max-width:90ch;">
+        Somos 4 personas, todos estudiantes de BJJ (Escuela Lotus, sede a cargo de Leandro).
+        Diego (Cule) e Iván (El Colo) son faixa azul. Fer faixa violeta.
+        Piero faixa blanca. Fer y Piero además somos 2º Dan de Judo.
+        La idea: charlas descontracturadas, pero con técnica, data y análisis real.
+      </p>
+
+      <div style="height:16px"></div>
+
+      <div class="grid3">
+        <div class="card" style="background:rgba(255,255,255,.04);">
+          <h3>Diego (Cule)</h3>
+          <p>Faixa azul (BJJ). Debate, análisis y calle.</p>
+        </div>
+        <div class="card" style="background:rgba(255,255,255,.04);">
+          <h3>Iván (El Colo)</h3>
+          <p>Faixa azul (BJJ). Técnica y datos.</p>
+        </div>
+        <div class="card" style="background:rgba(255,255,255,.04);">
+          <h3>Fer</h3>
+          <p>Faixa violeta (BJJ) · 2º Dan (Judo).</p>
+        </div>
       </div>
 
-      <div class="card gallery">
-        <div class="gallery-grid">
-          <div class="shot">
-            <img src="assets/1.jpeg" alt="Imagen 1" />
-            <div class="cap">assets/1.jpeg</div>
-          </div>
-          <div class="shot">
-            <img src="assets/2.png" alt="Imagen 2" />
-            <div class="cap">assets/2.png</div>
-          </div>
-          <div class="shot">
-            <img src="assets/3.png" alt="Imagen 3" />
-            <div class="cap">assets/3.png</div>
-          </div>
-          <div class="shot">
-            <img src="assets/4.png" alt="Imagen 4" />
-            <div class="cap">assets/4.png</div>
-          </div>
-        </div>
+      <div style="height:14px"></div>
+
+      <div class="card" style="background:rgba(255,255,255,.04);">
+        <h3>Piero</h3>
+        <p>Faixa blanca (BJJ) · 2º Dan (Judo). Técnica + estructura + empuje.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
-  <section id="quienes">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Quiénes somos</h2>
-        <p>4 personas, una sola vibra: respeto, combate y comunidad.</p>
-      </div>
+  <!-- CONTACTO -->
+  <section id="contacto" class="anchor">
+    <div class="sectionTitle">
+      <h2>Contacto</h2>
+      <span>Redes + WhatsApp + Mail</span>
+    </div>
 
-      <div class="card about">
-        <div class="about-top">
-          <div class="about-text">
-            <p>
-              Somos <b>Diego (Cule)</b>, <b>Iván (El Colo)</b>, <b>Piero</b> y <b>Fer</b>.
-              Todos somos estudiantes de <b>Brazilian Jiu-Jitsu</b> en la <b>Escuela Lotus</b> (sede a cargo de Leandro).
-            </p>
-            <p>
-              Rangos BJJ: <b>Diego</b> e <b>Iván</b> son <b>faixa azul</b>, <b>Fer</b> es <b>faixa violeta</b>,
-              y <b>Piero</b> es <b>faixa blanca</b>.
-              En Judo: <b>Fer</b> y <b>Piero</b> son <b>2° Dan</b>.
-            </p>
-            <p>
-              El stream es descontracturado, pero con respeto. La idea es sumar invitados (kinesiólogos, médicos,
-              deportistas, nutricionistas, etc.) y armar comunidad.
-            </p>
-          </div>
+    <div class="grid3">
+      <a class="card" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
+        <h3>YouTube</h3>
+        <p>@areadelucha</p>
+      </a>
 
-          <div class="about-art" aria-label="Variante monocroma">
-            <img src="assets/3.png" alt="Logo monocromo Área de Lucha" />
-          </div>
-        </div>
-      </div>
+      <a class="card" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
+        <h3>Kick</h3>
+        <p>kick.com/areadelucha</p>
+      </a>
 
-      <div class="card team" style="margin-top:14px;">
-        <div class="team-grid">
-          <div class="member">
-            <h3>Diego</h3>
-            <div class="nick">“Cule”</div>
-            <ul>
-              <li>BJJ: Faixa azul</li>
-              <li>Competidor / combate</li>
-            </ul>
-            <div class="tag">Lotus BJJ</div>
-          </div>
+      <a class="card" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
+        <h3>Instagram</h3>
+        <p>@areadelucha</p>
+      </a>
 
-          <div class="member">
-            <h3>Iván</h3>
-            <div class="nick">“El Colo”</div>
-            <ul>
-              <li>BJJ: Faixa azul</li>
-              <li>Competidor / análisis</li>
-            </ul>
-            <div class="tag">Lotus BJJ</div>
-          </div>
+      <!-- WhatsApp -->
+      <a class="card" href="https://wa.me/5491100000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <h3>WhatsApp</h3>
+        <p>+54 9 11 000000000</p>
+      </a>
 
-          <div class="member">
-            <h3>Fer</h3>
-            <div class="nick">Faixa violeta</div>
-            <ul>
-              <li>BJJ: Faixa violeta</li>
-              <li>Judo: 2° Dan</li>
-            </ul>
-            <div class="tag">BJJ + Judo</div>
-          </div>
+      <!-- Email -->
+      <a class="card" href="mailto:areadelucha@gmail.com">
+        <h3>Email</h3>
+        <p>areadelucha@gmail.com</p>
+      </a>
 
-          <div class="member">
-            <h3>Piero</h3>
-            <div class="nick">Faixa blanca</div>
-            <ul>
-              <li>BJJ: Faixa blanca</li>
-              <li>Judo: 2° Dan</li>
-            </ul>
-            <div class="tag">BJJ + Judo</div>
-          </div>
-        </div>
+      <div class="card">
+        <h3>Colab / invitados</h3>
+        <p>Si querés caer al stream o proponer tema, escribinos por WhatsApp o mail.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
-  <section id="contacto">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Contacto y redes</h2>
-        <p>Links oficiales con iconos minimalistas. WhatsApp ya listo.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="stamp">
+        <img src="assets/3.png" alt="Logo Área de Lucha (blanco y negro)" />
+        <span>Área de Lucha — técnica · data · análisis</span>
       </div>
 
-      <div class="card contact">
-        <div class="contact-grid">
-          <div class="contact-box">
-            <h3>Contacto directo</h3>
-            <p>
-              Mail: <a href="mailto:areadelucha@gmail.com"><b>areadelucha@gmail.com</b></a><br/>
-              WhatsApp: <span id="waStatus"><b>habilitado</b></span>
-            </p>
-
-            <div class="socials" role="list">
-              <a class="icon-btn" role="listitem" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h4v7l6-7h5l-7 8 7 8h-5l-6-7v7H6V4Z" fill="currentColor"/></svg>
-                </span>
-                Kick
-              </a>
-
-              <a class="icon-btn" role="listitem" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.5 31.5 0 0 0 2 12a31.5 31.5 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 22 12a31.5 31.5 0 0 0-.4-4.8Z" stroke="currentColor" opacity=".9"/>
-                    <path d="M10.2 9.4v5.2L15 12l-4.8-2.6Z" fill="currentColor"/>
-                  </svg>
-                </span>
-                YouTube
-              </a>
-
-              <a class="icon-btn" role="listitem" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M7.5 2.8h9A4.7 4.7 0 0 1 21.2 7.5v9a4.7 4.7 0 0 1-4.7 4.7h-9A4.7 4.7 0 0 1 2.8 16.5v-9A4.7 4.7 0 0 1 7.5 2.8Z" stroke="currentColor" opacity=".9"/>
-                    <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor"/>
-                    <path d="M17.6 6.7h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                  </svg>
-                </span>
-                Instagram
-              </a>
-
-              <a class="icon-btn" role="listitem" href="mailto:areadelucha@gmail.com">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M4.5 6.5h15A2 2 0 0 1 21.5 8.5v7A2 2 0 0 1 19.5 17.5h-15A2 2 0 0 1 2.5 15.5v-7A2 2 0 0 1 4.5 6.5Z" stroke="currentColor" opacity=".9"/>
-                    <path d="M4.8 8l7.2 5 7.2-5" stroke="currentColor"/>
-                  </svg>
-                </span>
-                Email
-              </a>
-
-              <a id="waBtn" class="icon-btn" role="listitem" href="#" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M12 21a9 9 0 1 0-7.8-4.5L3 21l4.7-1.1A9 9 0 0 0 12 21Z" stroke="currentColor" opacity=".9"/>
-                    <path d="M10.3 8.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.2.2 2 3.1 4.9 4.2 2.4 1 2.9.8 3.4.8.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.2.2-1.3 0-.2-.2-.3-.4-.4l-1.6-.8c-.2-.1-.4-.1-.6.2-.2.3-.7.8-.9 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.3-.4.1-.1.2-.2.3-.4.1-.2 0-.3 0-.4l-.7-1.6Z" fill="currentColor" opacity=".9"/>
-                  </svg>
-                </span>
-                WhatsApp
-              </a>
-            </div>
-
-            <div class="muted-note">
-              Si querés, después sumamos: calendario de vivos, sección de clips destacados y un bloque “Invitados”.
-            </div>
-          </div>
-
-          <div class="contact-box" style="background: rgba(0,0,0,.18);">
-            <h3>Links oficiales</h3>
-            <p>
-              Kick: <b>kick.com/areadelucha</b><br/>
-              Instagram: <b>@areadelucha</b><br/>
-              YouTube: <b>@areadelucha</b>
-            </p>
-            <p class="muted-note">
-              Dominio listo + GitHub Pages: con este index, en cuanto apunte el DNS al repo, ya se ve.
-            </p>
-          </div>
-        </div>
+      <div style="color:rgba(255,255,255,.55);font-weight:700;">
+        © <span id="yy"></span> Área de Lucha
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <footer>
-    <div class="wrap foot">
-      <div>© <span id="year"></span> Área de Lucha</div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a href="#top">Arriba</a>
-        <span style="opacity:.5;">•</span>
-        <a href="mailto:areadelucha@gmail.com">areadelucha@gmail.com</a>
-      </div>
-    </div>
-  </footer>
+<script>
+  // Año footer
+  document.getElementById("yy").textContent = new Date().getFullYear();
 
-  <script>
-    // ==========================
-    // CONFIGURACIÓN
-    // ==========================
+  // Countdown live
+  const KEY = "adl_next_live_iso";
+  const dtInput = document.getElementById("dt");
+  const saveBtn = document.getElementById("saveBtn");
+  const clearBtn = document.getElementById("clearBtn");
+  const statusEl = document.getElementById("liveStatus");
 
-    // Próximo stream (Argentina -03:00)
-    // Ejemplo: "2026-02-07T21:00:00-03:00"
-    let NEXT_STREAM_ISO = ""; // dejalo vacío si no hay fecha
+  const out = {
+    d: document.getElementById("d"),
+    h: document.getElementById("h"),
+    m: document.getElementById("m"),
+    s: document.getElementById("s"),
+  };
 
-    const LIVE_DURATION_MINUTES = 180;
+  function pad(n){ return String(n).padStart(2, "0"); }
 
-    // WhatsApp (formato internacional sin + ni espacios)
-    // Tu número: +54 9 11 000000000  -> 54911 + 000000000
-    const WHATSAPP_NUMBER = "54911000000000";
-    const WHATSAPP_TEXT = "Hola! Vengo desde la web de Área de Lucha 👊🔥";
+  function loadSaved(){
+    const saved = localStorage.getItem(KEY);
+    if(!saved) return null;
+    const date = new Date(saved);
+    if(isNaN(date.getTime())) return null;
+    // Para mostrarlo en el input datetime-local
+    const tzOffset = date.getTimezoneOffset() * 60000;
+    const local = new Date(date.getTime() - tzOffset);
+    dtInput.value = local.toISOString().slice(0,16);
+    return date;
+  }
 
-    // Tienda (cuando tengas el link real, pegalo acá)
-    const STORE_URL = ""; // ej: "https://tutienda.com"
+  function setStatus(text){
+    statusEl.textContent = text;
+  }
 
-    // ==========================
-    // LÓGICA
-    // ==========================
-    const $ = (id) => document.getElementById(id);
-    function pad(n){ return String(n).padStart(2, "0"); }
-
-    function setPill(state, text){
-      const pill = $("livePill");
-      $("livePillText").textContent = text;
-      pill.classList.toggle("live", state === "live");
+  function tick(target){
+    if(!target){
+      out.d.textContent = "—";
+      out.h.textContent = "—";
+      out.m.textContent = "—";
+      out.s.textContent = "—";
+      setStatus("Cargá fecha y hora del próximo stream y queda guardado en tu navegador.");
+      return;
     }
 
-    function setTimerToBlank(){
-      $("d").textContent = "—";
-      $("h").textContent = "—";
-      $("m").textContent = "—";
-      $("s").textContent = "—";
+    const now = new Date();
+    const diff = target.getTime() - now.getTime();
+
+    if(diff <= 0){
+      out.d.textContent = "00";
+      out.h.textContent = "00";
+      out.m.textContent = "00";
+      out.s.textContent = "00";
+      setStatus("¡Estamos en horario! Si están en vivo, entrá a Kick.");
+      return;
     }
 
-    function formatLocal(iso){
-      try{
-        const d = new Date(iso);
-        return d.toLocaleString("es-AR", {
-          weekday: "short", year:"numeric", month:"short", day:"2-digit",
-          hour:"2-digit", minute:"2-digit"
-        });
-      }catch(e){ return ""; }
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
+
+    out.d.textContent = String(days);
+    out.h.textContent = pad(hours);
+    out.m.textContent = pad(mins);
+    out.s.textContent = pad(secs);
+
+    const opts = { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:"2-digit", minute:"2-digit" };
+    setStatus("Próximo live: " + target.toLocaleString("es-AR", opts));
+  }
+
+  let targetDate = loadSaved();
+
+  saveBtn.addEventListener("click", () => {
+    if(!dtInput.value){
+      alert("Elegí una fecha y hora primero.");
+      return;
     }
-
-    function renderDiff(ms){
-      const totalSec = Math.max(0, Math.floor(ms / 1000));
-      const days = Math.floor(totalSec / 86400);
-      const hours = Math.floor((totalSec % 86400) / 3600);
-      const mins = Math.floor((totalSec % 3600) / 60);
-      const secs = totalSec % 60;
-
-      $("d").textContent = days;
-      $("h").textContent = pad(hours);
-      $("m").textContent = pad(mins);
-      $("s").textContent = pad(secs);
+    const chosen = new Date(dtInput.value);
+    if(isNaN(chosen.getTime())){
+      alert("Fecha/hora inválida.");
+      return;
     }
+    localStorage.setItem(KEY, chosen.toISOString());
+    targetDate = chosen;
+    tick(targetDate);
+  });
 
-    function updateCountdown(){
-      if(!NEXT_STREAM_ISO){
-        setPill("tbd", "Programación a confirmar");
-        $("nextInfo").textContent = "Cuando confirmes día/hora, editá NEXT_STREAM_ISO en el index y listo.";
-        setTimerToBlank();
-        return;
-      }
+  clearBtn.addEventListener("click", () => {
+    localStorage.removeItem(KEY);
+    dtInput.value = "";
+    targetDate = null;
+    tick(null);
+  });
 
-      const now = new Date();
-      const start = new Date(NEXT_STREAM_ISO);
-      const end = new Date(start.getTime() + LIVE_DURATION_MINUTES * 60 * 1000);
+  // Primer render + loop
+  tick(targetDate);
+  setInterval(() => tick(targetDate), 1000);
+</script>
 
-      if(now >= start && now <= end){
-        setPill("live", "EN VIVO AHORA");
-        $("nextInfo").textContent = "Estamos en vivo. Caé a Kick o YouTube 👊";
-        renderDiff(end - now);
-        return;
-      }
-
-      if(now > end){
-        setPill("done", "Vivo finalizado");
-        $("nextInfo").textContent = "Este vivo ya pasó. Actualizá la próxima fecha cuando la tengan.";
-        setTimerToBlank();
-        return;
-      }
-
-      setPill("next", "Próximo vivo");
-      $("nextInfo").textContent = "Próximo: " + formatLocal(NEXT_STREAM_ISO) + " (hora Argentina)";
-      renderDiff(start - now);
-    }
-
-    function setupWhatsApp(){
-      const btn = $("waBtn");
-      const url = "https://wa.me/" + encodeURIComponent(WHATSAPP_NUMBER) +
-                  "?text=" + encodeURIComponent(WHATSAPP_TEXT);
-      btn.href = url;
-    }
-
-    function setupStore(){
-      const storeBtn = $("storeBtn");
-      if(!storeBtn) return;
-
-      if(!STORE_URL){
-        storeBtn.setAttribute("aria-disabled", "true");
-        storeBtn.href = "#";
-        storeBtn.style.opacity = ".6";
-        storeBtn.style.pointerEvents = "none";
-        storeBtn.textContent = "Tienda (próximamente)";
-      }else{
-        storeBtn.removeAttribute("aria-disabled");
-        storeBtn.href = STORE_URL;
-        storeBtn.target = "_blank";
-        storeBtn.rel = "noopener";
-        storeBtn.style.opacity = "1";
-        storeBtn.style.pointerEvents = "auto";
-        storeBtn.textContent = "Entrar a la tienda";
-      }
-    }
-
-    $("year").textContent = new Date().getFullYear();
-    setupWhatsApp();
-    setupStore();
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
 </body>
 </html>
