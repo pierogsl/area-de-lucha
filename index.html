@@ -1,36 +1,39 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#070812" />
-  <title>Área de Lucha — técnica · análisis · comunidad</title>
-  <meta name="description" content="Área de Lucha: técnica, análisis y comunidad. Episodios, reels y streams en un solo lugar. Sin humo." />
 
-  <!-- Canonical -->
+  <title>Área de Lucha — técnica · data · análisis</title>
+  <meta name="description" content="Área de Lucha: deportes de combate con técnica, data y análisis. Episodios completos, streams y reels. Cero humo: contenido claro y útil." />
   <link rel="canonical" href="https://www.areadelucha.com/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Área de Lucha — técnica · análisis · comunidad" />
-  <meta property="og:description" content="Episodios, reels y streams en un solo lugar. Sin humo." />
-  <meta property="og:image" content="https://www.areadelucha.com/assets/img/og-1200x630.webp" />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Área de Lucha — técnica · data · análisis" />
+  <meta property="og:description" content="Deportes de combate con técnica y data. Cero humo: contenido claro y útil." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.areadelucha.com/" />
+  <!-- Usamos el OG que ya tenés (1200x630). Si algún día querés, lo hacemos 100% logo-only. -->
+  <meta property="og:image" content="https://www.areadelucha.com/assets/img/og-1200x630.webp" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Área de Lucha — técnica · análisis · comunidad" />
-  <meta name="twitter:description" content="Episodios, reels y streams en un solo lugar. Sin humo." />
+  <meta name="twitter:title" content="Área de Lucha — técnica · data · análisis" />
+  <meta name="twitter:description" content="Deportes de combate con técnica y data. Cero humo: contenido claro y útil." />
   <meta name="twitter:image" content="https://www.areadelucha.com/assets/img/og-1200x630.webp" />
 
-  <!-- Favicons (según tu repo están en assets/img) -->
-  <link rel="icon" href="/assets/img/favicon.ico" />
-  <link rel="apple-touch-icon" href="/assets/img/favicon-512.png" />
+  <!-- Favicons (tu estructura real: assets/img/) -->
+  <link rel="icon" href="./assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon-512.png" />
 
-  <!-- Fonts -->
+  <!-- Fonts (tech y legibles) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Preload del “banner” (logo) -->
+  <link rel="preload" as="image" href="./assets/img/logo.png" />
 
   <style>
     :root{
@@ -41,17 +44,15 @@
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.72);
 
-      --a1: #57D2FF; /* cyan */
-      --a2: #FF5BC8; /* pink */
-      --a3: #9B7CFF; /* violet */
-
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      /* acentos tipo neón (controlados) */
+      --a1: #57D2FF;   /* cyan */
+      --a2: #FF5BC8;   /* pink */
+      --a3: #9B7CFF;   /* violeta */
+      --shadow: 0 22px 70px rgba(0,0,0,.55);
       --r: 22px;
       --max: 1120px;
 
-      /* Tamaño de logo (ajustable) */
-      --logo-h: 64px;
-      --logo-h-mobile: 52px;
+      --focus: 0 0 0 3px rgba(87,210,255,.22);
     }
 
     *{box-sizing:border-box}
@@ -67,61 +68,57 @@
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       line-height: 1.5;
     }
+
     a{color:inherit; text-decoration:none}
-    img{max-width:100%; height:auto}
+    a:focus-visible, button:focus-visible{outline:none; box-shadow: var(--focus); border-radius: 12px}
 
     .wrap{max-width:var(--max); margin:0 auto; padding: 0 18px;}
+    .muted{color:var(--muted)}
+
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--a1), var(--a2));
+      box-shadow: 0 0 18px rgba(255,91,200,.28);
+    }
 
     /* Header */
     header{
       position: sticky; top:0; z-index:30;
       backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(7,8,18,.86), rgba(7,8,18,.46));
+      background: linear-gradient(to bottom, rgba(7,8,18,.86), rgba(7,8,18,.45));
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
       padding: 14px 0;
       gap: 14px;
-      flex-wrap: wrap;
     }
     .brand{
       display:flex; align-items:center; gap: 12px;
       min-width: 260px;
     }
     .brand img{
-      height: var(--logo-h);
-      width: auto;
-      display:block;
+      height: 56px; width:auto; display:block;  /* logo más grande */
       filter: drop-shadow(0 10px 25px rgba(0,0,0,.55));
     }
     .brand b{
       font-family: "Space Grotesk", Inter, system-ui, sans-serif;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: .2px;
-      font-size: 18px;
+      font-size: 15.5px;
     }
-    .brand small{
-      display:block;
-      color:var(--muted);
-      margin-top: -2px;
-      font-size: 12.5px;
-    }
-
-    .burger{
-      display:none;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      border-radius: 14px;
-      padding: 10px 12px;
-      font-weight: 800;
-      cursor:pointer;
-    }
+    .brand small{display:block; color:var(--muted); margin-top: -2px; font-size: 12.5px;}
 
     .menu{
       display:flex; gap: 10px; flex-wrap: wrap;
       justify-content:flex-end;
-      align-items:center;
     }
     .link{
       padding: 10px 12px;
@@ -143,21 +140,7 @@
       background: linear-gradient(135deg, rgba(87,210,255,.20), rgba(255,91,200,.16));
     }
 
-    /* Pills / badge */
-    .pill{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px; border-radius:999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, var(--a1), var(--a2));
-      box-shadow: 0 0 18px rgba(255,91,200,.35);
-    }
-
-    /* Hero */
+    /* Hero / Banner (logo como banner) */
     .hero{
       position:relative;
       margin: 18px 0 0;
@@ -165,45 +148,60 @@
       overflow:hidden;
       border: 1px solid rgba(255,255,255,.12);
       box-shadow: var(--shadow);
-      isolation:isolate;
+      background: rgba(0,0,0,.15);
     }
-    .hero-media{
-      position:absolute; inset:0;
-      width:100%; height:100%;
+
+    /* Fondo: logo gigante, blur, para que quede “banner” */
+    .hero-bg{
+      position:absolute; inset:-20px;
+      width:110%; height:110%;
       object-fit: cover;
-      transform: scale(1.03);
-      filter: saturate(1.05) contrast(1.05);
+      filter: blur(14px) saturate(1.1) contrast(1.08);
+      opacity: .25;
+      transform: scale(1.06);
     }
+
+    /* Logo principal en el hero */
+    .hero-logo{
+      width:min(520px, 92%);
+      height:auto;
+      display:block;
+      margin: 10px 0 6px;
+      filter: drop-shadow(0 22px 55px rgba(0,0,0,.65));
+    }
+
     .hero::after{
       content:"";
       position:absolute; inset:0;
       background:
-        linear-gradient(90deg, rgba(7,8,18,.93) 0%, rgba(7,8,18,.62) 45%, rgba(7,8,18,.18) 100%),
-        radial-gradient(900px 500px at 20% 30%, rgba(87,210,255,.18), transparent 60%),
-        radial-gradient(900px 500px at 65% 40%, rgba(255,91,200,.16), transparent 60%);
-      z-index:1;
+        radial-gradient(900px 500px at 20% 30%, rgba(87,210,255,.16), transparent 60%),
+        radial-gradient(900px 500px at 65% 40%, rgba(255,91,200,.14), transparent 60%),
+        linear-gradient(90deg, rgba(7,8,18,.92) 0%, rgba(7,8,18,.70) 55%, rgba(7,8,18,.52) 100%);
     }
+
     .hero-inner{
-      position:relative; z-index:2;
-      padding: 36px 22px;
-      min-height: 420px;
+      position:relative;
+      padding: 34px 22px;
+      min-height: 440px;
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.25fr .75fr;
       gap: 18px;
       align-items:end;
     }
+
     h1{
       margin: 10px 0 10px;
       font-family: "Space Grotesk", Inter, system-ui, sans-serif;
-      font-size: clamp(36px, 4.2vw, 58px);
+      font-size: clamp(30px, 3.7vw, 52px);
       line-height:1.02;
       letter-spacing: .2px;
     }
+
     .sub{
-      margin: 0 0 18px;
-      color: rgba(255,255,255,.78);
+      margin: 0 0 14px;
+      color: rgba(255,255,255,.80);
       font-size: 17px;
-      max-width: 62ch;
+      max-width: 60ch;
     }
 
     .cta{
@@ -220,8 +218,6 @@
       font-weight: 900;
       letter-spacing: .2px;
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      cursor:pointer;
-      white-space: nowrap;
     }
     .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18);}
     .btn.neon{
@@ -243,7 +239,6 @@
     .stat b{display:block; font-size: 14px; color: rgba(255,255,255,.92);}
     .stat span{display:block; font-size: 12.5px; color: rgba(255,255,255,.72); margin-top:4px;}
 
-    /* Tags */
     .tags{margin-top:10px}
     .k{
       display:inline-flex; align-items:center; gap:8px;
@@ -280,55 +275,30 @@
       font-size: 22px;
       letter-spacing: .2px;
     }
-    .muted{color: var(--muted)}
-    .divider{height:1px; background: rgba(255,255,255,.10); margin: 14px 0;}
+    .card h3{margin:0 0 6px; font-family:"Space Grotesk", Inter, system-ui, sans-serif;}
 
-    /* Video embed */
-    .embed{
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.22);
-    }
-
-    /* Gallery */
-    .rail{
-      display:flex; gap: 12px;
-      overflow:auto;
-      padding: 12px;
-      scroll-snap-type: x mandatory;
-    }
-    .rail::-webkit-scrollbar{height: 10px}
-    .rail::-webkit-scrollbar-thumb{background: rgba(255,255,255,.10); border-radius: 999px}
-    .shot{
-      scroll-snap-align: start;
-      min-width: 260px;
-      max-width: 320px;
-      flex: 0 0 auto;
+    .frame{
       border-radius: 16px;
       overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
     }
-    .shot img{width:100%; height:190px; object-fit:cover; display:block;}
-    .shot .cap{padding: 10px 12px; font-weight: 800; color: rgba(255,255,255,.82); font-size: 13px;}
 
-    /* Contact */
-    .copy{
+    .copy-row{
       display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-      margin-top: 10px;
+      padding: 12px 0 0;
     }
-    .input{
-      flex: 1 1 240px;
-      padding: 12px 14px;
-      border-radius: 14px;
+    .mini{
+      padding: 10px 12px;
+      border-radius: 12px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.90);
-      font-weight: 700;
+      font-weight: 800;
+      cursor: pointer;
+      color: rgba(255,255,255,.88);
     }
+    .mini:hover{background: rgba(255,255,255,.07);}
 
-    /* Footer */
     footer{
       padding: 30px 0 50px;
       color: rgba(255,255,255,.70);
@@ -336,44 +306,37 @@
       margin-top: 24px;
     }
 
-    /* Back to top */
-    .top{
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 60;
-      opacity: 0;
-      pointer-events:none;
-      transform: translateY(6px);
-      transition: opacity .2s ease, transform .2s ease;
-    }
-    .top.show{
-      opacity: 1;
-      pointer-events:auto;
-      transform: translateY(0);
-    }
-
     /* Responsive */
     @media (max-width: 920px){
-      .hero-inner{grid-template-columns: 1fr; min-height: 470px}
+      .brand{min-width:unset}
+      .hero-inner{grid-template-columns: 1fr; min-height: 520px}
       .hero-side{grid-template-columns: 1fr 1fr;}
-    }
-    @media (max-width: 720px){
-      .burger{display:inline-flex}
-      .menu{
-        display:none;
-        width:100%;
-        margin-top: 10px;
-      }
-      .menu.open{display:flex}
+      .hero-logo{width:min(520px, 100%);}
     }
     @media (max-width: 560px){
-      .brand img{height: var(--logo-h-mobile)}
+      .brand img{height: 48px}
       .hero-inner{padding: 26px 16px}
       .hero-side{grid-template-columns: 1fr;}
       .btn{width: 100%;}
+      .menu{justify-content:flex-start}
     }
   </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Área de Lucha",
+    "url":"https://www.areadelucha.com/",
+    "description":"Deportes de combate con técnica, data y análisis. Cero humo: contenido claro y útil.",
+    "sameAs":[
+      "https://www.youtube.com/@areadelucha",
+      "https://kick.com/areadelucha",
+      "https://www.instagram.com/areadelucha/"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -381,18 +344,14 @@
     <div class="wrap">
       <div class="nav">
         <a class="brand" href="#top" aria-label="Ir al inicio">
-          <img src="/assets/img/logo.png" alt="Logo Área de Lucha" />
+          <img src="./assets/img/logo.png" alt="Logo Área de Lucha" />
           <div>
             <b>Área de Lucha</b>
-            <small>técnica · análisis · comunidad</small>
+            <small>técnica · data · análisis</small>
           </div>
         </a>
 
-        <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">
-          ☰ Menú
-        </button>
-
-        <nav class="menu" id="menu" aria-label="Secciones">
+        <nav class="menu" aria-label="Secciones">
           <a class="link" href="#episodios">Episodios</a>
           <a class="link" href="#plataformas">Plataformas</a>
           <a class="link" href="#sobre">Sobre</a>
@@ -403,22 +362,19 @@
   </header>
 
   <main id="top" class="wrap">
-    <!-- HERO -->
+    <!-- HERO / BANNER (Logo como banner) -->
     <section class="hero" aria-label="Banner principal">
-      <picture>
-        <source srcset="/assets/img/banner-2400x1200.webp" type="image/webp" media="(min-width: 1000px)">
-        <source srcset="/assets/img/banner-1920x960.webp" type="image/webp">
-        <img class="hero-media" src="/assets/img/6.jpeg" alt="Banner Área de Lucha" loading="eager" />
-      </picture>
+      <img class="hero-bg" src="./assets/img/logo.png" alt="" aria-hidden="true" />
 
       <div class="hero-inner">
         <div>
-          <div class="pill"><span class="dot"></span><span><b>Online</b> • Sin humo</span></div>
-          <h1>Área de Lucha</h1>
+          <div class="pill"><span class="dot"></span><span><b>Online</b> • Técnica + Data + Análisis</span></div>
+
+          <img class="hero-logo" src="./assets/img/logo.png" alt="Área de Lucha" />
+
+          <h1>Deportes de combate sin humo.</h1>
           <p class="sub">
-            Técnica y análisis de deportes de combate.
-            Episodios, reels y streams en un solo lugar.
-            <b>Sin humo.</b>
+            Episodios completos, streams y reels. Técnica clara, data útil y análisis real.
           </p>
 
           <div class="cta">
@@ -427,26 +383,22 @@
             <a class="btn" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
           </div>
 
-          <div class="tags" aria-label="Etiquetas">
+          <div class="tags" aria-label="Temas">
             <span class="k"><i></i>BJJ</span>
             <span class="k"><i></i>Judo</span>
             <span class="k"><i></i>Striking</span>
-            <span class="k"><i></i>Estrategia</span>
+            <span class="k"><i></i>Análisis</span>
           </div>
         </div>
 
         <div class="hero-side">
           <div class="stat">
             <b>▶ Playlist principal</b>
-            <span>Entrá directo a la serie y caé en contenido real en 1 click.</span>
+            <span>Entrá directo a la serie y mirá episodios completos.</span>
           </div>
           <div class="stat">
-            <b>🧠 Enfoque</b>
-            <span>Análisis técnico, criterio y conversación seria (sin perder el humor).</span>
-          </div>
-          <div class="stat">
-            <b>🤝 Comunidad</b>
-            <span>Invitados: deportistas, profes, kinesiólogos, médicos, nutrición.</span>
+            <b>⚡ Criterio</b>
+            <span>Respeto + debate. Mucha técnica, mucha data, cero humo.</span>
           </div>
         </div>
       </div>
@@ -457,12 +409,12 @@
       <div class="grid">
         <div class="card" style="grid-column: span 7;">
           <div class="pad">
-            <h2>Últimos episodios</h2>
+            <h2>Episodios (playlist)</h2>
             <p class="muted">
-              Esta es la playlist que nos pasaste (embed directo).
+              Acá está embebida la playlist oficial. Ideal para que el que entra por primera vez vea contenido real en 1 click.
             </p>
 
-            <div class="embed">
+            <div class="frame" aria-label="Playlist de YouTube">
               <iframe
                 style="width:100%; aspect-ratio: 16/9; border:0;"
                 loading="lazy"
@@ -473,42 +425,39 @@
             </div>
 
             <div class="cta" style="margin-top:12px">
-              <a class="btn neon" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noopener">Ver en YouTube</a>
+              <a class="btn neon" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noopener">
+                Abrir playlist en YouTube
+              </a>
               <a class="btn" href="#contacto">Sponsors / Colabs</a>
             </div>
-
-            <div class="divider"></div>
-
-            <p class="muted" style="margin:0">
-              Si querés después te lo dejo automático con “últimos 3 videos” (requiere API o script).
-            </p>
           </div>
         </div>
 
         <div class="card" style="grid-column: span 5;">
           <div class="pad">
             <h2>Qué vas a encontrar</h2>
-            <p class="muted" style="margin-bottom:0">
-              • BJJ / Judo / striking<br>
-              • Técnica clara y sin humo<br>
-              • Análisis, estrategia y mentalidad<br>
-              • Clips cortos + episodios completos<br>
-              • Invitados del rendimiento y la salud
+            <p class="muted">
+              • Técnica aplicada (BJJ / Judo / striking)<br>
+              • Análisis y toma de decisiones<br>
+              • Clips cortos (reels) con lo mejor de cada episodio<br>
+              • Invitados: deportistas y profesionales del palo
             </p>
 
-            <div class="divider"></div>
-
-            <div class="card" style="background:rgba(255,255,255,.05)">
+            <div class="card" style="margin-top:14px; background:rgba(255,255,255,.05)">
               <div class="pad">
-                <b style="display:block; margin-bottom:6px;">Objetivo</b>
-                <span class="muted">Que alguien nuevo entienda ADL en 10 segundos y llegue a contenido real en 1 click.</span>
+                <b style="display:block; margin-bottom:6px;">Guía simple (que rinde)</b>
+                <span class="muted">
+                  Siempre el mismo día/hora de publicación. El algoritmo no perdona, pero la consistencia sí.
+                </span>
               </div>
             </div>
 
             <div class="card" style="margin-top:14px; background:rgba(255,255,255,.05)">
               <div class="pad">
-                <b style="display:block; margin-bottom:6px;">Formato recomendado</b>
-                <span class="muted">1 episodio largo por semana + 4–7 clips fuertes (reels/shorts) por semana.</span>
+                <b style="display:block; margin-bottom:6px;">Shorts/Reels</b>
+                <span class="muted">
+                  1 clip fuerte (15–35s) con título grande + subtítulos. CTA: “episodio completo en YouTube”.
+                </span>
               </div>
             </div>
           </div>
@@ -520,42 +469,34 @@
     <section id="plataformas">
       <div class="card">
         <div class="pad">
-          <h2>Plataformas</h2>
-          <p class="muted">Accesos directos y claros.</p>
+          <h2>Plataformas oficiales</h2>
+          <p class="muted">Tres puertas claras. El usuario nuevo entiende qué tocar.</p>
 
           <div class="grid" style="margin-top:10px">
             <div class="card" style="grid-column: span 4;">
               <div class="pad">
-                <h3 style="margin:0 0 6px; font-size:18px;">YouTube</h3>
-                <p class="muted">Episodios completos y series.</p>
-                <a class="btn neon" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">Ir a YouTube</a>
+                <h3>YouTube</h3>
+                <p class="muted">Episodios completos, series y playlist.</p>
+                <a class="btn neon" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">Ir al canal</a>
               </div>
             </div>
+
             <div class="card" style="grid-column: span 4;">
               <div class="pad">
-                <h3 style="margin:0 0 6px; font-size:18px;">Kick</h3>
-                <p class="muted">Streams en vivo y comunidad.</p>
-                <a class="btn neon" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Ir a Kick</a>
+                <h3>Kick</h3>
+                <p class="muted">Streams, reacción, debate y comunidad.</p>
+                <a class="btn neon" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Entrar a Kick</a>
               </div>
             </div>
+
             <div class="card" style="grid-column: span 4;">
               <div class="pad">
-                <h3 style="margin:0 0 6px; font-size:18px;">Instagram</h3>
-                <p class="muted">Reels, highlights y anuncios.</p>
+                <h3>Instagram</h3>
+                <p class="muted">Reels, highlights y avisos.</p>
                 <a class="btn neon" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Ir a Instagram</a>
               </div>
             </div>
           </div>
-
-          <div class="divider"></div>
-
-          <div class="card" style="background:rgba(255,255,255,.05)">
-            <div class="pad">
-              <b style="display:block; margin-bottom:6px;">Marca / consistencia</b>
-              <span class="muted">Mantené estos 3 links como “oficiales” siempre. Es lo que más ordena el crecimiento.</span>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
@@ -563,37 +504,33 @@
     <!-- SOBRE -->
     <section id="sobre">
       <div class="grid">
-        <div class="card" style="grid-column: span 6;">
+        <div class="card" style="grid-column: span 7;">
           <div class="pad">
             <h2>Sobre Área de Lucha</h2>
             <p class="muted">
-              Área de Lucha es un espacio para hablar de deportes de combate con criterio:
-              técnica, análisis y experiencias reales. Sin humo.
+              Área de Lucha nace para hablar de deportes de combate con seriedad y buena onda:
+              técnica clara, data útil y análisis real.
             </p>
             <p class="muted">
-              También invitamos profesionales del rendimiento y la salud para sumar perspectiva práctica.
+              Invitados: deportistas y profesionales. Si querés participar, colaboraciones o prensa, escribinos.
             </p>
-
-            <div class="cta">
-              <a class="btn" href="#contacto">Contactar</a>
-              <a class="btn neon" href="#episodios">Ver episodios</a>
-            </div>
           </div>
         </div>
 
-        <div class="card" style="grid-column: span 6;">
+        <div class="card" style="grid-column: span 5;">
           <div class="pad">
-            <h2>Identidad (galería)</h2>
-            <p class="muted">Tus archivos 1–6. Si después querés, te armo una selección final “oficial”.</p>
-          </div>
-
-          <div class="rail" aria-label="Galería de imágenes">
-            <div class="shot"><img src="/assets/img/1.jpg" alt="Logo 1" loading="lazy"><div class="cap">1.jpg</div></div>
-            <div class="shot"><img src="/assets/img/2.jpeg" alt="Logo 2" loading="lazy"><div class="cap">2.jpeg</div></div>
-            <div class="shot"><img src="/assets/img/3.jpeg" alt="Logo 3" loading="lazy"><div class="cap">3.jpeg</div></div>
-            <div class="shot"><img src="/assets/img/4.jpeg" alt="Logo 4" loading="lazy"><div class="cap">4.jpeg</div></div>
-            <div class="shot"><img src="/assets/img/5.jpeg" alt="Logo 5" loading="lazy"><div class="cap">5.jpeg</div></div>
-            <div class="shot"><img src="/assets/img/6.jpeg" alt="Imagen 6" loading="lazy"><div class="cap">6.jpeg</div></div>
+            <h2>Identidad</h2>
+            <p class="muted">
+              Mantuvimos la web en “neón controlado” para que el logo destaque sin que quede cargado.
+              Tipografías: tech + legible.
+            </p>
+            <div class="stat" style="margin-top:12px">
+              <b>¿Colores de la web?</b>
+              <span>
+                Sí: conviene que la web se apoye en tonos oscuros + acentos del logo (cyan/pink/violeta),
+                así el logo “explota” y todo se ve pro.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -610,25 +547,20 @@
             <div class="card" style="grid-column: span 7;">
               <div class="pad">
                 <b style="display:block; margin-bottom:6px;">Email</b>
-                <p class="muted" style="margin-top:0" id="mailText">areadelucha@gmail.com</p>
+                <p class="muted" style="margin-top:0; font-weight:800">areadelucha@gmail.com</p>
 
-                <div class="cta">
-                  <a class="btn neon" href="mailto:areadelucha@gmail.com?subject=Contacto%20ADL">Enviar mail</a>
-                  <button class="btn" id="copyMail" type="button">Copiar email</button>
+                <div class="copy-row">
+                  <a class="btn neon" href="mailto:areadelucha@gmail.com?subject=Contacto%20%C3%81rea%20de%20Lucha">Enviar mail</a>
+                  <button class="mini" id="copyEmail" type="button">Copiar email</button>
+                  <span class="muted" id="copyMsg" aria-live="polite"></span>
                 </div>
-
-                <div class="copy">
-                  <input class="input" value="areadelucha@gmail.com" readonly aria-label="Email de contacto" />
-                </div>
-
-                <p class="muted" id="copyStatus" style="margin:10px 0 0;"></p>
               </div>
             </div>
 
             <div class="card" style="grid-column: span 5;">
               <div class="pad">
                 <b style="display:block; margin-bottom:6px;">Links rápidos</b>
-                <p class="muted" style="margin-top:0">Para mobile funciona como mini “link hub”.</p>
+                <p class="muted" style="margin-top:0">Ideal para mobile.</p>
                 <div class="cta">
                   <a class="btn" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">YouTube</a>
                   <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Kick</a>
@@ -644,54 +576,27 @@
 
     <footer>
       <div class="wrap" style="padding:0">
-        © <span id="y"></span> www.areadelucha.com — técnica · análisis · comunidad
+        © <span id="y"></span> areadelucha.com — técnica · data · análisis
       </div>
     </footer>
   </main>
-
-  <a class="btn top" id="topBtn" href="#top" aria-label="Volver arriba">↑ Arriba</a>
 
   <script>
     // Año
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Menú mobile
-    const burger = document.getElementById('burger');
-    const menu = document.getElementById('menu');
-    burger?.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-
     // Copiar email
-    const copyBtn = document.getElementById('copyMail');
-    const status = document.getElementById('copyStatus');
-    copyBtn?.addEventListener('click', async () => {
+    const btn = document.getElementById('copyEmail');
+    const msg = document.getElementById('copyMsg');
+    btn?.addEventListener('click', async () => {
       try{
         await navigator.clipboard.writeText('areadelucha@gmail.com');
-        status.textContent = '✅ Copiado al portapapeles.';
-        setTimeout(()=> status.textContent = '', 1800);
+        msg.textContent = 'Copiado ✅';
+        setTimeout(()=> msg.textContent = '', 1600);
       }catch(e){
-        status.textContent = '⚠️ No pude copiar. Copialo manual.';
-        setTimeout(()=> status.textContent = '', 1800);
+        msg.textContent = 'No pude copiar (tu navegador bloqueó).';
+        setTimeout(()=> msg.textContent = '', 2200);
       }
-    });
-
-    // Botón “arriba”
-    const topBtn = document.getElementById('topBtn');
-    const onScroll = () => {
-      if (window.scrollY > 600) topBtn.classList.add('show');
-      else topBtn.classList.remove('show');
-    };
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-
-    // Cerrar menú al clickear un link (mobile)
-    menu?.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        menu.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-      });
     });
   </script>
 </body>
