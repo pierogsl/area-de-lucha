@@ -1,41 +1,71 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <!-- SEO + Social + Icons (Área de Lucha) -->
-<link rel="canonical" href="https://www.areadelucha.com/" />
-
-<!-- Favicons -->
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-
-<!-- Open Graph / WhatsApp / Facebook -->
-<meta property="og:site_name" content="Área de Lucha">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.areadelucha.com/">
-<meta property="og:title" content="Área de Lucha — técnica · data · análisis">
-<meta property="og:description" content="Deportes de combate sin humo. Técnica clara, data útil y análisis real. BJJ, Judo, striking y debate.">
-<meta property="og:image" content="https://www.areadelucha.com/og-cover.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Área de Lucha — técnica · data · análisis">
-<meta name="twitter:description" content="Deportes de combate sin humo. Técnica clara, data útil y análisis real. BJJ, Judo, striking y debate.">
-<meta name="twitter:image" content="https://www.areadelucha.com/og-cover.png">
+  <!-- Básicos (orden recomendado) -->
   <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#070A12" />
+
   <title>Área de Lucha — técnica · data · análisis</title>
   <meta name="description" content="Área de Lucha: técnica clara, data útil y análisis real. BJJ, Judo, striking y debate." />
+  <meta name="theme-color" content="#070A12" />
+
+  <!-- Indexación -->
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="googlebot" content="index,follow,max-image-preview:large" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.areadelucha.com/" />
+
+  <!-- Favicons / PWA -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/favicon-48.png" sizes="48x48" />
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta property="og:site_name" content="Área de Lucha" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:url" content="https://www.areadelucha.com/" />
+  <meta property="og:title" content="Área de Lucha — técnica · data · análisis" />
+  <meta property="og:description" content="Deportes de combate sin humo. Técnica clara, data útil y análisis real. BJJ, Judo, striking y debate." />
+  <meta property="og:image" content="https://www.areadelucha.com/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Área de Lucha — técnica, data y análisis" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Área de Lucha — técnica · data · análisis" />
+  <meta name="twitter:description" content="Deportes de combate sin humo. Técnica clara, data útil y análisis real. BJJ, Judo, striking y debate." />
+  <meta name="twitter:image" content="https://www.areadelucha.com/og-cover.png" />
+  <meta name="twitter:image:alt" content="Área de Lucha — técnica, data y análisis" />
+
+  <!-- (Opcional pero útil) -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
   <!-- Tipografía -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data (Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Área de Lucha",
+    "url": "https://www.areadelucha.com/",
+    "sameAs": [
+      "https://www.youtube.com/@areadelucha",
+      "https://kick.com/areadelucha",
+      "https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -49,7 +79,7 @@
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --r: 22px;
       --max: 1160px;
-      --headerH: 78px; /* aprox, para scroll-margin */
+      --headerH: 78px; /* lo recalculamos en JS para que sea exacto */
     }
 
     *{ box-sizing:border-box; }
@@ -60,10 +90,35 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a{ color: inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
+
+    /* Accesibilidad: foco visible */
+    :focus-visible{
+      outline: 3px solid rgba(80,140,255,.65);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    /* Skip link (para teclado) */
+    .skip{
+      position:absolute;
+      left:-999px;
+      top:10px;
+      padding:10px 12px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 12px;
+      z-index: 10000;
+    }
+    .skip:focus{
+      left: 12px;
+    }
 
     .wrap{
       width: min(var(--max), calc(100% - 40px));
@@ -156,13 +211,10 @@
       nav{ justify-content:flex-start; }
     }
 
-    /* ===== Secciones con fondos independientes =====
-       - Cada sección (o bloque) trae su propio fondo.
-       - Evita “rareza” al cambiar tamaño: el fondo no depende del body global.
-    */
+    /* ===== Secciones con fondos independientes ===== */
     .block{
       position: relative;
-      isolation: isolate; /* asegura que el pseudo-fondo quede bien detrás */
+      isolation: isolate;
       padding: 28px 0;
     }
     .block::before{
@@ -180,10 +232,8 @@
       z-index:-1;
       pointer-events:none;
       background: linear-gradient(to bottom, rgba(7,10,18,.05), rgba(7,10,18,.70));
-      mix-blend-mode: normal;
     }
 
-    /* Fondos por sección (ajustados para responsive) */
     .bg-hero::before{
       background:
         radial-gradient(1100px 650px at 15% 20%, rgba(0,145,255,.20), transparent 62%),
@@ -231,7 +281,6 @@
       opacity: .9;
     }
 
-    /* ===== Componentes ===== */
     .anchor{ scroll-margin-top: calc(var(--headerH) + 14px); }
 
     .card{
@@ -290,7 +339,7 @@
     .icon{ width: 18px; height: 18px; display:inline-block; vertical-align: middle; }
     .icon svg{ width: 18px; height: 18px; display:block; }
 
-    /* ===== HERO (fondo propio + imagen propia, no se “rompe” al responsive) ===== */
+    /* ===== HERO ===== */
     .heroCard{
       position: relative;
       border-radius: calc(var(--r) + 6px);
@@ -489,7 +538,7 @@
       line-height: 1.45;
     }
 
-    /* ===== Sobre: 4 iguales (sin jerarquía) ===== */
+    /* ===== Sobre: 4 iguales ===== */
     .teamGrid{
       display:grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -633,522 +682,532 @@
 </head>
 
 <body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
 
-<header>
-  <div class="wrap">
-    <div class="topbar">
-      <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <img src="assets/2.png" alt="Logo Área de Lucha (color)" />
-        <div class="t">
-          <strong>Área de Lucha</strong>
-          <span>técnica · data · análisis</span>
-        </div>
-      </a>
-
-      <nav aria-label="Navegación principal">
-        <a class="pill" href="#episodios">Episodios</a>
-        <a class="pill" href="#plataformas">Plataformas</a>
-        <a class="pill" href="#envivo">En vivo</a>
-        <a class="pill" href="#merch">Merch</a>
-        <a class="pill" href="#trabajando">Hombres trabajando</a>
-        <a class="pill" href="#sobre">Sobre</a>
-        <a class="pill primary" href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </div>
-</header>
-
-<main>
-
-  <!-- HERO (bloque con fondo propio) -->
-  <section id="inicio" class="block bg-hero anchor">
+  <header id="siteHeader">
     <div class="wrap">
-      <div class="heroCard">
-        <div class="heroGrid">
-          <div>
-            <div class="badge">
-              <span class="dot" aria-hidden="true"></span>
-              Online • Técnica + Data + Análisis
-            </div>
-
-            <h1>Deportes de combate<br/>sin humo.</h1>
-            <p class="sub">
-              Episodios completos, streams y reels. Técnica clara, data útil y análisis real.
-              BJJ, Judo, striking y debate — con respeto, pero sin caretas.
-            </p>
-
-            <div class="ctaRow">
-              <a class="btn primary" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M21 8.2c0-1.1-.9-2-2-2.2C17.2 5.7 14.8 5.5 12 5.5s-5.2.2-7 .5c-1.1.2-2 .9-2 2.2A55 55 0 0 0 3 12a55 55 0 0 0 .1 3.8c0 1.3.9 2 2 2.2 1.8.3 4.2.5 6.9.5s5.2-.2 7-.5c1.1-.2 2-.9 2-2.2.1-1.3.1-2.5.1-3.8s0-2.5-.1-3.8Z" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M10.2 9.6v4.8L15 12l-4.8-2.4Z" fill="currentColor"/>
-                  </svg>
-                </span>
-                YouTube
-              </a>
-
-              <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M6 5h4v6l4-6h4l-5 7 5 7h-4l-4-6v6H6V5Z" fill="currentColor"/>
-                  </svg>
-                </span>
-                Kick (en vivo)
-              </a>
-
-              <a class="btn" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M17.6 6.4h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                  </svg>
-                </span>
-                Instagram
-              </a>
-            </div>
-
-            <div class="chips">
-              <span class="chip">• BJJ</span>
-              <span class="chip">• Judo</span>
-              <span class="chip">• Striking</span>
-              <span class="chip">• Análisis</span>
-            </div>
+      <div class="topbar">
+        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+          <img src="assets/2.png" alt="Logo Área de Lucha (color)" />
+          <div class="t">
+            <strong>Área de Lucha</strong>
+            <span>técnica · data · análisis</span>
           </div>
+        </a>
 
-          <div class="sideCard">
-            <div class="card">
-              <h3>▶ Playlist principal</h3>
-              <p>Entrá directo a la serie y mirá episodios completos.</p>
-              <div style="height:10px"></div>
-              <a class="btn" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noopener">
-                Ver playlist
-              </a>
-            </div>
+        <nav aria-label="Navegación principal">
+          <a class="pill" href="#episodios">Episodios</a>
+          <a class="pill" href="#plataformas">Plataformas</a>
+          <a class="pill" href="#envivo">En vivo</a>
+          <a class="pill" href="#merch">Merch</a>
+          <a class="pill" href="#trabajando">Hombres trabajando</a>
+          <a class="pill" href="#sobre">Sobre</a>
+          <a class="pill primary" href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-            <div class="card">
-              <h3>⚡ Criterio</h3>
-              <p>Respeto + debate. Mucha técnica, mucha data, cero humo.</p>
-            </div>
+  <main id="contenido">
 
-            <div class="card">
-              <h3>Marca</h3>
-              <p>Kit visual con las 4 versiones del logo, para web y redes.</p>
-              <div style="height:12px"></div>
-              <div class="miniRow" aria-label="Logos">
-                <img src="assets/1.jpeg" alt="Logo 1" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
-                <img src="assets/2.png" alt="Logo 2" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
-                <img src="assets/3.png" alt="Logo 3" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
-                <img src="assets/4.png" alt="Logo 4" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+    <!-- HERO -->
+    <section id="inicio" class="block bg-hero anchor">
+      <div class="wrap">
+        <div class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <div class="badge">
+                <span class="dot" aria-hidden="true"></span>
+                Online • Técnica + Data + Análisis
+              </div>
+
+              <h1>Deportes de combate<br/>sin humo.</h1>
+              <p class="sub">
+                Episodios completos, streams y reels. Técnica clara, data útil y análisis real.
+                BJJ, Judo, striking y debate — con respeto, pero sin caretas.
+              </p>
+
+              <div class="ctaRow">
+                <a class="btn primary" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener noreferrer">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M21 8.2c0-1.1-.9-2-2-2.2C17.2 5.7 14.8 5.5 12 5.5s-5.2.2-7 .5c-1.1.2-2 .9-2 2.2A55 55 0 0 0 3 12a55 55 0 0 0 .1 3.8c0 1.3.9 2 2 2.2 1.8.3 4.2.5 6.9.5s5.2-.2 7-.5c1.1-.2 2-.9 2-2.2.1-1.3.1-2.5.1-3.8s0-2.5-.1-3.8Z" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M10.2 9.6v4.8L15 12l-4.8-2.4Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  YouTube
+                </a>
+
+                <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener noreferrer">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M6 5h4v6l4-6h4l-5 7 5 7h-4l-4-6v6H6V5Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  Kick (en vivo)
+                </a>
+
+                <a class="btn" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M17.6 6.4h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  Instagram
+                </a>
+              </div>
+
+              <div class="chips">
+                <span class="chip">• BJJ</span>
+                <span class="chip">• Judo</span>
+                <span class="chip">• Striking</span>
+                <span class="chip">• Análisis</span>
               </div>
             </div>
+
+            <div class="sideCard">
+              <div class="card">
+                <h3>▶ Playlist principal</h3>
+                <p>Entrá directo a la serie y mirá episodios completos.</p>
+                <div style="height:10px"></div>
+                <a class="btn" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noopener noreferrer">
+                  Ver playlist
+                </a>
+              </div>
+
+              <div class="card">
+                <h3>⚡ Criterio</h3>
+                <p>Respeto + debate. Mucha técnica, mucha data, cero humo.</p>
+              </div>
+
+              <div class="card">
+                <h3>Marca</h3>
+                <p>Kit visual con las 4 versiones del logo, para web y redes.</p>
+                <div style="height:12px"></div>
+                <div class="miniRow" aria-label="Logos">
+                  <img src="assets/1.jpeg" alt="Logo 1" loading="lazy" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+                  <img src="assets/2.png" alt="Logo 2" loading="lazy" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+                  <img src="assets/3.png" alt="Logo 3" loading="lazy" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+                  <img src="assets/4.png" alt="Logo 4" loading="lazy" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /heroGrid -->
+        </div><!-- /heroCard -->
+      </div>
+    </section>
+
+    <!-- EPISODIOS -->
+    <section id="episodios" class="block bg-episodios anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Episodios</h2>
+          <span>Próximamente: cards con episodios destacados</span>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>Destacado #1</h3>
+            <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
           </div>
-
-        </div><!-- /heroGrid -->
-      </div><!-- /heroCard -->
-    </div>
-  </section>
-
-  <!-- EPISODIOS -->
-  <section id="episodios" class="block bg-episodios anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Episodios</h2>
-        <span>Próximamente: cards con episodios destacados</span>
-      </div>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>Destacado #1</h3>
-          <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
-        </div>
-        <div class="card">
-          <h3>Destacado #2</h3>
-          <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
-        </div>
-        <div class="card">
-          <h3>Destacado #3</h3>
-          <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLATAFORMAS -->
-  <section id="plataformas" class="block bg-plataformas anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Plataformas</h2>
-        <span>Entradas directas</span>
-      </div>
-
-      <div class="grid3">
-        <a class="card" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
-          <h3>YouTube</h3>
-          <p>Episodios completos, playlists y shorts.</p>
-        </a>
-
-        <a class="card" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
-          <h3>Kick</h3>
-          <p>Streams en vivo (cuando estemos online).</p>
-        </a>
-
-        <a class="card" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-          <h3>Instagram</h3>
-          <p>Reels, clips, backstage y anuncios.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EN VIVO -->
-  <section id="envivo" class="block bg-envivo anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>En vivo</h2>
-        <span>Contador para el próximo stream</span>
-      </div>
-
-      <div class="card liveBox">
-        <div>
-          <h3 style="margin:0 0 6px;">Próximo live</h3>
-          <p id="liveStatus" style="margin:0;color:rgba(255,255,255,.70);line-height:1.55;">
-            Cargá fecha y hora del próximo stream y queda guardado en tu navegador.
-          </p>
-
-          <div class="countdown" aria-label="Cuenta regresiva">
-            <div class="timeBox"><b id="d">—</b><span>Días</span></div>
-            <div class="timeBox"><b id="h">—</b><span>Horas</span></div>
-            <div class="timeBox"><b id="m">—</b><span>Min</span></div>
-            <div class="timeBox"><b id="s">—</b><span>Seg</span></div>
+          <div class="card">
+            <h3>Destacado #2</h3>
+            <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
           </div>
+          <div class="card">
+            <h3>Destacado #3</h3>
+            <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <p class="smallNote">
-            Tip: después lo conectamos a un calendario / API para que se actualice solo.
-          </p>
+    <!-- PLATAFORMAS -->
+    <section id="plataformas" class="block bg-plataformas anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Plataformas</h2>
+          <span>Entradas directas</span>
         </div>
 
-        <div>
-          <h3 style="margin:0 0 6px;">Configurar fecha/hora</h3>
-          <p style="margin:0;color:rgba(255,255,255,.66);line-height:1.55;">
-            Seleccioná el momento del próximo vivo (hora Argentina).
-          </p>
+        <div class="grid3">
+          <a class="card" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener noreferrer">
+            <h3>YouTube</h3>
+            <p>Episodios completos, playlists y shorts.</p>
+          </a>
 
-          <div class="formRow">
-            <input id="dt" type="datetime-local" />
-            <button class="btn primary" id="saveBtn" type="button">Guardar</button>
-            <button class="btn" id="clearBtn" type="button">Borrar</button>
-          </div>
+          <a class="card" href="https://kick.com/areadelucha" target="_blank" rel="noopener noreferrer">
+            <h3>Kick</h3>
+            <p>Streams en vivo (cuando estemos online).</p>
+          </a>
 
-          <div style="height:12px"></div>
-
-          <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
-            Ir a Kick
+          <a class="card" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">
+            <h3>Instagram</h3>
+            <p>Reels, clips, backstage y anuncios.</p>
           </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- MERCH -->
-  <section id="merch" class="block bg-merch anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Merch</h2>
-        <span>Ropa · gorras · stickers · lo más barato posible</span>
-      </div>
-
-      <div class="grid3">
-        <div class="card">
-          <h3>Shop (próximamente)</h3>
-          <p>
-            Acá va el catálogo cuando definamos proveedor. Vamos por la opción más barata
-            que mantenga buena calidad.
-          </p>
-          <div style="height:10px"></div>
-          <a class="btn" href="#contacto">Quiero merch</a>
+    <!-- EN VIVO -->
+    <section id="envivo" class="block bg-envivo anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>En vivo</h2>
+          <span>Contador para el próximo stream</span>
         </div>
 
-        <div class="card">
-          <h3>Qué vendemos</h3>
-          <p>Remeras, buzos, gorras, stickers y rashguards (BJJ).</p>
-        </div>
-
-        <div class="card">
-          <h3>Checkout</h3>
-          <p>Después lo linkeamos a MercadoPago / TiendaNube / lo que convenga.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOMBRES TRABAJANDO -->
-  <section id="trabajando" class="block bg-trabajando anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Hombres trabajando</h2>
-        <span>Para que se note que falta completar cosas</span>
-      </div>
-
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="font-size:22px" aria-hidden="true">👷‍♂️</div>
+        <div class="card liveBox">
           <div>
-            <h3 style="margin:0 0 6px;">Estamos metiéndole</h3>
-            <p style="margin:0;color:rgba(255,255,255,.66);line-height:1.55;">
-              Esta web está en construcción: se vienen episodios, invitados, calendario y tienda.
+            <h3 style="margin:0 0 6px;">Próximo live</h3>
+            <p id="liveStatus" style="margin:0;color:rgba(255,255,255,.70);line-height:1.55;">
+              Cargá fecha y hora del próximo stream y queda guardado en tu navegador.
+            </p>
+
+            <div class="countdown" aria-label="Cuenta regresiva">
+              <div class="timeBox"><b id="d">—</b><span>Días</span></div>
+              <div class="timeBox"><b id="h">—</b><span>Horas</span></div>
+              <div class="timeBox"><b id="m">—</b><span>Min</span></div>
+              <div class="timeBox"><b id="s">—</b><span>Seg</span></div>
+            </div>
+
+            <p class="smallNote">
+              Tip: después lo conectamos a un calendario / API para que se actualice solo.
             </p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SOBRE -->
-  <section id="sobre" class="block bg-sobre anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Sobre</h2>
-        <span>El canal es el protagonista</span>
-      </div>
+          <div>
+            <h3 style="margin:0 0 6px;">Configurar fecha/hora</h3>
+            <p style="margin:0;color:rgba(255,255,255,.66);line-height:1.55;">
+              Seleccioná el momento del próximo vivo (hora Argentina).
+            </p>
 
-      <div class="card">
-        <h3 style="margin:0 0 10px;">Área de Lucha</h3>
-        <p style="margin:0;color:rgba(255,255,255,.72);line-height:1.65;max-width:90ch;">
-          Somos 4 personas, todos estudiantes de BJJ (Escuela Lotus, sede a cargo de Leandro).
-          Diego (Cule) e Iván (El Colo) son faixa azul. Fer faixa violeta.
-          Piero faixa blanca. Fer y Piero además somos 2º dan de Judo.
-          La idea: charlas descontracturadas, pero con técnica, data y análisis real.
-          Acá no hay “figuras”: manda el canal, el contenido y el equipo.
-        </p>
+            <div class="formRow">
+              <input id="dt" type="datetime-local" />
+              <button class="btn primary" id="saveBtn" type="button">Guardar</button>
+              <button class="btn" id="clearBtn" type="button">Borrar</button>
+            </div>
 
-        <div class="teamGrid" aria-label="Equipo (todos iguales)">
-          <div class="card teamCard">
-            <h3>Diego (Cule)</h3>
-            <div class="teamMeta">Faixa azul (BJJ)</div>
-            <div class="teamDesc">Debate, análisis y calle.</div>
-          </div>
+            <div style="height:12px"></div>
 
-          <div class="card teamCard">
-            <h3>Iván (El Colo)</h3>
-            <div class="teamMeta">Faixa azul (BJJ)</div>
-            <div class="teamDesc">Técnica, CM y datos.</div>
-          </div>
-
-          <div class="card teamCard">
-            <h3>Fer</h3>
-            <div class="teamMeta">Faixa violeta (BJJ) · 2º Dan (Judo)</div>
-            <div class="teamDesc">Experiencia y criterio de tatami.</div>
-          </div>
-
-          <div class="card teamCard">
-            <h3>Piero</h3>
-            <div class="teamMeta">Faixa blanca (BJJ) · 2º Dan (Judo)</div>
-            <div class="teamDesc">Estructura, técnica y empuje.</div>
+            <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener noreferrer">
+              Ir a Kick
+            </a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="block bg-contacto anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Contacto</h2>
-        <span>Redes + WhatsApp + Mail</span>
+    <!-- MERCH -->
+    <section id="merch" class="block bg-merch anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Merch</h2>
+          <span>Ropa · gorras · stickers · lo más barato posible</span>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>Shop (próximamente)</h3>
+            <p>
+              Acá va el catálogo cuando definamos proveedor. Vamos por la opción más barata
+              que mantenga buena calidad.
+            </p>
+            <div style="height:10px"></div>
+            <a class="btn" href="#contacto">Quiero merch</a>
+          </div>
+
+          <div class="card">
+            <h3>Qué vendemos</h3>
+            <p>Remeras, buzos, gorras, stickers y rashguards (BJJ).</p>
+          </div>
+
+          <div class="card">
+            <h3>Checkout</h3>
+            <p>Después lo linkeamos a MercadoPago / TiendaNube / lo que convenga.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="grid3">
-        <a class="card" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
-          <h3>YouTube</h3>
-          <p>@areadelucha</p>
-        </a>
-
-        <a class="card" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
-          <h3>Kick</h3>
-          <p>kick.com/areadelucha</p>
-        </a>
-
-        <a class="card" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-          <h3>Instagram</h3>
-          <p>@areadelucha</p>
-        </a>
-
-        <!-- WhatsApp (cambiá el número) -->
-        <a class="card" href="https://wa.me/5491100000000" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <h3>WhatsApp</h3>
-          <p>+54 9 11 000000000</p>
-        </a>
-
-        <a class="card" href="mailto:areadelucha@gmail.com">
-          <h3>Email</h3>
-          <p>areadelucha@gmail.com</p>
-        </a>
+    <!-- HOMBRES TRABAJANDO -->
+    <section id="trabajando" class="block bg-trabajando anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Hombres trabajando</h2>
+          <span>Para que se note que falta completar cosas</span>
+        </div>
 
         <div class="card">
-          <h3>Colab / invitados</h3>
-          <p>Si querés caer al stream o proponer tema, escribinos por WhatsApp o mail.</p>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:22px" aria-hidden="true">👷‍♂️</div>
+            <div>
+              <h3 style="margin:0 0 6px;">Estamos metiéndole</h3>
+              <p style="margin:0;color:rgba(255,255,255,.66);line-height:1.55;">
+                Esta web está en construcción: se vienen episodios, invitados, calendario y tienda.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="block bg-sobre anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Sobre</h2>
+          <span>El canal es el protagonista</span>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 10px;">Área de Lucha</h3>
+          <p style="margin:0;color:rgba(255,255,255,.72);line-height:1.65;max-width:90ch;">
+            Somos 4 personas, todos estudiantes de BJJ (Escuela Lotus, sede a cargo de Leandro).
+            Diego (Cule) e Iván (El Colo) son faixa azul. Fer faixa violeta.
+            Piero faixa blanca. Fer y Piero además somos 2º dan de Judo.
+            La idea: charlas descontracturadas, pero con técnica, data y análisis real.
+            Acá no hay “figuras”: manda el canal, el contenido y el equipo.
+          </p>
+
+          <div class="teamGrid" aria-label="Equipo (todos iguales)">
+            <div class="card teamCard">
+              <h3>Diego (Cule)</h3>
+              <div class="teamMeta">Faixa azul (BJJ)</div>
+              <div class="teamDesc">Debate, análisis y calle.</div>
+            </div>
+
+            <div class="card teamCard">
+              <h3>Iván (El Colo)</h3>
+              <div class="teamMeta">Faixa azul (BJJ)</div>
+              <div class="teamDesc">Técnica, CM y datos.</div>
+            </div>
+
+            <div class="card teamCard">
+              <h3>Fer</h3>
+              <div class="teamMeta">Faixa violeta (BJJ) · 2º Dan (Judo)</div>
+              <div class="teamDesc">Experiencia y criterio de tatami.</div>
+            </div>
+
+            <div class="card teamCard">
+              <h3>Piero</h3>
+              <div class="teamMeta">Faixa blanca (BJJ) · 2º Dan (Judo)</div>
+              <div class="teamDesc">Estructura, técnica y empuje.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="block bg-contacto anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Contacto</h2>
+          <span>Redes + WhatsApp + Mail</span>
+        </div>
+
+        <div class="grid3">
+          <a class="card" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener noreferrer">
+            <h3>YouTube</h3>
+            <p>@areadelucha</p>
+          </a>
+
+          <a class="card" href="https://kick.com/areadelucha" target="_blank" rel="noopener noreferrer">
+            <h3>Kick</h3>
+            <p>kick.com/areadelucha</p>
+          </a>
+
+          <a class="card" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">
+            <h3>Instagram</h3>
+            <p>@areadelucha</p>
+          </a>
+
+          <!-- WhatsApp (cambiá el número) -->
+          <a class="card" href="https://wa.me/5491100000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <h3>WhatsApp</h3>
+            <p>+54 9 11 000000000</p>
+          </a>
+
+          <a class="card" href="mailto:areadelucha@gmail.com">
+            <h3>Email</h3>
+            <p>areadelucha@gmail.com</p>
+          </a>
+
+          <div class="card">
+            <h3>Colab / invitados</h3>
+            <p>Si querés caer al stream o proponer tema, escribinos por WhatsApp o mail.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div class="stamp">
+          <img src="assets/3.png" alt="Logo Área de Lucha (blanco y negro)" loading="lazy" />
+          <span>Área de Lucha — técnica · data · análisis</span>
+        </div>
+
+        <div style="color:rgba(255,255,255,.55);font-weight:800;">
+          © <span id="yy"></span> Área de Lucha
         </div>
       </div>
     </div>
-  </section>
+  </footer>
 
-</main>
+  <!-- Botón flotante WhatsApp (cambiá el número) -->
+  <a class="fab-wa" href="https://wa.me/5491100000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Área de Lucha">
+    <span class="fab-ico" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path fill="currentColor" d="M16 3C9.38 3 4 8.2 4 14.6c0 2.48.84 4.78 2.27 6.65L5 29l7.9-1.99a12.5 12.5 0 0 0 3.1.38c6.62 0 12-5.2 12-11.6S22.62 3 16 3Zm0 21.2c-1.02 0-2.03-.15-2.98-.44l-.62-.2-4.68 1.18 1.25-4.4-.41-.67A9.2 9.2 0 0 1 6.8 14.6C6.8 9.76 10.88 5.8 16 5.8s9.2 3.96 9.2 8.8-4.08 9.6-9.2 9.6Zm5.33-6.9c-.29-.14-1.7-.83-1.97-.93-.27-.1-.47-.14-.66.14-.2.29-.76.93-.93 1.12-.17.2-.34.22-.63.08-.29-.14-1.22-.44-2.32-1.4-.86-.74-1.44-1.66-1.6-1.95-.17-.29-.02-.44.13-.58.13-.13.29-.34.44-.5.15-.17.2-.29.29-.48.1-.2.05-.36-.02-.5-.07-.14-.66-1.57-.9-2.15-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.5.07-.76.36-.27.29-1.02 1-1.02 2.45 0 1.44 1.05 2.84 1.2 3.04.14.2 2.07 3.2 5.06 4.36.71.27 1.27.43 1.7.55.71.22 1.36.19 1.87.12.57-.09 1.7-.69 1.94-1.35.24-.66.24-1.23.17-1.35-.07-.12-.27-.2-.56-.34Z"/>
+      </svg>
+    </span>
+    <span class="fab-txt">WhatsApp</span>
+  </a>
 
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div class="stamp">
-        <img src="assets/3.png" alt="Logo Área de Lucha (blanco y negro)" />
-        <span>Área de Lucha — técnica · data · análisis</span>
-      </div>
+  <!-- Volver arriba -->
+  <button class="fab-top" id="topBtn" type="button" aria-label="Volver arriba">
+    <span class="fab-ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 5l7 7-1.4 1.4L12 7.8 6.4 13.4 5 12l7-7Z" fill="currentColor"/>
+        <path d="M5 18h14v2H5v-2Z" fill="currentColor" opacity=".55"/>
+      </svg>
+    </span>
+  </button>
 
-      <div style="color:rgba(255,255,255,.55);font-weight:800;">
-        © <span id="yy"></span> Área de Lucha
-      </div>
-    </div>
-  </div>
-</footer>
+  <script>
+    // Año footer
+    document.getElementById("yy").textContent = new Date().getFullYear();
 
-<!-- Botón flotante WhatsApp (cambiá el número) -->
-<a class="fab-wa" href="https://wa.me/5491100000000" target="_blank" rel="noopener" aria-label="WhatsApp Área de Lucha">
-  <span class="fab-ico" aria-hidden="true">
-    <svg viewBox="0 0 32 32" fill="none">
-      <path fill="currentColor" d="M16 3C9.38 3 4 8.2 4 14.6c0 2.48.84 4.78 2.27 6.65L5 29l7.9-1.99a12.5 12.5 0 0 0 3.1.38c6.62 0 12-5.2 12-11.6S22.62 3 16 3Zm0 21.2c-1.02 0-2.03-.15-2.98-.44l-.62-.2-4.68 1.18 1.25-4.4-.41-.67A9.2 9.2 0 0 1 6.8 14.6C6.8 9.76 10.88 5.8 16 5.8s9.2 3.96 9.2 8.8-4.08 9.6-9.2 9.6Zm5.33-6.9c-.29-.14-1.7-.83-1.97-.93-.27-.1-.47-.14-.66.14-.2.29-.76.93-.93 1.12-.17.2-.34.22-.63.08-.29-.14-1.22-.44-2.32-1.4-.86-.74-1.44-1.66-1.6-1.95-.17-.29-.02-.44.13-.58.13-.13.29-.34.44-.5.15-.17.2-.29.29-.48.1-.2.05-.36-.02-.5-.07-.14-.66-1.57-.9-2.15-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.5.07-.76.36-.27.29-1.02 1-1.02 2.45 0 1.44 1.05 2.84 1.2 3.04.14.2 2.07 3.2 5.06 4.36.71.27 1.27.43 1.7.55.71.22 1.36.19 1.87.12.57-.09 1.7-.69 1.94-1.35.24-.66.24-1.23.17-1.35-.07-.12-.27-.2-.56-.34Z"/>
-    </svg>
-  </span>
-  <span class="fab-txt">WhatsApp</span>
-</a>
+    // Ajusta --headerH al alto REAL del header (evita que los anclajes queden corridos en responsive)
+    const headerEl = document.getElementById("siteHeader");
+    function setHeaderVar(){
+      if(!headerEl) return;
+      const h = Math.ceil(headerEl.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--headerH", h + "px");
+    }
+    window.addEventListener("resize", setHeaderVar, { passive: true });
+    setHeaderVar();
 
-<!-- Volver arriba -->
-<button class="fab-top" id="topBtn" type="button" aria-label="Volver arriba">
-  <span class="fab-ico" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path d="M12 5l7 7-1.4 1.4L12 7.8 6.4 13.4 5 12l7-7Z" fill="currentColor"/>
-      <path d="M5 18h14v2H5v-2Z" fill="currentColor" opacity=".55"/>
-    </svg>
-  </span>
-</button>
+    // Countdown live
+    const KEY = "adl_next_live_iso";
+    const dtInput = document.getElementById("dt");
+    const saveBtn = document.getElementById("saveBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const statusEl = document.getElementById("liveStatus");
 
-<script>
-  // Año footer
-  document.getElementById("yy").textContent = new Date().getFullYear();
+    const out = {
+      d: document.getElementById("d"),
+      h: document.getElementById("h"),
+      m: document.getElementById("m"),
+      s: document.getElementById("s"),
+    };
 
-  // Countdown live
-  const KEY = "adl_next_live_iso";
-  const dtInput = document.getElementById("dt");
-  const saveBtn = document.getElementById("saveBtn");
-  const clearBtn = document.getElementById("clearBtn");
-  const statusEl = document.getElementById("liveStatus");
+    function pad(n){ return String(n).padStart(2, "0"); }
 
-  const out = {
-    d: document.getElementById("d"),
-    h: document.getElementById("h"),
-    m: document.getElementById("m"),
-    s: document.getElementById("s"),
-  };
+    function loadSaved(){
+      const saved = localStorage.getItem(KEY);
+      if(!saved) return null;
+      const date = new Date(saved);
+      if(isNaN(date.getTime())) return null;
 
-  function pad(n){ return String(n).padStart(2, "0"); }
-
-  function loadSaved(){
-    const saved = localStorage.getItem(KEY);
-    if(!saved) return null;
-    const date = new Date(saved);
-    if(isNaN(date.getTime())) return null;
-
-    // Ajuste para mostrar en input local (sin romper el ISO guardado)
-    const tzOffset = date.getTimezoneOffset() * 60000;
-    const local = new Date(date.getTime() - tzOffset);
-    dtInput.value = local.toISOString().slice(0,16);
-    return date;
-  }
-
-  function setStatus(text){
-    statusEl.textContent = text;
-  }
-
-  function tick(target){
-    if(!target){
-      out.d.textContent = "—";
-      out.h.textContent = "—";
-      out.m.textContent = "—";
-      out.s.textContent = "—";
-      setStatus("Cargá fecha y hora del próximo stream y queda guardado en tu navegador.");
-      return;
+      const tzOffset = date.getTimezoneOffset() * 60000;
+      const local = new Date(date.getTime() - tzOffset);
+      dtInput.value = local.toISOString().slice(0,16);
+      return date;
     }
 
-    const now = new Date();
-    const diff = target.getTime() - now.getTime();
-
-    if(diff <= 0){
-      out.d.textContent = "00";
-      out.h.textContent = "00";
-      out.m.textContent = "00";
-      out.s.textContent = "00";
-      setStatus("¡Estamos en horario! Si están en vivo, entrá a Kick.");
-      return;
+    function setStatus(text){
+      statusEl.textContent = text;
     }
 
-    const totalSeconds = Math.floor(diff / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const mins = Math.floor((totalSeconds % 3600) / 60);
-    const secs = totalSeconds % 60;
+    function tick(target){
+      if(!target){
+        out.d.textContent = "—";
+        out.h.textContent = "—";
+        out.m.textContent = "—";
+        out.s.textContent = "—";
+        setStatus("Cargá fecha y hora del próximo stream y queda guardado en tu navegador.");
+        return;
+      }
 
-    out.d.textContent = String(days);
-    out.h.textContent = pad(hours);
-    out.m.textContent = pad(mins);
-    out.s.textContent = pad(secs);
+      const now = new Date();
+      const diff = target.getTime() - now.getTime();
 
-    const opts = { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:"2-digit", minute:"2-digit" };
-    setStatus("Próximo live: " + target.toLocaleString("es-AR", opts));
-  }
+      if(diff <= 0){
+        out.d.textContent = "00";
+        out.h.textContent = "00";
+        out.m.textContent = "00";
+        out.s.textContent = "00";
+        setStatus("¡Estamos en horario! Si están en vivo, entrá a Kick.");
+        return;
+      }
 
-  let targetDate = loadSaved();
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const mins = Math.floor((totalSeconds % 3600) / 60);
+      const secs = totalSeconds % 60;
 
-  saveBtn.addEventListener("click", () => {
-    if(!dtInput.value){
-      alert("Elegí una fecha y hora primero.");
-      return;
+      out.d.textContent = String(days);
+      out.h.textContent = pad(hours);
+      out.m.textContent = pad(mins);
+      out.s.textContent = pad(secs);
+
+      const opts = { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:"2-digit", minute:"2-digit" };
+      setStatus("Próximo live: " + target.toLocaleString("es-AR", opts));
     }
-    const chosen = new Date(dtInput.value);
-    if(isNaN(chosen.getTime())){
-      alert("Fecha/hora inválida.");
-      return;
-    }
-    localStorage.setItem(KEY, chosen.toISOString());
-    targetDate = chosen;
+
+    let targetDate = loadSaved();
+
+    saveBtn.addEventListener("click", () => {
+      if(!dtInput.value){
+        alert("Elegí una fecha y hora primero.");
+        return;
+      }
+      const chosen = new Date(dtInput.value);
+      if(isNaN(chosen.getTime())){
+        alert("Fecha/hora inválida.");
+        return;
+      }
+      localStorage.setItem(KEY, chosen.toISOString());
+      targetDate = chosen;
+      tick(targetDate);
+    });
+
+    clearBtn.addEventListener("click", () => {
+      localStorage.removeItem(KEY);
+      dtInput.value = "";
+      targetDate = null;
+      tick(null);
+    });
+
     tick(targetDate);
-  });
+    setInterval(() => tick(targetDate), 1000);
 
-  clearBtn.addEventListener("click", () => {
-    localStorage.removeItem(KEY);
-    dtInput.value = "";
-    targetDate = null;
-    tick(null);
-  });
-
-  tick(targetDate);
-  setInterval(() => tick(targetDate), 1000);
-
-  // Volver arriba
-  const topBtn = document.getElementById("topBtn");
-  function onScroll(){
-    if(window.scrollY > 380){
-      topBtn.classList.add("show");
-    } else {
-      topBtn.classList.remove("show");
+    // Volver arriba
+    const topBtn = document.getElementById("topBtn");
+    function onScroll(){
+      if(window.scrollY > 380){
+        topBtn.classList.add("show");
+      } else {
+        topBtn.classList.remove("show");
+      }
     }
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
-  topBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-</script>
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
 
 </body>
 </html>
