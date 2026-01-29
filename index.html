@@ -3,13 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Área de Lucha</title>
+  <title>Área de Lucha — técnica · data · calle</title>
 
   <!-- SEO básico -->
   <meta name="description" content="Área de Lucha: el hub de combate que mezcla técnica, data y calle. Videos, reels y streams en un solo lugar." />
   <meta name="theme-color" content="#07020D" />
 
-  <!-- Fuentes -->
+  <!-- Open Graph (preview al compartir) -->
+  <meta property="og:title" content="Área de Lucha" />
+  <meta property="og:description" content="técnica · data · calle — videos, reels y streams" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.areadelucha.com/" />
+  <!-- Opcional: subí una imagen y poné la ruta -->
+  <!-- <meta property="og:image" content="https://www.areadelucha.com/assets/og.jpg" /> -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -17,18 +24,19 @@
   <style>
     :root{
       --bg:#07020D;
-      --text:#EDE9FF;
-      --muted:rgba(237,233,255,.72);
-      --muted2:rgba(237,233,255,.55);
+      --text:#F0EDFF;
+      --muted:rgba(240,237,255,.70);
 
       --blue:#3796F4;
       --magenta:#E047A4;
 
-      --card:rgba(255,255,255,.06);
-      --border:rgba(255,255,255,.12);
-      --shadow: 0 24px 70px rgba(0,0,0,.55);
+      --card: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.11);
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
 
-      --radius: 22px;
+      --r: 22px;
+      --r2: 16px;
+      --max: 1160px;
     }
 
     *{box-sizing:border-box}
@@ -36,237 +44,317 @@
     body{
       margin:0;
       color:var(--text);
-      font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
+      font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background: var(--bg);
       overflow-x:hidden;
     }
 
-    /* Fondo con glow suave */
+    /* Fondo “energía” (no pesado) */
     .bg{
-      position:fixed;
-      inset:-260px;
-      z-index:-2;
+      position:fixed; inset:-220px;
+      z-index:-2; pointer-events:none;
+      background:
+        radial-gradient(900px 520px at 20% 18%, rgba(55,150,244,.18), transparent 62%),
+        radial-gradient(900px 520px at 80% 16%, rgba(224,71,164,.16), transparent 62%),
+        radial-gradient(900px 520px at 55% 110%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.04), transparent 45%);
+      filter: blur(16px);
+      opacity:.95;
+    }
+
+    /* Ruido ultra sutil para que no se vea “plano” */
+    .grain{
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.03), transparent 35%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.02), transparent 35%),
+        radial-gradient(circle at 30% 90%, rgba(255,255,255,.02), transparent 40%);
+      mix-blend-mode: screen;
+      opacity:.35;
+    }
+
+    a{color:inherit}
+    .wrap{width:min(var(--max), 92vw); margin:0 auto; padding:22px 0 44px;}
+
+    /* Header */
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      padding: 12px 0 18px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:14px;
+      min-width: 240px;
+    }
+
+    .logoBox{
+      width:62px; height:62px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      border:1px solid var(--stroke);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      display:grid; place-items:center;
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(12px);
+    }
+    .logoBox:before{
+      content:"";
+      position:absolute; inset:-50%;
+      background:
+        radial-gradient(circle at 28% 30%, rgba(55,150,244,.34), transparent 55%),
+        radial-gradient(circle at 78% 30%, rgba(224,71,164,.30), transparent 55%);
+      filter: blur(18px);
+      opacity:.85;
+    }
+    .logoBox img{
+      width:46px; height:auto;
+      position:relative;
+      filter: drop-shadow(0 14px 40px rgba(0,0,0,.60));
+    }
+
+    .brandText{display:flex; flex-direction:column; line-height:1.05}
+    .brandText strong{
+      font-family:"Orbitron",system-ui;
+      font-size:18px; letter-spacing:.4px;
+    }
+    .brandText span{font-size:13.5px; color:var(--muted)}
+
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:11px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.05);}
+    .btn.blue{border-color: rgba(55,150,244,.38)}
+    .btn.magenta{border-color: rgba(224,71,164,.38)}
+    .btn.ghost{background:transparent}
+    .btn.small{padding:9px 12px; font-weight:800; opacity:.92}
+    .btn.small:hover{opacity:1}
+
+    /* Banner / Hero */
+    .hero{
+      border-radius: var(--r);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Imagen de banner opcional: assets/banner.jpg */
+    .heroArt{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 520px at 12% 25%, rgba(55,150,244,.28), transparent 58%),
+        radial-gradient(900px 520px at 88% 20%, rgba(224,71,164,.22), transparent 62%),
+        linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.18));
+      z-index:0;
+    }
+    .heroArt::after{
+      content:"";
+      position:absolute; inset:0;
+      background-image: url("assets/banner.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: .22; /* si no existe el archivo, no rompe nada */
+      filter: saturate(1.1) contrast(1.05);
+      mix-blend-mode: screen;
+    }
+
+    /* Rayo diagonal (sin “Flash”) */
+    .bolt{
+      position:absolute;
+      inset:-40px -40px -40px -40px;
+      z-index:1;
+      opacity:.55;
       pointer-events:none;
       background:
-        radial-gradient(900px 420px at 18% 26%, rgba(55,150,244,.24), transparent 62%),
-        radial-gradient(820px 380px at 82% 22%, rgba(224,71,164,.22), transparent 60%),
-        radial-gradient(1100px 520px at 50% 110%, rgba(255,255,255,.08), transparent 60%);
-      filter: blur(14px);
+        linear-gradient(120deg,
+          transparent 0%,
+          transparent 46%,
+          rgba(255,255,255,.10) 49%,
+          rgba(255,255,255,.22) 50%,
+          rgba(255,255,255,.10) 51%,
+          transparent 54%,
+          transparent 100%);
+      filter: blur(0.5px);
+      transform: rotate(-2deg);
     }
-
-    /* Grano sutil */
-    .grain{
-      position:fixed;
-      inset:0;
-      z-index:-1;
+    .boltGlow{
+      position:absolute; inset:-80px;
+      z-index:1;
       pointer-events:none;
-      opacity:.08;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      mix-blend-mode: overlay;
+      background:
+        radial-gradient(420px 220px at 30% 60%, rgba(55,150,244,.22), transparent 70%),
+        radial-gradient(420px 220px at 70% 40%, rgba(224,71,164,.20), transparent 70%);
+      filter: blur(18px);
+      opacity:.85;
     }
 
-    .wrap{
-      width:min(1120px,92vw);
-      margin:0 auto;
-      padding:42px 0 26px;
-    }
-
-    /* Header pequeño (opcional) */
-    .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:26px;
-    }
-    .badge{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      font-size:13px;
-      color:var(--muted);
-    }
-    .dot{
-      width:9px;height:9px;border-radius:50%;
-      background:linear-gradient(135deg,var(--blue),var(--magenta));
-      box-shadow:0 0 18px rgba(224,71,164,.35);
-    }
-
-    /* HERO */
-    .hero{
+    .heroInner{
+      position:relative;
+      z-index:2;
+      padding: 26px;
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:22px;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
       align-items:stretch;
     }
 
-    .panel{
-      border:1px solid var(--border);
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      overflow:hidden;
-      position:relative;
-    }
-
-    .panel::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: linear-gradient(120deg, rgba(55,150,244,.22), rgba(224,71,164,.18), rgba(255,255,255,.06));
-      opacity:.55;
-      filter: blur(18px);
-      z-index:0;
-    }
-
-    .panel > *{
-      position:relative;
-      z-index:1;
-    }
-
-    .copy{
-      padding:26px 26px 22px;
+    @media (max-width: 920px){
+      header{flex-direction:column; align-items:flex-start}
+      nav{justify-content:flex-start}
+      .heroInner{grid-template-columns:1fr}
     }
 
     h1{
       font-family:"Orbitron",system-ui;
-      margin:0 0 10px;
-      font-size:clamp(30px,3.2vw,48px);
+      margin: 4px 0 10px;
+      font-size: clamp(32px, 3.8vw, 56px);
       line-height:1.05;
       letter-spacing:.2px;
     }
-
-    .sub{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:16.8px;
-      line-height:1.55;
-      max-width:62ch;
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 70ch;
     }
 
-    .cta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
+    .heroLeft .ctaRow{display:flex; gap:10px; flex-wrap:wrap}
 
-    a.btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:999px;
-      text-decoration:none;
-      color:var(--text);
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      font-weight:700;
-      transition: transform .14s ease, background .14s ease, border-color .14s ease;
-    }
-    a.btn:hover{
-      transform: translateY(-1px);
-      background:rgba(255,255,255,.07);
-      border-color: rgba(255,255,255,.20);
-    }
-
-    a.btn.blue{ border-color:rgba(55,150,244,.35) }
-    a.btn.magenta{ border-color:rgba(224,71,164,.35) }
-    a.btn.ghost{ color:var(--muted); font-weight:700 }
-
-    .mini{
-      color:var(--muted2);
-      font-size:13px;
-      margin-top:14px;
-    }
-
-    /* Panel del logo */
-    .brand{
-      padding:18px;
+    /* Tarjeta derecha (contenido rápido) */
+    .panel{
+      border-radius: var(--r2);
+      background: rgba(0,0,0,.20);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 16px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.42);
       display:flex;
       flex-direction:column;
-      gap:12px;
-      justify-content:center;
-      text-align:left;
-    }
-
-    .brandCard{
-      border-radius:18px;
+      gap: 12px;
       overflow:hidden;
+    }
+
+    .panelTop{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .chip{
+      font-size:12.5px;
+      color: rgba(255,255,255,.78);
       border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.25);
-      box-shadow: 0 18px 55px rgba(0,0,0,.55);
-      position:relative;
-    }
-
-    /* esto hace que el logo se “integre” y no quede plano */
-    .brandCard::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(650px 240px at 25% 20%, rgba(55,150,244,.22), transparent 60%),
-                  radial-gradient(650px 240px at 85% 20%, rgba(224,71,164,.20), transparent 60%);
-      mix-blend-mode: screen;
-      opacity:.55;
-      pointer-events:none;
-    }
-
-    .logo{
-      width:100%;
-      height:auto;
-      display:block;
-      transform: scale(1.01);
-    }
-
-    .brandMeta{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .pill{
+      background: rgba(255,255,255,.04);
+      padding: 7px 10px;
+      border-radius: 999px;
       display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
+      gap:8px; align-items:center;
+      white-space:nowrap;
     }
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: linear-gradient(90deg, var(--blue), var(--magenta));
+      box-shadow: 0 0 18px rgba(224,71,164,.35);
+    }
+
+    .panel a{ text-decoration:none }
+    .panel a:hover{ text-decoration:underline }
+
+    .kicker{
+      color: rgba(255,255,255,.82);
+      font-weight:800;
+      letter-spacing:.2px;
+      margin:0;
+      font-size: 14px;
+    }
+    .mini{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    /* Secciones */
+    .section{
+      margin-top: 18px;
+      border-radius: var(--r);
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 16px 55px rgba(0,0,0,.30);
+      overflow:hidden;
+    }
+    .sectionHead{
+      padding: 16px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), transparent);
+    }
+    .sectionHead h2{
+      margin:0;
+      font-family:"Orbitron",system-ui;
+      font-size: 16px;
+      letter-spacing:.35px;
+    }
+    .sectionBody{padding: 18px}
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 860px){
+      .grid2{grid-template-columns:1fr}
+    }
+
+    .card{
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:14px;
+      letter-spacing:.2px;
+      color: rgba(255,255,255,.90);
+    }
+    .card p{margin:0; color:var(--muted); line-height:1.55}
+
+    /* Embed responsive */
+    .video{
+      aspect-ratio: 16/9;
+      width:100%;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+    }
+    .video iframe{width:100%; height:100%; border:0}
 
     footer{
-      margin-top:18px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.10);
-      color:var(--muted2);
-      font-size:13px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:space-between;
-      align-items:center;
+      margin-top: 18px;
+      color: rgba(255,255,255,.55);
+      font-size: 13px;
+      display:flex; gap:12px; flex-wrap:wrap;
+      align-items:center; justify-content:space-between;
+      padding: 4px 2px;
     }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;}
 
-    footer a{ color:var(--text); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.22) }
-    footer a:hover{ border-bottom-color:rgba(255,255,255,.45) }
-
-    /* Responsive */
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
-      .copy{ padding:22px; }
-      .brand{ padding:16px; }
-    }
+    /* Accesibilidad: foco visible */
+    :focus-visible{outline:2px solid rgba(55,150,244,.55); outline-offset: 2px; border-radius: 12px;}
   </style>
 </head>
 
@@ -275,51 +363,220 @@
   <div class="grain"></div>
 
   <div class="wrap">
-    <div class="top">
-      <div class="badge"><span class="dot"></span> Online • Técnica + Data + Calle</div>
-      <div class="badge">areadelucha.com</div>
-    </div>
+    <header>
+      <div class="brand">
+        <div class="logoBox" aria-hidden="false">
+          <img src="assets/logo.png" alt="Logo Área de Lucha">
+        </div>
+        <div class="brandText">
+          <strong>Área de Lucha</strong>
+          <span>técnica · data · calle</span>
+        </div>
+      </div>
 
-    <div class="hero">
-      <!-- Texto -->
-      <section class="panel copy">
-        <h1>Área de Lucha</h1>
-        <p class="sub">El hub de combate que mezcla técnica, data y calle. Videos, reels y streams en un solo lugar.</p>
+      <nav aria-label="Enlaces principales">
+        <a class="btn blue" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noreferrer">YouTube</a>
+        <a class="btn magenta" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noreferrer">Instagram</a>
+        <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noreferrer">Kick</a>
+        <a class="btn ghost" href="#contacto">Contacto</a>
+      </nav>
+    </header>
 
-        <div class="cta">
-          <a class="btn blue" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noreferrer">YouTube</a>
-          <a class="btn magenta" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noreferrer">Kick</a>
-          <a class="btn ghost" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noreferrer">Playlist / Serie</a>
-          <a class="btn ghost" href="mailto:areadelucha@gmail.com">Contacto</a>
+    <!-- HERO / BANNER -->
+    <section class="hero">
+      <div class="heroArt"></div>
+      <div class="boltGlow"></div>
+      <div class="bolt"></div>
+
+      <div class="heroInner">
+        <div class="heroLeft">
+          <h1>Área de Lucha</h1>
+          <p class="lead">
+            El hub de combate que mezcla <b>técnica</b>, <b>data</b> y <b>calle</b>.
+            Videos, reels y streams en un solo lugar.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn blue" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noreferrer">Ver canal</a>
+            <a class="btn" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noreferrer">Playlist / Episodios</a>
+            <a class="btn magenta" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noreferrer">Clips en Instagram</a>
+          </div>
         </div>
 
-        <div class="mini">
-          Tip: más adelante te armo una sección “Últimos videos” y un “Link-in-bio” estilo pro para mobile.
-        </div>
-      </section>
+        <aside class="panel" aria-label="Panel rápido">
+          <div class="panelTop">
+            <span class="chip"><span class="dot"></span> LIVE + Clips + Técnica</span>
+            <a class="btn small ghost" href="#episodios">Ir a episodios</a>
+          </div>
 
-      <!-- Logo / visual -->
-      <aside class="panel brand">
-        <div class="brandCard">
-          <img src="assets/logo.png" alt="Logo Área de Lucha" class="logo">
-        </div>
+          <div class="card">
+            <h3>▶ Destacado</h3>
+            <p class="mini">
+              Mirá la playlist/serie de episodios y entrá directo a contenido real.
+            </p>
+            <p class="mini" style="margin-top:8px;">
+              <a href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noreferrer">
+                Abrir playlist en YouTube
+              </a>
+            </p>
+          </div>
 
-        <div class="brandMeta">
-          <span class="pill"><span class="dot"></span> ADL • Área de Lucha</span>
-          <span>Combate • Comunidad • Contenido</span>
+          <div class="card">
+            <h3>🟣 En vivo</h3>
+            <p class="mini">Streams por Kick:</p>
+            <p class="mini" style="margin-top:6px;">
+              <a href="https://kick.com/areadelucha" target="_blank" rel="noreferrer">kick.com/areadelucha</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>📩 Contacto</h3>
+            <p class="mini">
+              <a href="mailto:areadelucha@gmail.com">areadelucha@gmail.com</a>
+            </p>
+            <p class="mini" style="margin-top:6px;">Sponsors · invitados · colabs · prensa</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- EPISODIOS -->
+    <section class="section" id="episodios">
+      <div class="sectionHead">
+        <h2>Últimos episodios</h2>
+        <a class="btn small ghost" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noreferrer">
+          Ver playlist completa
+        </a>
+      </div>
+      <div class="sectionBody">
+        <div class="grid2">
+          <div class="video" aria-label="Reproductor YouTube">
+            <!-- Embed: primer video que nos pasaste -->
+            <iframe
+              src="https://www.youtube.com/embed/V-RS3uhtVWM"
+              title="Área de Lucha — Episodio"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="card">
+            <h3>¿Qué vas a encontrar acá?</h3>
+            <p>
+              • Combate (BJJ / Judo / striking)<br>
+              • Análisis técnico y “mind games”<br>
+              • Clips cortos y highlights<br>
+              • Invitados: deportistas, kinesiólogos, docs, nutrición
+            </p>
+            <p style="margin-top:12px; color:var(--muted); line-height:1.55;">
+              Tip: fijá un día/horario de stream y ponelo en IG + descripción del canal.
+            </p>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+              <a class="btn blue" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noreferrer">Suscribirme</a>
+              <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noreferrer">Ver en Kick</a>
+            </div>
+          </div>
         </div>
-      </aside>
-    </div>
+      </div>
+    </section>
+
+    <!-- PLATAFORMAS -->
+    <section class="section" id="plataformas">
+      <div class="sectionHead">
+        <h2>Plataformas</h2>
+        <a class="btn small ghost" href="#contacto">Contacto</a>
+      </div>
+      <div class="sectionBody">
+        <div class="grid2">
+          <div class="card">
+            <h3>YouTube</h3>
+            <p>Videos completos, episodios, análisis y series.</p>
+            <p style="margin-top:10px;">
+              <a class="btn blue" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noreferrer">Ir al canal</a>
+              <a class="btn" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noreferrer">Ver playlist</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Kick</h3>
+            <p>Streams en vivo, reacción, debate y contenido de comunidad.</p>
+            <p style="margin-top:10px;">
+              <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noreferrer">Entrar a Kick</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Instagram</h3>
+            <p>Clips rápidos, reels, highlights y avisos.</p>
+            <p style="margin-top:10px;">
+              <a class="btn magenta" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noreferrer">Ir a Instagram</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Contacto</h3>
+            <p>Para sponsors, invitados, prensa y colaboraciones.</p>
+            <p style="margin-top:10px;">
+              <a class="btn ghost" href="mailto:areadelucha@gmail.com">areadelucha@gmail.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section" id="sobre">
+      <div class="sectionHead">
+        <h2>Sobre ADL</h2>
+        <a class="btn small ghost" href="#plataformas">Ver plataformas</a>
+      </div>
+      <div class="sectionBody">
+        <div class="grid2">
+          <div class="card">
+            <h3>Identidad</h3>
+            <p>
+              ADL nace para hablar de deportes de combate con respeto, humor y calle,
+              sin humo: técnica clara, data útil y el “código” de la lucha.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Invitados</h3>
+            <p>
+              Deportistas, profes, kinesiólogos, médicos, nutrición y gente real del palo.
+              Si querés participar, escribinos al mail.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <div class="sectionHead">
+        <h2>Contacto</h2>
+        <span class="chip"><span class="dot"></span> Respuesta por mail</span>
+      </div>
+      <div class="sectionBody">
+        <div class="card">
+          <h3>📩 areadelucha@gmail.com</h3>
+          <p>
+            Sponsors · invitaciones · prensa · colaboraciones.
+            <br><br>
+            <a class="btn ghost" href="mailto:areadelucha@gmail.com">Enviar mail</a>
+          </p>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <span>© <span id="y"></span> Área de Lucha</span>
-      <span>Contacto: <a href="mailto:areadelucha@gmail.com">areadelucha@gmail.com</a></span>
+      <span>© <span id="year"></span> <span class="mono">www.areadelucha.com</span></span>
+      <span class="mono">técnica · data · calle</span>
     </footer>
   </div>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
