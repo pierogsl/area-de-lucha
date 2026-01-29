@@ -5,52 +5,321 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Área de Lucha</title>
 
+  <!-- SEO básico -->
+  <meta name="description" content="Área de Lucha: el hub de combate que mezcla técnica, data y calle. Videos, reels y streams en un solo lugar." />
+  <meta name="theme-color" content="#07020D" />
+
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#07020D; --text:#E1DDF6; --muted:rgba(225,221,246,.72);
-      --blue:#3796F4; --magenta:#E047A4;
+      --bg:#07020D;
+      --text:#EDE9FF;
+      --muted:rgba(237,233,255,.72);
+      --muted2:rgba(237,233,255,.55);
+
+      --blue:#3796F4;
+      --magenta:#E047A4;
+
+      --card:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.12);
+      --shadow: 0 24px 70px rgba(0,0,0,.55);
+
+      --radius: 22px;
     }
+
     *{box-sizing:border-box}
-    body{margin:0; color:var(--text); font-family:"Space Grotesk",system-ui; background:var(--bg); overflow-x:hidden;}
-    .bg{position:fixed; inset:-200px; z-index:-1; pointer-events:none;
-      background:
-        radial-gradient(700px 320px at 20% 30%, rgba(55,150,244,.22), transparent 60%),
-        radial-gradient(650px 300px at 80% 28%, rgba(224,71,164,.20), transparent 60%),
-        radial-gradient(900px 500px at 50% 110%, rgba(255,255,255,.06), transparent 60%);
-      filter: blur(12px);
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      overflow-x:hidden;
     }
-    .wrap{width:min(1120px,92vw); margin:0 auto; padding:36px 0;}
-    h1{font-family:"Orbitron",system-ui; margin:0 0 10px; font-size:clamp(28px,3.2vw,46px); line-height:1.05;}
-    p{margin:0 0 18px; color:var(--muted); font-size:16.5px; line-height:1.5; max-width:65ch;}
-    .cta{display:flex; gap:10px; flex-wrap:wrap}
-    a.btn{display:inline-flex; padding:11px 14px; border-radius:999px; text-decoration:none; color:var(--text);
-      border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); font-weight:700;}
-    a.btn.blue{border-color:rgba(55,150,244,.35)}
-    a.btn.magenta{border-color:rgba(224,71,164,.35)}
+
+    /* Fondo con glow suave */
+    .bg{
+      position:fixed;
+      inset:-260px;
+      z-index:-2;
+      pointer-events:none;
+      background:
+        radial-gradient(900px 420px at 18% 26%, rgba(55,150,244,.24), transparent 62%),
+        radial-gradient(820px 380px at 82% 22%, rgba(224,71,164,.22), transparent 60%),
+        radial-gradient(1100px 520px at 50% 110%, rgba(255,255,255,.08), transparent 60%);
+      filter: blur(14px);
+    }
+
+    /* Grano sutil */
+    .grain{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      opacity:.08;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    .wrap{
+      width:min(1120px,92vw);
+      margin:0 auto;
+      padding:42px 0 26px;
+    }
+
+    /* Header pequeño (opcional) */
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:26px;
+    }
+    .badge{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-size:13px;
+      color:var(--muted);
+    }
+    .dot{
+      width:9px;height:9px;border-radius:50%;
+      background:linear-gradient(135deg,var(--blue),var(--magenta));
+      box-shadow:0 0 18px rgba(224,71,164,.35);
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .panel{
+      border:1px solid var(--border);
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(120deg, rgba(55,150,244,.22), rgba(224,71,164,.18), rgba(255,255,255,.06));
+      opacity:.55;
+      filter: blur(18px);
+      z-index:0;
+    }
+
+    .panel > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .copy{
+      padding:26px 26px 22px;
+    }
+
+    h1{
+      font-family:"Orbitron",system-ui;
+      margin:0 0 10px;
+      font-size:clamp(30px,3.2vw,48px);
+      line-height:1.05;
+      letter-spacing:.2px;
+    }
+
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16.8px;
+      line-height:1.55;
+      max-width:62ch;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    a.btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      color:var(--text);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      font-weight:700;
+      transition: transform .14s ease, background .14s ease, border-color .14s ease;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      background:rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.20);
+    }
+
+    a.btn.blue{ border-color:rgba(55,150,244,.35) }
+    a.btn.magenta{ border-color:rgba(224,71,164,.35) }
+    a.btn.ghost{ color:var(--muted); font-weight:700 }
+
+    .mini{
+      color:var(--muted2);
+      font-size:13px;
+      margin-top:14px;
+    }
+
+    /* Panel del logo */
+    .brand{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      justify-content:center;
+      text-align:left;
+    }
+
+    .brandCard{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.25);
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+      position:relative;
+    }
+
+    /* esto hace que el logo se “integre” y no quede plano */
+    .brandCard::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(650px 240px at 25% 20%, rgba(55,150,244,.22), transparent 60%),
+                  radial-gradient(650px 240px at 85% 20%, rgba(224,71,164,.20), transparent 60%);
+      mix-blend-mode: screen;
+      opacity:.55;
+      pointer-events:none;
+    }
+
     .logo{
-  width:220px;
-  height:auto;
-  display:block;
-  margin:0 0 18px;
-  filter: drop-shadow(0 18px 45px rgba(0,0,0,.55));
-}
+      width:100%;
+      height:auto;
+      display:block;
+      transform: scale(1.01);
+    }
+
+    .brandMeta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted2);
+      font-size:13px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    footer a{ color:var(--text); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.22) }
+    footer a:hover{ border-bottom-color:rgba(255,255,255,.45) }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .copy{ padding:22px; }
+      .brand{ padding:16px; }
+    }
   </style>
 </head>
+
 <body>
   <div class="bg"></div>
+  <div class="grain"></div>
+
   <div class="wrap">
-    <img src="assets/logo.png" alt="Logo Área de Lucha" class="logo">
-    <h1>Área de Lucha</h1>
-    <p>El hub de combate que mezcla técnica, data y calle. Videos, reels y streams en un solo lugar.</p>
-    <div class="cta">
-      <a class="btn blue" href="#" target="_blank" rel="noreferrer">YouTube</a>
-      <a class="btn magenta" href="#" target="_blank" rel="noreferrer">Instagram</a>
-      <a class="btn" href="#" target="_blank" rel="noreferrer">Kick</a>
+    <div class="top">
+      <div class="badge"><span class="dot"></span> Online • Técnica + Data + Calle</div>
+      <div class="badge">areadelucha.com</div>
     </div>
+
+    <div class="hero">
+      <!-- Texto -->
+      <section class="panel copy">
+        <h1>Área de Lucha</h1>
+        <p class="sub">El hub de combate que mezcla técnica, data y calle. Videos, reels y streams en un solo lugar.</p>
+
+        <div class="cta">
+          <a class="btn blue" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noreferrer">YouTube</a>
+          <a class="btn magenta" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noreferrer">Kick</a>
+          <a class="btn ghost" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noreferrer">Playlist / Serie</a>
+          <a class="btn ghost" href="mailto:areadelucha@gmail.com">Contacto</a>
+        </div>
+
+        <div class="mini">
+          Tip: más adelante te armo una sección “Últimos videos” y un “Link-in-bio” estilo pro para mobile.
+        </div>
+      </section>
+
+      <!-- Logo / visual -->
+      <aside class="panel brand">
+        <div class="brandCard">
+          <img src="assets/logo.png" alt="Logo Área de Lucha" class="logo">
+        </div>
+
+        <div class="brandMeta">
+          <span class="pill"><span class="dot"></span> ADL • Área de Lucha</span>
+          <span>Combate • Comunidad • Contenido</span>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <span>© <span id="y"></span> Área de Lucha</span>
+      <span>Contacto: <a href="mailto:areadelucha@gmail.com">areadelucha@gmail.com</a></span>
+    </footer>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
