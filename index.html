@@ -39,1203 +39,406 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg: #070A12;
-      --surface: rgba(255,255,255,.05);
-      --surface2: rgba(255,255,255,.06);
-      --stroke: rgba(255,255,255,.12);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.66);
-      --muted2: rgba(255,255,255,.50);
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --r: 22px;
-      --max: 1160px;
-
-      /* Se setea por JS según el alto real del header */
-      --headerH: 78px;
-    }
-
-    *{ box-sizing:border-box; }
-    html, body{ height:100%; }
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-
-      /* Clave para que el header fijo no tape el contenido */
-      padding-top: var(--headerH);
-    }
-
-    a{ color: inherit; text-decoration:none; }
-    img{ max-width:100%; display:block; }
-
-    .wrap{
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* ===== Header fijo y superpuesto ===== */
-    header{
-      position: fixed; /* <- fijo siempre visible */
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 99999;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(7,10,18,.92), rgba(7,10,18,.70));
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding: 14px 0;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 240px;
-    }
-
-    .brand img{
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      object-fit: cover;
-    }
-
-    .brand .t{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .brand .t strong{
-      font-weight: 900;
-      letter-spacing: .2px;
-    }
-    .brand .t span{
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 3px;
-    }
-
-    nav{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-
-    .pill{
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.88);
-      font-weight: 800;
-      font-size: 14px;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      user-select:none;
-      cursor:pointer;
-      white-space: nowrap;
-    }
-    .pill:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.09);
-      border-color: rgba(255,255,255,.16);
-    }
-    .pill.primary{
-      background: rgba(80,140,255,.18);
-      border-color: rgba(80,140,255,.30);
-    }
-
-    @media (max-width: 920px){
-      .brand{ min-width:auto; }
-      nav{ justify-content:flex-start; }
-    }
-
-    /* ===== Secciones con fondos independientes ===== */
-    .block{
-      position: relative;
-      isolation: isolate;
-      padding: 28px 0;
-    }
-    .block::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:-1;
-      pointer-events:none;
-      opacity: 1;
-    }
-    .block::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:-1;
-      pointer-events:none;
-      background: linear-gradient(to bottom, rgba(7,10,18,.05), rgba(7,10,18,.70));
-      mix-blend-mode: normal;
-    }
-
-    .bg-hero::before{
-      background:
-        radial-gradient(1100px 650px at 15% 20%, rgba(0,145,255,.20), transparent 62%),
-        radial-gradient(1100px 650px at 85% 25%, rgba(255,0,170,.18), transparent 62%);
-    }
-    .bg-episodios::before{
-      background:
-        radial-gradient(900px 520px at 20% 30%, rgba(0,145,255,.14), transparent 60%),
-        radial-gradient(800px 520px at 85% 65%, rgba(255,0,170,.10), transparent 60%);
-      opacity: .9;
-    }
-    .bg-plataformas::before{
-      background:
-        radial-gradient(900px 520px at 75% 25%, rgba(80,140,255,.15), transparent 62%),
-        radial-gradient(900px 520px at 20% 70%, rgba(60,255,138,.10), transparent 62%);
-      opacity: .9;
-    }
-    .bg-envivo::before{
-      background:
-        radial-gradient(900px 520px at 20% 30%, rgba(255,0,170,.12), transparent 62%),
-        radial-gradient(900px 520px at 80% 65%, rgba(0,145,255,.12), transparent 62%);
-      opacity: .9;
-    }
-    .bg-merch::before{
-      background:
-        radial-gradient(900px 520px at 70% 35%, rgba(255,0,170,.10), transparent 62%),
-        radial-gradient(900px 520px at 20% 75%, rgba(80,140,255,.10), transparent 62%);
-      opacity: .9;
-    }
-    .bg-trabajando::before{
-      background:
-        radial-gradient(900px 520px at 50% 40%, rgba(255,255,255,.06), transparent 62%);
-      opacity: .8;
-    }
-    .bg-sobre::before{
-      background:
-        radial-gradient(900px 520px at 18% 30%, rgba(0,145,255,.12), transparent 62%),
-        radial-gradient(900px 520px at 85% 60%, rgba(255,0,170,.12), transparent 62%);
-      opacity: .9;
-    }
-    .bg-contacto::before{
-      background:
-        radial-gradient(900px 520px at 75% 35%, rgba(80,140,255,.14), transparent 62%),
-        radial-gradient(900px 520px at 25% 70%, rgba(255,0,170,.10), transparent 62%);
-      opacity: .9;
-    }
-
-    /* Anclas */
-    .anchor{ scroll-margin-top: calc(var(--headerH) + 14px); }
-
-    .card{
-      border-radius: var(--r);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      padding: 16px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.35);
-    }
-    .card h3{
-      margin:0 0 6px;
-      font-size: 14px;
-      letter-spacing:.2px;
-      color: rgba(255,255,255,.90);
-    }
-    .card p{
-      margin:0;
-      color: rgba(255,255,255,.66);
-      line-height:1.55;
-      font-size: 14px;
-    }
-
-    .sectionTitle{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom: 14px;
-    }
-    .sectionTitle h2{
-      margin:0;
-      font-size: 22px;
-      letter-spacing: -.01em;
-    }
-    .sectionTitle span{
-      color: var(--muted2);
-      font-size: 13px;
-    }
-
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-    @media (max-width: 900px){
-      .grid3{ grid-template-columns: 1fr; }
-    }
-
-    .miniRow{
-      display:flex;
-      gap:12px;
-      flex-wrap: wrap;
-      align-items:center;
-    }
-
-    .icon{ width: 18px; height: 18px; display:inline-block; vertical-align: middle; }
-    .icon svg{ width: 18px; height: 18px; display:block; }
-
-    /* ===== HERO ===== */
-    .heroCard{
-      position: relative;
-      border-radius: calc(var(--r) + 6px);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      min-height: 440px;
-    }
-
-    .heroCard::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(900px 520px at 15% 30%, rgba(0,145,255,.22), transparent 60%),
-        radial-gradient(900px 520px at 85% 25%, rgba(255,0,170,.22), transparent 60%),
-        url("assets/4.png") center/cover no-repeat;
-      filter: saturate(1.08) contrast(1.08);
-      transform: scale(1.02);
-      pointer-events: none;
-    }
-
-    .heroCard::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(90deg, rgba(7,10,18,.84) 0%, rgba(7,10,18,.58) 45%, rgba(7,10,18,.72) 100%);
-      pointer-events: none;
-    }
-
-    .heroGrid{
-      position: relative;
-      z-index: 2;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 22px;
-      padding: 28px;
-    }
-
-    @media (max-width: 920px){
-      .heroGrid{ grid-template-columns: 1fr; padding: 20px; }
-      .heroCard{ min-height: unset; }
-      .heroCard::after{
-        background: linear-gradient(180deg, rgba(7,10,18,.78) 0%, rgba(7,10,18,.70) 55%, rgba(7,10,18,.78) 100%);
-      }
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      color: rgba(255,255,255,.78);
-      font-weight: 800;
-      font-size: 13px;
-      width: fit-content;
-    }
-    .dot{
-      width: 8px; height: 8px;
-      border-radius: 999px;
-      background: #3cff8a;
-      box-shadow: 0 0 0 6px rgba(60,255,138,.10);
-    }
-
-    h1{
-      margin: 12px 0 10px;
-      font-size: clamp(34px, 5vw, 56px);
-      letter-spacing: -0.02em;
-      line-height: 1.02;
-    }
-    .sub{
-      color: rgba(255,255,255,.72);
-      font-size: 16px;
-      line-height: 1.6;
-      max-width: 60ch;
-      margin-bottom: 16px;
-    }
-
-    .chips{
-      display:flex;
-      gap:10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-    .chip{
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      font-weight: 900;
-      color: rgba(255,255,255,.86);
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-
-    .ctaRow{
-      display:flex;
-      gap:12px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      font-weight: 900;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      cursor:pointer;
-      will-change: transform;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.18);
-    }
-    .btn.primary{
-      background: rgba(80,140,255,.22);
-      border-color: rgba(80,140,255,.40);
-    }
-
-    .sideCard{ display:flex; flex-direction:column; gap:12px; }
-
-    /* ===== EN VIVO (GLOBAL, sin inputs) ===== */
-    .liveBox{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-
-    .liveHero{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap: wrap;
-    }
-
-    .liveBig{
-      font-size: clamp(34px, 6vw, 62px);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.02;
-      margin: 8px 0 6px;
-    }
-
-    .liveMeta{
-      color: rgba(255,255,255,.72);
-      line-height: 1.55;
-      font-size: 14px;
-      max-width: 80ch;
-    }
-
-    .countdown{
-      display:flex;
-      gap:10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    .timeBox{
-      min-width: 92px;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      text-align:center;
-    }
-    .timeBox b{
-      display:block;
-      font-size: 22px;
-      letter-spacing: -.02em;
-    }
-    .timeBox span{
-      color: rgba(255,255,255,.62);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing:.06em;
-      text-transform: uppercase;
-    }
-
-    .smallNote{
-      margin-top: 10px;
-      color: rgba(255,255,255,.60);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    /* ===== Sobre ===== */
-    .teamGrid{
-      display:grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 14px;
-    }
-    @media (max-width: 1100px){
-      .teamGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 560px){
-      .teamGrid{ grid-template-columns: 1fr; }
-    }
-    .teamCard{
-      height: 100%;
-      display:flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: rgba(255,255,255,.04);
-    }
-    .teamMeta{
-      margin-top: 6px;
-      font-weight: 900;
-      color: rgba(255,255,255,.78);
-      letter-spacing: .1px;
-      line-height: 1.35;
-    }
-    .teamDesc{
-      margin-top: 6px;
-      color: rgba(255,255,255,.66);
-      line-height: 1.55;
-      font-size: 14px;
-    }
-
-    /* ===== Footer ===== */
-    footer{
-      position: relative;
-      padding: 26px 0 40px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      background: rgba(0,0,0,.10);
-    }
-    .foot{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .stamp{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color: rgba(255,255,255,.70);
-      font-weight: 900;
-    }
-    .stamp img{
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      object-fit: cover;
-    }
-
-    /* ===== FABs ===== */
-    .fab-wa{
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 120;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      backdrop-filter: blur(14px);
-      color: rgba(255,255,255,.92);
-      font-weight: 900;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease, opacity .12s ease;
-      user-select:none;
-    }
-    .fab-wa:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.12);
-      border-color: rgba(255,255,255,.20);
-    }
-    .fab-ico{
-      width: 20px;
-      height: 20px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .fab-ico svg{ width: 20px; height: 20px; display:block; }
-    .fab-txt{ font-size: 14px; letter-spacing:.2px; }
-
-    .fab-top{
-      position: fixed;
-      right: 18px;
-      bottom: 70px;
-      z-index: 120;
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      backdrop-filter: blur(14px);
-      color: rgba(255,255,255,.92);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .15s ease, transform .15s ease, background .12s ease, border-color .12s ease;
-    }
-    .fab-top.show{
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    .fab-top:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.12);
-      border-color: rgba(255,255,255,.20);
-    }
-
-    /* Music FAB (abajo izquierda) */
-    .fab-music{
-      position: fixed;
-      left: 18px;
-      bottom: 18px;
-      z-index: 120;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      backdrop-filter: blur(14px);
-      color: rgba(255,255,255,.92);
-      font-weight: 900;
-      cursor:pointer;
-      user-select:none;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-    }
-    .fab-music:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.12);
-      border-color: rgba(255,255,255,.20);
-    }
-
-    @media (max-width: 520px){
-      .fab-txt{ display:none; }
-      .fab-wa{ width: 50px; height: 50px; justify-content:center; padding: 0; border-radius: 16px; }
-      .fab-music{ width: 50px; height: 50px; justify-content:center; padding: 0; border-radius: 16px; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .pill, .btn, .fab-wa, .fab-top, .fab-music { transition: none !important; }
-    }
-  </style>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/config.js" defer></script>
+  <script src="/js/app.js" defer></script>
 </head>
 
 <body>
+  <a class="skip" href="#inicio">Saltar al contenido</a>
 
-<header id="siteHeader">
-  <div class="wrap">
-    <div class="topbar">
-      <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <img src="assets/2.png" alt="Logo Área de Lucha (color)" />
-        <div class="t">
-          <strong>Área de Lucha</strong>
-          <span>técnica · data · análisis</span>
-        </div>
-      </a>
-
-      <nav aria-label="Navegación principal">
-        <a class="pill" href="#episodios">Episodios</a>
-        <a class="pill" href="#plataformas">Plataformas</a>
-        <a class="pill" href="#envivo">En vivo</a>
-        <a class="pill" href="#merch">Merch</a>
-        <a class="pill" href="#trabajando">Hombres trabajando</a>
-        <a class="pill" href="#sobre">Sobre</a>
-        <a class="pill primary" href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </div>
-</header>
-
-<main>
-
-  <!-- HERO -->
-  <section id="inicio" class="block bg-hero anchor">
+  <header id="siteHeader">
     <div class="wrap">
-      <div class="heroCard">
-        <div class="heroGrid">
-          <div>
-            <div class="badge">
-              <span class="dot" aria-hidden="true"></span>
-              Online • Técnica + Data + Análisis
-            </div>
-
-            <h1>Deportes de combate<br/>sin humo.</h1>
-            <p class="sub">
-              Episodios completos, streams y reels. Técnica clara, data útil y análisis real.
-              BJJ, Judo, striking y debate — con respeto, pero sin caretas.
-            </p>
-
-            <div class="ctaRow">
-              <a class="btn primary" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M21 8.2c0-1.1-.9-2-2-2.2C17.2 5.7 14.8 5.5 12 5.5s-5.2.2-7 .5c-1.1.2-2 .9-2 2.2A55 55 0 0 0 3 12a55 55 0 0 0 .1 3.8c0 1.3.9 2 2 2.2 1.8.3 4.2.5 6.9.5s5.2-.2 7-.5c1.1-.2 2-.9 2-2.2.1-1.3.1-2.5.1-3.8s0-2.5-.1-3.8Z" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M10.2 9.6v4.8L15 12l-4.8-2.4Z" fill="currentColor"/>
-                  </svg>
-                </span>
-                YouTube
-              </a>
-
-              <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M6 5h4v6l4-6h4l-5 7 5 7h-4l-4-6v6H6V5Z" fill="currentColor"/>
-                  </svg>
-                </span>
-                Kick (en vivo)
-              </a>
-
-              <a class="btn" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
-                    <path d="M17.6 6.4h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                  </svg>
-                </span>
-                Instagram
-              </a>
-            </div>
-
-            <div class="chips">
-              <span class="chip">• BJJ</span>
-              <span class="chip">• Judo</span>
-              <span class="chip">• Striking</span>
-              <span class="chip">• Análisis</span>
-            </div>
+      <div class="topbar">
+        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+          <img id="brandLogo" src="assets/2.png" alt="Logo Área de Lucha (color)" />
+          <div class="t">
+            <strong id="brandName">Área de Lucha</strong>
+            <span id="brandTagline">técnica · data · análisis</span>
           </div>
+        </a>
 
-          <div class="sideCard">
-            <div class="card">
-              <h3>▶ Playlist principal</h3>
-              <p>Entrá directo a la serie y mirá episodios completos.</p>
-              <div style="height:10px"></div>
-              <a class="btn" href="https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz" target="_blank" rel="noopener">
-                Ver playlist
-              </a>
-            </div>
+        <nav aria-label="Navegación principal">
+          <a class="pill" href="#episodios">Episodios</a>
+          <a class="pill" href="#plataformas">Plataformas</a>
+          <a class="pill" href="#envivo">En vivo</a>
+          <a class="pill" href="#merch">Merch</a>
+          <a class="pill" href="#trabajando">Hombres trabajando</a>
+          <a class="pill" href="#sobre">Sobre</a>
+          <a class="pill primary" href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-            <div class="card">
-              <h3>⚡ Criterio</h3>
-              <p>Respeto + debate. Mucha técnica, mucha data, cero humo.</p>
-            </div>
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="block bg-hero anchor">
+      <div class="wrap">
+        <div class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <div class="badge">
+                <span class="dot" aria-hidden="true"></span>
+                <span id="heroBadgeText">Online • Técnica + Data + Análisis</span>
+              </div>
 
-            <div class="card">
-              <h3>Marca</h3>
-              <p>Kit visual con las 4 versiones del logo, para web y redes.</p>
-              <div style="height:12px"></div>
-              <div class="miniRow" aria-label="Logos">
-                <img src="assets/1.jpeg" alt="Logo 1" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
-                <img src="assets/2.png" alt="Logo 2" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
-                <img src="assets/3.png" alt="Logo 3" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
-                <img src="assets/4.png" alt="Logo 4" style="width:54px;height:54px;border-radius:14px;border:1px solid rgba(255,255,255,.12);object-fit:cover;background:rgba(255,255,255,.06);">
+              <h1 id="heroTitle">Deportes de combate<br/>sin humo.</h1>
+              <p class="sub" id="heroSubtitle">
+                Episodios completos, streams y reels. Técnica clara, data útil y análisis real.
+                BJJ, Judo, striking y debate — con respeto, pero sin caretas.
+              </p>
+
+              <div class="ctaRow">
+                <a class="btn primary" id="btnYouTube" href="#" target="_blank" rel="noopener">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M21 8.2c0-1.1-.9-2-2-2.2C17.2 5.7 14.8 5.5 12 5.5s-5.2.2-7 .5c-1.1.2-2 .9-2 2.2A55 55 0 0 0 3 12a55 55 0 0 0 .1 3.8c0 1.3.9 2 2 2.2 1.8.3 4.2.5 6.9.5s5.2-.2 7-.5c1.1-.2 2-.9 2-2.2.1-1.3.1-2.5.1-3.8s0-2.5-.1-3.8Z" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M10.2 9.6v4.8L15 12l-4.8-2.4Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  YouTube
+                </a>
+
+                <a class="btn" id="btnKick" href="#" target="_blank" rel="noopener">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M6 5h4v6l4-6h4l-5 7 5 7h-4l-4-6v6H6V5Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  Kick (en vivo)
+                </a>
+
+                <a class="btn" id="btnInstagram" href="#" target="_blank" rel="noopener">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M17.6 6.4h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  Instagram
+                </a>
+              </div>
+
+              <div class="chips" aria-label="Temas del canal">
+                <span class="chip">• BJJ</span>
+                <span class="chip">• Judo</span>
+                <span class="chip">• Striking</span>
+                <span class="chip">• Análisis</span>
               </div>
             </div>
-          </div>
 
-        </div>
-      </div>
-    </div>
-  </section>
+            <div class="sideCard">
+              <div class="card">
+                <h3>▶ Playlist principal</h3>
+                <p>Entrá directo a la serie y mirá episodios completos.</p>
+                <div class="sp10"></div>
+                <a class="btn" id="btnPlaylist" href="#" target="_blank" rel="noopener">Ver playlist</a>
+              </div>
 
-  <!-- EPISODIOS -->
-  <section id="episodios" class="block bg-episodios anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Episodios</h2>
-        <span>Próximamente: cards con episodios destacados</span>
-      </div>
+              <div class="card">
+                <h3>⚡ Criterio</h3>
+                <p>Respeto + debate. Mucha técnica, mucha data, cero humo.</p>
+              </div>
 
-      <div class="grid3">
-        <div class="card">
-          <h3>Destacado #1</h3>
-          <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
-        </div>
-        <div class="card">
-          <h3>Destacado #2</h3>
-          <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
-        </div>
-        <div class="card">
-          <h3>Destacado #3</h3>
-          <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLATAFORMAS -->
-  <section id="plataformas" class="block bg-plataformas anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Plataformas</h2>
-        <span>Entradas directas</span>
-      </div>
-
-      <div class="grid3">
-        <a class="card" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
-          <h3>YouTube</h3>
-          <p>Episodios completos, playlists y shorts.</p>
-        </a>
-
-        <a class="card" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
-          <h3>Kick</h3>
-          <p>Streams en vivo (cuando estemos online).</p>
-        </a>
-
-        <a class="card" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-          <h3>Instagram</h3>
-          <p>Reels, clips, backstage y anuncios.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EN VIVO (GLOBAL) -->
-  <section id="envivo" class="block bg-envivo anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>En vivo</h2>
-        <span>Cuenta regresiva global (la seteás vos)</span>
-      </div>
-
-      <div class="card liveBox">
-        <div class="liveHero">
-          <div>
-            <h3 style="margin:0 0 6px;">Próximo stream</h3>
-            <div class="liveBig" id="liveBig">—</div>
-            <div class="liveMeta" id="liveStatus">
-              Publicado por el canal. Horario Argentina (AR).
+              <div class="card">
+                <h3>Marca</h3>
+                <p>Kit visual con las 4 versiones del logo, para web y redes.</p>
+                <div class="sp12"></div>
+                <div class="miniRow" aria-label="Logos">
+                  <img src="assets/1.jpeg" alt="Logo 1" class="miniLogo">
+                  <img src="assets/2.png" alt="Logo 2" class="miniLogo">
+                  <img src="assets/3.png" alt="Logo 3" class="miniLogo">
+                  <img src="assets/4.png" alt="Logo 4" class="miniLogo">
+                </div>
+              </div>
             </div>
 
-            <div class="countdown" aria-label="Cuenta regresiva">
-              <div class="timeBox"><b id="d">—</b><span>Días</span></div>
-              <div class="timeBox"><b id="h">—</b><span>Horas</span></div>
-              <div class="timeBox"><b id="m">—</b><span>Min</span></div>
-              <div class="timeBox"><b id="s">—</b><span>Seg</span></div>
-            </div>
-
-            <p class="smallNote" id="liveNote">
-              Cuando llegue el horario, te dejamos botones directos a Kick y YouTube.
-            </p>
-
-            <div class="ctaRow" style="margin-top:14px;">
-              <a class="btn primary" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Ir a Kick</a>
-              <a class="btn" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">Ir a YouTube</a>
-            </div>
-
-            <p class="smallNote" style="opacity:.85;">
-              <b>Para cambiar la fecha:</b> editás 1 línea en el JS: <code>NEXT_LIVE_ISO</code>.
-            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- MERCH -->
-  <section id="merch" class="block bg-merch anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Merch</h2>
-        <span>Ropa · gorras · stickers · lo más barato posible</span>
+    <!-- EPISODIOS -->
+    <section id="episodios" class="block bg-episodios anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Episodios</h2>
+          <span>Próximamente: cards con episodios destacados</span>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>Destacado #1</h3>
+            <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
+          </div>
+          <div class="card">
+            <h3>Destacado #2</h3>
+            <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
+          </div>
+          <div class="card">
+            <h3>Destacado #3</h3>
+            <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="grid3">
+    <!-- PLATAFORMAS -->
+    <section id="plataformas" class="block bg-plataformas anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Plataformas</h2>
+          <span>Entradas directas</span>
+        </div>
+
+        <div class="grid3">
+          <a class="card" id="cardYouTube" href="#" target="_blank" rel="noopener">
+            <h3>YouTube</h3>
+            <p>Episodios completos, playlists y shorts.</p>
+          </a>
+
+          <a class="card" id="cardKick" href="#" target="_blank" rel="noopener">
+            <h3>Kick</h3>
+            <p>Streams en vivo (cuando estemos online).</p>
+          </a>
+
+          <a class="card" id="cardInstagram" href="#" target="_blank" rel="noopener">
+            <h3>Instagram</h3>
+            <p>Reels, clips, backstage y anuncios.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EN VIVO (GLOBAL) -->
+    <section id="envivo" class="block bg-envivo anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>En vivo</h2>
+          <span>Cuenta regresiva global (la seteás vos)</span>
+        </div>
+
+        <div class="card liveBox">
+          <div class="liveHero">
+            <div>
+              <h3 class="m0 mb6">Próximo stream</h3>
+              <div class="liveBig" id="liveBig">—</div>
+              <div class="liveMeta" id="liveStatus">Publicado por el canal. Horario Argentina (AR).</div>
+
+              <div class="countdown" aria-label="Cuenta regresiva">
+                <div class="timeBox"><b id="d">—</b><span>Días</span></div>
+                <div class="timeBox"><b id="h">—</b><span>Horas</span></div>
+                <div class="timeBox"><b id="m">—</b><span>Min</span></div>
+                <div class="timeBox"><b id="s">—</b><span>Seg</span></div>
+              </div>
+
+              <p class="smallNote" id="liveNote">Cuando llegue el horario, te dejamos botones directos a Kick y YouTube.</p>
+
+              <div class="ctaRow mt14">
+                <a class="btn primary" id="liveKick" href="#" target="_blank" rel="noopener">Ir a Kick</a>
+                <a class="btn" id="liveYouTube" href="#" target="_blank" rel="noopener">Ir a YouTube</a>
+              </div>
+
+              <p class="smallNote op85">
+                <b>Para cambiar la fecha:</b> editás 1 línea en <code>/js/config.js</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MERCH -->
+    <section id="merch" class="block bg-merch anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Merch</h2>
+          <span>Ropa · gorras · stickers · lo más barato posible</span>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>Shop (próximamente)</h3>
+            <p>Acá va el catálogo cuando definamos proveedor. Vamos por la opción más barata que mantenga buena calidad.</p>
+            <div class="sp10"></div>
+            <a class="btn" href="#contacto">Quiero merch</a>
+          </div>
+
+          <div class="card">
+            <h3>Qué vendemos</h3>
+            <p>Remeras, buzos, gorras, stickers y rashguards (BJJ).</p>
+          </div>
+
+          <div class="card">
+            <h3>Checkout</h3>
+            <p>Después lo linkeamos a MercadoPago / TiendaNube / lo que convenga.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOMBRES TRABAJANDO -->
+    <section id="trabajando" class="block bg-trabajando anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Hombres trabajando</h2>
+          <span>Para que se note que falta completar cosas</span>
+        </div>
+
         <div class="card">
-          <h3>Shop (próximamente)</h3>
-          <p>
-            Acá va el catálogo cuando definamos proveedor. Vamos por la opción más barata
-            que mantenga buena calidad.
+          <div class="workingRow">
+            <div class="workingEmoji" aria-hidden="true">👷‍♂️</div>
+            <div>
+              <h3 class="m0 mb6">Estamos metiéndole</h3>
+              <p class="m0 mutedLine">
+                Esta web está en construcción: se vienen episodios, invitados, calendario y tienda.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="block bg-sobre anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Sobre</h2>
+          <span>El canal es el protagonista</span>
+        </div>
+
+        <div class="card">
+          <h3 class="m0 mb10">Área de Lucha</h3>
+          <p class="aboutText">
+            Somos 4 personas, todos estudiantes de BJJ (Escuela Lotus, sede a cargo de Leandro).
+            Diego (Cule) e Iván (El Colo) son faixa azul. Fer faixa violeta.
+            Piero faixa blanca. Fer y Piero además somos 2º dan de Judo.
+            La idea: charlas descontracturadas, pero con técnica, data y análisis real.
+            Acá no hay “figuras”: manda el canal, el contenido y el equipo.
           </p>
-          <div style="height:10px"></div>
-          <a class="btn" href="#contacto">Quiero merch</a>
-        </div>
 
-        <div class="card">
-          <h3>Qué vendemos</h3>
-          <p>Remeras, buzos, gorras, stickers y rashguards (BJJ).</p>
-        </div>
+          <div class="teamGrid" aria-label="Equipo (todos iguales)">
+            <div class="card teamCard">
+              <h3>Diego (Cule)</h3>
+              <div class="teamMeta">Faixa azul (BJJ)</div>
+              <div class="teamDesc">Debate, análisis y calle.</div>
+            </div>
 
-        <div class="card">
-          <h3>Checkout</h3>
-          <p>Después lo linkeamos a MercadoPago / TiendaNube / lo que convenga.</p>
+            <div class="card teamCard">
+              <h3>Iván (El Colo)</h3>
+              <div class="teamMeta">Faixa azul (BJJ)</div>
+              <div class="teamDesc">Técnica, CM y datos.</div>
+            </div>
+
+            <div class="card teamCard">
+              <h3>Fer</h3>
+              <div class="teamMeta">Faixa violeta (BJJ) · 2º Dan (Judo)</div>
+              <div class="teamDesc">Experiencia y criterio de tatami.</div>
+            </div>
+
+            <div class="card teamCard">
+              <h3>Piero</h3>
+              <div class="teamMeta">Faixa blanca (BJJ) · 2º Dan (Judo)</div>
+              <div class="teamDesc">Estructura, técnica y empuje.</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- HOMBRES TRABAJANDO -->
-  <section id="trabajando" class="block bg-trabajando anchor">
+    <!-- CONTACTO -->
+    <section id="contacto" class="block bg-contacto anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Contacto</h2>
+          <span>Redes + WhatsApp + Mail</span>
+        </div>
+
+        <div class="grid3">
+          <a class="card" id="contactYouTube" href="#" target="_blank" rel="noopener">
+            <h3>YouTube</h3>
+            <p>@areadelucha</p>
+          </a>
+
+          <a class="card" id="contactKick" href="#" target="_blank" rel="noopener">
+            <h3>Kick</h3>
+            <p>kick.com/areadelucha</p>
+          </a>
+
+          <a class="card" id="contactInstagram" href="#" target="_blank" rel="noopener">
+            <h3>Instagram</h3>
+            <p>@areadelucha</p>
+          </a>
+
+          <a class="card" id="contactWhatsApp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <h3>WhatsApp</h3>
+            <p id="waText">—</p>
+          </a>
+
+          <a class="card" id="contactEmail" href="#">
+            <h3>Email</h3>
+            <p id="emailText">—</p>
+          </a>
+
+          <div class="card">
+            <h3>Colab / invitados</h3>
+            <p>Si querés caer al stream o proponer tema, escribinos por WhatsApp o mail.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
     <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Hombres trabajando</h2>
-        <span>Para que se note que falta completar cosas</span>
-      </div>
+      <div class="foot">
+        <div class="stamp">
+          <img id="footerLogo" src="assets/3.png" alt="Logo Área de Lucha (blanco y negro)" />
+          <span id="footerText">Área de Lucha — técnica · data · análisis</span>
+        </div>
 
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="font-size:22px" aria-hidden="true">👷‍♂️</div>
-          <div>
-            <h3 style="margin:0 0 6px;">Estamos metiéndole</h3>
-            <p style="margin:0;color:rgba(255,255,255,.66);line-height:1.55;">
-              Esta web está en construcción: se vienen episodios, invitados, calendario y tienda.
-            </p>
-          </div>
+        <div class="footCopy">
+          © <span id="yy"></span> Área de Lucha
         </div>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- SOBRE -->
-  <section id="sobre" class="block bg-sobre anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Sobre</h2>
-        <span>El canal es el protagonista</span>
-      </div>
+  <!-- Música de fondo (opcional) -->
+  <audio id="bgAudio" preload="none" loop></audio>
 
-      <div class="card">
-        <h3 style="margin:0 0 10px;">Área de Lucha</h3>
-        <p style="margin:0;color:rgba(255,255,255,.72);line-height:1.65;max-width:90ch;">
-          Somos 4 personas, todos estudiantes de BJJ (Escuela Lotus, sede a cargo de Leandro).
-          Diego (Cule) e Iván (El Colo) son faixa azul. Fer faixa violeta.
-          Piero faixa blanca. Fer y Piero además somos 2º dan de Judo.
-          La idea: charlas descontracturadas, pero con técnica, data y análisis real.
-          Acá no hay “figuras”: manda el canal, el contenido y el equipo.
-        </p>
+  <!-- Botón flotante Música -->
+  <button class="fab-music" id="musicBtn" type="button" aria-label="Música de fondo">
+    <span class="fab-ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 18V6l12-2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="currentColor" opacity=".9"/>
+        <path d="M21 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="currentColor" opacity=".9"/>
+      </svg>
+    </span>
+    <span class="fab-txt" id="musicTxt">Música</span>
+  </button>
 
-        <div class="teamGrid" aria-label="Equipo (todos iguales)">
-          <div class="card teamCard">
-            <h3>Diego (Cule)</h3>
-            <div class="teamMeta">Faixa azul (BJJ)</div>
-            <div class="teamDesc">Debate, análisis y calle.</div>
-          </div>
+  <!-- WhatsApp FAB -->
+  <a class="fab-wa" id="waFab" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Área de Lucha">
+    <span class="fab-ico" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path fill="currentColor" d="M16 3C9.38 3 4 8.2 4 14.6c0 2.48.84 4.78 2.27 6.65L5 29l7.9-1.99a12.5 12.5 0 0 0 3.1.38c6.62 0 12-5.2 12-11.6S22.62 3 16 3Zm0 21.2c-1.02 0-2.03-.15-2.98-.44l-.62-.2-4.68 1.18 1.25-4.4-.41-.67A9.2 9.2 0 0 1 6.8 14.6C6.8 9.76 10.88 5.8 16 5.8s9.2 3.96 9.2 8.8-4.08 9.6-9.2 9.6Zm5.33-6.9c-.29-.14-1.7-.83-1.97-.93-.27-.1-.47-.14-.66.14-.2.29-.76.93-.93 1.12-.17.2-.34.22-.63.08-.29-.14-1.22-.44-2.32-1.4-.86-.74-1.44-1.66-1.6-1.95-.17-.29-.02-.44.13-.58.13-.13.29-.34.44-.5.15-.17.2-.29.29-.48.1-.2.05-.36-.02-.5-.07-.14-.66-1.57-.9-2.15-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.5.07-.76.36-.27.29-1.02 1-1.02 2.45 0 1.44 1.05 2.84 1.2 3.04.14.2 2.07 3.2 5.06 4.36.71.27 1.27.43 1.7.55.71.22 1.36.19 1.87.12.57-.09 1.7-.69 1.94-1.35.24-.66.24-1.23.17-1.35-.07-.12-.27-.2-.56-.34Z"/>
+      </svg>
+    </span>
+    <span class="fab-txt">WhatsApp</span>
+  </a>
 
-          <div class="card teamCard">
-            <h3>Iván (El Colo)</h3>
-            <div class="teamMeta">Faixa azul (BJJ)</div>
-            <div class="teamDesc">Técnica, CM y datos.</div>
-          </div>
-
-          <div class="card teamCard">
-            <h3>Fer</h3>
-            <div class="teamMeta">Faixa violeta (BJJ) · 2º Dan (Judo)</div>
-            <div class="teamDesc">Experiencia y criterio de tatami.</div>
-          </div>
-
-          <div class="card teamCard">
-            <h3>Piero</h3>
-            <div class="teamMeta">Faixa blanca (BJJ) · 2º Dan (Judo)</div>
-            <div class="teamDesc">Estructura, técnica y empuje.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto" class="block bg-contacto anchor">
-    <div class="wrap">
-      <div class="sectionTitle">
-        <h2>Contacto</h2>
-        <span>Redes + WhatsApp + Mail</span>
-      </div>
-
-      <div class="grid3">
-        <a class="card" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
-          <h3>YouTube</h3>
-          <p>@areadelucha</p>
-        </a>
-
-        <a class="card" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
-          <h3>Kick</h3>
-          <p>kick.com/areadelucha</p>
-        </a>
-
-        <a class="card" href="https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-          <h3>Instagram</h3>
-          <p>@areadelucha</p>
-        </a>
-
-        <!-- WhatsApp (cambiá el número real) -->
-        <a class="card" href="https://wa.me/5491100000000" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <h3>WhatsApp</h3>
-          <p>+54 9 11 000000000</p>
-        </a>
-
-        <a class="card" href="mailto:areadelucha@gmail.com">
-          <h3>Email</h3>
-          <p>areadelucha@gmail.com</p>
-        </a>
-
-        <div class="card">
-          <h3>Colab / invitados</h3>
-          <p>Si querés caer al stream o proponer tema, escribinos por WhatsApp o mail.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div class="stamp">
-        <img src="assets/3.png" alt="Logo Área de Lucha (blanco y negro)" />
-        <span>Área de Lucha — técnica · data · análisis</span>
-      </div>
-
-      <div style="color:rgba(255,255,255,.55);font-weight:800;">
-        © <span id="yy"></span> Área de Lucha
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Música de fondo (poné un archivo sin copyright en assets/bg.mp3) -->
-<audio id="bgAudio" src="assets/bg.mp3" preload="none" loop></audio>
-
-<!-- Botón flotante Música -->
-<button class="fab-music" id="musicBtn" type="button" aria-label="Música de fondo">
-  <span class="fab-ico" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path d="M9 18V6l12-2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="currentColor" opacity=".9"/>
-      <path d="M21 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="currentColor" opacity=".9"/>
-    </svg>
-  </span>
-  <span class="fab-txt" id="musicTxt">Música</span>
-</button>
-
-<!-- Botón flotante WhatsApp (cambiá el número) -->
-<a class="fab-wa" href="https://wa.me/5491100000000" target="_blank" rel="noopener" aria-label="WhatsApp Área de Lucha">
-  <span class="fab-ico" aria-hidden="true">
-    <svg viewBox="0 0 32 32" fill="none">
-      <path fill="currentColor" d="M16 3C9.38 3 4 8.2 4 14.6c0 2.48.84 4.78 2.27 6.65L5 29l7.9-1.99a12.5 12.5 0 0 0 3.1.38c6.62 0 12-5.2 12-11.6S22.62 3 16 3Zm0 21.2c-1.02 0-2.03-.15-2.98-.44l-.62-.2-4.68 1.18 1.25-4.4-.41-.67A9.2 9.2 0 0 1 6.8 14.6C6.8 9.76 10.88 5.8 16 5.8s9.2 3.96 9.2 8.8-4.08 9.6-9.2 9.6Zm5.33-6.9c-.29-.14-1.7-.83-1.97-.93-.27-.1-.47-.14-.66.14-.2.29-.76.93-.93 1.12-.17.2-.34.22-.63.08-.29-.14-1.22-.44-2.32-1.4-.86-.74-1.44-1.66-1.6-1.95-.17-.29-.02-.44.13-.58.13-.13.29-.34.44-.5.15-.17.2-.29.29-.48.1-.2.05-.36-.02-.5-.07-.14-.66-1.57-.9-2.15-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.5.07-.76.36-.27.29-1.02 1-1.02 2.45 0 1.44 1.05 2.84 1.2 3.04.14.2 2.07 3.2 5.06 4.36.71.27 1.27.43 1.7.55.71.22 1.36.19 1.87.12.57-.09 1.7-.69 1.94-1.35.24-.66.24-1.23.17-1.35-.07-.12-.27-.2-.56-.34Z"/>
-    </svg>
-  </span>
-  <span class="fab-txt">WhatsApp</span>
-</a>
-
-<!-- Volver arriba -->
-<button class="fab-top" id="topBtn" type="button" aria-label="Volver arriba">
-  <span class="fab-ico" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path d="M12 5l7 7-1.4 1.4L12 7.8 6.4 13.4 5 12l7-7Z" fill="currentColor"/>
-      <path d="M5 18h14v2H5v-2Z" fill="currentColor" opacity=".55"/>
-    </svg>
-  </span>
-</button>
-
-<script>
-  // ========= CONFIG (EDITÁS SOLO ESTO) =========
-  // Poné la fecha del próximo stream en formato ISO con zona -03:00 (Argentina)
-  // Ejemplo: "2026-02-01T21:00:00-03:00"
-  const NEXT_LIVE_ISO = "2026-01-30T19:00:00-03:00";
-  // ============================================
-
-  // Año footer
-  document.getElementById("yy").textContent = new Date().getFullYear();
-
-  // Ajustar alto real del header para que body padding-top y anchors sean perfectos
-  const headerEl = document.getElementById("siteHeader");
-  function syncHeaderHeight(){
-    const h = headerEl.offsetHeight || 78;
-    document.documentElement.style.setProperty("--headerH", h + "px");
-  }
-  window.addEventListener("load", syncHeaderHeight);
-  window.addEventListener("resize", syncHeaderHeight);
-
-  // ========= Countdown GLOBAL =========
-  const statusEl = document.getElementById("liveStatus");
-  const bigEl = document.getElementById("liveBig");
-  const noteEl = document.getElementById("liveNote");
-
-  const out = {
-    d: document.getElementById("d"),
-    h: document.getElementById("h"),
-    m: document.getElementById("m"),
-    s: document.getElementById("s"),
-  };
-
-  function pad(n){ return String(n).padStart(2, "0"); }
-
-  function parseTarget(iso){
-    const d = new Date(iso);
-    return isNaN(d.getTime()) ? null : d;
-  }
-
-  const targetDate = parseTarget(NEXT_LIVE_ISO);
-
-  function setStatus(text){ statusEl.textContent = text; }
-
-  function tick(){
-    if(!targetDate){
-      bigEl.textContent = "Fecha no seteada";
-      out.d.textContent = out.h.textContent = out.m.textContent = out.s.textContent = "—";
-      setStatus("Falta configurar NEXT_LIVE_ISO en el código.");
-      noteEl.textContent = "Tip: editá 1 línea y listo.";
-      return;
-    }
-
-    const now = new Date();
-    const diff = targetDate.getTime() - now.getTime();
-
-    const opts = { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:"2-digit", minute:"2-digit" };
-    const when = targetDate.toLocaleString("es-AR", opts);
-
-    if(diff <= 0){
-      out.d.textContent = "00";
-      out.h.textContent = "00";
-      out.m.textContent = "00";
-      out.s.textContent = "00";
-      bigEl.textContent = "¡Es ahora!";
-      setStatus("Horario del stream: " + when + " (AR). Si ya arrancó, entrá a Kick o YouTube.");
-      noteEl.textContent = "Si no está en vivo todavía, quedate atento: puede haber delay.";
-      return;
-    }
-
-    const totalSeconds = Math.floor(diff / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const mins = Math.floor((totalSeconds % 3600) / 60);
-    const secs = totalSeconds % 60;
-
-    out.d.textContent = String(days);
-    out.h.textContent = pad(hours);
-    out.m.textContent = pad(mins);
-    out.s.textContent = pad(secs);
-
-    // “Grande” tipo hype
-    if(days > 0){
-      bigEl.textContent = `${days} día${days === 1 ? "" : "s"} • ${pad(hours)}:${pad(mins)}:${pad(secs)}`;
-    } else {
-      bigEl.textContent = `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
-    }
-
-    setStatus("Stream programado: " + when + " (AR).");
-    noteEl.textContent = "Se actualiza automático para todos (es global del sitio).";
-  }
-
-  tick();
-  setInterval(tick, 1000);
-
-  // ========= Volver arriba =========
-  const topBtn = document.getElementById("topBtn");
-  function onScroll(){
-    if(window.scrollY > 380){
-      topBtn.classList.add("show");
-    } else {
-      topBtn.classList.remove("show");
-    }
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  topBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // ========= Música (sin autoplay, toggle) =========
-  // IMPORTANTE: poné un archivo real en assets/bg.mp3 (CC0 / libre)
-  const audio = document.getElementById("bgAudio");
-  const musicBtn = document.getElementById("musicBtn");
-  const musicTxt = document.getElementById("musicTxt");
-  const MUSIC_KEY = "adl_music_on";
-
-  // Config inicial
-  audio.volume = 0.22;
-
-  function setMusicUI(on){
-    musicTxt.textContent = on ? "Pausar" : "Música";
-    musicBtn.setAttribute("aria-label", on ? "Pausar música de fondo" : "Activar música de fondo");
-  }
-
-  async function toggleMusic(){
-    const wantOn = !(localStorage.getItem(MUSIC_KEY) === "1");
-    if(wantOn){
-      try{
-        await audio.play();
-        localStorage.setItem(MUSIC_KEY, "1");
-        setMusicUI(true);
-      } catch(e){
-        // Si falta el archivo o el navegador bloquea, no rompemos nada
-        localStorage.setItem(MUSIC_KEY, "0");
-        setMusicUI(false);
-        alert("No se pudo reproducir la música. Verificá que exista assets/bg.mp3 y que sea un archivo válido.");
-      }
-    } else {
-      audio.pause();
-      localStorage.setItem(MUSIC_KEY, "0");
-      setMusicUI(false);
-    }
-  }
-
-  // Si el usuario ya la había activado antes, intentamos reproducir cuando haya interacción
-  // (por políticas del navegador, play requiere gesto del usuario).
-  const wasOn = (localStorage.getItem(MUSIC_KEY) === "1");
-  setMusicUI(false);
-
-  musicBtn.addEventListener("click", toggleMusic);
-
-  // Truquito: si estaba ON, al primer click en cualquier lado la intentamos levantar una vez
-  if(wasOn){
-    const oneShot = async () => {
-      try{
-        await audio.play();
-        setMusicUI(true);
-      } catch(_) {
-        setMusicUI(false);
-      }
-      window.removeEventListener("pointerdown", oneShot);
-    };
-    window.addEventListener("pointerdown", oneShot, { once:true });
-  }
-</script>
-
+  <!-- Volver arriba -->
+  <button class="fab-top" id="topBtn" type="button" aria-label="Volver arriba">
+    <span class="fab-ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 5l7 7-1.4 1.4L12 7.8 6.4 13.4 5 12l7-7Z" fill="currentColor"/>
+        <path d="M5 18h14v2H5v-2Z" fill="currentColor" opacity=".55"/>
+      </svg>
+    </span>
+  </button>
 </body>
 </html>
