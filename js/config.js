@@ -1,10 +1,10 @@
 // ========= CONFIG GLOBAL (editás SOLO esto) =========
 window.ADL = {
   brand: {
-    name: "Área de Lucha",
-    tagline: "técnica · data · análisis",
-    logoHeader: "/assets/2.png",
-    logoFooter: "/assets/3.png",
+  name: "Área de Lucha",
+  tagline: " · análisis tecnico · debates · mucho mas ",
+  logoHeader: "/assets/logo-round-512.png",
+  logoFooter: "/assets/logo-round-256.png",
   },
 
   hero: {
