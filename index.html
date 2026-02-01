@@ -15,12 +15,15 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
+  <!-- Preload hero bg (mejora el "flash" al cargar) -->
+  <link rel="preload" as="image" href="/assets/4.png">
+
   <!-- Open Graph / WhatsApp / Facebook -->
   <meta property="og:site_name" content="Área de Lucha">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.areadelucha.com/">
-  <meta property="og:title" content="Área de Lucha — técnica · análisis · humor">
-  <meta property="og:description" content="Debate y análisis tecnico. Deportes de combate y otros más. BJJ, Judo, Kickboxing, etc..">
+  <meta property="og:title" content="Área de Lucha — técnica · data · análisis">
+  <meta property="og:description" content="Debate y análisis técnico. Deportes de combate y más: BJJ, Judo, Kickboxing, etc.">
   <meta property="og:image" content="https://www.areadelucha.com/og-cover.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -28,11 +31,26 @@
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Área de Lucha — técnica · data · análisis">
-  <meta name="twitter:description" content="Deportes de combate sin humo. Técnica clara, data útil y análisis real. BJJ, Judo, striking y debate.">
+  <meta name="twitter:description" content="Deportes de combate sin humo. Técnica clara, data útil y análisis real.">
   <meta name="twitter:image" content="https://www.areadelucha.com/og-cover.png">
 
   <title>Área de Lucha — técnica · data · análisis</title>
   <meta name="description" content="Área de Lucha: técnica clara, data útil y análisis real. BJJ, Judo, striking y debate." />
+
+  <!-- JSON-LD (SEO pro) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Área de Lucha",
+    "url": "https://www.areadelucha.com/",
+    "sameAs": [
+      "https://www.youtube.com/@areadelucha",
+      "https://kick.com/areadelucha",
+      "https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet"
+    ]
+  }
+  </script>
 
   <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,11 +65,17 @@
 <body>
   <a class="skip" href="#inicio">Saltar al contenido</a>
 
+  <noscript>
+    <div class="noscript">
+      Esta web necesita JavaScript para cargar links, episodios y la cuenta regresiva.
+    </div>
+  </noscript>
+
   <header id="siteHeader">
     <div class="wrap">
       <div class="topbar">
         <a class="brand" href="#inicio" aria-label="Ir al inicio">
-          <img id="brandLogo" src="assets/2.png" alt="Logo Área de Lucha (color)" />
+          <img id="brandLogo" src="/assets/2.png" alt="Logo Área de Lucha (color)" />
           <div class="t">
             <strong id="brandName">Área de Lucha</strong>
             <span id="brandTagline">técnica · data · análisis</span>
@@ -80,7 +104,7 @@
             <div>
               <div class="badge">
                 <span class="dot" aria-hidden="true"></span>
-                <span id="heroBadgeText">Online • Técnica + Data + Análisis</span>
+                <span id="heroBadgeText">Técnica + Data + Análisis</span>
               </div>
 
               <h1 id="heroTitle">Deportes de combate<br/>sin humo.</h1>
@@ -147,10 +171,10 @@
                 <p>Kit visual con las 4 versiones del logo, para web y redes.</p>
                 <div class="sp12"></div>
                 <div class="miniRow" aria-label="Logos">
-                  <img src="assets/1.jpeg" alt="Logo 1" class="miniLogo">
-                  <img src="assets/2.png" alt="Logo 2" class="miniLogo">
-                  <img src="assets/3.png" alt="Logo 3" class="miniLogo">
-                  <img src="assets/4.png" alt="Logo 4" class="miniLogo">
+                  <img src="/assets/1.jpeg" alt="Logo 1" class="miniLogo">
+                  <img src="/assets/2.png" alt="Logo 2" class="miniLogo">
+                  <img src="/assets/3.png" alt="Logo 3" class="miniLogo">
+                  <img src="/assets/4.png" alt="Logo 4" class="miniLogo">
                 </div>
               </div>
             </div>
@@ -165,22 +189,11 @@
       <div class="wrap">
         <div class="sectionTitle">
           <h2>Episodios</h2>
-          <span>Próximamente: cards con episodios destacados</span>
+          <span id="episodesHint">Destacados del canal</span>
         </div>
 
-        <div class="grid3">
-          <div class="card">
-            <h3>Destacado #1</h3>
-            <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
-          </div>
-          <div class="card">
-            <h3>Destacado #2</h3>
-            <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
-          </div>
-          <div class="card">
-            <h3>Destacado #3</h3>
-            <p>Link al episodio, miniatura, resumen, invitados, etc.</p>
-          </div>
+        <div class="grid3" id="episodesGrid" aria-label="Episodios destacados">
+          <!-- Se inyecta por JS desde /js/config.js -->
         </div>
       </div>
     </section>
@@ -194,17 +207,17 @@
         </div>
 
         <div class="grid3">
-          <a class="card" id="cardYouTube" href="#" target="_blank" rel="noopener">
+          <a class="card linkCard" id="cardYouTube" href="#" target="_blank" rel="noopener">
             <h3>YouTube</h3>
             <p>Episodios completos, playlists y shorts.</p>
           </a>
 
-          <a class="card" id="cardKick" href="#" target="_blank" rel="noopener">
+          <a class="card linkCard" id="cardKick" href="#" target="_blank" rel="noopener">
             <h3>Kick</h3>
             <p>Streams en vivo (cuando estemos online).</p>
           </a>
 
-          <a class="card" id="cardInstagram" href="#" target="_blank" rel="noopener">
+          <a class="card linkCard" id="cardInstagram" href="#" target="_blank" rel="noopener">
             <h3>Instagram</h3>
             <p>Reels, clips, backstage y anuncios.</p>
           </a>
@@ -357,27 +370,27 @@
         </div>
 
         <div class="grid3">
-          <a class="card" id="contactYouTube" href="#" target="_blank" rel="noopener">
+          <a class="card linkCard" id="contactYouTube" href="#" target="_blank" rel="noopener">
             <h3>YouTube</h3>
             <p>@areadelucha</p>
           </a>
 
-          <a class="card" id="contactKick" href="#" target="_blank" rel="noopener">
+          <a class="card linkCard" id="contactKick" href="#" target="_blank" rel="noopener">
             <h3>Kick</h3>
             <p>kick.com/areadelucha</p>
           </a>
 
-          <a class="card" id="contactInstagram" href="#" target="_blank" rel="noopener">
+          <a class="card linkCard" id="contactInstagram" href="#" target="_blank" rel="noopener">
             <h3>Instagram</h3>
             <p>@areadelucha</p>
           </a>
 
-          <a class="card" id="contactWhatsApp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <a class="card linkCard" id="contactWhatsApp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
             <h3>WhatsApp</h3>
             <p id="waText">—</p>
           </a>
 
-          <a class="card" id="contactEmail" href="#">
+          <a class="card linkCard" id="contactEmail" href="#">
             <h3>Email</h3>
             <p id="emailText">—</p>
           </a>
@@ -395,7 +408,7 @@
     <div class="wrap">
       <div class="foot">
         <div class="stamp">
-          <img id="footerLogo" src="assets/3.png" alt="Logo Área de Lucha (blanco y negro)" />
+          <img id="footerLogo" src="/assets/3.png" alt="Logo Área de Lucha (blanco y negro)" />
           <span id="footerText">Área de Lucha — técnica · data · análisis</span>
         </div>
 
@@ -408,6 +421,9 @@
 
   <!-- Música de fondo (opcional) -->
   <audio id="bgAudio" preload="none" loop></audio>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <!-- Botón flotante Música -->
   <button class="fab-music" id="musicBtn" type="button" aria-label="Música de fondo">
