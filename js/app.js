@@ -6,6 +6,17 @@
   const $ = (sel) => document.querySelector(sel);
   const pad = (n) => String(n).padStart(2, "0");
 
+  // Toast (mini aviso)
+  const toastEl = $("#toast");
+  let toastTimer = null;
+  const toast = (msg, ms = 2200) => {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), ms);
+  };
+
   // Año footer
   const yy = $("#yy");
   if (yy) yy.textContent = new Date().getFullYear();
@@ -17,29 +28,38 @@
   const footerLogo = $("#footerLogo");
   const footerText = $("#footerText");
 
-  if (brandName) brandName.textContent = cfg.brand.name;
-  if (brandTagline) brandTagline.textContent = cfg.brand.tagline;
-  if (brandLogo) brandLogo.src = cfg.brand.logoHeader;
-  if (footerLogo) footerLogo.src = cfg.brand.logoFooter;
-  if (footerText) footerText.textContent = `${cfg.brand.name} — ${cfg.brand.tagline}`;
+  if (brandName) brandName.textContent = cfg.brand?.name || "Área de Lucha";
+  if (brandTagline) brandTagline.textContent = cfg.brand?.tagline || "técnica · data · análisis";
+  if (brandLogo && cfg.brand?.logoHeader) brandLogo.src = cfg.brand.logoHeader;
+  if (footerLogo && cfg.brand?.logoFooter) footerLogo.src = cfg.brand.logoFooter;
+  if (footerText) footerText.textContent = `${cfg.brand?.name || "Área de Lucha"} — ${cfg.brand?.tagline || "técnica · data · análisis"}`;
+
+  // Hero badge
+  const heroBadge = $("#heroBadgeText");
+  if (heroBadge) {
+    const liveOn = !!cfg.live?.isLive;
+    heroBadge.textContent = liveOn
+      ? (cfg.hero?.badgeLiveText || "EN VIVO • Entrá al stream")
+      : (cfg.hero?.badgeText || "Técnica + Data + Análisis");
+  }
 
   // Links (botones + cards + playlist)
   const mapLinks = [
-    ["#btnYouTube", cfg.links.youtube],
-    ["#btnKick", cfg.links.kick],
-    ["#btnInstagram", cfg.links.instagram],
-    ["#btnPlaylist", cfg.links.playlist],
+    ["#btnYouTube", cfg.links?.youtube],
+    ["#btnKick", cfg.links?.kick],
+    ["#btnInstagram", cfg.links?.instagram],
+    ["#btnPlaylist", cfg.links?.playlist],
 
-    ["#cardYouTube", cfg.links.youtube],
-    ["#cardKick", cfg.links.kick],
-    ["#cardInstagram", cfg.links.instagram],
+    ["#cardYouTube", cfg.links?.youtube],
+    ["#cardKick", cfg.links?.kick],
+    ["#cardInstagram", cfg.links?.instagram],
 
-    ["#liveKick", cfg.links.kick],
-    ["#liveYouTube", cfg.links.youtube],
+    ["#liveKick", cfg.links?.kick],
+    ["#liveYouTube", cfg.links?.youtube],
 
-    ["#contactYouTube", cfg.links.youtube],
-    ["#contactKick", cfg.links.kick],
-    ["#contactInstagram", cfg.links.instagram],
+    ["#contactYouTube", cfg.links?.youtube],
+    ["#contactKick", cfg.links?.kick],
+    ["#contactInstagram", cfg.links?.instagram],
   ];
 
   mapLinks.forEach(([sel, href]) => {
@@ -48,22 +68,31 @@
   });
 
   // Contacto: mail + WA
-  const waHref = `https://wa.me/${cfg.contact.waNumber}`;
   const waFab = $("#waFab");
   const contactWA = $("#contactWhatsApp");
   const waText = $("#waText");
 
-  if (waFab) waFab.href = waHref;
-  if (contactWA) contactWA.href = waHref;
-  if (waText) waText.textContent = cfg.contact.waDisplay;
+  const waNum = cfg.contact?.waNumber || "";
+  const waDisp = cfg.contact?.waDisplay || "";
+  if (waNum) {
+    const waHref = `https://wa.me/${waNum}`;
+    if (waFab) waFab.href = waHref;
+    if (contactWA) contactWA.href = waHref;
+  }
+  if (waText) waText.textContent = waDisp || "Configurar en /js/config.js";
 
-  const emailHref = `mailto:${cfg.contact.email}`;
   const contactEmail = $("#contactEmail");
   const emailText = $("#emailText");
-  if (contactEmail) contactEmail.href = emailHref;
-  if (emailText) emailText.textContent = cfg.contact.email;
+  const mail = cfg.contact?.email || "";
+  if (mail) {
+    const emailHref = `mailto:${mail}`;
+    if (contactEmail) contactEmail.href = emailHref;
+    if (emailText) emailText.textContent = mail;
+  } else {
+    if (emailText) emailText.textContent = "Configurar en /js/config.js";
+  }
 
-  // Ajustar alto real del header
+  // Ajustar alto real del header (por si el nav crece)
   const headerEl = $("#siteHeader");
   const syncHeaderHeight = () => {
     const h = headerEl?.offsetHeight || 78;
@@ -71,12 +100,55 @@
   };
   window.addEventListener("load", syncHeaderHeight);
   window.addEventListener("resize", syncHeaderHeight);
+  document.addEventListener("DOMContentLoaded", syncHeaderHeight);
+
+  // ========= Episodios dinámicos =========
+  const grid = $("#episodesGrid");
+  const hint = $("#episodesHint");
+
+  const renderEpisodes = () => {
+    if (!grid) return;
+
+    const eps = Array.isArray(cfg.episodes) ? cfg.episodes : [];
+    if (eps.length === 0) {
+      if (hint) hint.textContent = "Próximamente: destacados del canal";
+      grid.innerHTML = `
+        <div class="card"><h3>Destacado #1</h3><p>Acá va el link, miniatura y resumen.</p></div>
+        <div class="card"><h3>Destacado #2</h3><p>Acá va el link, miniatura y resumen.</p></div>
+        <div class="card"><h3>Destacado #3</h3><p>Acá va el link, miniatura y resumen.</p></div>
+      `;
+      return;
+    }
+
+    if (hint) hint.textContent = "Destacados del canal";
+    grid.innerHTML = eps.slice(0, 6).map((e) => {
+      const safeHref = e.href ? `href="${e.href}" target="_blank" rel="noopener"` : "";
+      const wrapOpen = e.href ? `<a class="card linkCard" ${safeHref}>` : `<div class="card">`;
+      const wrapClose = e.href ? `</a>` : `</div>`;
+      const thumb = e.img ? `<img class="epThumb" src="${e.img}" alt="${e.title || "Episodio"}">` : "";
+      const tag = e.tag ? `<div class="epTag">${e.tag}</div>` : "";
+
+      return `
+        ${wrapOpen}
+          <div class="epRow">
+            ${thumb}
+            <div>
+              <h3>${e.title || "Episodio"}</h3>
+              <p>${e.desc || "Descripción del episodio."}</p>
+              ${tag}
+            </div>
+          </div>
+        ${wrapClose}
+      `;
+    }).join("");
+  };
+
+  renderEpisodes();
 
   // ========= Countdown =========
   const statusEl = $("#liveStatus");
   const bigEl = $("#liveBig");
   const noteEl = $("#liveNote");
-
   const out = { d: $("#d"), h: $("#h"), m: $("#m"), s: $("#s") };
 
   const parseTarget = (iso) => {
@@ -84,16 +156,24 @@
     return Number.isNaN(d.getTime()) ? null : d;
   };
 
-  const targetDate = parseTarget(cfg.live.nextISO);
+  const targetDate = parseTarget(cfg.live?.nextISO);
 
   const setCountdownBlank = (msg) => {
     if (bigEl) bigEl.textContent = msg;
-    ["d", "h", "m", "s"].forEach((k) => out[k] && (out[k].textContent = "—"));
+    ["d","h","m","s"].forEach((k) => out[k] && (out[k].textContent = "—"));
     if (statusEl) statusEl.textContent = "Falta configurar la fecha del próximo stream.";
     if (noteEl) noteEl.textContent = "Tip: editá /js/config.js y listo.";
   };
 
   const tick = () => {
+    if (cfg.live?.isLive) {
+      if (bigEl) bigEl.textContent = "¡EN VIVO!";
+      ["d","h","m","s"].forEach((k) => out[k] && (out[k].textContent = "—"));
+      if (statusEl) statusEl.textContent = "Estamos en vivo. Entrá a Kick o YouTube.";
+      if (noteEl) noteEl.textContent = "Si no lo ves, refrescá (puede haber delay).";
+      return;
+    }
+
     if (!targetDate) return setCountdownBlank("Fecha no seteada");
 
     const now = new Date();
@@ -108,7 +188,7 @@
       if (out.m) out.m.textContent = "00";
       if (out.s) out.s.textContent = "00";
       if (bigEl) bigEl.textContent = "¡Es ahora!";
-      if (statusEl) statusEl.textContent = `Horario del stream: ${when} (${cfg.live.timezoneLabel}). Si ya arrancó, entrá a Kick o YouTube.`;
+      if (statusEl) statusEl.textContent = `Horario del stream: ${when} (${cfg.live?.timezoneLabel || "AR"}). Si ya arrancó, entrá a Kick o YouTube.`;
       if (noteEl) noteEl.textContent = "Si no está en vivo todavía, puede haber delay.";
       return;
     }
@@ -130,7 +210,7 @@
         : `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
     }
 
-    if (statusEl) statusEl.textContent = `Stream programado: ${when} (${cfg.live.timezoneLabel}).`;
+    if (statusEl) statusEl.textContent = `Stream programado: ${when} (${cfg.live?.timezoneLabel || "AR"}).`;
     if (noteEl) noteEl.textContent = "Se actualiza automático para todos (global del sitio).";
   };
 
@@ -161,6 +241,7 @@
     audio.volume = cfg.music.volume ?? 0.22;
 
     const KEY = cfg.music.storageKey || "adl_music_on";
+
     const setMusicUI = (on) => {
       if (musicTxt) musicTxt.textContent = on ? "Pausar" : "Música";
       musicBtn?.setAttribute("aria-label", on ? "Pausar música de fondo" : "Activar música de fondo");
@@ -173,15 +254,17 @@
           await audio.play();
           localStorage.setItem(KEY, "1");
           setMusicUI(true);
-        } catch (e) {
+          toast("Música activada");
+        } catch (_) {
           localStorage.setItem(KEY, "0");
           setMusicUI(false);
-          alert("No se pudo reproducir la música. Verificá que exista /assets/bg.mp3 y sea un archivo válido.");
+          toast("No se pudo reproducir. Revisá /assets/bg.mp3", 2800);
         }
       } else {
         audio.pause();
         localStorage.setItem(KEY, "0");
         setMusicUI(false);
+        toast("Música pausada");
       }
     };
 
@@ -197,7 +280,6 @@
       window.addEventListener("pointerdown", oneShot, { once: true });
     }
   } else {
-    // si música deshabilitada, ocultamos botón
     if (musicBtn) musicBtn.style.display = "none";
   }
 })();
