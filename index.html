@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- SEO + Social + Icons (Área de Lucha) -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#070A12" />
+
+  <link rel="canonical" href="https://www.areadelucha.com/" />
+
+  <!-- Favicons (estándar, en raíz) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Preload hero bg (mejora el "flash" al cargar) -->
+  <link rel="preload" as="image" href="/assets/hero-bg.webp" type="image/webp">
+  <link rel="preload" as="image" href="/assets/hero-bg.png" type="image/png">
+  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta property="og:site_name" content="Área de Lucha">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.areadelucha.com/">
+  <meta property="og:title" content="Área de Lucha — técnica · data · análisis">
+  <meta property="og:description" content="Debate y análisis técnico. Deportes de combate y más: BJJ, Judo, Kickboxing, etc.">
+  <meta property="og:image" content="https://www.areadelucha.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Área de Lucha — técnica · data · análisis">
+  <meta name="twitter:description" content="Deportes de combate sin humo. Técnica clara, data útil y análisis real.">
+  <meta name="twitter:image" content="https://www.areadelucha.com/assets/og-image.png">
+
+  <title>Área de Lucha — técnica · data · análisis</title>
+  <meta name="description" content="Área de Lucha: técnica clara, data útil y análisis real. BJJ, Judo, striking y debate." />
+
+  <!-- JSON-LD (SEO pro) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Área de Lucha",
+    "url": "https://www.areadelucha.com/",
+    "sameAs": [
+      "https://www.youtube.com/@areadelucha",
+      "https://kick.com/areadelucha",
+      "https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet"
+    ]
+  }
+  </script>
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="/js/config.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</head>
+
+<body>
+  <a class="skip" href="#inicio">Saltar al contenido</a>
+
+  <noscript>
+    <div class="noscript">
+      Esta web necesita JavaScript para cargar links, episodios y la cuenta regresiva.
+    </div>
+  </noscript>
+
+  <header id="siteHeader">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+          <img id="brandLogo" src="/assets/logo-round-256.png" alt="Logo Área de Lucha" width="44" height="44" decoding="async" />
+          <div class="t">
+            <strong id="brandName">Área de Lucha</strong>
+            <span id="brandTagline">técnica · data · análisis</span>
+          </div>
+        </a>
+
+        <nav aria-label="Navegación principal">
+          <a class="pill" href="#episodios">Episodios</a>
+          <a class="pill" href="#plataformas">Plataformas</a>
+          <a class="pill" href="#envivo">En vivo</a>
+          <a class="pill" href="#merch">Merch</a>
+          <a class="pill" href="#trabajando">Hombres trabajando</a>
+          <a class="pill" href="#sobre">Sobre</a>
+          <a class="pill primary" href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="inicio" class="block bg-hero anchor">
+      <div class="wrap">
+        <div class="heroCard">
+          <div class="heroGrid">
+            <div>
+              <div class="badge">
+                <span class="dot" aria-hidden="true"></span>
+                <span id="heroBadgeText">Técnica + Data + Análisis</span>
+              </div>
+
+              <h1 id="heroTitle">Deportes de combate<br/>sin humo.</h1>
+              <p class="sub" id="heroSubtitle">
+                Episodios completos, streams y reels. Técnica clara, data útil y análisis real.
+                BJJ, Judo, striking y debate — con respeto, pero sin caretas.
+              </p>
+
+              <div class="ctaRow">
+                <a class="btn primary" id="btnYouTube" href="#" target="_blank" rel="noopener">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M21 8.2c0-1.1-.9-2-2-2.2C17.2 5.7 14.8 5.5 12 5.5s-5.2.2-7 .5c-1.1.2-2 .9-2 2.2A55 55 0 0 0 3 12a55 55 0 0 0 .1 3.8c0 1.3.9 2 2 2.2 1.8.3 4.2.5 6.9.5s5.2-.2 7-.5c1.1-.2 2-.9 2-2.2.1-1.3.1-2.5.1-3.8s0-2.5-.1-3.8Z" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M10.2 9.6v4.8L15 12l-4.8-2.4Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  YouTube
+                </a>
+
+                <a class="btn" id="btnKick" href="#" target="_blank" rel="noopener">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M6 5h4v6l4-6h4l-5 7 5 7h-4l-4-6v6H6V5Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  Kick (en vivo)
+                </a>
+
+                <a class="btn" id="btnInstagram" href="#" target="_blank" rel="noopener">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M17.6 6.4h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  Instagram
+                </a>
+              </div>
+
+              <div class="chips" aria-label="Temas del canal">
+                <span class="chip">• BJJ</span>
+                <span class="chip">• Judo</span>
+                <span class="chip">• Striking</span>
+                <span class="chip">• Análisis</span>
+              </div>
+            </div>
+
+            <div class="sideCard">
+              <div class="card">
+                <h3>▶ Playlist principal</h3>
+                <p>Entrá directo a la serie y mirá episodios completos.</p>
+                <div class="sp10"></div>
+                <a class="btn" id="btnPlaylist" href="#" target="_blank" rel="noopener">Ver playlist</a>
+              </div>
+
+              <div class="card">
+                <h3>⚡ Criterio</h3>
+                <p>Respeto + debate. Mucha técnica, mucha data, cero humo.</p>
+              </div>
+
+              <div class="card">
+                <h3>Marca</h3>
+                <p>Kit visual con las 4 versiones del logo, para web y redes.</p>
+                <div class="sp12"></div>
+                <div class="miniRow" aria-label="Logos">
+                  <img src="/assets/1.jpeg" alt="Logo 1" class="miniLogo" loading="lazy" decoding="async">
+                  <img src="/assets/logo-round-256.png" alt="Logo ADL" class="miniLogo" loading="lazy" decoding="async">
+                  <img src="/assets/3.png" alt="Logo 3" class="miniLogo" loading="lazy" decoding="async">
+                  <img src="/assets/4.png" alt="Logo 4" class="miniLogo" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EPISODIOS -->
+    <section id="episodios" class="block bg-episodios anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Episodios</h2>
+          <span id="episodesHint">Destacados del canal</span>
+        </div>
+
+        <div class="grid3" id="episodesGrid" aria-label="Episodios destacados">
+          <!-- Se inyecta por JS desde /js/config.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATAFORMAS -->
+    <section id="plataformas" class="block bg-plataformas anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Plataformas</h2>
+          <span>Entradas directas</span>
+        </div>
+
+        <div class="grid3">
+          <a class="card linkCard" id="cardYouTube" href="#" target="_blank" rel="noopener">
+            <h3>YouTube</h3>
+            <p>Episodios completos, playlists y shorts.</p>
+          </a>
+
+          <a class="card linkCard" id="cardKick" href="#" target="_blank" rel="noopener">
+            <h3>Kick</h3>
+            <p>Streams en vivo (cuando estemos online).</p>
+          </a>
+
+          <a class="card linkCard" id="cardInstagram" href="#" target="_blank" rel="noopener">
+            <h3>Instagram</h3>
+            <p>Reels, clips, backstage y anuncios.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EN VIVO (GLOBAL) -->
+    <section id="envivo" class="block bg-envivo anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>En vivo</h2>
+          <span>Cuenta regresiva global (la seteás vos)</span>
+        </div>
+
+        <div class="card liveBox">
+          <div class="liveHero">
+            <div>
+              <h3 class="m0 mb6">Próximo stream</h3>
+              <div class="liveBig" id="liveBig">—</div>
+              <div class="liveMeta" id="liveStatus">Publicado por el canal. Horario Argentina (AR).</div>
+
+              <div class="countdown" aria-label="Cuenta regresiva">
+                <div class="timeBox"><b id="d">—</b><span>Días</span></div>
+                <div class="timeBox"><b id="h">—</b><span>Horas</span></div>
+                <div class="timeBox"><b id="m">—</b><span>Min</span></div>
+                <div class="timeBox"><b id="s">—</b><span>Seg</span></div>
+              </div>
+
+              <p class="smallNote" id="liveNote">Cuando llegue el horario, te dejamos botones directos a Kick y YouTube.</p>
+
+              <div class="ctaRow mt14">
+                <a class="btn primary" id="liveKick" href="#" target="_blank" rel="noopener">Ir a Kick</a>
+                <a class="btn" id="liveYouTube" href="#" target="_blank" rel="noopener">Ir a YouTube</a>
+              </div>
+
+              <p class="smallNote op85">
+                <b>Para cambiar la fecha:</b> editás 1 línea en <code>/js/config.js</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MERCH -->
+    <section id="merch" class="block bg-merch anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Merch</h2>
+          <span>Ropa · gorras · stickers · lo más barato posible</span>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>Shop (próximamente)</h3>
+            <p>Acá va el catálogo cuando definamos proveedor. Vamos por la opción más barata que mantenga buena calidad.</p>
+            <div class="sp10"></div>
+            <a class="btn" href="#contacto">Quiero merch</a>
+          </div>
+
+          <div class="card">
+            <h3>Qué vendemos</h3>
+            <p>Remeras, buzos, gorras, stickers y rashguards (BJJ).</p>
+          </div>
+
+          <div class="card">
+            <h3>Checkout</h3>
+            <p>Después lo linkeamos a MercadoPago / TiendaNube / lo que convenga.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOMBRES TRABAJANDO -->
+    <section id="trabajando" class="block bg-trabajando anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Hombres trabajando</h2>
+          <span>Para que se note que falta completar cosas</span>
+        </div>
+
+        <div class="card">
+          <div class="workingRow">
+            <div class="workingEmoji" aria-hidden="true">👷‍♂️</div>
+            <div>
+              <h3 class="m0 mb6">Estamos metiéndole</h3>
+              <p class="m0 mutedLine">
+                Esta web está en construcción: se vienen episodios, invitados, calendario y tienda.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="block bg-sobre anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Sobre</h2>
+          <span>El canal es el protagonista</span>
+        </div>
+
+        <div class="card">
+          <h3 class="m0 mb10">Área de Lucha</h3>
+          <p class="aboutText">
+            Somos 4 personas, todos estudiantes de BJJ (Escuela Lotus, sede a cargo de Leandro).
+            Diego (Cule) e Iván (El Colo) son faixa azul. Fer faixa violeta.
+            Piero faixa blanca. Fer y Piero además somos 2º dan de Judo.
+            La idea: charlas descontracturadas, pero con técnica, data y análisis real.
+            Acá no hay “figuras”: manda el canal, el contenido y el equipo.
+          </p>
+
+          <div class="teamGrid" aria-label="Equipo (todos iguales)">
+            <div class="card teamCard">
+              <h3>Diego (Cule)</h3>
+              <div class="teamMeta">Faixa azul (BJJ)</div>
+              <div class="teamDesc">Debate, análisis y calle.</div>
+            </div>
+
+            <div class="card teamCard">
+              <h3>Iván (El Colo)</h3>
+              <div class="teamMeta">Faixa azul (BJJ)</div>
+              <div class="teamDesc">Técnica, CM y datos.</div>
+            </div>
+
+            <div class="card teamCard">
+              <h3>Fer</h3>
+              <div class="teamMeta">Faixa violeta (BJJ) · 2º Dan (Judo)</div>
+              <div class="teamDesc">Experiencia y criterio de tatami.</div>
+            </div>
+
+            <div class="card teamCard">
+              <h3>Piero</h3>
+              <div class="teamMeta">Faixa blanca (BJJ) · 2º Dan (Judo)</div>
+              <div class="teamDesc">Estructura, técnica y empuje.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="block bg-contacto anchor">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Contacto</h2>
+          <span>Redes + WhatsApp + Mail</span>
+        </div>
+
+        <div class="grid3">
+          <a class="card linkCard" id="contactYouTube" href="#" target="_blank" rel="noopener">
+            <h3>YouTube</h3>
+            <p>@areadelucha</p>
+          </a>
+
+          <a class="card linkCard" id="contactKick" href="#" target="_blank" rel="noopener">
+            <h3>Kick</h3>
+            <p>kick.com/areadelucha</p>
+          </a>
+
+          <a class="card linkCard" id="contactInstagram" href="#" target="_blank" rel="noopener">
+            <h3>Instagram</h3>
+            <p>@areadelucha</p>
+          </a>
+
+          <a class="card linkCard" id="contactWhatsApp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <h3>WhatsApp</h3>
+            <p id="waText">—</p>
+          </a>
+
+          <a class="card linkCard" id="contactEmail" href="#">
+            <h3>Email</h3>
+            <p id="emailText">—</p>
+          </a>
+
+          <div class="card">
+            <h3>Colab / invitados</h3>
+            <p>Si querés caer al stream o proponer tema, escribinos por WhatsApp o mail.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div class="stamp">
+          <img id="footerLogo" src="/assets/logo-round-256.png" alt="Logo Área de Lucha" width="28" height="28" loading="lazy" decoding="async" />
+          <span id="footerText">Área de Lucha — técnica · data · análisis</span>
+        </div>
+
+        <div class="footCopy">
+          © <span id="yy"></span> Área de Lucha
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Música de fondo (opcional) -->
+  <audio id="bgAudio" preload="none" loop></audio>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Botón flotante Música -->
+  <button class="fab-music" id="musicBtn" type="button" aria-label="Música de fondo">
+    <span class="fab-ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 18V6l12-2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="currentColor" opacity=".9"/>
+        <path d="M21 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="currentColor" opacity=".9"/>
+      </svg>
+    </span>
+    <span class="fab-txt" id="musicTxt">Música</span>
+  </button>
+
+  <!-- WhatsApp FAB -->
+  <a class="fab-wa" id="waFab" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Área de Lucha">
+    <span class="fab-ico" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path fill="currentColor" d="M16 3C9.38 3 4 8.2 4 14.6c0 2.48.84 4.78 2.27 6.65L5 29l7.9-1.99a12.5 12.5 0 0 0 3.1.38c6.62 0 12-5.2 12-11.6S22.62 3 16 3Zm0 21.2c-1.02 0-2.03-.15-2.98-.44l-.62-.2-4.68 1.18 1.25-4.4-.41-.67A9.2 9.2 0 0 1 6.8 14.6C6.8 9.76 10.88 5.8 16 5.8s9.2 3.96 9.2 8.8-4.08 9.6-9.2 9.6Zm5.33-6.9c-.29-.14-1.7-.83-1.97-.93-.27-.1-.47-.14-.66.14-.2.29-.76.93-.93 1.12-.17.2-.34.22-.63.08-.29-.14-1.22-.44-2.32-1.4-.86-.74-1.44-1.66-1.6-1.95-.17-.29-.02-.44.13-.58.13-.13.29-.34.44-.5.15-.17.2-.29.29-.48.1-.2.05-.36-.02-.5-.07-.14-.66-1.57-.9-2.15-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.5.07-.76.36-.27.29-1.02 1-1.02 2.45 0 1.44 1.05 2.84 1.2 3.04.14.2 2.07 3.2 5.06 4.36.71.27 1.27.43 1.7.55.71.22 1.36.19 1.87.12.57-.09 1.7-.69 1.94-1.35.24-.66.24-1.23.17-1.35-.07-.12-.27-.2-.56-.34Z"/>
+      </svg>
+    </span>
+    <span class="fab-txt">WhatsApp</span>
+  </a>
+
+  <!-- Volver arriba -->
+  <button class="fab-top" id="topBtn" type="button" aria-label="Volver arriba">
+    <span class="fab-ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 5l7 7-1.4 1.4L12 7.8 6.4 13.4 5 12l7-7Z" fill="currentColor"/>
+        <path d="M5 18h14v2H5v-2Z" fill="currentColor" opacity=".55"/>
+      </svg>
+    </span>
+  </button>
+</body>
+</html>
