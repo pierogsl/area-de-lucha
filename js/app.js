@@ -29,10 +29,10 @@
   const footerText = $("#footerText");
 
   if (brandName) brandName.textContent = cfg.brand?.name || "Área de Lucha";
-  if (brandTagline) brandTagline.textContent = cfg.brand?.tagline || "técnica · data · análisis";
+  if (brandTagline) brandTagline.textContent = cfg.brand?.tagline || "Domina tu Destino";
   if (brandLogo && cfg.brand?.logoHeader) brandLogo.src = cfg.brand.logoHeader;
   if (footerLogo && cfg.brand?.logoFooter) footerLogo.src = cfg.brand.logoFooter;
-  if (footerText) footerText.textContent = `${cfg.brand?.name || "Área de Lucha"} — ${cfg.brand?.tagline || "técnica · data · análisis"}`;
+  if (footerText) footerText.textContent = `${cfg.brand?.name || "Área de Lucha"} — ${cfg.brand?.tagline || "Domina tu Destino"}`;
 
   // Hero badge
   const heroBadge = $("#heroBadgeText");
@@ -40,7 +40,7 @@
     const liveOn = !!cfg.live?.isLive;
     heroBadge.textContent = liveOn
       ? (cfg.hero?.badgeLiveText || "EN VIVO • Entrá al stream")
-      : (cfg.hero?.badgeText || "Técnica + Data + Análisis");
+      : (cfg.hero?.badgeText || "Domina tu Destino");
   }
 
   // Links (botones + cards + playlist)
