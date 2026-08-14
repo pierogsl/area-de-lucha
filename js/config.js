@@ -46,18 +46,65 @@ window.ADL = {
   team: [
     {
       id: "piero",
+      index: "01",
+      firstName: "Piero",
+      lastName: "Saldaña",
       name: "Piero Giovanny Saldaña Lopez",
       displayName: "Piero Saldaña",
-      profession: "Licenciado en Kinesiología y Fisiatría",
-      combat: "Profesor de Judo · 2º Dan · practicante de Jiu-Jitsu faixa azul",
+      kicker: "Kinesiología · Judo · Jiu-Jitsu",
+      profession: "Licenciado en Kinesiología y Fisiatría · Profesor de Judo 2º Dan · practicante de Jiu-Jitsu faixa azul",
       image: "/assets/team/piero-saldana.webp",
+      imagePosition: "center 44%",
       instagram: "https://www.instagram.com/piero_gsl/",
       instagramLabel: "@piero_gsl",
       role: "Responsable del área técnica del stream: conectividad, audio, resolución de problemas de PC, armado y operación en OBS y gestión técnica de YouTube.",
-      clinical: "Trabaja como kinesiólogo en Kineset, Banfield, con especial afinidad por la rehabilitación y el abordaje de pacientes vinculados al deporte.",
-      hospital: "Integra el Hospital Especializado en Rehabilitación Dr. J. M. Jorge de Burzaco como residente de 4º año de Cuidados Progresivos y Rehabilitación Psicofísica. Su práctica incluye personas con ACV, lesión medular, traumatismo craneoencefálico y amputaciones.",
+      blocks: [
+        {
+          label: "Kinesiología",
+          text: "Trabaja como kinesiólogo en Kineset, Banfield, con especial afinidad por la rehabilitación y el abordaje de pacientes vinculados al deporte.",
+        },
+        {
+          label: "Rehabilitación",
+          text: "Integra el Hospital Especializado en Rehabilitación Dr. J. M. Jorge de Burzaco como residente de 4º año de Cuidados Progresivos y Rehabilitación Psicofísica. Su práctica incluye personas con ACV, lesión medular, traumatismo craneoencefálico y amputaciones.",
+        },
+      ],
+      personalLabel: "Fuera de cámara",
       personal: "Amante de los perros y de los animales. Su vida cruza el consultorio, el hospital, el tatami y la parte técnica que sostiene el programa detrás de cámara.",
       quote: "Me interesa entender cómo funcionan las cosas: el cuerpo, el entrenamiento y también la tecnología que hace posible el programa.",
+      tags: ["Kinesiología", "Judo", "Jiu-Jitsu", "OBS", "Audio"],
+    },
+    {
+      id: "fer",
+      index: "02",
+      firstName: "Fernando",
+      lastName: "Eloy",
+      name: "Fernando Eloy",
+      displayName: "Fernando Eloy",
+      nickname: "Fer",
+      kicker: "Judo · BJJ · Comunicación",
+      profession: "2.º Dan de Judo · Faixa Roxa de BJJ · Kickboxing amateur 9–3",
+      image: "/assets/team/fernando-eloy.webp",
+      imagePosition: "center 38%",
+      instagram: "https://www.instagram.com/fernandoeloy83/",
+      instagramLabel: "@fernandoeloy83",
+      highlight: "Nominado al XII International Hall of Fame Martial Arts 2026",
+      role: "Conductor principal de Área de Lucha junto con Diego. Se destaca especialmente en entrevistas y coberturas fuera del estudio: tiene facilidad para llevar una conversación, generar confianza con los invitados y desenvolverse frente a cámara.",
+      blocks: [
+        {
+          label: "Trayectoria marcial",
+          text: "Judoca, jiujitero, competidor y profesor. Obtuvo medallas en campeonatos nacionales y provinciales de Judo, participó en campos de entrenamiento de alto rendimiento y consiguió podios en competencias Master y Open de BJJ. En kickboxing disputó 12 combates amateurs, con 9 victorias y 3 derrotas.",
+        },
+        {
+          label: "Formación y docencia",
+          text: "Pertenece a la Federación Metropolitana de Judo y desarrolló gran parte de su formación bajo la guía del Sensei Gabriel Narváez, 6.º Dan. En BJJ integra Lotus BJJ bajo la dirección del Mestre Leandro Márquez. Da clases en el Club El Porvenir de Gerli y ha dictado seminarios de Judo aplicado al Jiu-Jitsu.",
+        },
+      ],
+      personalLabel: "Fundador",
+      personal: "Es uno de los tres fundadores de Área de Lucha y quien propuso el nombre del proyecto. Su personalidad expresiva y alegre le da energía al programa, mientras que su experiencia ayuda a ordenar y profundizar las conversaciones.",
+      extraLabel: "Actividad laboral",
+      extra: "Información clasificada. Seguimos investigando.",
+      quote: "Hola, hola, hola... cuidado con la ola.",
+      tags: ["Judo", "BJJ", "Kickboxing", "Conducción", "Entrevistas"],
     }
   ],
 
@@ -102,10 +149,69 @@ window.ADL = {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
 
+  const renderMember = (person, position) => {
+    const blocks = Array.isArray(person.blocks) ? person.blocks : [];
+    const tags = Array.isArray(person.tags) ? person.tags : [];
+    const reverse = position % 2 === 1 ? " member-feature--reverse" : "";
+    const highlight = person.highlight
+      ? `<div class="member-highlight"><span>Reconocimiento</span><strong>${esc(person.highlight)}</strong></div>`
+      : "";
+    const quote = person.quote
+      ? `<p class="member-quote">“${esc(person.quote)}”</p>`
+      : "";
+    const extra = person.extra
+      ? `<div class="member-role member-extra"><small>${esc(person.extraLabel || "Dato")}</small><p>${esc(person.extra)}</p></div>`
+      : "";
+
+    return `
+      <article class="member-feature${reverse}" id="${esc(person.id)}">
+        <figure class="member-photo" style="--member-photo-position:${esc(person.imagePosition || "center center")}">
+          <img src="${esc(person.image)}" alt="${esc(person.displayName)}" loading="lazy" decoding="async">
+          <figcaption class="member-photo-tag">${person.nickname ? esc(person.nickname) + " · " : ""}Integrante · Área de Lucha</figcaption>
+        </figure>
+
+        <div class="member-body">
+          <div class="member-kicker"><b>${esc(person.index)}</b>${esc(person.kicker)}</div>
+          <h3 class="member-name">${esc(person.firstName)}<span>${esc(person.lastName)}</span></h3>
+          <p class="member-title">${esc(person.profession)}</p>
+
+          ${highlight}
+          ${quote}
+
+          <div class="member-grid">
+            ${blocks.map((block) => `
+              <div class="member-block">
+                <small>${esc(block.label)}</small>
+                <p>${esc(block.text)}</p>
+              </div>`).join("")}
+          </div>
+
+          <div class="member-role">
+            <small>Rol en Área de Lucha</small>
+            <p>${esc(person.role)}</p>
+          </div>
+
+          <div class="member-role">
+            <small>${esc(person.personalLabel || "Perfil")}</small>
+            <p>${esc(person.personal)}</p>
+          </div>
+
+          ${extra}
+
+          <div class="member-meta">
+            <div class="member-tags" aria-label="Áreas de ${esc(person.displayName)}">
+              ${tags.map((tag) => `<span>${esc(tag)}</span>`).join("")}
+            </div>
+            <a class="member-instagram" href="${esc(person.instagram)}" target="_blank" rel="noopener">${esc(person.instagramLabel)} ↗</a>
+          </div>
+        </div>
+      </article>`;
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     const section = document.querySelector("#sobre");
-    const p = window.ADL?.team?.find((person) => person.id === "piero");
-    if (!section || !p) return;
+    const team = Array.isArray(window.ADL?.team) ? window.ADL.team : [];
+    if (!section || !team.length) return;
 
     section.className = "team-editorial anchor";
     section.innerHTML = `
@@ -118,51 +224,11 @@ window.ADL = {
           <p>Tres perfiles distintos. Una misma mesa. El deporte de combate como punto de encuentro.</p>
         </div>
 
-        <article class="member-feature" id="piero">
-          <figure class="member-photo">
-            <img src="${esc(p.image)}" alt="${esc(p.displayName)}" loading="lazy" decoding="async">
-            <figcaption class="member-photo-tag">Integrante · Área de Lucha</figcaption>
-          </figure>
+        <div class="team-members">
+          ${team.map(renderMember).join("")}
+        </div>
 
-          <div class="member-body">
-            <div class="member-kicker"><b>01</b> Técnica · Kinesiología · Tatami</div>
-            <h3 class="member-name">Piero<span>Saldaña</span></h3>
-            <p class="member-title">${esc(p.profession)} · ${esc(p.combat)}</p>
-
-            <p class="member-quote">“${esc(p.quote)}”</p>
-
-            <div class="member-grid">
-              <div class="member-block">
-                <small>Kinesiología</small>
-                <p>${esc(p.clinical)}</p>
-              </div>
-              <div class="member-block">
-                <small>Rehabilitación</small>
-                <p>${esc(p.hospital)}</p>
-              </div>
-            </div>
-
-            <div class="member-role">
-              <small>Rol en Área de Lucha</small>
-              <p>${esc(p.role)}</p>
-            </div>
-
-            <div class="member-role">
-              <small>Fuera de cámara</small>
-              <p>${esc(p.personal)}</p>
-            </div>
-
-            <div class="member-meta">
-              <div class="member-tags" aria-label="Áreas de Piero">
-                <span>Kinesiología</span><span>Judo</span><span>Jiu-Jitsu</span><span>OBS</span><span>Audio</span>
-              </div>
-              <a class="member-instagram" href="${esc(p.instagram)}" target="_blank" rel="noopener">${esc(p.instagramLabel)} ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <div class="team-coming" aria-label="Próximos integrantes">
-          <article><span>02</span><div><h3>Fer</h3><p>Perfil en preparación</p></div></article>
+        <div class="team-coming" aria-label="Próximo integrante">
           <article><span>03</span><div><h3>Diego</h3><p>Perfil en preparación</p></div></article>
         </div>
       </div>`;
