@@ -2,7 +2,8 @@
 window.ADL = {
   brand: {
     name: "Área de Lucha",
-    tagline: "técnica · data · análisis",
+    tagline: "Domina tu Destino",
+    descriptor: "técnica · data · análisis",
     logoHeader: "/assets/adl-iso-color-light.svg",
     logoFooter: "/assets/adl-logo-color-light.svg",
   },
@@ -80,6 +81,14 @@ window.ADL = {
     storageKey: "adl_music_on",
   },
 };
+
+// ========= IDENTIDAD PUBLICA DURANTE LA CONSTRUCCION =========
+(() => {
+  document.addEventListener("DOMContentLoaded", () => {
+    const constructionKicker = document.querySelector(".construction-kicker");
+    if (constructionKicker) constructionKicker.textContent = window.ADL?.brand?.tagline || "Domina tu Destino";
+  });
+})();
 
 // ========= NUEVA SECCIÓN EQUIPO (se desarrolla detrás de la pantalla de construcción) =========
 (() => {
