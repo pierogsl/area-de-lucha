@@ -3,13 +3,12 @@ window.ADL = {
   brand: {
     name: "Área de Lucha",
     tagline: "Domina tu Destino",
-    descriptor: "técnica · data · análisis",
     logoHeader: "/assets/adl-iso-color-light.svg",
     logoFooter: "/assets/adl-logo-color-light.svg",
   },
 
   hero: {
-    badgeText: "Técnica + Data + Análisis",
+    badgeText: "Domina tu Destino",
     badgeLiveText: "EN VIVO • Entrá al stream",
   },
 
