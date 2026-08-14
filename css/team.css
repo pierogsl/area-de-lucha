@@ -4,9 +4,12 @@
 .team-editorial .team-index{display:block;color:#e6007e;font-size:.7rem;font-weight:900;letter-spacing:.16em;margin-bottom:8px}
 .team-editorial h2{margin:0;font-size:clamp(3rem,6vw,6.4rem);line-height:.86;letter-spacing:-.065em;text-transform:uppercase;font-weight:900}
 .team-editorial .team-head>p{max-width:360px;margin:0;color:#6a6a6a;font-size:.82rem;line-height:1.5;font-weight:700;text-transform:uppercase;letter-spacing:.045em;text-align:right}
+.team-members{display:grid;gap:24px}
 .member-feature{display:grid;grid-template-columns:minmax(320px,.82fr) minmax(0,1.18fr);min-height:720px;border:1px solid rgba(0,0,0,.18);background:#fff}
+.member-feature--reverse .member-photo{order:2}
+.member-feature--reverse .member-body{order:1}
 .member-photo{position:relative;min-height:720px;overflow:hidden;background:#111}
-.member-photo img{width:100%;height:100%;object-fit:cover;object-position:center center}
+.member-photo img{width:100%;height:100%;object-fit:cover;object-position:var(--member-photo-position,center center)}
 .member-photo::after{content:"";position:absolute;inset:auto 0 0;height:35%;background:linear-gradient(transparent,rgba(0,0,0,.5));pointer-events:none}
 .member-photo-tag{position:absolute;left:24px;bottom:22px;z-index:2;display:flex;align-items:center;gap:10px;color:#fff;font-size:.68rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
 .member-photo-tag::before{content:"";width:34px;height:2px;background:linear-gradient(90deg,#00dffc 0 50%,#e6007e 50%)}
@@ -16,7 +19,10 @@
 .member-name{margin:22px 0 10px;font-size:clamp(2.8rem,5.5vw,6.2rem);line-height:.84;letter-spacing:-.07em;text-transform:uppercase;font-weight:900}
 .member-name span{display:block;color:transparent;-webkit-text-stroke:1px #000}
 .member-title{margin:0;color:#555;font-size:1rem;font-weight:700;line-height:1.45}
-.member-quote{margin:34px 0 0;padding:24px 0;border-top:1px solid rgba(0,0,0,.15);border-bottom:1px solid rgba(0,0,0,.15);font-size:clamp(1.25rem,2vw,1.75rem);line-height:1.25;letter-spacing:-.035em;font-weight:780}
+.member-highlight{margin-top:28px;padding:18px 20px;border-left:4px solid #e6007e;background:#090909;color:#fff}
+.member-highlight span{display:block;margin-bottom:7px;color:#00dffc;font-size:.62rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.member-highlight strong{display:block;font-size:clamp(1rem,1.8vw,1.35rem);line-height:1.2;letter-spacing:-.02em;text-transform:uppercase}
+.member-quote{margin:28px 0 0;padding:24px 0;border-top:1px solid rgba(0,0,0,.15);border-bottom:1px solid rgba(0,0,0,.15);font-size:clamp(1.25rem,2vw,1.75rem);line-height:1.25;letter-spacing:-.035em;font-weight:780}
 .member-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid rgba(0,0,0,.15)}
 .member-block{padding:26px 24px 26px 0;border-right:1px solid rgba(0,0,0,.15)}
 .member-block:nth-child(even){padding-left:24px;padding-right:0;border-right:0}
@@ -25,16 +31,34 @@
 .member-role{padding:28px 0;border-bottom:1px solid rgba(0,0,0,.15)}
 .member-role small{display:block;margin-bottom:10px;color:#00a9bd;font-size:.63rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
 .member-role p{margin:0;color:#333;font-size:.95rem;line-height:1.62}
+.member-extra small{color:#777}
+.member-extra p{font-weight:800}
 .member-meta{margin-top:auto;padding-top:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .member-tags{display:flex;gap:7px;flex-wrap:wrap}
 .member-tags span{padding:7px 9px;border:1px solid rgba(0,0,0,.16);font-size:.63rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .member-instagram{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid #e6007e;padding-bottom:5px}
 .member-instagram:hover{border-color:#00dffc}
-.team-coming{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(0,0,0,.16);border-top:0}
-.team-coming article{min-height:190px;padding:28px;display:flex;flex-direction:column;justify-content:space-between}
-.team-coming article+article{border-left:1px solid rgba(0,0,0,.16)}
+.team-coming{display:grid;grid-template-columns:1fr;border:1px solid rgba(0,0,0,.16);border-top:0;margin-top:0}
+.team-coming article{min-height:150px;padding:28px;display:flex;flex-direction:column;justify-content:space-between}
 .team-coming span{color:#999;font-size:.65rem;font-weight:900;letter-spacing:.13em}
 .team-coming h3{margin:0;font-size:clamp(1.7rem,3vw,3.2rem);line-height:.9;letter-spacing:-.05em;text-transform:uppercase}
 .team-coming p{margin:8px 0 0;color:#888;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
-@media(max-width:900px){.team-editorial{padding:82px 0 96px}.team-editorial .team-head{align-items:flex-start;flex-direction:column}.team-editorial .team-head>p{text-align:left}.member-feature{grid-template-columns:1fr}.member-photo{min-height:620px}.member-body{padding:38px 28px 40px}.member-grid{grid-template-columns:1fr}.member-block,.member-block:nth-child(even){padding:22px 0;border-right:0;border-bottom:1px solid rgba(0,0,0,.12)}.member-block:last-child{border-bottom:0}}
-@media(max-width:560px){.team-editorial{padding:68px 0 76px}.member-photo{min-height:500px}.member-name{font-size:clamp(2.5rem,13vw,4rem)}.member-quote{font-size:1.15rem}.team-coming{grid-template-columns:1fr}.team-coming article+article{border-left:0;border-top:1px solid rgba(0,0,0,.16)}}
+@media(max-width:900px){
+  .team-editorial{padding:82px 0 96px}
+  .team-editorial .team-head{align-items:flex-start;flex-direction:column}
+  .team-editorial .team-head>p{text-align:left}
+  .member-feature{grid-template-columns:1fr}
+  .member-feature--reverse .member-photo,.member-feature--reverse .member-body{order:initial}
+  .member-photo{min-height:620px}
+  .member-body{padding:38px 28px 40px}
+  .member-grid{grid-template-columns:1fr}
+  .member-block,.member-block:nth-child(even){padding:22px 0;border-right:0;border-bottom:1px solid rgba(0,0,0,.12)}
+  .member-block:last-child{border-bottom:0}
+}
+@media(max-width:560px){
+  .team-editorial{padding:68px 0 76px}
+  .member-photo{min-height:500px}
+  .member-name{font-size:clamp(2.5rem,13vw,4rem)}
+  .member-quote{font-size:1.15rem}
+  .member-highlight{padding:16px}
+}
