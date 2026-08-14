@@ -57,7 +57,7 @@ window.ADL = {
       clinical: "Trabaja como kinesiólogo en Kineset, Banfield, con especial afinidad por la rehabilitación y el abordaje de pacientes vinculados al deporte.",
       hospital: "Integra el Hospital Especializado en Rehabilitación Dr. J. M. Jorge de Burzaco como residente de 4º año de Cuidados Progresivos y Rehabilitación Psicofísica. Su práctica incluye personas con ACV, lesión medular, traumatismo craneoencefálico y amputaciones.",
       personal: "Amante de los perros y de los animales. Su vida cruza el consultorio, el hospital, el tatami y la parte técnica que sostiene el programa detrás de cámara.",
-      quote: "Del consultorio al tatami y de ahí al control técnico: si algo puede entenderse, medirse o mejorarse, probablemente quiera meter mano.",
+      quote: "Me interesa entender cómo funcionan las cosas: el cuerpo, el entrenamiento y también la tecnología que hace posible el programa.",
     }
   ],
 
