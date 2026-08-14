@@ -11,15 +11,15 @@
   <meta property="og:site_name" content="Área de Lucha">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.areadelucha.com/">
-  <meta property="og:title" content="Área de Lucha — técnica · data · análisis">
-  <meta property="og:description" content="Deportes de combate. BJJ, Judo, striking, entrevistas, técnica y análisis.">
+  <meta property="og:title" content="Área de Lucha — estamos en construcción">
+  <meta property="og:description" content="Estamos trabajando en la nueva web de Área de Lucha. En breve volvemos.">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Área de Lucha — técnica · data · análisis">
-  <meta name="twitter:description" content="Deportes de combate. Técnica, data, análisis y conversación.">
+  <meta name="twitter:title" content="Área de Lucha — estamos en construcción">
+  <meta name="twitter:description" content="Estamos trabajando en la nueva web de Área de Lucha. En breve volvemos.">
 
-  <title>Área de Lucha — técnica · data · análisis</title>
-  <meta name="description" content="Área de Lucha: BJJ, Judo, striking, entrevistas, técnica, data y análisis." />
+  <title>Área de Lucha — Estamos en construcción</title>
+  <meta name="description" content="Estamos trabajando en la nueva web de Área de Lucha. En breve volvemos." />
 
   <script type="application/ld+json">
   {
@@ -40,12 +40,55 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..900&display=swap" rel="stylesheet">
 
+  <style>
+    body.construction-active{overflow:hidden}
+    .construction-screen{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:#000;color:#fff;font-family:"Archivo",Arial,sans-serif}
+    .construction-screen::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 95%)}
+    .construction-glow{position:absolute;inset:0;background:radial-gradient(circle at 22% 24%,rgba(0,223,252,.12),transparent 28%),radial-gradient(circle at 78% 72%,rgba(230,0,126,.13),transparent 30%);pointer-events:none}
+    .construction-line{position:absolute;height:3px;width:42vw;top:50%;transform:skewX(-38deg);opacity:.92}
+    .construction-line.left{left:-18vw;background:#00dffc}
+    .construction-line.right{right:-18vw;background:#e6007e}
+    .construction-inner{position:relative;z-index:2;width:min(920px,calc(100vw - 42px));text-align:center;padding:54px 24px}
+    .construction-logo{width:min(520px,76vw);height:auto;margin:0 auto 50px}
+    .construction-kicker{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:19px;color:#989898;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+    .construction-kicker::before,.construction-kicker::after{content:"";width:38px;height:2px}
+    .construction-kicker::before{background:#00dffc}.construction-kicker::after{background:#e6007e}
+    .construction-screen h1{margin:0;font-size:clamp(3.3rem,8vw,8.2rem);line-height:.82;letter-spacing:-.07em;font-weight:900;text-transform:uppercase}
+    .construction-screen h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.92)}
+    .construction-copy{max-width:590px;margin:30px auto 0;color:#9e9e9e;font-size:clamp(.98rem,1.6vw,1.16rem);line-height:1.65}
+    .construction-social{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:34px}
+    .construction-social a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1px solid rgba(255,255,255,.22);color:#fff;text-decoration:none;font-size:.73rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;transition:.2s ease}
+    .construction-social a:hover{border-color:#00dffc;transform:translateY(-2px)}
+    .construction-status{display:inline-flex;align-items:center;gap:9px;margin-top:40px;color:#686868;font-size:.66rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+    .construction-status i{width:6px;height:6px;border-radius:50%;background:#e6007e;box-shadow:0 0 16px rgba(230,0,126,.75)}
+    @media(max-width:640px){.construction-inner{padding:35px 8px}.construction-logo{width:min(390px,82vw);margin-bottom:38px}.construction-screen h1{font-size:clamp(2.7rem,15vw,4.8rem)}.construction-copy{max-width:360px;margin-top:24px}.construction-line{width:60vw}.construction-social{margin-top:28px}.construction-social a{min-height:43px;padding:0 14px;font-size:.66rem}}
+    @media(prefers-reduced-motion:reduce){.construction-social a{transition:none}}
+  </style>
+
   <link rel="stylesheet" href="/css/styles.css" />
   <script src="/js/config.js" defer></script>
   <script src="/js/app.js" defer></script>
 </head>
 
-<body>
+<body class="construction-active">
+  <section class="construction-screen" aria-label="Sitio en construcción">
+    <div class="construction-glow" aria-hidden="true"></div>
+    <div class="construction-line left" aria-hidden="true"></div>
+    <div class="construction-line right" aria-hidden="true"></div>
+    <div class="construction-inner">
+      <img class="construction-logo" src="/assets/adl-logo-color-light.svg" alt="Área de Lucha">
+      <div class="construction-kicker">Nueva web en proceso</div>
+      <h1>Estamos en<span>construcción.</span></h1>
+      <p class="construction-copy">Estamos preparando una nueva experiencia para Área de Lucha. En breve volvemos.</p>
+      <div class="construction-social" aria-label="Redes de Área de Lucha">
+        <a href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">YouTube ↗</a>
+        <a href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="https://kick.com/areadelucha" target="_blank" rel="noopener">Kick ↗</a>
+      </div>
+      <div class="construction-status"><i aria-hidden="true"></i>Área de Lucha · 2026</div>
+    </div>
+  </section>
+
   <a class="skip" href="#inicio">Saltar al contenido</a>
 
   <header id="siteHeader" class="site-header">
