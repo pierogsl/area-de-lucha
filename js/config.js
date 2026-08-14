@@ -105,6 +105,37 @@ window.ADL = {
       extra: "Información clasificada. Seguimos investigando.",
       quote: "Hola, hola, hola... cuidado con la ola.",
       tags: ["Judo", "BJJ", "Kickboxing", "Conducción", "Entrevistas"],
+    },
+    {
+      id: "diego",
+      index: "03",
+      firstName: "Diego",
+      lastName: "",
+      name: "Diego",
+      displayName: "Diego",
+      kicker: "Familia · BJJ · Logística",
+      profession: "Faixa azul de BJJ · cinturón amarillo de Judo",
+      image: "/assets/team/diego-area-de-lucha.webp",
+      imagePosition: "center 38%",
+      instagram: "https://www.instagram.com/diexx.10.akd/",
+      instagramLabel: "@diexx.10.akd",
+      role: "Se ocupa de la logística y administración cotidiana de Área de Lucha: lleva el control de precios, compras y números del programa en Excel, organiza a los invitados por fecha y ayuda a coordinar cada producción. También es uno de los entrevistadores junto con Fer y participa en las coberturas y notas fuera del stream.",
+      blocks: [
+        {
+          label: "Familia",
+          text: "Padre de familia, esposo y papá de una hija. La familia ocupa un lugar central en su vida y también aparece, con humor, en muchas de las conversaciones del grupo.",
+        },
+        {
+          label: "Deportes de combate",
+          text: "Practicante de Brazilian Jiu-Jitsu, faixa azul, y cinturón amarillo de Judo. Su vínculo con el tatami también forma parte de su vida familiar.",
+        },
+      ],
+      personalLabel: "El corazón del grupo",
+      personal: "Alegre y espontáneo, es probablemente el más emocional de los tres. Aporta cercanía, entusiasmo y una mirada muy humana al programa; esa sensibilidad contrasta bien con los perfiles más técnicos o analíticos del equipo.",
+      extraLabel: "Banda sonora",
+      extra: "Los Redonditos de Ricota.",
+      quote: "¿Y la familia? Tengo una nena de 4 años...",
+      tags: ["BJJ", "Judo", "Logística", "Entrevistas", "Familia"],
     }
   ],
 
@@ -162,6 +193,7 @@ window.ADL = {
     const extra = person.extra
       ? `<div class="member-role member-extra"><small>${esc(person.extraLabel || "Dato")}</small><p>${esc(person.extra)}</p></div>`
       : "";
+    const surname = person.lastName ? `<span>${esc(person.lastName)}</span>` : "";
 
     return `
       <article class="member-feature${reverse}" id="${esc(person.id)}">
@@ -172,7 +204,7 @@ window.ADL = {
 
         <div class="member-body">
           <div class="member-kicker"><b>${esc(person.index)}</b>${esc(person.kicker)}</div>
-          <h3 class="member-name">${esc(person.firstName)}<span>${esc(person.lastName)}</span></h3>
+          <h3 class="member-name">${esc(person.firstName)}${surname}</h3>
           <p class="member-title">${esc(person.profession)}</p>
 
           ${highlight}
@@ -226,10 +258,6 @@ window.ADL = {
 
         <div class="team-members">
           ${team.map(renderMember).join("")}
-        </div>
-
-        <div class="team-coming" aria-label="Próximo integrante">
-          <article><span>03</span><div><h3>Diego</h3><p>Perfil en preparación</p></div></article>
         </div>
       </div>`;
   });
