@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Área de Lucha — Vista previa</title>
+  <style>
+    html,body{margin:0;background:#000;color:#fff;font-family:Arial,sans-serif}
+    .loading{min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px}
+    .loading strong{font-size:28px}.loading span{display:block;margin-top:10px;color:#888;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  </style>
+</head>
+<body>
+  <div class="loading"><div><strong>Área de Lucha</strong><span>Cargando vista previa…</span></div></div>
+  <script>
+    fetch('/?adl-preview-source=1',{cache:'no-store'})
+      .then(r=>r.text())
+      .then(html=>{
+        const previewPatch = `<style id="adl-preview-patch">body.construction-active{overflow:auto!important}.construction-screen{display:none!important}</style>`;
+        html = html.replace('</head>', previewPatch + '</head>');
+        document.open();
+        document.write(html);
+        document.close();
+      })
+      .catch(()=>{
+        document.body.innerHTML='<div class="loading"><div><strong>No se pudo cargar la vista previa.</strong><span>Volvé a intentar en unos segundos.</span></div></div>';
+      });
+  </script>
+</body>
+</html>
