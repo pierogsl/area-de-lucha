@@ -3,6 +3,9 @@
   const home = cfg.home || {};
   const $ = (s) => document.querySelector(s);
 
+  const currentProgram = 'https://www.youtube.com/live/eW1pDaidU-8?si=Vy9XLRtEymjgnfg7';
+  const previousProgram = 'https://www.youtube.com/live/Z8iFdiO1k18?si=LxXFPu6ftvnOgxy9';
+
   // Navigation: keep only sections that already have a clear purpose.
   const nav = document.querySelector('.main-nav');
   if (nav) {
@@ -27,7 +30,7 @@
   const heroActions = document.querySelector('.hero-actions');
   if (heroActions) {
     heroActions.innerHTML = `
-      <a class="button button-primary" href="${home.latest?.href || 'https://www.youtube.com/@areadelucha/videos'}" target="_blank" rel="noopener">Ver último programa</a>
+      <a class="button button-primary" href="${previousProgram}" target="_blank" rel="noopener">Ver último programa</a>
       <a class="button button-outline" href="${cfg.links?.youtube || 'https://www.youtube.com/@areadelucha'}" target="_blank" rel="noopener">YouTube</a>
       <a class="button button-text" href="${cfg.links?.instagram || 'https://www.instagram.com/areadelucha/'}" target="_blank" rel="noopener">Instagram ↗</a>
       <a class="button button-kick" href="${cfg.links?.kick || 'https://kick.com/areadelucha'}" target="_blank" rel="noopener">Kick</a>`;
@@ -85,7 +88,7 @@
             <p class="home-feature-role">${latest.role || 'Atleta Wellness · NPC'}</p>
             <p class="home-feature-desc">${latest.description || 'Una conversación sobre fisicoculturismo, preparación, competencia y la experiencia de vivir el deporte desde la categoría Wellness.'}</p>
             <div class="home-feature-actions">
-              <a class="button button-primary" href="${latest.href || 'https://www.youtube.com/@areadelucha/videos'}" target="_blank" rel="noopener">Ver en YouTube</a>
+              <a class="button button-primary" href="${previousProgram}" target="_blank" rel="noopener">Ver en YouTube</a>
               <a class="button button-outline" href="${cfg.links?.youtube || 'https://www.youtube.com/@areadelucha'}" target="_blank" rel="noopener">Ir al canal</a>
             </div>
           </div>
@@ -119,8 +122,14 @@
     }
     const kick = live.querySelector('#liveKick');
     const youtube = live.querySelector('#liveYouTube');
-    if (kick) kick.textContent = 'Ver en Kick';
-    if (youtube) youtube.textContent = 'Ver en YouTube';
+    if (kick) {
+      kick.textContent = 'Ver en Kick';
+      kick.href = cfg.links?.kick || 'https://kick.com/areadelucha';
+    }
+    if (youtube) {
+      youtube.textContent = 'Ver en YouTube';
+      youtube.href = currentProgram;
+    }
   }
 
   // Coverage section
@@ -148,9 +157,9 @@
           <article class="coverage-card">
             <span class="coverage-index">02 · HOY EN EL DOJO</span>
             <div>
-              <div class="coverage-kicker">Visita especial</div>
+              <div class="coverage-kicker">Visita especial · Lotus BJJ</div>
               <h3>Ryan Martinez<br>+ Camila Reynoso.</h3>
-              <p>Hoy visitan nuestro dojo. Una oportunidad para conversar, generar material y llevar el programa al lugar donde también entrenamos.</p>
+              <p>Hoy visitan Lotus BJJ en el Club El Porvenir de Gerli, dojo a cargo del Mestre faixa preta Leandro Márquez. Área de Lucha va a estar ahí para conversar y generar contenido desde el lugar donde también entrenamos.</p>
               <div class="coverage-links"><a href="${cfg.links?.instagram || '#'}" target="_blank" rel="noopener">Seguir en Instagram ↗</a></div>
             </div>
           </article>
