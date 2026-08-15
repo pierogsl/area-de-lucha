@@ -5,6 +5,23 @@
 
   const currentProgram = 'https://www.youtube.com/live/eW1pDaidU-8?si=Vy9XLRtEymjgnfg7';
   const previousProgram = 'https://www.youtube.com/live/Z8iFdiO1k18?si=LxXFPu6ftvnOgxy9';
+  const leftCombatYouTube = 'https://youtu.be/bQ7E1sBCKlg?si=628JmoHgE8FNL74u';
+  const leftCombatReels = [
+    'https://www.instagram.com/reel/DbXHaNsu7rU/?igsh=MTZxbjZoOGxzYW96bw==',
+    'https://www.instagram.com/reel/DbVnDuxuhFZ/?igsh=MWR0cW5wbmY3bGpkMQ==',
+    'https://www.instagram.com/reel/DbYktXjRI-Z/?igsh=MWhzbGxza2c3MDQ3dw=='
+  ];
+
+  if (cfg.contact) cfg.contact.email = 'areadelucha@gmail.com';
+
+  const diego = Array.isArray(cfg.team) ? cfg.team.find((person) => person.id === 'diego') : null;
+  if (diego) {
+    diego.firstName = 'Diego Alejandro';
+    diego.lastName = 'Escoda';
+    diego.name = 'Diego Alejandro Escoda';
+    diego.displayName = 'Diego Escoda';
+    diego.nickname = 'El Cule';
+  }
 
   // Navigation: keep only sections that already have a clear purpose.
   const nav = document.querySelector('.main-nav');
@@ -127,7 +144,7 @@
       kick.href = cfg.links?.kick || 'https://kick.com/areadelucha';
     }
     if (youtube) {
-      youtube.textContent = 'Ver en YouTube';
+      youtube.textContent = 'Ver programa de hoy';
       youtube.href = currentProgram;
     }
   }
@@ -150,8 +167,13 @@
             <div>
               <div class="coverage-kicker">Evento</div>
               <h3>Left<br>Combat.</h3>
-              <p>Nuestra cobertura más reciente fuera del estudio. El material completo y los clips quedan repartidos entre YouTube e Instagram.</p>
-              <div class="coverage-links"><a href="${cfg.links?.youtube || '#'}" target="_blank" rel="noopener">YouTube ↗</a><a href="${cfg.links?.instagram || '#'}" target="_blank" rel="noopener">Reels ↗</a></div>
+              <p>Nuestra cobertura más reciente fuera del estudio. Mirá el video principal en YouTube y las notas y momentos destacados en Instagram.</p>
+              <div class="coverage-links">
+                <a href="${leftCombatYouTube}" target="_blank" rel="noopener">Video en YouTube ↗</a>
+                <a href="${leftCombatReels[0]}" target="_blank" rel="noopener">Reel 01 ↗</a>
+                <a href="${leftCombatReels[1]}" target="_blank" rel="noopener">Reel 02 ↗</a>
+                <a href="${leftCombatReels[2]}" target="_blank" rel="noopener">Reel 03 ↗</a>
+              </div>
             </div>
           </article>
           <article class="coverage-card">
@@ -171,4 +193,41 @@
   // Merch is intentionally out of the current navigation and development focus.
   const merch = $('#merch');
   if (merch) merch.setAttribute('aria-hidden', 'true');
+
+  // Reserva visual para una futura foto de los tres integrantes y limpieza de contacto.
+  const placeholderCss = document.createElement('style');
+  placeholderCss.textContent = `
+    .team-group-placeholder{min-height:360px;margin:0 0 24px;border:1px dashed rgba(0,0,0,.28);display:grid;place-items:center;background:linear-gradient(135deg,rgba(0,223,252,.06),rgba(230,0,126,.06)),#ececea;text-align:center;padding:32px;overflow:hidden;position:relative}
+    .team-group-placeholder::before{content:"";position:absolute;width:180px;height:3px;background:linear-gradient(90deg,#00dffc 0 50%,#e6007e 50%);top:50%;left:50%;transform:translate(-50%,-50%) rotate(-58deg);opacity:.55}
+    .team-group-placeholder-inner{position:relative;z-index:1;max-width:520px}
+    .team-group-placeholder small{display:block;color:#e6007e;font-size:.65rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px}
+    .team-group-placeholder strong{display:block;font-size:clamp(2rem,5vw,4.8rem);line-height:.88;letter-spacing:-.06em;text-transform:uppercase}
+    .team-group-placeholder p{margin:16px auto 0;max-width:420px;color:#666;line-height:1.55;font-size:.88rem}
+    @media(max-width:640px){.team-group-placeholder{min-height:280px}}
+  `;
+  document.head.appendChild(placeholderCss);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const teamMembers = document.querySelector('.team-editorial .team-members');
+    if (teamMembers && !document.querySelector('.team-group-placeholder')) {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'team-group-placeholder';
+      placeholder.innerHTML = `
+        <div class="team-group-placeholder-inner">
+          <small>Foto grupal · espacio reservado</small>
+          <strong>Piero · Fer · El Cule</strong>
+          <p>Este bloque queda preparado para incorporar una foto de los tres integrantes cuando la tengan.</p>
+        </div>`;
+      teamMembers.parentNode.insertBefore(placeholder, teamMembers);
+    }
+
+    const emailLink = document.querySelector('#contactEmail');
+    const emailText = document.querySelector('#emailText');
+    if (emailLink) emailLink.href = 'mailto:areadelucha@gmail.com';
+    if (emailText) emailText.textContent = 'areadelucha@gmail.com';
+
+    // No publicamos un WhatsApp de ejemplo mientras no exista un número oficial confirmado.
+    const wa = document.querySelector('#contactWhatsApp');
+    if (wa) wa.remove();
+  });
 })();
