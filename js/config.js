@@ -19,27 +19,29 @@ window.ADL = {
     playlist: "https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz",
   },
 
+  home: {
+    latest: {
+      firstName: "Antonella",
+      lastName: "Lasorsa",
+      role: "Atleta Wellness · NPC",
+      description: "Una conversación sobre fisicoculturismo, preparación, competencia y la experiencia de vivir el deporte desde la categoría Wellness.",
+      href: "https://www.youtube.com/@areadelucha/videos",
+    },
+    next: {
+      name: "Ramiro Díaz Suguer",
+      role: "Psicólogo Deportivo",
+      organization: "Club Social y Deportivo Miriñaque",
+      dateLabel: "Sábado 15/08 · 20 hs",
+    },
+  },
+
   episodes: [
     {
-      title: "Episodio #1 — (título acá)",
-      desc: "Resumen corto: de qué se habló, qué se analizó, etc.",
-      href: "https://www.youtube.com/@areadelucha",
+      title: "Antonella Lasorsa — Wellness NPC",
+      desc: "Fisicoculturismo, preparación, competencia y vida deportiva.",
+      href: "https://www.youtube.com/@areadelucha/videos",
       img: "/assets/adl-iso-color-light.svg",
-      tag: "YouTube",
-    },
-    {
-      title: "Episodio #2 — (título acá)",
-      desc: "Resumen corto con el gancho del episodio.",
-      href: "https://www.youtube.com/@areadelucha",
-      img: "/assets/adl-logo-color-light.svg",
-      tag: "Análisis",
-    },
-    {
-      title: "Clip / Reel — (título acá)",
-      desc: "Clip destacado para enganchar a la gente.",
-      href: "https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet",
-      img: "/assets/adl-iso-color-light.svg",
-      tag: "Instagram",
+      tag: "Último programa",
     }
   ],
 
@@ -147,7 +149,7 @@ window.ADL = {
 
   live: {
     isLive: false,
-    nextISO: "2026-02-07T19:00:00-03:00",
+    nextISO: "2026-08-15T20:00:00-03:00",
     timezoneLabel: "AR",
   },
 
@@ -253,7 +255,7 @@ window.ADL = {
             <span class="team-index">05 · EL EQUIPO</span>
             <h2>Detrás de<br>Área de Lucha.</h2>
           </div>
-          <p>Tres perfiles distintos. Una misma mesa. El deporte de combate como punto de encuentro.</p>
+          <p>Tres perfiles distintos. Una misma mesa. El deporte como punto de encuentro.</p>
         </div>
 
         <div class="team-members">
@@ -261,4 +263,17 @@ window.ADL = {
         </div>
       </div>`;
   });
+})();
+
+// ========= HOME V2 =========
+(() => {
+  const css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = "/css/home.css";
+  document.head.appendChild(css);
+
+  const script = document.createElement("script");
+  script.src = "/js/home.js";
+  script.async = false;
+  document.head.appendChild(script);
 })();
