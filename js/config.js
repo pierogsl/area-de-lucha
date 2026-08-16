@@ -15,34 +15,45 @@ window.ADL = {
   links: {
     youtube: "https://www.youtube.com/@areadelucha",
     kick: "https://kick.com/areadelucha",
-    instagram: "https://www.instagram.com/areadelucha/?utm_source=ig_web_button_share_sheet",
-    playlist: "https://www.youtube.com/watch?v=V-RS3uhtVWM&list=PLUdDS1WKQOBxZ8GaxVuiMTrzd2a2w6vdz",
+    instagram: "https://www.instagram.com/areadelucha/",
+    playlist: "https://www.youtube.com/@areadelucha/videos",
   },
 
   home: {
     latest: {
+      firstName: "Ramiro",
+      lastName: "Díaz Suguer",
+      role: "Psicólogo Deportivo",
+      organization: "Club Social y Deportivo Miriñaque",
+      description: "Una conversación sobre psicología deportiva, rendimiento, preparación mental y el trabajo profesional alrededor del deportista.",
+      href: "https://www.youtube.com/watch?v=eW1pDaidU-8",
+      image: "https://img.youtube.com/vi/eW1pDaidU-8/maxresdefault.jpg",
+    },
+    previous: {
       firstName: "Antonella",
       lastName: "Lasorsa",
       role: "Atleta Wellness · NPC",
-      description: "Una conversación sobre fisicoculturismo, preparación, competencia y la experiencia de vivir el deporte desde la categoría Wellness.",
-      href: "https://www.youtube.com/@areadelucha/videos",
-    },
-    next: {
-      name: "Ramiro Díaz Suguer",
-      role: "Psicólogo Deportivo",
-      organization: "Club Social y Deportivo Miriñaque",
-      dateLabel: "Sábado 15/08 · 20 hs",
+      description: "Fisicoculturismo, preparación, competencia y la experiencia de vivir el deporte desde la categoría Wellness.",
+      href: "https://www.youtube.com/watch?v=Z8iFdiO1k18",
+      image: "https://img.youtube.com/vi/Z8iFdiO1k18/maxresdefault.jpg",
     },
   },
 
   episodes: [
     {
+      title: "Ramiro Díaz Suguer — Psicología Deportiva",
+      desc: "Psicología deportiva, rendimiento y preparación mental.",
+      href: "https://www.youtube.com/watch?v=eW1pDaidU-8",
+      img: "https://img.youtube.com/vi/eW1pDaidU-8/maxresdefault.jpg",
+      tag: "Último programa",
+    },
+    {
       title: "Antonella Lasorsa — Wellness NPC",
       desc: "Fisicoculturismo, preparación, competencia y vida deportiva.",
-      href: "https://www.youtube.com/@areadelucha/videos",
-      img: "/assets/adl-iso-color-light.svg",
-      tag: "Último programa",
-    }
+      href: "https://www.youtube.com/watch?v=Z8iFdiO1k18",
+      img: "https://img.youtube.com/vi/Z8iFdiO1k18/maxresdefault.jpg",
+      tag: "Programa anterior",
+    },
   ],
 
   team: [
@@ -111,10 +122,11 @@ window.ADL = {
     {
       id: "diego",
       index: "03",
-      firstName: "Diego",
-      lastName: "",
-      name: "Diego",
-      displayName: "Diego",
+      firstName: "Diego Alejandro",
+      lastName: "Escoda",
+      name: "Diego Alejandro Escoda",
+      displayName: "Diego Escoda",
+      nickname: "El Cule",
       kicker: "Familia · BJJ · Logística",
       profession: "Faixa azul de BJJ · cinturón amarillo de Judo",
       image: "/assets/team/diego-area-de-lucha.webp",
@@ -138,18 +150,18 @@ window.ADL = {
       extra: "Los Redonditos de Ricota.",
       quote: "¿Y la familia? Tengo una nena de 4 años...",
       tags: ["BJJ", "Judo", "Logística", "Entrevistas", "Familia"],
-    }
+    },
   ],
 
   contact: {
     email: "areadelucha@gmail.com",
-    waNumber: "5491100000000",
-    waDisplay: "+54 9 11 0000 0000",
+    waNumber: "",
+    waDisplay: "",
   },
 
   live: {
     isLive: false,
-    nextISO: "2026-08-15T20:00:00-03:00",
+    nextISO: "",
     timezoneLabel: "AR",
   },
 
@@ -161,15 +173,7 @@ window.ADL = {
   },
 };
 
-// ========= IDENTIDAD PUBLICA DURANTE LA CONSTRUCCION =========
-(() => {
-  document.addEventListener("DOMContentLoaded", () => {
-    const constructionKicker = document.querySelector(".construction-kicker");
-    if (constructionKicker) constructionKicker.textContent = window.ADL?.brand?.tagline || "Domina tu Destino";
-  });
-})();
-
-// ========= NUEVA SECCIÓN EQUIPO (se desarrolla detrás de la pantalla de construcción) =========
+// ========= SECCIÓN EQUIPO =========
 (() => {
   const css = document.createElement("link");
   css.rel = "stylesheet";
@@ -189,9 +193,7 @@ window.ADL = {
     const highlight = person.highlight
       ? `<div class="member-highlight"><span>Reconocimiento</span><strong>${esc(person.highlight)}</strong></div>`
       : "";
-    const quote = person.quote
-      ? `<p class="member-quote">“${esc(person.quote)}”</p>`
-      : "";
+    const quote = person.quote ? `<p class="member-quote">“${esc(person.quote)}”</p>` : "";
     const extra = person.extra
       ? `<div class="member-role member-extra"><small>${esc(person.extraLabel || "Dato")}</small><p>${esc(person.extra)}</p></div>`
       : "";
@@ -203,39 +205,20 @@ window.ADL = {
           <img src="${esc(person.image)}" alt="${esc(person.displayName)}" loading="lazy" decoding="async">
           <figcaption class="member-photo-tag">${person.nickname ? esc(person.nickname) + " · " : ""}Integrante · Área de Lucha</figcaption>
         </figure>
-
         <div class="member-body">
           <div class="member-kicker"><b>${esc(person.index)}</b>${esc(person.kicker)}</div>
           <h3 class="member-name">${esc(person.firstName)}${surname}</h3>
           <p class="member-title">${esc(person.profession)}</p>
-
           ${highlight}
           ${quote}
-
           <div class="member-grid">
-            ${blocks.map((block) => `
-              <div class="member-block">
-                <small>${esc(block.label)}</small>
-                <p>${esc(block.text)}</p>
-              </div>`).join("")}
+            ${blocks.map((block) => `<div class="member-block"><small>${esc(block.label)}</small><p>${esc(block.text)}</p></div>`).join("")}
           </div>
-
-          <div class="member-role">
-            <small>Rol en Área de Lucha</small>
-            <p>${esc(person.role)}</p>
-          </div>
-
-          <div class="member-role">
-            <small>${esc(person.personalLabel || "Perfil")}</small>
-            <p>${esc(person.personal)}</p>
-          </div>
-
+          <div class="member-role"><small>Rol en Área de Lucha</small><p>${esc(person.role)}</p></div>
+          <div class="member-role"><small>${esc(person.personalLabel || "Perfil")}</small><p>${esc(person.personal)}</p></div>
           ${extra}
-
           <div class="member-meta">
-            <div class="member-tags" aria-label="Áreas de ${esc(person.displayName)}">
-              ${tags.map((tag) => `<span>${esc(tag)}</span>`).join("")}
-            </div>
+            <div class="member-tags" aria-label="Áreas de ${esc(person.displayName)}">${tags.map((tag) => `<span>${esc(tag)}</span>`).join("")}</div>
             <a class="member-instagram" href="${esc(person.instagram)}" target="_blank" rel="noopener">${esc(person.instagramLabel)} ↗</a>
           </div>
         </div>
@@ -251,21 +234,15 @@ window.ADL = {
     section.innerHTML = `
       <div class="shell">
         <div class="team-head">
-          <div>
-            <span class="team-index">05 · EL EQUIPO</span>
-            <h2>Detrás de<br>Área de Lucha.</h2>
-          </div>
+          <div><span class="team-index">05 · EL EQUIPO</span><h2>Detrás de<br>Área de Lucha.</h2></div>
           <p>Tres perfiles distintos. Una misma mesa. El deporte como punto de encuentro.</p>
         </div>
-
-        <div class="team-members">
-          ${team.map(renderMember).join("")}
-        </div>
+        <div class="team-members">${team.map(renderMember).join("")}</div>
       </div>`;
   });
 })();
 
-// ========= HOME V2 =========
+// ========= HOME =========
 (() => {
   const css = document.createElement("link");
   css.rel = "stylesheet";
