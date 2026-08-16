@@ -44,18 +44,28 @@
 .team-coming h3{margin:0;font-size:clamp(1.7rem,3vw,3.2rem);line-height:.9;letter-spacing:-.05em;text-transform:uppercase}
 .team-coming p{margin:8px 0 0;color:#888;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
 
-/* Foto grupal: existe en HTML para que no dependa de JavaScript */
+/* Foto grupal */
 .team-group-photo{position:relative;margin:0 0 34px;overflow:hidden;background:#080808;border:1px solid rgba(0,0,0,.18)}
 .team-group-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center center}
 .team-group-photo figcaption{position:absolute;left:22px;bottom:20px;padding:10px 13px;background:rgba(0,0,0,.78);color:#fff;font-size:.68rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(8px)}
 
-/* Hero: foto real del equipo en lugar de la marca de agua */
+/* Hero */
 .hero-panel{isolation:isolate}
-.hero-panel .hero-mark{top:34px;left:24px;right:24px;width:auto;height:auto;aspect-ratio:4/3;opacity:1;transform:none;overflow:hidden;background:#070707 url('/assets/team/adl-equipo-grupal.webp') center center/cover no-repeat;border:1px solid rgba(255,255,255,.14);z-index:0;box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.hero-panel .hero-mark{top:34px;left:24px;right:24px;width:auto;height:auto;aspect-ratio:4/3;opacity:1;transform:none;overflow:hidden;background:#070707;border:1px solid rgba(255,255,255,.14);z-index:0;box-shadow:0 18px 50px rgba(0,0,0,.28)}
 .hero-panel .hero-mark img{display:none}
 .hero-panel .hero-mark::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 58%,rgba(0,0,0,.26)),linear-gradient(135deg,rgba(0,223,252,.05),rgba(230,0,126,.05))}
 .hero-panel::before{z-index:1;background:linear-gradient(180deg,transparent 48%,rgba(0,0,0,.34) 67%,rgba(0,0,0,.78) 100%)}
 .hero-panel .panel-kicker,.hero-panel .panel-copy,.hero-panel .text-link{position:relative;z-index:2}
+
+/* Robust image layer: use standard JPEGs instead of the problematic WebP renders. */
+.hero-panel .hero-mark{background-image:url('/assets/team/adl-equipo-grupal.jpg?v=20260816jpg1');background-position:center;background-size:cover;background-repeat:no-repeat}
+.team-group-photo{aspect-ratio:4/3;background-image:url('/assets/team/adl-equipo-grupal.jpg?v=20260816jpg1');background-position:center;background-size:cover;background-repeat:no-repeat}
+.team-group-photo>img{display:none!important}
+.member-photo{background-size:cover;background-repeat:no-repeat;background-position:var(--member-photo-position,center center)}
+#piero .member-photo{background-image:url('/assets/team/piero-saldana.jpg?v=20260816jpg1')}
+#fer .member-photo{background-image:url('/assets/team/fernando-eloy.jpg?v=20260816jpg1')}
+#diego .member-photo{background-image:url('/assets/team/diego-area-de-lucha.jpg?v=20260816jpg1')}
+.member-photo>img{display:none!important}
 
 @media(max-width:900px){
   .team-editorial{padding:82px 0 96px}
