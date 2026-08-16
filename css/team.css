@@ -9,7 +9,7 @@
 .member-feature--reverse .member-photo{order:2}
 .member-feature--reverse .member-body{order:1}
 .member-photo{position:relative;min-height:720px;overflow:hidden;background:#111}
-.member-photo img{width:100%;height:100%;object-fit:cover;object-position:var(--member-photo-position,center center)}
+.member-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--member-photo-position,center center)}
 .member-photo::after{content:"";position:absolute;inset:auto 0 0;height:35%;background:linear-gradient(transparent,rgba(0,0,0,.5));pointer-events:none}
 .member-photo-tag{position:absolute;left:24px;bottom:22px;z-index:2;display:flex;align-items:center;gap:10px;color:#fff;font-size:.68rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
 .member-photo-tag::before{content:"";width:34px;height:2px;background:linear-gradient(90deg,#00dffc 0 50%,#e6007e 50%)}
@@ -43,6 +43,12 @@
 .team-coming span{color:#999;font-size:.65rem;font-weight:900;letter-spacing:.13em}
 .team-coming h3{margin:0;font-size:clamp(1.7rem,3vw,3.2rem);line-height:.9;letter-spacing:-.05em;text-transform:uppercase}
 .team-coming p{margin:8px 0 0;color:#888;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+
+/* Foto grupal: existe en HTML para que no dependa de JavaScript */
+.team-group-photo{position:relative;margin:0 0 34px;overflow:hidden;background:#080808;border:1px solid rgba(0,0,0,.18)}
+.team-group-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center center}
+.team-group-photo figcaption{position:absolute;left:22px;bottom:20px;padding:10px 13px;background:rgba(0,0,0,.78);color:#fff;font-size:.68rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(8px)}
+
 @media(max-width:900px){
   .team-editorial{padding:82px 0 96px}
   .team-editorial .team-head{align-items:flex-start;flex-direction:column}
@@ -61,4 +67,5 @@
   .member-name{font-size:clamp(2.5rem,13vw,4rem)}
   .member-quote{font-size:1.15rem}
   .member-highlight{padding:16px}
+  .team-group-photo figcaption{left:12px;bottom:12px;font-size:.58rem}
 }
