@@ -66,7 +66,7 @@ window.ADL = {
       displayName: "Piero Saldaña",
       kicker: "Kinesiología · Judo · Jiu-Jitsu",
       profession: "Licenciado en Kinesiología y Fisiatría · Profesor de Judo 2º Dan · practicante de Jiu-Jitsu faixa azul",
-      image: "/assets/team/piero-saldana.webp",
+      image: "/assets/team/piero-saldana.webp?v=20260816r2",
       imagePosition: "center 44%",
       instagram: "https://www.instagram.com/piero_gsl/",
       instagramLabel: "@piero_gsl",
@@ -96,7 +96,7 @@ window.ADL = {
       nickname: "Fer",
       kicker: "Judo · BJJ · Comunicación",
       profession: "2.º Dan de Judo · Faixa Roxa de BJJ · Kickboxing amateur 9–3",
-      image: "/assets/team/fernando-eloy.webp",
+      image: "/assets/team/fernando-eloy.webp?v=20260816r2",
       imagePosition: "center 38%",
       instagram: "https://www.instagram.com/fernandoeloy83/",
       instagramLabel: "@fernandoeloy83",
@@ -129,7 +129,7 @@ window.ADL = {
       nickname: "El Cule",
       kicker: "Familia · BJJ · Logística",
       profession: "Faixa azul de BJJ · cinturón amarillo de Judo",
-      image: "/assets/team/diego-area-de-lucha.webp",
+      image: "/assets/team/diego-area-de-lucha.webp?v=20260816r2",
       imagePosition: "center 38%",
       instagram: "https://www.instagram.com/diexx.10.akd/",
       instagramLabel: "@diexx.10.akd",
@@ -226,6 +226,13 @@ window.ADL = {
   };
 
   document.addEventListener("DOMContentLoaded", () => {
+    const heroPhoto = document.querySelector(".hero-panel .hero-mark img");
+    if (heroPhoto) {
+      heroPhoto.src = "/assets/team/adl-equipo-grupal.webp?v=20260816r2";
+      heroPhoto.alt = "Equipo de Área de Lucha: Piero, Fer y El Cule";
+      heroPhoto.removeAttribute("aria-hidden");
+    }
+
     const section = document.querySelector("#sobre");
     const team = Array.isArray(window.ADL?.team) ? window.ADL.team : [];
     if (!section || !team.length) return;
@@ -237,6 +244,10 @@ window.ADL = {
           <div><span class="team-index">05 · EL EQUIPO</span><h2>Detrás de<br>Área de Lucha.</h2></div>
           <p>Tres perfiles distintos. Una misma mesa. El deporte como punto de encuentro.</p>
         </div>
+        <figure class="team-group-photo">
+          <img src="/assets/team/adl-equipo-grupal.webp?v=20260816r2" alt="Equipo de Área de Lucha: Piero, Fer y El Cule" loading="eager" decoding="async">
+          <figcaption>Piero · Fer · El Cule · Área de Lucha</figcaption>
+        </figure>
         <div class="team-members">${team.map(renderMember).join("")}</div>
       </div>`;
   });
