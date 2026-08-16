@@ -1,25 +1,26 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <link rel="canonical" href="https://www.areadelucha.com/" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://www.areadelucha.com/">
   <link rel="icon" type="image/svg+xml" href="/assets/adl-iso-color-light.svg">
+
+  <title>Área de Lucha — El deporte contado por quienes lo viven</title>
+  <meta name="description" content="Área de Lucha es un programa de streaming dedicado al deporte, sus protagonistas, sus historias, el rendimiento y la salud. Deportistas amateurs y profesionales, entrenadores y especialistas cuentan su experiencia en primera persona.">
 
   <meta property="og:site_name" content="Área de Lucha">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.areadelucha.com/">
-  <meta property="og:title" content="Área de Lucha — estamos en construcción">
-  <meta property="og:description" content="Estamos trabajando en la nueva web de Área de Lucha. En breve volvemos.">
+  <meta property="og:title" content="Área de Lucha — El deporte contado por quienes lo viven">
+  <meta property="og:description" content="Deportistas, entrenadores y profesionales del deporte y la salud cuentan sus experiencias, historias y aprendizajes.">
+  <meta property="og:image" content="https://www.areadelucha.com/assets/team/adl-equipo-grupal.webp">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Área de Lucha — estamos en construcción">
-  <meta name="twitter:description" content="Estamos trabajando en la nueva web de Área de Lucha. En breve volvemos.">
-
-  <title>Área de Lucha — Estamos en construcción</title>
-  <meta name="description" content="Estamos trabajando en la nueva web de Área de Lucha. En breve volvemos." />
+  <meta name="twitter:title" content="Área de Lucha — El deporte contado por quienes lo viven">
+  <meta name="twitter:description" content="Un programa de streaming para conocer el deporte desde quienes lo viven.">
+  <meta name="twitter:image" content="https://www.areadelucha.com/assets/team/adl-equipo-grupal.webp">
 
   <script type="application/ld+json">
   {
@@ -28,6 +29,7 @@
     "name": "Área de Lucha",
     "url": "https://www.areadelucha.com/",
     "logo": "https://www.areadelucha.com/assets/adl-logo-color-light.svg",
+    "email": "areadelucha@gmail.com",
     "sameAs": [
       "https://www.youtube.com/@areadelucha",
       "https://kick.com/areadelucha",
@@ -39,56 +41,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..900&display=swap" rel="stylesheet">
-
-  <style>
-    body.construction-active{overflow:hidden}
-    .construction-screen{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:#000;color:#fff;font-family:"Archivo",Arial,sans-serif}
-    .construction-screen::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 95%)}
-    .construction-glow{position:absolute;inset:0;background:radial-gradient(circle at 22% 24%,rgba(0,223,252,.12),transparent 28%),radial-gradient(circle at 78% 72%,rgba(230,0,126,.13),transparent 30%);pointer-events:none}
-    .construction-line{position:absolute;height:3px;width:42vw;top:50%;transform:skewX(-38deg);opacity:.92}
-    .construction-line.left{left:-18vw;background:#00dffc}
-    .construction-line.right{right:-18vw;background:#e6007e}
-    .construction-inner{position:relative;z-index:2;width:min(920px,calc(100vw - 42px));text-align:center;padding:54px 24px}
-    .construction-logo{width:min(520px,76vw);height:auto;margin:0 auto 50px}
-    .construction-kicker{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:19px;color:#989898;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
-    .construction-kicker::before,.construction-kicker::after{content:"";width:38px;height:2px}
-    .construction-kicker::before{background:#00dffc}.construction-kicker::after{background:#e6007e}
-    .construction-screen h1{margin:0;font-size:clamp(3.3rem,8vw,8.2rem);line-height:.82;letter-spacing:-.07em;font-weight:900;text-transform:uppercase}
-    .construction-screen h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.92)}
-    .construction-copy{max-width:590px;margin:30px auto 0;color:#9e9e9e;font-size:clamp(.98rem,1.6vw,1.16rem);line-height:1.65}
-    .construction-social{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:34px}
-    .construction-social a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1px solid rgba(255,255,255,.22);color:#fff;text-decoration:none;font-size:.73rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;transition:.2s ease}
-    .construction-social a:hover{border-color:#00dffc;transform:translateY(-2px)}
-    .construction-status{display:inline-flex;align-items:center;gap:9px;margin-top:40px;color:#686868;font-size:.66rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
-    .construction-status i{width:6px;height:6px;border-radius:50%;background:#e6007e;box-shadow:0 0 16px rgba(230,0,126,.75)}
-    @media(max-width:640px){.construction-inner{padding:35px 8px}.construction-logo{width:min(390px,82vw);margin-bottom:38px}.construction-screen h1{font-size:clamp(2.7rem,15vw,4.8rem)}.construction-copy{max-width:360px;margin-top:24px}.construction-line{width:60vw}.construction-social{margin-top:28px}.construction-social a{min-height:43px;padding:0 14px;font-size:.66rem}}
-    @media(prefers-reduced-motion:reduce){.construction-social a{transition:none}}
-  </style>
-
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css">
   <script src="/js/config.js" defer></script>
   <script src="/js/app.js" defer></script>
 </head>
-
-<body class="construction-active">
-  <section class="construction-screen" aria-label="Sitio en construcción">
-    <div class="construction-glow" aria-hidden="true"></div>
-    <div class="construction-line left" aria-hidden="true"></div>
-    <div class="construction-line right" aria-hidden="true"></div>
-    <div class="construction-inner">
-      <img class="construction-logo" src="/assets/adl-logo-color-light.svg" alt="Área de Lucha">
-      <div class="construction-kicker">Domina tu Destino</div>
-      <h1>Estamos en<span>construcción.</span></h1>
-      <p class="construction-copy">Estamos preparando una nueva experiencia para Área de Lucha. En breve volvemos.</p>
-      <div class="construction-social" aria-label="Redes de Área de Lucha">
-        <a href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">YouTube ↗</a>
-        <a href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener">Instagram ↗</a>
-        <a href="https://kick.com/areadelucha" target="_blank" rel="noopener">Kick ↗</a>
-      </div>
-      <div class="construction-status"><i aria-hidden="true"></i>Área de Lucha · 2026</div>
-    </div>
-  </section>
-
+<body>
   <a class="skip" href="#inicio">Saltar al contenido</a>
 
   <header id="siteHeader" class="site-header">
@@ -100,13 +57,12 @@
           <span id="brandTagline">Domina tu Destino</span>
         </span>
       </a>
-
       <nav class="main-nav" aria-label="Navegación principal">
-        <a href="#episodios">Episodios</a>
-        <a href="#plataformas">Plataformas</a>
-        <a href="#envivo">En vivo</a>
-        <a href="#merch">Merch</a>
-        <a href="#sobre">Nosotros</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#que-es">Qué es ADL</a>
+        <a href="#episodios">Programas</a>
+        <a href="#coberturas">Coberturas</a>
+        <a href="#sobre">Equipo</a>
         <a class="nav-cta" href="#contacto">Contacto</a>
       </nav>
     </div>
@@ -117,37 +73,30 @@
       <div class="hero-noise" aria-hidden="true"></div>
       <div class="bolt-rail bolt-rail-left" aria-hidden="true"></div>
       <div class="bolt-rail bolt-rail-right" aria-hidden="true"></div>
-
       <div class="shell hero-grid">
         <div class="hero-copy">
           <div class="eyebrow">
             <span class="eyebrow-line"></span>
             <span id="heroBadgeText">Domina tu Destino</span>
           </div>
-
           <img class="hero-logo" src="/assets/adl-logo-color-light.svg" alt="Área de Lucha">
-
-          <h1 id="heroTitle">Deportes de combate<br><span>sin humo.</span></h1>
-          <p id="heroSubtitle" class="hero-sub">Episodios completos, streams y reels. BJJ, Judo, striking, invitados y conversación.</p>
-
+          <h1 id="heroTitle">El deporte contado<br><span>por quienes lo viven.</span></h1>
+          <p id="heroSubtitle" class="hero-sub">Un programa de streaming para conocer disciplinas, historias y personas: atletas, entrenadores y profesionales del deporte y la salud, desde el amateur hasta el alto rendimiento.</p>
           <div class="hero-actions">
-            <a class="button button-primary" id="btnYouTube" href="#" target="_blank" rel="noopener">YouTube</a>
-            <a class="button button-outline" id="btnKick" href="#" target="_blank" rel="noopener">Kick — en vivo</a>
-            <a class="button button-text" id="btnInstagram" href="#" target="_blank" rel="noopener">Instagram ↗</a>
+            <a class="button button-primary" id="btnYouTube" href="https://www.youtube.com/watch?v=eW1pDaidU-8" target="_blank" rel="noopener">Ver último programa</a>
+            <a class="button button-outline" id="btnKick" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Kick</a>
+            <a class="button button-text" id="btnInstagram" href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener">Instagram ↗</a>
           </div>
-
-          <div class="discipline-row" aria-label="Disciplinas">
-            <span>BJJ</span><i></i><span>Judo</span><i></i><span>Striking</span>
+          <div class="discipline-row" aria-label="Ejes de Área de Lucha">
+            <span>Deporte</span><i></i><span>Historias</span><i></i><span>Salud</span><i></i><span>Rendimiento</span>
           </div>
         </div>
 
         <aside class="hero-panel">
-          <div class="hero-mark">
-            <img src="/assets/adl-iso-color-light.svg" alt="" aria-hidden="true">
-          </div>
-          <p class="panel-kicker">CANAL MULTIPLATAFORMA</p>
-          <p class="panel-copy">Conversaciones, invitados y cultura de combate desde el tatami hacia afuera.</p>
-          <a class="text-link" id="btnPlaylist" href="#" target="_blank" rel="noopener">Ver playlist principal <span>↗</span></a>
+          <div class="hero-mark"><img src="/assets/adl-iso-color-light.svg" alt="" aria-hidden="true"></div>
+          <p class="panel-kicker">PROGRAMA DE STREAMING</p>
+          <p class="panel-copy">Invitados que viven el deporte desde lugares distintos: atletas, entrenadores y profesionales que aportan experiencia, conocimiento e historias reales.</p>
+          <a class="text-link" id="btnPlaylist" href="#que-es">Conocer Área de Lucha <span>↓</span></a>
         </aside>
       </div>
     </section>
@@ -155,124 +104,45 @@
     <section id="episodios" class="section section-black anchor">
       <div class="shell">
         <div class="section-heading">
-          <div>
-            <span class="section-index">01</span>
-            <h2>Episodios</h2>
-          </div>
-          <p id="episodesHint">Destacados del canal</p>
+          <div><span class="section-index">01</span><h2>Programas</h2></div>
+          <p id="episodesHint">Últimos programas</p>
         </div>
-        <div class="episode-grid" id="episodesGrid" aria-label="Episodios destacados"></div>
+        <div class="episode-grid" id="episodesGrid" aria-label="Programas de Área de Lucha"></div>
       </div>
     </section>
 
     <section id="plataformas" class="section section-light anchor">
       <div class="shell">
         <div class="section-heading dark">
-          <div>
-            <span class="section-index">02</span>
-            <h2>Plataformas</h2>
-          </div>
+          <div><span class="section-index">02</span><h2>Plataformas</h2></div>
           <p>Donde pasa Área de Lucha.</p>
         </div>
-
         <div class="platform-grid">
-          <a class="platform-card" id="cardYouTube" href="#" target="_blank" rel="noopener">
-            <span class="platform-num">01</span>
-            <h3>YouTube</h3>
-            <p>Episodios completos, playlists, entrevistas y shorts.</p>
-            <span class="platform-arrow">↗</span>
+          <a class="platform-card" id="cardYouTube" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">
+            <span class="platform-num">01</span><h3>YouTube</h3><p>Programas completos, entrevistas, coberturas, clips y especiales.</p><span class="platform-arrow">↗</span>
           </a>
-          <a class="platform-card" id="cardKick" href="#" target="_blank" rel="noopener">
-            <span class="platform-num">02</span>
-            <h3>Kick</h3>
-            <p>Streams en vivo, conversación y programa completo.</p>
-            <span class="platform-arrow">↗</span>
+          <a class="platform-card" id="cardKick" href="https://kick.com/areadelucha" target="_blank" rel="noopener">
+            <span class="platform-num">02</span><h3>Kick</h3><p>El programa en vivo y las conversaciones completas.</p><span class="platform-arrow">↗</span>
           </a>
-          <a class="platform-card" id="cardInstagram" href="#" target="_blank" rel="noopener">
-            <span class="platform-num">03</span>
-            <h3>Instagram</h3>
-            <p>Reels, clips, backstage, invitados y anuncios.</p>
-            <span class="platform-arrow">↗</span>
+          <a class="platform-card" id="cardInstagram" href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener">
+            <span class="platform-num">03</span><h3>Instagram</h3><p>Reels, backstage, coberturas, invitados y anuncios.</p><span class="platform-arrow">↗</span>
           </a>
         </div>
       </div>
     </section>
 
-    <section id="envivo" class="section section-live anchor">
+    <section id="envivo" class="section section-live anchor" aria-hidden="true">
       <div class="shell live-layout">
-        <div class="live-copy">
-          <span class="section-index">03</span>
-          <h2>Próximo<br>stream.</h2>
-          <p id="liveStatus">Publicado por el canal. Horario Argentina.</p>
-          <div class="live-actions">
-            <a class="button button-primary" id="liveKick" href="#" target="_blank" rel="noopener">Ir a Kick</a>
-            <a class="button button-outline" id="liveYouTube" href="#" target="_blank" rel="noopener">Ir a YouTube</a>
-          </div>
-        </div>
-
-        <div class="countdown-wrap">
-          <div class="live-big" id="liveBig">—</div>
-          <div class="countdown" aria-label="Cuenta regresiva">
-            <div class="time-box"><b id="d">—</b><span>Días</span></div>
-            <div class="time-box"><b id="h">—</b><span>Horas</span></div>
-            <div class="time-box"><b id="m">—</b><span>Min</span></div>
-            <div class="time-box"><b id="s">—</b><span>Seg</span></div>
-          </div>
-          <p id="liveNote" class="live-note">Cuando llegue el horario, entrá directo a Kick o YouTube.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="merch" class="section section-black anchor">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <span class="section-index">04</span>
-            <h2>Merch</h2>
-          </div>
-          <p>Próximamente.</p>
-        </div>
-
-        <div class="merch-banner">
-          <div class="merch-mark">
-            <img src="/assets/adl-logo-color-light.svg" alt="Área de Lucha">
-          </div>
-          <div>
-            <p class="merch-title">La identidad del canal, puesta en movimiento.</p>
-            <p class="merch-copy">Remeras, buzos, gorras, stickers y rashguards. El catálogo se habilitará cuando esté definido el proveedor.</p>
-          </div>
-          <a class="button button-outline" href="#contacto">Consultar</a>
-        </div>
+        <div class="live-copy"><span class="section-index">03</span><h2>Próximo<br>programa.</h2><p id="liveStatus"></p><div class="live-actions"><a class="button button-primary" id="liveKick" href="#">Kick</a><a class="button button-outline" id="liveYouTube" href="#">YouTube</a></div></div>
+        <div class="countdown-wrap"><div class="live-big" id="liveBig">—</div><div class="countdown"><div class="time-box"><b id="d">—</b><span>Días</span></div><div class="time-box"><b id="h">—</b><span>Horas</span></div><div class="time-box"><b id="m">—</b><span>Min</span></div><div class="time-box"><b id="s">—</b><span>Seg</span></div></div><p id="liveNote" class="live-note"></p></div>
       </div>
     </section>
 
     <section id="sobre" class="section section-light anchor">
       <div class="shell">
         <div class="section-heading dark">
-          <div>
-            <span class="section-index">05</span>
-            <h2>Área de Lucha</h2>
-          </div>
-          <p>El canal es el protagonista.</p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-statement">
-            <p>Somos tres personas unidas por los deportes de combate. El formato mezcla charla descontracturada, invitados y distintas miradas sobre el mundo de la lucha.</p>
-            <img src="/assets/adl-logo-color-dark.svg" alt="Área de Lucha">
-          </div>
-
-          <div class="team-grid">
-            <article class="team-card">
-              <span>01</span><h3>Piero</h3><p>Perfil en desarrollo</p>
-            </article>
-            <article class="team-card">
-              <span>02</span><h3>Fer</h3><p>Perfil en preparación</p>
-            </article>
-            <article class="team-card">
-              <span>03</span><h3>Diego</h3><p>Perfil en preparación</p>
-            </article>
-          </div>
+          <div><span class="section-index">05</span><h2>El equipo</h2></div>
+          <p>Piero · Fer · El Cule</p>
         </div>
       </div>
     </section>
@@ -282,15 +152,13 @@
         <div>
           <span class="section-index">06</span>
           <h2>Hablemos.</h2>
-          <p>Invitados, colaboraciones, marcas o propuestas para el programa.</p>
+          <p>Invitados, coberturas, colaboraciones, marcas o propuestas para el programa.</p>
         </div>
-
         <div class="contact-links">
-          <a id="contactYouTube" href="#" target="_blank" rel="noopener"><span>YouTube</span><b>@areadelucha</b><i>↗</i></a>
-          <a id="contactKick" href="#" target="_blank" rel="noopener"><span>Kick</span><b>areadelucha</b><i>↗</i></a>
-          <a id="contactInstagram" href="#" target="_blank" rel="noopener"><span>Instagram</span><b>@areadelucha</b><i>↗</i></a>
-          <a id="contactEmail" href="#"><span>Email</span><b id="emailText">areadelucha@gmail.com</b><i>↗</i></a>
-          <a id="contactWhatsApp" href="#" target="_blank" rel="noopener"><span>WhatsApp</span><b id="waText">Configurar</b><i>↗</i></a>
+          <a id="contactYouTube" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener"><span>YouTube</span><b>@areadelucha</b><i>↗</i></a>
+          <a id="contactKick" href="https://kick.com/areadelucha" target="_blank" rel="noopener"><span>Kick</span><b>areadelucha</b><i>↗</i></a>
+          <a id="contactInstagram" href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener"><span>Instagram</span><b>@areadelucha</b><i>↗</i></a>
+          <a id="contactEmail" href="mailto:areadelucha@gmail.com"><span>Email</span><b id="emailText">areadelucha@gmail.com</b><i>↗</i></a>
         </div>
       </div>
     </section>
@@ -299,10 +167,7 @@
   <footer class="site-footer">
     <div class="shell footer-inner">
       <img id="footerLogo" src="/assets/adl-logo-color-light.svg" alt="Área de Lucha">
-      <div class="footer-meta">
-        <span id="footerText">Área de Lucha — Domina tu Destino</span>
-        <span>© <span id="yy"></span> Área de Lucha</span>
-      </div>
+      <div class="footer-meta"><span id="footerText">Área de Lucha — Domina tu Destino</span><span>© <span id="yy"></span> Área de Lucha</span></div>
     </div>
   </footer>
 
