@@ -2,10 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#050505">
-  <meta name="description" content="Área de Lucha es un programa de streaming sobre deporte, historias, salud y rendimiento. Deportistas, entrenadores y profesionales cuentan su experiencia en primera persona.">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <title>Área de Lucha — El deporte contado por quienes lo viven</title>
+  <meta name="description" content="Área de Lucha es un programa de streaming sobre deporte, historias, salud y rendimiento. Atletas, entrenadores y profesionales cuentan su experiencia en primera persona.">
   <link rel="canonical" href="https://www.areadelucha.com/">
+  <link rel="preload" as="image" href="/assets/equipo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Área de Lucha">
   <meta property="og:url" content="https://www.areadelucha.com/">
@@ -13,275 +18,114 @@
   <meta property="og:description" content="Deportistas, entrenadores y profesionales del deporte y la salud cuentan sus experiencias, historias y aprendizajes.">
   <meta property="og:image" content="https://www.areadelucha.com/assets/equipo.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Área de Lucha — El deporte contado por quienes lo viven">
-  <meta name="twitter:description" content="Un programa de streaming para conocer el deporte desde quienes lo viven.">
   <meta name="twitter:image" content="https://www.areadelucha.com/assets/equipo.jpg">
-  <title>Área de Lucha — El deporte contado por quienes lo viven</title>
-  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=1">
-  <script defer src="/app.js?v=1"></script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Área de Lucha",
-    "url":"https://www.areadelucha.com/",
-    "logo":"https://www.areadelucha.com/assets/logo.svg",
-    "email":"areadelucha@gmail.com",
-    "sameAs":[
-      "https://www.youtube.com/@areadelucha",
-      "https://www.instagram.com/areadelucha/",
-      "https://kick.com/areadelucha"
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Área de Lucha","url":"https://www.areadelucha.com/","email":"areadelucha@gmail.com","sameAs":["https://www.youtube.com/@areadelucha","https://www.instagram.com/areadelucha/","https://kick.com/areadelucha"]}</script>
+  <style>
+    :root{--black:#000;--ink:#08090b;--white:#fff;--paper:#f4f4f1;--muted:#9b9b9b;--line:rgba(255,255,255,.15);--darkline:rgba(0,0,0,.16);--cyan:#00dffc;--magenta:#e6007e;--shell:min(1180px,calc(100vw - 40px));--header:78px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;background:#000}body{margin:0;background:#000;color:#fff;font-family:"Archivo",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button,summary{font:inherit}.shell{width:var(--shell);margin:auto}.anchor{scroll-margin-top:96px}.eyebrow{display:flex;align-items:center;gap:11px;color:#a5a5a5;font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.eyebrow:before{content:"";width:44px;height:2px;background:linear-gradient(90deg,var(--cyan) 0 50%,var(--magenta) 50%)}
+    .header{position:sticky;top:0;z-index:50;height:var(--header);background:rgba(0,0,0,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand img{width:122px;height:auto}.desktop-nav{display:flex;align-items:center;gap:4px}.desktop-nav a{padding:11px 12px;color:#bdbdbd;font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.desktop-nav a:hover{color:#fff}.desktop-nav .cta{margin-left:8px;background:#fff;color:#000}.desktop-nav .cta:hover{background:var(--cyan);color:#000}.mobile-nav{display:none;position:relative}.mobile-nav summary{list-style:none;cursor:pointer;width:46px;height:46px;border:1px solid var(--line);display:grid;place-items:center}.mobile-nav summary::-webkit-details-marker{display:none}.burger,.burger:before,.burger:after{width:20px;height:2px;background:#fff;display:block;position:relative}.burger:before,.burger:after{content:"";position:absolute;left:0}.burger:before{top:-6px}.burger:after{top:6px}.mobile-nav[open] .burger{background:transparent}.mobile-nav[open] .burger:before{top:0;transform:rotate(45deg)}.mobile-nav[open] .burger:after{top:0;transform:rotate(-45deg)}.mobile-panel{position:fixed;top:var(--header);left:0;right:0;background:#000;border-bottom:1px solid var(--line);padding:14px 20px 22px;display:grid}.mobile-panel a{padding:15px 2px;border-bottom:1px solid var(--line);font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.mobile-panel a:last-child{border-bottom:0;color:var(--cyan)}
+    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(circle at 80% 20%,rgba(0,223,252,.08),transparent 28%),radial-gradient(circle at 70% 75%,rgba(230,0,126,.08),transparent 30%),#000}.hero:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(#000,transparent 92%)}.hero-grid{position:relative;padding:84px 0 90px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(360px,.88fr);gap:clamp(46px,7vw,95px);align-items:center}.hero-logo{width:min(560px,84%);margin:30px 0 34px}.hero h1{margin:0;font-size:clamp(3.4rem,7vw,7.2rem);line-height:.84;letter-spacing:-.065em;text-transform:uppercase;font-weight:900}.hero h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.92)}.hero-copy>p{max-width:680px;color:#aaa;font-size:1.05rem;line-height:1.65;margin:28px 0 0}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}.btn{min-height:48px;padding:0 19px;border:1px solid rgba(255,255,255,.28);display:inline-flex;align-items:center;justify-content:center;font-size:.74rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}.btn-primary{background:#fff;color:#000;border-color:#fff}.btn-primary:hover{background:var(--cyan);border-color:var(--cyan)}.btn:hover{border-color:var(--magenta)}.topics{display:flex;flex-wrap:wrap;gap:11px;margin-top:37px;color:#777;font-size:.69rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.topics span+span:before{content:"•";margin-right:11px;color:var(--magenta)}.hero-figure{margin:0;border:1px solid var(--line);background:#0a0a0a;position:relative;overflow:hidden}.hero-figure img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:contrast(1.04) saturate(.96)}.hero-figure figcaption{display:flex;justify-content:space-between;gap:15px;padding:16px 18px;border-top:1px solid var(--line);font-size:.67rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#bbb}.hero-figure figcaption b{color:var(--cyan)}
+    .section{padding:105px 0}.section-light{background:var(--paper);color:#000}.section-dark{background:#000;color:#fff}.section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:end;padding-bottom:26px;border-bottom:1px solid currentColor;margin-bottom:42px}.section-head small{display:block;color:var(--magenta);font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:.66rem}.section-dark .section-head small{color:var(--cyan)}.section-head h2{margin:9px 0 0;font-size:clamp(3rem,6vw,6.2rem);line-height:.86;letter-spacing:-.06em;text-transform:uppercase}.section-head p{margin:0;color:#6a6a6a;line-height:1.6;max-width:620px}.section-dark .section-head p{color:#999}
+    .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}.about-big{font-size:clamp(1.8rem,3.3vw,3.4rem);line-height:1.08;letter-spacing:-.045em;font-weight:800}.about-copy p{margin:0 0 22px;color:#555;line-height:1.75}.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}.pill{border:1px solid var(--darkline);padding:8px 10px;font-size:.65rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.origin{margin-top:68px;background:#050505;color:#fff;display:grid;grid-template-columns:.8fr 1.2fr}.origin-mark{position:relative;min-height:350px;padding:30px;overflow:hidden;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}.origin-mark:before{content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(255,255,255,.15);border-radius:50%;right:-80px;top:30px;box-shadow:0 0 80px rgba(0,223,252,.12),0 0 130px rgba(230,0,126,.12)}.origin-mark small{color:var(--cyan);font-weight:900;letter-spacing:.13em;text-transform:uppercase}.origin-mark strong{position:relative;font-size:clamp(2.4rem,4.3vw,4.8rem);line-height:.84;letter-spacing:-.06em;text-transform:uppercase}.origin-copy{padding:42px}.origin-copy h3{margin:0 0 22px;font-size:clamp(2.2rem,4vw,4.2rem);line-height:.9;letter-spacing:-.05em;text-transform:uppercase}.origin-copy p{color:#aaa;line-height:1.7;margin:0 0 18px}.timeline{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:28px}.step{padding:18px 16px 0 0;border-right:1px solid var(--line)}.step+ .step{padding-left:16px}.step:last-child{border-right:0}.step b{display:block;font-size:.82rem;text-transform:uppercase}.step span{display:block;margin-top:5px;color:#777;font-size:.68rem;line-height:1.45;text-transform:uppercase}
+    .programs{display:grid;gap:28px}.program{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);border:1px solid var(--line);background:#070707}.program-media{position:relative;min-height:360px}.program-media iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.program-copy{padding:clamp(30px,5vw,58px);display:flex;flex-direction:column;justify-content:center}.program-copy small{color:var(--cyan);font-weight:900;letter-spacing:.14em;text-transform:uppercase}.program:nth-child(2) .program-copy small{color:var(--magenta)}.program-copy h3{margin:14px 0 10px;font-size:clamp(2.4rem,4.8vw,5.2rem);line-height:.86;letter-spacing:-.055em;text-transform:uppercase}.program-copy h3 span{display:block;color:transparent;-webkit-text-stroke:1px #fff}.program-copy .role{margin:0;color:#ddd;font-weight:700}.program-copy .desc{color:#999;line-height:1.65;margin:20px 0 0}.program-copy .actions{margin-top:26px}
+    .coverage-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--darkline)}.coverage{min-height:400px;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}.coverage+ .coverage{border-left:1px solid var(--darkline)}.coverage:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);background-size:40px 40px}.coverage>*{position:relative}.coverage small{color:var(--magenta);font-weight:900;letter-spacing:.12em;text-transform:uppercase}.coverage:nth-child(2) small{color:#008fa4}.coverage h3{margin:10px 0 12px;font-size:clamp(2.5rem,5vw,5rem);line-height:.84;letter-spacing:-.06em;text-transform:uppercase}.coverage p{margin:0;color:#666;line-height:1.6;max-width:520px}.text-links{display:flex;flex-wrap:wrap;gap:14px 18px;margin-top:25px}.text-links a{font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid #000;padding-bottom:4px}.text-links a:hover{border-color:var(--magenta)}
+    .team-photo{margin:0 0 38px;border:1px solid var(--line);background:#080808}.team-photo img{width:100%;aspect-ratio:16/9;object-fit:cover}.team-photo figcaption{padding:15px 18px;border-top:1px solid var(--line);color:#aaa;font-size:.66rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}.members{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.member{background:#070707;padding:30px;display:flex;flex-direction:column;min-height:480px}.member-number{color:var(--magenta);font-size:.67rem;font-weight:900;letter-spacing:.14em}.member:nth-child(2) .member-number{color:var(--cyan)}.member:nth-child(3) .member-number{color:var(--magenta)}.member h3{margin:38px 0 8px;font-size:clamp(2rem,3vw,3.5rem);line-height:.9;letter-spacing:-.05em;text-transform:uppercase}.member .nick{color:#888;font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.member .title{color:#bcbcbc;line-height:1.5;font-size:.9rem;margin:18px 0 0}.member .role{margin:24px 0;color:#8d8d8d;line-height:1.6;font-size:.9rem}.member details{margin-top:auto;border-top:1px solid var(--line);padding-top:17px}.member summary{cursor:pointer;list-style:none;font-size:.69rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#fff}.member summary::-webkit-details-marker{display:none}.member details p{color:#888;line-height:1.65;font-size:.86rem;margin:16px 0 0}.member .ig{display:inline-block;margin-top:18px;color:var(--cyan);font-size:.69rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}.contact-grid h2{margin:8px 0 15px;font-size:clamp(3.3rem,6vw,6.5rem);line-height:.84;letter-spacing:-.065em;text-transform:uppercase}.contact-grid>div>p{color:#888;line-height:1.6}.contact-links{border-top:1px solid var(--line)}.contact-links a{display:grid;grid-template-columns:110px 1fr auto;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:center}.contact-links span{color:#777;font-size:.67rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.contact-links b{overflow-wrap:anywhere}.contact-links i{font-style:normal;color:var(--magenta)}.footer{padding:32px 0 45px;border-top:1px solid var(--line);background:#000}.footer-inner{display:flex;align-items:flex-end;justify-content:space-between;gap:25px}.footer img{width:210px}.footer p{margin:0;color:#666;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:right}
+    @media(max-width:900px){:root{--header:70px;--shell:min(100% - 32px,760px)}.desktop-nav{display:none}.mobile-nav{display:block}.brand img{width:104px}.hero-grid{grid-template-columns:1fr;padding:60px 0 68px;gap:42px}.hero-logo{margin-top:24px}.hero h1{font-size:clamp(3.1rem,13vw,5.8rem)}.hero-figure{max-width:720px}.section{padding:78px 0}.section-head,.about-grid,.origin,.contact-grid{grid-template-columns:1fr}.section-head{gap:24px}.origin-mark{border-right:0;border-bottom:1px solid var(--line);min-height:280px}.program{grid-template-columns:1fr}.program-media{min-height:0;aspect-ratio:16/9}.coverage-grid{grid-template-columns:1fr}.coverage+ .coverage{border-left:0;border-top:1px solid var(--darkline)}.members{grid-template-columns:1fr}.member{min-height:auto}.contact-grid{gap:38px}}
+    @media(max-width:560px){:root{--shell:calc(100% - 28px)}.hero-grid{padding:48px 0 58px}.hero-logo{width:88%;margin-bottom:28px}.hero h1{font-size:clamp(2.85rem,15.5vw,4.5rem)}.hero-copy>p{font-size:.96rem;line-height:1.6}.actions{display:grid;grid-template-columns:1fr 1fr}.btn{padding-inline:12px;text-align:center}.topics{font-size:.62rem;gap:8px}.topics span+span:before{margin-right:8px}.hero-figure figcaption{flex-direction:column}.section{padding:64px 0}.section-head{margin-bottom:30px}.section-head h2{font-size:clamp(2.7rem,14vw,4.5rem)}.about-big{font-size:1.7rem}.origin-copy{padding:28px 22px}.origin-mark{padding:24px;min-height:240px}.timeline{grid-template-columns:1fr}.step,.step+ .step{padding:14px 0;border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}.program-copy{padding:28px 22px}.coverage{padding:24px;min-height:350px}.team-photo{margin-bottom:22px}.member{padding:24px}.member h3{margin-top:28px}.contact-links a{grid-template-columns:90px 1fr auto;gap:12px}.footer-inner{align-items:flex-start;flex-direction:column}.footer p{text-align:left}}
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
-
-  <header class="site-header" id="inicio">
-    <div class="container nav-wrap">
-      <a class="brand" href="#inicio" aria-label="Área de Lucha — inicio">
-        <img src="/assets/logo.svg" alt="Área de Lucha">
-      </a>
-      <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
-        <a href="#que-es">Qué es ADL</a>
-        <a href="#programas">Programas</a>
-        <a href="#coberturas">Coberturas</a>
-        <a href="#equipo">Equipo</a>
-        <a class="nav-contact" href="#contacto">Contacto</a>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="#inicio" aria-label="Área de Lucha — inicio"><img src="/assets/logo.svg" alt="Área de Lucha" width="122" height="74"></a>
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#que-es">Qué es ADL</a><a href="#programas">Programas</a><a href="#coberturas">Coberturas</a><a href="#equipo">Equipo</a><a class="cta" href="#contacto">Contacto</a>
       </nav>
+      <details class="mobile-nav">
+        <summary aria-label="Abrir menú"><span class="burger"></span></summary>
+        <nav class="mobile-panel" aria-label="Navegación móvil"><a href="#que-es">Qué es ADL</a><a href="#programas">Programas</a><a href="#coberturas">Coberturas</a><a href="#equipo">Equipo</a><a href="#contacto">Contacto</a></nav>
+      </details>
     </div>
   </header>
 
-  <main id="contenido">
-    <section class="hero section-dark">
-      <div class="hero-lines" aria-hidden="true"></div>
-      <div class="container hero-grid">
+  <main>
+    <section class="hero anchor" id="inicio">
+      <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> Domina tu Destino</p>
-          <h1>El deporte contado <em>por quienes lo viven.</em></h1>
-          <p class="hero-intro">Un programa de streaming para conocer disciplinas, historias y personas: atletas, entrenadores y profesionales del deporte y la salud, desde el amateur hasta el alto rendimiento.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://www.youtube.com/watch?v=eW1pDaidU-8" target="_blank" rel="noopener">Ver último programa</a>
-            <a class="button outline" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">YouTube</a>
-            <a class="button ghost" href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener">Instagram ↗</a>
-            <a class="button ghost" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Kick ↗</a>
+          <div class="eyebrow">Domina tu Destino</div>
+          <img class="hero-logo" src="/assets/logo.svg" alt="Área de Lucha">
+          <h1>El deporte contado<span>por quienes lo viven.</span></h1>
+          <p>Un programa de streaming para conocer disciplinas, historias y personas: atletas, entrenadores y profesionales del deporte y la salud, desde el amateur hasta el alto rendimiento.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=eW1pDaidU-8" target="_blank" rel="noopener">Ver último programa</a>
+            <a class="btn" href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener">YouTube</a>
+            <a class="btn" href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn" href="https://kick.com/areadelucha" target="_blank" rel="noopener">Kick</a>
           </div>
-          <div class="topic-row" aria-label="Ejes del programa">
-            <span>Deporte</span><i></i><span>Historias</span><i></i><span>Salud</span><i></i><span>Rendimiento</span>
-          </div>
+          <div class="topics"><span>Deporte</span><span>Historias</span><span>Salud</span><span>Rendimiento</span></div>
         </div>
-        <figure class="hero-photo">
-          <img src="/assets/equipo.jpg?v=1" alt="Equipo de Área de Lucha" width="1200" height="900">
-          <figcaption><strong>Área de Lucha</strong><span>Piero · Fer · El Cule</span></figcaption>
+        <figure class="hero-figure">
+          <img src="/assets/equipo.jpg" alt="Equipo de Área de Lucha" width="640" height="360" decoding="async" fetchpriority="high">
+          <figcaption><span>Piero · Fer · El Cule</span><b>Área de Lucha</b></figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="about section-light" id="que-es">
-      <div class="container about-grid">
-        <div>
-          <p class="section-label">Qué es Área de Lucha</p>
-          <h2>Aprender del deporte.</h2>
+    <section class="section section-light anchor" id="que-es">
+      <div class="shell">
+        <div class="section-head"><div><small>01 · Qué es Área de Lucha</small><h2>Aprender del deporte.</h2></div><p>Nos interesa conocer cada disciplina desde las personas que la viven: no sólo el resultado, sino también lo que hay antes, durante y después.</p></div>
+        <div class="about-grid">
+          <div class="about-big">Un espacio para que cada deportista pueda contar su experiencia, su historia, sus dificultades y sus aprendizajes.</div>
+          <div class="about-copy"><p>Área de Lucha es un programa de streaming dedicado al deporte. Nacimos muy ligados a los deportes de combate, pero no estamos limitados a ellos. Nuestro fuerte son los invitados: deportistas en actividad, ex deportistas, entrenadores y profesionales de la salud o del rendimiento vinculados a cada disciplina.</p><p>Queremos que tenga voz tanto el amateur que está construyendo su camino como el atleta profesional que compite al máximo nivel. Nos interesa aprender del entrenamiento, de la competencia, de la salud, de la preparación y también de las historias humanas que acompañan al deporte.</p><div class="pill-row"><span class="pill">Atletas</span><span class="pill">Entrenadores</span><span class="pill">Salud</span><span class="pill">Rendimiento</span><span class="pill">Amateur</span><span class="pill">Alto rendimiento</span></div></div>
         </div>
-        <div class="about-copy">
-          <p class="lead">Área de Lucha es un programa de streaming dedicado a conocer el deporte desde adentro, disciplina por disciplina y persona por persona.</p>
-          <p>Nacimos muy ligados a los deportes de combate, pero el programa no se limita a ellos. Nuestro fuerte son los invitados: deportistas en actividad, ex deportistas, entrenadores y profesionales de la salud o del rendimiento vinculados a cada disciplina.</p>
-          <p>Nos interesa escuchar tanto al amateur que está construyendo su camino como al atleta profesional que compite al máximo nivel. Queremos que puedan contar su experiencia, su recorrido, sus dificultades, sus aprendizajes y aquello que normalmente queda fuera del resultado.</p>
-          <div class="pill-row"><span>Atletas</span><span>Entrenadores</span><span>Salud</span><span>Rendimiento</span><span>Amateur</span><span>Alto rendimiento</span></div>
-        </div>
-      </div>
-
-      <div class="container origin-grid">
-        <div class="origin-visual">
-          <span>Nuestra historia · 2026</span>
-          <strong>Una idea fugaz.<br>Una puesta en marcha inmediata.</strong>
-          <div class="orbit" aria-hidden="true"></div>
-        </div>
-        <div class="origin-copy">
-          <p class="section-label">Cómo nació ADL</p>
-          <h3>Como un agujero negro.</h3>
-          <p>Área de Lucha nació en febrero de 2026 como una idea fugaz y potente: de esas que aparecen de golpe y empiezan a atraer todo a su alrededor, como un agujero negro que no deja escapar nada.</p>
-          <p>La idea apareció y prácticamente no tuvo tiempo de enfriarse. A la semana siguiente ya la estábamos poniendo en marcha y durante marzo el proyecto empezó a tomar forma. Desde entonces fuimos mejorando el programa, la producción y la manera de contar cada historia.</p>
-          <div class="timeline">
-            <div><b>Febrero 2026</b><span>Nace la idea.</span></div>
-            <div><b>Marzo 2026</b><span>ADL se pone en marcha.</span></div>
-            <div><b>Hoy</b><span>Seguimos aprendiendo, produciendo y creciendo.</span></div>
-          </div>
+        <div class="origin">
+          <div class="origin-mark"><small>Nuestra historia · 2026</small><strong>Una idea fugaz. Una puesta en marcha inmediata.</strong></div>
+          <div class="origin-copy"><h3>Como un agujero negro.</h3><p>Área de Lucha nació en febrero de 2026 como una idea fugaz y potente: de esas que aparecen de golpe y empiezan a atraer todo a su alrededor, como un agujero negro que no deja escapar nada.</p><p>La idea prácticamente no tuvo tiempo de enfriarse. A la semana siguiente ya la estábamos poniendo en marcha y durante marzo el proyecto empezó a tomar forma. Desde entonces fuimos mejorando el programa, la producción y la manera de contar cada historia.</p><p>El objetivo sigue siendo simple: que todo deportista tenga un lugar para contar aquello que normalmente queda fuera del resultado o de la competencia.</p><div class="timeline"><div class="step"><b>Febrero 2026</b><span>Nace la idea.</span></div><div class="step"><b>Marzo 2026</b><span>ADL se pone en marcha.</span></div><div class="step"><b>Hoy</b><span>Seguimos aprendiendo y creciendo.</span></div></div></div>
         </div>
       </div>
     </section>
 
-    <section class="programs section-dark" id="programas">
-      <div class="container section-head dark-head">
-        <div><p class="section-label cyan">Programas</p><h2>Últimas charlas.</h2></div>
-        <p>Conversaciones completas con protagonistas del deporte y profesionales que trabajan alrededor de él.</p>
-      </div>
-      <div class="container program-list">
-        <article class="program-card featured">
-          <div class="video-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/eW1pDaidU-8" title="Ramiro Díaz Suguer — Área de Lucha" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </div>
-          <div class="program-copy">
-            <p class="section-label cyan">Último programa</p>
-            <h3>Ramiro <span>Díaz Suguer</span></h3>
-            <p class="role">Psicólogo Deportivo · Club Social y Deportivo Miriñaque</p>
-            <p>Una conversación sobre psicología deportiva, rendimiento, preparación mental y el trabajo profesional alrededor del deportista.</p>
-            <a class="button primary" href="https://www.youtube.com/watch?v=eW1pDaidU-8" target="_blank" rel="noopener">Ver en YouTube</a>
-          </div>
-        </article>
-
-        <article class="program-card reverse">
-          <div class="video-frame">
-            <iframe src="https://www.youtube-nocookie.com/embed/Z8iFdiO1k18" title="Antonella Lasorsa — Área de Lucha" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </div>
-          <div class="program-copy">
-            <p class="section-label magenta">Programa anterior</p>
-            <h3>Antonella <span>Lasorsa</span></h3>
-            <p class="role">Atleta Wellness · NPC</p>
-            <p>Fisicoculturismo, preparación, competencia y la experiencia de vivir el deporte desde la categoría Wellness.</p>
-            <a class="button outline" href="https://www.youtube.com/watch?v=Z8iFdiO1k18" target="_blank" rel="noopener">Ver en YouTube</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="coverage section-light" id="coberturas">
-      <div class="container section-head">
-        <div><p class="section-label">Fuera del estudio</p><h2>Coberturas.</h2></div>
-        <p>Área de Lucha también sale a buscar historias, competencias y protagonistas donde sucede el deporte.</p>
-      </div>
-      <div class="container coverage-grid">
-        <article class="coverage-card">
-          <div class="coverage-number">01</div>
-          <div>
-            <p class="section-label">Evento</p>
-            <h3>Left Combat.</h3>
-            <p>Video principal en YouTube y momentos destacados en Instagram.</p>
-            <div class="text-links">
-              <a href="https://youtu.be/bQ7E1sBCKlg?si=628JmoHgE8FNL74u" target="_blank" rel="noopener">Video completo ↗</a>
-              <a href="https://www.instagram.com/reel/DbXHaNsu7rU/?igsh=MTZxbjZoOGxzYW96bw==" target="_blank" rel="noopener">Reel 01 ↗</a>
-              <a href="https://www.instagram.com/reel/DbVnDuxuhFZ/?igsh=MWR0cW5wbmY3bGpkMQ==" target="_blank" rel="noopener">Reel 02 ↗</a>
-              <a href="https://www.instagram.com/reel/DbYktXjRI-Z/?igsh=MWhzbGxza2c3MDQ3dw==" target="_blank" rel="noopener">Reel 03 ↗</a>
-            </div>
-          </div>
-        </article>
-        <article class="coverage-card cyan-card">
-          <div class="coverage-number">02</div>
-          <div>
-            <p class="section-label cyan-text">Lotus BJJ · Club El Porvenir, Gerli</p>
-            <h3>Ryan Martinez<br>+ Camila Reynoso.</h3>
-            <p>Visita a Lotus BJJ en el Club El Porvenir de Gerli, dojo a cargo del Mestre faixa preta Leandro Márquez. Área de Lucha estuvo ahí para conversar y generar contenido desde el lugar donde también entrenamos.</p>
-            <div class="text-links"><a href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener">Ver Instagram ↗</a></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="team section-light" id="equipo">
-      <div class="container section-head">
-        <div><p class="section-label">El equipo</p><h2>Detrás de ADL.</h2></div>
-        <p>Tres perfiles distintos. Una misma mesa. El deporte como punto de encuentro.</p>
-      </div>
-      <div class="container team-group">
-        <img src="/assets/equipo.jpg?v=1" alt="Equipo de Área de Lucha" loading="lazy" width="1200" height="900">
-        <div><strong>Piero · Fer · El Cule</strong><span>Área de Lucha</span></div>
-      </div>
-
-      <div class="container members">
-        <article class="member-card">
-          <div class="member-image"><img src="/assets/piero.jpg?v=1" alt="Piero Saldaña" loading="lazy" width="800" height="1000"></div>
-          <div class="member-content">
-            <p class="member-index">01 · Kinesiología · Judo · Jiu-Jitsu</p>
-            <h3>Piero <span>Saldaña</span></h3>
-            <p class="member-title">Licenciado en Kinesiología y Fisiatría · Profesor de Judo 2º Dan · practicante de Jiu-Jitsu faixa azul</p>
-            <p class="member-role"><b>En ADL:</b> responsable del área técnica del stream: conectividad, audio, PC, OBS y gestión técnica de YouTube.</p>
-            <details>
-              <summary>Conocer más</summary>
-              <div class="details-copy">
-                <p>Trabaja como kinesiólogo en Kineset, Banfield, con especial afinidad por la rehabilitación y el abordaje de pacientes vinculados al deporte.</p>
-                <p>Integra el Hospital Especializado en Rehabilitación Dr. J. M. Jorge de Burzaco como residente de 4º año de Cuidados Progresivos y Rehabilitación Psicofísica. Su práctica incluye personas con ACV, lesión medular, traumatismo craneoencefálico y amputaciones.</p>
-                <p>Amante de los perros y de los animales. Su vida cruza el consultorio, el hospital, el tatami y la parte técnica que sostiene el programa detrás de cámara.</p>
-              </div>
-            </details>
-            <a class="instagram-link" href="https://www.instagram.com/piero_gsl/" target="_blank" rel="noopener">@piero_gsl ↗</a>
-          </div>
-        </article>
-
-        <article class="member-card reverse-member">
-          <div class="member-image"><img src="/assets/fer.jpg?v=1" alt="Fernando Eloy" loading="lazy" width="800" height="1000"></div>
-          <div class="member-content">
-            <p class="member-index">02 · Judo · BJJ · Comunicación</p>
-            <h3>Fernando <span>Eloy</span></h3>
-            <p class="member-title">2.º Dan de Judo · Faixa Roxa de BJJ · Kickboxing amateur 9–3</p>
-            <div class="recognition">Nominado al XII International Hall of Fame Martial Arts 2026</div>
-            <p class="member-role"><b>En ADL:</b> conductor principal junto con Diego, entrevistador, productor y referente en las coberturas fuera del estudio.</p>
-            <details>
-              <summary>Conocer más</summary>
-              <div class="details-copy">
-                <p>Judoca, jiujitero, competidor y profesor. Obtuvo medallas en campeonatos nacionales y provinciales de Judo, participó en campos de entrenamiento de alto rendimiento y consiguió podios en competencias Master y Open de BJJ.</p>
-                <p>Pertenece a la Federación Metropolitana de Judo y desarrolló gran parte de su formación bajo la guía del Sensei Gabriel Narváez, 6.º Dan. En BJJ integra Lotus BJJ bajo la dirección del Mestre Leandro Márquez.</p>
-                <p>Da clases en el Club El Porvenir de Gerli y ha dictado seminarios de Judo aplicado al Jiu-Jitsu. Es uno de los tres fundadores de Área de Lucha y quien propuso el nombre del proyecto.</p>
-                <p class="quote">“Hola, hola, hola... cuidado con la ola.”</p>
-              </div>
-            </details>
-            <a class="instagram-link" href="https://www.instagram.com/fernandoeloy83/" target="_blank" rel="noopener">@fernandoeloy83 ↗</a>
-          </div>
-        </article>
-
-        <article class="member-card">
-          <div class="member-image"><img src="/assets/diego.jpg?v=1" alt="Diego Alejandro Escoda, El Cule" loading="lazy" width="800" height="1000"></div>
-          <div class="member-content">
-            <p class="member-index">03 · Familia · BJJ · Logística</p>
-            <h3>Diego Alejandro <span>Escoda</span></h3>
-            <p class="nickname">El Cule</p>
-            <p class="member-title">Faixa azul de BJJ · cinturón amarillo de Judo</p>
-            <p class="member-role"><b>En ADL:</b> logística y administración cotidiana, organización de invitados, compras y números del programa. También entrevista y participa en las coberturas fuera del stream.</p>
-            <details>
-              <summary>Conocer más</summary>
-              <div class="details-copy">
-                <p>Padre de familia, esposo y papá de una hija. La familia ocupa un lugar central en su vida y también aparece, con humor, en muchas de las conversaciones del grupo.</p>
-                <p>Practicante de Brazilian Jiu-Jitsu, faixa azul, y cinturón amarillo de Judo.</p>
-                <p>Alegre, espontáneo y emocional. Aporta cercanía, entusiasmo y una mirada muy humana al programa.</p>
-                <p>Los Redonditos de Ricota forman parte de su banda sonora habitual.</p>
-                <p class="quote">“¿Y la familia? Tengo una nena de 4 años...”</p>
-              </div>
-            </details>
-            <a class="instagram-link" href="https://www.instagram.com/diexx.10.akd/" target="_blank" rel="noopener">@diexx.10.akd ↗</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="contact section-dark" id="contacto">
-      <div class="container contact-grid">
-        <div>
-          <p class="section-label cyan">Contacto</p>
-          <h2>Hablemos.</h2>
-          <p>Invitados, coberturas, colaboraciones y propuestas para Área de Lucha.</p>
+    <section class="section section-dark anchor" id="programas">
+      <div class="shell">
+        <div class="section-head"><div><small>02 · Programas</small><h2>Conversaciones completas.</h2></div><p>Los últimos programas quedan disponibles en YouTube para verlos cuando quieras.</p></div>
+        <div class="programs">
+          <article class="program"><div class="program-media"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/eW1pDaidU-8" title="Ramiro Díaz Suguer — Área de Lucha" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="program-copy"><small>Último programa</small><h3>Ramiro<span>Díaz Suguer</span></h3><p class="role">Psicólogo Deportivo · Club Social y Deportivo Miriñaque</p><p class="desc">Una conversación sobre psicología deportiva, rendimiento, preparación mental y el trabajo profesional alrededor del deportista.</p><div class="actions"><a class="btn btn-primary" href="https://www.youtube.com/watch?v=eW1pDaidU-8" target="_blank" rel="noopener">Ver en YouTube</a></div></div></article>
+          <article class="program"><div class="program-media"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/Z8iFdiO1k18" title="Antonella Lasorsa — Área de Lucha" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="program-copy"><small>Programa anterior</small><h3>Antonella<span>Lasorsa</span></h3><p class="role">Atleta Wellness · NPC</p><p class="desc">Fisicoculturismo, preparación, competencia y la experiencia de vivir el deporte desde la categoría Wellness.</p><div class="actions"><a class="btn" href="https://www.youtube.com/watch?v=Z8iFdiO1k18" target="_blank" rel="noopener">Ver en YouTube</a></div></div></article>
         </div>
-        <div class="contact-links">
-          <a href="mailto:areadelucha@gmail.com"><span>Email</span><strong>areadelucha@gmail.com</strong><b>↗</b></a>
-          <a href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener"><span>YouTube</span><strong>@areadelucha</strong><b>↗</b></a>
-          <a href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener"><span>Instagram</span><strong>@areadelucha</strong><b>↗</b></a>
-          <a href="https://kick.com/areadelucha" target="_blank" rel="noopener"><span>Kick</span><strong>areadelucha</strong><b>↗</b></a>
+      </div>
+    </section>
+
+    <section class="section section-light anchor" id="coberturas">
+      <div class="shell">
+        <div class="section-head"><div><small>03 · Fuera del estudio</small><h2>Coberturas.</h2></div><p>Área de Lucha también sale a buscar historias, competencias y protagonistas donde sucede el deporte.</p></div>
+        <div class="coverage-grid">
+          <article class="coverage"><small>Evento</small><h3>Left Combat.</h3><p>Video principal en YouTube y momentos destacados en Instagram.</p><div class="text-links"><a href="https://youtu.be/bQ7E1sBCKlg?si=628JmoHgE8FNL74u" target="_blank" rel="noopener">Video en YouTube ↗</a><a href="https://www.instagram.com/reel/DbXHaNsu7rU/?igsh=MTZxbjZoOGxzYW96bw==" target="_blank" rel="noopener">Reel 01 ↗</a><a href="https://www.instagram.com/reel/DbVnDuxuhFZ/?igsh=MWR0cW5wbmY3bGpkMQ==" target="_blank" rel="noopener">Reel 02 ↗</a><a href="https://www.instagram.com/reel/DbYktXjRI-Z/?igsh=MWhzbGxza2c3MDQ3dw==" target="_blank" rel="noopener">Reel 03 ↗</a></div></article>
+          <article class="coverage"><small>Lotus BJJ · Gerli</small><h3>Ryan Martinez + Camila Reynoso.</h3><p>Visita a Lotus BJJ en el Club El Porvenir, Gerli, dojo a cargo del Mestre faixa preta Leandro Márquez. Área de Lucha estuvo ahí para conversar y generar contenido desde el lugar donde también entrenamos.</p><div class="text-links"><a href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener">Ver Instagram ↗</a></div></article>
         </div>
+      </div>
+    </section>
+
+    <section class="section section-dark anchor" id="equipo">
+      <div class="shell">
+        <div class="section-head"><div><small>04 · El equipo</small><h2>Detrás de Área de Lucha.</h2></div><p>Tres perfiles distintos. Una misma mesa. El deporte como punto de encuentro.</p></div>
+        <figure class="team-photo"><img src="/assets/equipo.jpg" alt="Piero, Fer y El Cule — equipo de Área de Lucha" width="640" height="360" loading="lazy" decoding="async"><figcaption>Piero · Fer · El Cule · Área de Lucha</figcaption></figure>
+        <div class="members">
+          <article class="member"><span class="member-number">01</span><h3>Piero Saldaña</h3><span class="nick">Kinesiología · Judo · Jiu-Jitsu</span><p class="title">Licenciado en Kinesiología y Fisiatría · Profesor de Judo 2º Dan · practicante de Jiu-Jitsu faixa azul.</p><p class="role">Responsable del área técnica del stream: conectividad, audio, PC, OBS y gestión técnica de YouTube.</p><details><summary>Conocer más +</summary><p>Trabaja como kinesiólogo en Kineset, Banfield, con afinidad por la rehabilitación y el deporte. Integra el Hospital Especializado en Rehabilitación Dr. J. M. Jorge de Burzaco como residente de 4º año de Cuidados Progresivos y Rehabilitación Psicofísica. Su práctica incluye personas con ACV, lesión medular, traumatismo craneoencefálico y amputaciones. Fuera de cámara, es amante de los perros y de los animales.</p><a class="ig" href="https://www.instagram.com/piero_gsl/" target="_blank" rel="noopener">@piero_gsl ↗</a></details></article>
+          <article class="member"><span class="member-number">02</span><h3>Fernando Eloy</h3><span class="nick">Fer · Judo · BJJ · Comunicación</span><p class="title">2.º Dan de Judo · Faixa Roxa de BJJ · Kickboxing amateur 9–3.</p><p class="role">Conductor principal junto con Diego, entrevistador, productor y referente en las coberturas fuera del estudio.</p><details><summary>Conocer más +</summary><p>Judoca, jiujitero, competidor y profesor. Obtuvo medallas en campeonatos nacionales y provinciales de Judo, participó en campos de entrenamiento de alto rendimiento y consiguió podios en competencias Master y Open de BJJ. Entrenó gran parte de su formación bajo el Sensei Gabriel Narváez, 6.º Dan, y en BJJ integra Lotus BJJ bajo el Mestre Leandro Márquez. Es uno de los tres fundadores de ADL y quien propuso el nombre del proyecto. Nominado al XII International Hall of Fame Martial Arts 2026.</p><a class="ig" href="https://www.instagram.com/fernandoeloy83/" target="_blank" rel="noopener">@fernandoeloy83 ↗</a></details></article>
+          <article class="member"><span class="member-number">03</span><h3>Diego Alejandro Escoda</h3><span class="nick">El Cule · Familia · BJJ · Logística</span><p class="title">Faixa azul de BJJ · cinturón amarillo de Judo.</p><p class="role">Logística y administración cotidiana: invitados, compras, números del programa, entrevistas y coberturas.</p><details><summary>Conocer más +</summary><p>Padre de familia, esposo y papá de una hija. Alegre y espontáneo, aporta cercanía, entusiasmo y una mirada humana al programa. Practica Brazilian Jiu-Jitsu, faixa azul, y Judo, cinturón amarillo. También es uno de los entrevistadores junto con Fer y participa de las notas fuera del stream.</p><a class="ig" href="https://www.instagram.com/diexx.10.akd/" target="_blank" rel="noopener">@diexx.10.akd ↗</a></details></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark anchor" id="contacto">
+      <div class="shell contact-grid">
+        <div><div class="eyebrow">Contacto</div><h2>Hablemos.</h2><p>Invitados, coberturas, propuestas y contacto general de Área de Lucha.</p></div>
+        <div class="contact-links"><a href="mailto:areadelucha@gmail.com"><span>Mail</span><b>areadelucha@gmail.com</b><i>↗</i></a><a href="https://www.instagram.com/areadelucha/" target="_blank" rel="noopener"><span>Instagram</span><b>@areadelucha</b><i>↗</i></a><a href="https://www.youtube.com/@areadelucha" target="_blank" rel="noopener"><span>YouTube</span><b>@areadelucha</b><i>↗</i></a><a href="https://kick.com/areadelucha" target="_blank" rel="noopener"><span>Kick</span><b>areadelucha</b><i>↗</i></a></div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <img src="/assets/logo.svg" alt="Área de Lucha">
-      <p>© <span id="year">2026</span> Área de Lucha · Domina tu Destino</p>
-    </div>
-  </footer>
+  <footer class="footer"><div class="shell footer-inner"><img src="/assets/logo.svg" alt="Área de Lucha"><p>© 2026 Área de Lucha · Domina tu Destino</p></div></footer>
 </body>
 </html>
