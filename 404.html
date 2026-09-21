@@ -1,1 +1,57 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 — Área de Lucha</title><style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#000;color:#fff;font-family:Arial,sans-serif}.box{width:min(560px,calc(100% - 40px));text-align:center}.box img{width:220px;max-width:70%;margin:0 auto 35px}.box h1{font-size:clamp(3rem,12vw,7rem);margin:0;line-height:.9}.box p{color:#aaa;line-height:1.6}.box a{display:inline-block;margin-top:18px;padding:14px 18px;background:#fff;color:#000;text-decoration:none;font-weight:800;text-transform:uppercase;font-size:.75rem;letter-spacing:.08em}</style></head><body><main class="box"><img src="/assets/logo.svg" alt="Área de Lucha"><h1>404</h1><p>Esta página no existe o cambió de dirección.</p><a href="/">Volver a Área de Lucha</a></main></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex">
+<title>404 — Área de Lucha</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--cyan:#01dffc;--pink:#e21672;--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100svh;display:grid;place-items:center;overflow:hidden;
+  background:
+    radial-gradient(circle at 78% 24%,rgba(1,223,252,.13),transparent 28%),
+    radial-gradient(circle at 20% 80%,rgba(226,22,114,.12),transparent 28%),
+    #000;
+  color:#fff;font-family:Archivo,Arial,sans-serif;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:72px 72px;
+}
+main{
+  position:relative;width:min(720px,calc(100% - 32px));padding:54px 34px;
+  border:1px solid var(--line);background:rgba(0,0,0,.74);text-align:center;
+  backdrop-filter:blur(14px);
+}
+.logo{width:min(300px,72%);margin:0 auto 44px}
+.kicker{color:#999;font-size:.65rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+h1{margin:10px 0 12px;font-size:clamp(5rem,20vw,10rem);line-height:.8;letter-spacing:-.08em}
+h1 span{color:transparent;-webkit-text-stroke:1px #fff}
+p{max-width:520px;margin:0 auto;color:#999;line-height:1.7}
+a{
+  min-height:50px;margin-top:30px;padding:0 19px;display:inline-flex;align-items:center;justify-content:center;
+  background:#fff;color:#000;font-size:.69rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;
+}
+a:hover{background:var(--cyan)}
+.rule{width:82px;height:2px;margin:28px auto 0;background:linear-gradient(90deg,var(--cyan) 0 50%,var(--pink) 50%)}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="/assets/logo.svg" alt="Área de Lucha">
+  <div class="kicker">Fuera del área</div>
+  <h1>4<span>0</span>4</h1>
+  <p>La página que buscás no existe o cambió de dirección.</p>
+  <a href="/">Volver a Área de Lucha ↗</a>
+  <div class="rule" aria-hidden="true"></div>
+</main>
+</body>
+</html>
